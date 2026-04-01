@@ -10,4 +10,4 @@ This directory groups **human-facing** artifacts for the first public OSS **rele
 
 **Truth boundary:** [SOURCE_OF_TRUTH.md](../../../docs/azimuth_bench/SOURCE_OF_TRUTH.md).
 
-**Install and verify:** [README.md](../../README.md), [CONTRIBUTING.md](../../CONTRIBUTING.md), [CHANGELOG.md](../../CHANGELOG.md).
+**Install and verify:** [README.md](../../../README.md), [CONTRIBUTING.md](../../../CONTRIBUTING.md), [CHANGELOG.md](../../../CHANGELOG.md).

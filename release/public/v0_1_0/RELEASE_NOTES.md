@@ -25,7 +25,7 @@ A **credible first public snapshot** of the Azimuth Bench toolchain: throughput 
 
 ## Verification
 
-See root [README.md](../../README.md) and [release/evaluator/README.md](../../release/evaluator/README.md). Typical check:
+See root [README.md](../../../README.md) and [release/evaluator/README.md](../../evaluator/README.md). Typical check:
 
 ```bash
 pip install -e ".[dev]"
