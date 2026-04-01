@@ -94,14 +94,14 @@ NON-NEGOTIABLE INVARIANTS
 SSOT SNAPSHOT — “IMPLEMENTED NOW” (from SOURCE_OF_TRUTH; VERIFY IN CODE)
 ================================================================================
 Implemented today (high level):
-- Throughput suite + MLX adapter + summary compile + report build + integrity
+- Throughput suite + MLX / OpenAI-compatible / Ollama adapters + summary compile + report build + integrity
 - bench throughput CLI (canonical path; legacy -m benchmarking.token delegates)
 - Static report output + site manifest scaffolding (not a hosted SPA)
+- Compare projection (`azimuth_compare_v1`) + deterministic share SVG exports
 
 Explicitly NOT implemented as production CLI yet (see azimuth_bench.adapters.planned):
-- Non-MLX providers wired through the same production path as MLX (Ollama,
-  generic OpenAI-compatible, llama.cpp, vLLM targets are roadmap / planned stubs
-  until SOURCE_OF_TRUTH says otherwise)
+- llama.cpp and vLLM production adapters / execution paths
+- portable merge of external run bundles (M5)
 
 Do not claim multi-provider production parity until adapters + CLI + SSOT say so.
 
@@ -119,7 +119,7 @@ REPO FACTS (BASELINE — DO NOT REGRESS)
 Last verified in this checkout (re-run and refresh numbers):
 - source .venv/bin/activate && ruff check .            -> pass
 - source .venv/bin/activate && ruff format --check .   -> pass
-- source .venv/bin/activate && python3 -m pytest -q    -> 34 passed
+- source .venv/bin/activate && python3 -m pytest -q    -> 43 passed
 
 Also exercise:
 - source .venv/bin/activate && azbench report build benchmarks --repo-root /Users/cj/Workspace/active/benchmark-v2
@@ -279,6 +279,6 @@ a prettier name.”
 ## Repo-grounded upgrades in v2
 
 - **SSOT-first gate** at the top of the paste block: execution plan vs `SOURCE_OF_TRUTH.md` + code.
-- **Implemented vs roadmap** aligned with `SOURCE_OF_TRUTH` (MLX/throughput/report today; non-MLX production path = work in progress until documented otherwise).
+- **Implemented vs roadmap** aligned with `SOURCE_OF_TRUTH` (MLX / OpenAI-compatible / Ollama throughput, report, compare, SVG exports today; llama.cpp / vLLM + M5 merge remain roadmap).
 - **Commit coupling**: SSOT updates when “implemented” scope changes.
-- **Refresh** pytest count on handoff if it diverges from 34.
+- **Refresh** pytest count on handoff if it diverges from 43.

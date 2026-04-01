@@ -233,10 +233,12 @@ def _render_summary_md(summary_rows: list[dict[str, Any]], *, integrity_ok: bool
         "",
         "- Canonical per-run JSON bundle emitted under `report/data/runs/<artifact_key>/`",
         "- Static pages emitted for latest report, leaderboard, compare, run detail, and machine detail",
+        "- Compare projection emitted under `report/data/compare.json` with deterministic share SVGs under `report/exports/`",
         "",
         "## Designed / unverified",
         "",
-        "- Additional adapters beyond MLX",
+        "- llama.cpp and vLLM adapters",
+        "- Portable merge of external run bundles",
         "- Full hosted app beyond static-first site data contract",
         "",
         "## Site manifest",
@@ -398,6 +400,7 @@ def _render_index_html(
       <ul class="list evidence-list">
         <li><span class="mono">report/data/run.json</span><br/>run metadata and provenance status</li>
         <li><span class="mono">report/data/summary.json</span><br/>canonical leaderboard rows</li>
+        <li><span class="mono">report/data/compare.json</span><br/>scoped compare projection with blocked comparisons</li>
         <li><span class="mono">report/data/runs/&lt;artifact_key&gt;/</span><br/>per-run run/summary/machine/provider/model/cases bundle</li>
         <li><span class="mono">report/data/site_manifest.json</span><br/>hosted site route contract</li>
         <li><span class="mono">report/exports/share_leaderboard.svg</span><br/>deterministic share snapshot (top rows)</li>
@@ -406,7 +409,7 @@ def _render_index_html(
     </div>
   </section>
   <footer class="doc-footer">Generated from real benchmark artifacts. Historical runs may lack exact benchmark commit SHA or invocation command; those gaps are surfaced in the bundle.<br/>
-  <span class="muted">Docs (repo root): <a href="../../docs/azimuth_bench/METHODOLOGY.md">methodology</a> · <a href="../../docs/azimuth_bench/READING_REPORTS.md">reading reports</a> · <a href="../../docs/azimuth_bench/SOURCE_OF_TRUTH.md">source of truth</a></span></footer>
+  <span class="muted">Standalone report output intentionally avoids brittle repo-relative doc links; methodology and SSOT remain in the repository docs.</span></footer>
 </body>
 </html>"""
 
