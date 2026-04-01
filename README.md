@@ -1,32 +1,43 @@
 # benchmark-v2
 
-Standalone local MLX benchmark harness extracted from Agent Civilization.
+Standalone local MLX benchmark harness extracted from [Agent Civilization](https://github.com/cjchanh/agent-civilization).
 
 ## Scope
 
-- Token and latency benchmarking
-- Roster management
-- Summary artifact generation
-- Social card generation
+- Token and latency benchmarking for MLX models
+- Roster management and model configuration
+- Summary artifact generation (CSV, JSON, Markdown)
+- Social card generation (matplotlib)
 - Optional external Agent Civilization gate via `AGENT_CIV_ROOT`
 
 ## Install
 
 ```bash
-cd /Users/cj/Workspace/active/benchmark-v2
 pip install -e ".[dev]"
 ```
 
 ## Verify
 
 ```bash
-cd /Users/cj/Workspace/active/benchmark-v2
 python3 -m pytest -q
+```
+
+## Lint
+
+```bash
+ruff check .
+ruff format --check .
 ```
 
 ## Optional external gate
 
-`benchmarking.gate` can run a 5-tick Agent Civilization check if:
+`benchmarking.gate` can run a 5-tick Agent Civilization simulation check if:
 
-- a compatible checkout exists at `/Users/cj/Workspace/active/agent-civilization`, or
-- `AGENT_CIV_ROOT` points at one.
+- `AGENT_CIV_ROOT` environment variable points at a compatible checkout, or
+- a checkout exists at the default path
+
+This is optional and not required for the core benchmark harness.
+
+## License
+
+MIT — see [LICENSE](LICENSE).

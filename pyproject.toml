@@ -7,6 +7,7 @@ name = "benchmark-v2"
 version = "0.1.0"
 description = "Standalone MLX benchmark-v2 harness and artifact tooling."
 readme = "README.md"
+license = {text = "MIT"}
 requires-python = ">=3.10"
 dependencies = [
   "aiohttp>=3.9",
@@ -15,7 +16,17 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-dev = ["pytest>=7.0"]
+dev = ["pytest>=7.0", "ruff>=0.4"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+
+[tool.ruff]
+target-version = "py310"
+line-length = 120
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I"]
+
+[tool.ruff.lint.per-file-ignores]
+"benchmarking/token.py" = ["E501"]

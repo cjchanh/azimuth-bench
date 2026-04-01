@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Benchmark-v2 throughput suite for MLX-served chat models."""
+
 from __future__ import annotations
 
 import argparse
@@ -48,8 +49,20 @@ Respond with ONLY a JSON object:
 PROTOCOL_ID = "benchmark_v2_m5max_v1"
 REQUEST_TEMPERATURE = 0.3
 WARMUP_REQUESTS = 1
-MEASURED_REPEAT_COUNTS = {"short": 3, "structured": 3, "medium": 3, "long": 2, "sustained": 10}
-SMOKE_REPEAT_COUNTS = {"short": 1, "structured": 1, "medium": 1, "long": 1, "sustained": 2}
+MEASURED_REPEAT_COUNTS = {
+    "short": 3,
+    "structured": 3,
+    "medium": 3,
+    "long": 2,
+    "sustained": 10,
+}
+SMOKE_REPEAT_COUNTS = {
+    "short": 1,
+    "structured": 1,
+    "medium": 1,
+    "long": 1,
+    "sustained": 2,
+}
 
 
 def _rough_token_count(text: str) -> int:
@@ -130,9 +143,7 @@ def _build_validity(
 ) -> dict[str, Any]:
     issues: list[str] = []
     repeat_counts = protocol["repeat_counts"]
-    measured_rows = _measured_rows(
-        short_results, structured_results, medium_results, long_results, sustained_runs
-    )
+    measured_rows = _measured_rows(short_results, structured_results, medium_results, long_results, sustained_runs)
     expected_counts = {
         "short": repeat_counts["short"],
         "structured": repeat_counts["structured"],
@@ -337,10 +348,7 @@ async def run_benchmark(
         for index in range(WARMUP_REQUESTS):
             row = await time_request(session, url, make_payload(PROMPT_SHORT, token_cap=64))
             warmup_results.append(row)
-            print(
-                f"  Warmup {index + 1}: first_answer={row['first_answer_ms']:.0f}ms, "
-                f"{row['tok_per_sec']:.1f} tok/s"
-            )
+            print(f"  Warmup {index + 1}: first_answer={row['first_answer_ms']:.0f}ms, {row['tok_per_sec']:.1f} tok/s")
         results["warmup"] = {
             "count": WARMUP_REQUESTS,
             "runs": warmup_results,
@@ -374,10 +382,7 @@ async def run_benchmark(
         for index in range(repeats["medium"]):
             row = await time_request(session, url, make_payload(PROMPT_MEDIUM, token_cap=512))
             medium_results.append(row)
-            print(
-                f"  Run {index + 1}: first_answer={row['first_answer_ms']:.0f}ms, "
-                f"{row['tok_per_sec']:.1f} tok/s"
-            )
+            print(f"  Run {index + 1}: first_answer={row['first_answer_ms']:.0f}ms, {row['tok_per_sec']:.1f} tok/s")
         results["medium_prompt"] = medium_results
 
         print("Test 4: Long prompt (~6K tokens in)...")
@@ -385,10 +390,7 @@ async def run_benchmark(
         for index in range(repeats["long"]):
             row = await time_request(session, url, make_payload(PROMPT_LONG, token_cap=512))
             long_results.append(row)
-            print(
-                f"  Run {index + 1}: first_answer={row['first_answer_ms']:.0f}ms, "
-                f"{row['tok_per_sec']:.1f} tok/s"
-            )
+            print(f"  Run {index + 1}: first_answer={row['first_answer_ms']:.0f}ms, {row['tok_per_sec']:.1f} tok/s")
         results["long_prompt"] = long_results
 
         print(f"Test 5: Sustained throughput ({repeats['sustained']} requests)...")

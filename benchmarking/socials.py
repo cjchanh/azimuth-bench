@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Generate mobile-first benchmark-v2 social cards."""
+
 from __future__ import annotations
 
 import argparse
@@ -8,11 +9,12 @@ from pathlib import Path
 from typing import Any
 
 import matplotlib
+
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
+import numpy as np
 from matplotlib import font_manager
 from matplotlib.patches import FancyBboxPatch
-import numpy as np
 
 from benchmarking.utils import DEFAULT_BENCHMARKS_DIR, DEFAULT_SOCIALS_DIR
 
@@ -88,7 +90,12 @@ def _normalize_gate_rows(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
     normalized: list[dict[str, Any]] = []
     for row in rows:
         item = dict(row)
-        for key in ("synthetic_failures", "synthetic_rate", "invalid_location_rate", "share_count_5tick"):
+        for key in (
+            "synthetic_failures",
+            "synthetic_rate",
+            "invalid_location_rate",
+            "share_count_5tick",
+        ):
             item[key] = _as_float(item.get(key, 0.0))
         normalized.append(item)
     return normalized
@@ -100,7 +107,12 @@ def _frontier_rows(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
         raise ValueError("token summary is missing frontier_27b rows")
     order = {"Qwen3.5 27B Base": 0, "Qwen3.5 27B Opus Distilled v2": 1}
     think_order = {"off": 0, "on": 1, "default": 2}
-    frontier.sort(key=lambda row: (order.get(str(row.get("display_name")), 99), think_order.get(str(row.get("thinking_mode")), 99)))
+    frontier.sort(
+        key=lambda row: (
+            order.get(str(row.get("display_name")), 99),
+            think_order.get(str(row.get("thinking_mode")), 99),
+        )
+    )
     return frontier
 
 
@@ -162,21 +174,94 @@ def _generate_hero(rows: list[dict[str, Any]], output_dir: Path) -> None:
     ax = fig.add_axes([0, 0, 1, 1])
     ax.axis("off")
 
-    ax.text(0.07, 0.93, "Matched 27B Token Benchmark", fontsize=28, fontweight="bold", color=TEXT, transform=ax.transAxes)
-    ax.text(0.07, 0.885, "Same size. Same backend. Base vs Opus-distilled, with thinking on and off.", fontsize=13, color=SUBTEXT, transform=ax.transAxes)
+    ax.text(
+        0.07,
+        0.93,
+        "Matched 27B Token Benchmark",
+        fontsize=28,
+        fontweight="bold",
+        color=TEXT,
+        transform=ax.transAxes,
+    )
+    ax.text(
+        0.07,
+        0.885,
+        "Same size. Same backend. Base vs Opus-distilled, with thinking on and off.",
+        fontsize=13,
+        color=SUBTEXT,
+        transform=ax.transAxes,
+    )
     _hf_chip(ax, 0.72, 0.905)
 
     positions = [(0.07, 0.58), (0.52, 0.58), (0.07, 0.20), (0.52, 0.20)]
     for row, (x, y) in zip(rows, positions):
         accent = OPUS if "Opus" in str(row["display_name"]) else BASE
         _panel(ax, x, y, 0.4, 0.27)
-        ax.text(x + 0.03, y + 0.22, row["display_name"], fontsize=17, fontweight="bold", color=TEXT, transform=ax.transAxes, zorder=4)
-        ax.text(x + 0.03, y + 0.18, f"thinking={row['thinking_mode']}", fontsize=11, color=accent, transform=ax.transAxes, zorder=4)
-        ax.text(x + 0.03, y + 0.12, f"{row['structured_json_tok_s']:.1f}", fontsize=32, fontweight="bold", color=accent, transform=ax.transAxes, zorder=4)
-        ax.text(x + 0.20, y + 0.125, "JSON tok/s", fontsize=12, color=SUBTEXT, transform=ax.transAxes, zorder=4)
-        ax.text(x + 0.03, y + 0.075, f"{row['first_answer_ms']:.0f} ms first answer", fontsize=13, color=TEXT, transform=ax.transAxes, zorder=4)
-        ax.text(x + 0.03, y + 0.04, f"{row['sustained_tok_s']:.1f} sustained tok/s", fontsize=13, color=TEXT, transform=ax.transAxes, zorder=4)
-        ax.text(x + 0.03, y + 0.01, f"{row['short_tok_s']:.1f} short tok/s", fontsize=12, color=SUBTEXT, transform=ax.transAxes, zorder=4)
+        ax.text(
+            x + 0.03,
+            y + 0.22,
+            row["display_name"],
+            fontsize=17,
+            fontweight="bold",
+            color=TEXT,
+            transform=ax.transAxes,
+            zorder=4,
+        )
+        ax.text(
+            x + 0.03,
+            y + 0.18,
+            f"thinking={row['thinking_mode']}",
+            fontsize=11,
+            color=accent,
+            transform=ax.transAxes,
+            zorder=4,
+        )
+        ax.text(
+            x + 0.03,
+            y + 0.12,
+            f"{row['structured_json_tok_s']:.1f}",
+            fontsize=32,
+            fontweight="bold",
+            color=accent,
+            transform=ax.transAxes,
+            zorder=4,
+        )
+        ax.text(
+            x + 0.20,
+            y + 0.125,
+            "JSON tok/s",
+            fontsize=12,
+            color=SUBTEXT,
+            transform=ax.transAxes,
+            zorder=4,
+        )
+        ax.text(
+            x + 0.03,
+            y + 0.075,
+            f"{row['first_answer_ms']:.0f} ms first answer",
+            fontsize=13,
+            color=TEXT,
+            transform=ax.transAxes,
+            zorder=4,
+        )
+        ax.text(
+            x + 0.03,
+            y + 0.04,
+            f"{row['sustained_tok_s']:.1f} sustained tok/s",
+            fontsize=13,
+            color=TEXT,
+            transform=ax.transAxes,
+            zorder=4,
+        )
+        ax.text(
+            x + 0.03,
+            y + 0.01,
+            f"{row['short_tok_s']:.1f} short tok/s",
+            fontsize=12,
+            color=SUBTEXT,
+            transform=ax.transAxes,
+            zorder=4,
+        )
 
     _save(fig, output_dir, "27b_matchup_hero")
 
@@ -196,8 +281,23 @@ def _generate_thinking_delta(rows: list[dict[str, Any]], output_dir: Path) -> No
     _card_background(fig)
     title_ax = fig.add_axes([0, 0, 1, 1])
     title_ax.axis("off")
-    title_ax.text(0.08, 0.92, "Sustained Throughput & First-Answer Latency", fontsize=24, fontweight="bold", color=TEXT, transform=title_ax.transAxes)
-    title_ax.text(0.08, 0.885, "Thinking on vs off. Base drops 19% sustained when thinking is off. Opus stays flat.", fontsize=12, color=SUBTEXT, transform=title_ax.transAxes)
+    title_ax.text(
+        0.08,
+        0.92,
+        "Sustained Throughput & First-Answer Latency",
+        fontsize=24,
+        fontweight="bold",
+        color=TEXT,
+        transform=title_ax.transAxes,
+    )
+    title_ax.text(
+        0.08,
+        0.885,
+        "Thinking on vs off. Base drops 19% sustained when thinking is off. Opus stays flat.",
+        fontsize=12,
+        color=SUBTEXT,
+        transform=title_ax.transAxes,
+    )
     _hf_chip(title_ax, 0.80, 0.85)
 
     x = np.arange(len(labels))
@@ -258,8 +358,21 @@ def _generate_tradeoff(rows: list[dict[str, Any]], output_dir: Path) -> None:
                 color=TEXT,
             )
 
-    ax.set_title("Latency vs Structured JSON Throughput", fontsize=26, loc="left", pad=20, color=TEXT)
-    ax.text(0.0, 1.02, "Lower is faster. Higher is better structured-token throughput. Point size reflects sustained tok/s.", fontsize=12, color=SUBTEXT, transform=ax.transAxes)
+    ax.set_title(
+        "Latency vs Structured JSON Throughput",
+        fontsize=26,
+        loc="left",
+        pad=20,
+        color=TEXT,
+    )
+    ax.text(
+        0.0,
+        1.02,
+        "Lower is faster. Higher is better structured-token throughput. Point size reflects sustained tok/s.",
+        fontsize=12,
+        color=SUBTEXT,
+        transform=ax.transAxes,
+    )
     ax.set_xlabel("First answer latency (ms)", fontsize=13, color=TEXT)
     ax.set_ylabel("Structured JSON tok/s", fontsize=13, color=TEXT)
     ax.grid(True, color=GRID)
@@ -293,8 +406,21 @@ def _generate_ladder(rows: list[dict[str, Any]], output_dir: Path) -> None:
     ax.set_yticklabels(labels, fontsize=11)
     ax.invert_yaxis()
     ax.set_xlabel("Structured JSON tokens / second", fontsize=13, color=TEXT)
-    ax.set_title("Full MLX Token Ladder with 27B Matchup Highlighted", fontsize=25, loc="left", pad=20, color=TEXT)
-    ax.text(0.0, 1.02, "Core MLX token benchmark plus the matched 27B frontier lane.", fontsize=12, color=SUBTEXT, transform=ax.transAxes)
+    ax.set_title(
+        "Full MLX Token Ladder with 27B Matchup Highlighted",
+        fontsize=25,
+        loc="left",
+        pad=20,
+        color=TEXT,
+    )
+    ax.text(
+        0.0,
+        1.02,
+        "Core MLX token benchmark plus the matched 27B frontier lane.",
+        fontsize=12,
+        color=SUBTEXT,
+        transform=ax.transAxes,
+    )
     ax.grid(True, axis="x", color=GRID)
     for spine in ax.spines.values():
         spine.set_visible(False)
@@ -312,18 +438,73 @@ def _generate_gate_appendix(rows: list[dict[str, Any]], output_dir: Path) -> Non
     ax.set_facecolor(CARD)
     ax.axis("off")
 
-    ax.text(0.00, 0.97, "Appendix: Agent Civilization Gate", fontsize=26, fontweight="bold", color=TEXT, transform=ax.transAxes)
-    ax.text(0.00, 0.93, "Optional validation layer. This is not the main benchmark score.", fontsize=12, color=SUBTEXT, transform=ax.transAxes)
+    ax.text(
+        0.00,
+        0.97,
+        "Appendix: Agent Civilization Gate",
+        fontsize=26,
+        fontweight="bold",
+        color=TEXT,
+        transform=ax.transAxes,
+    )
+    ax.text(
+        0.00,
+        0.93,
+        "Optional validation layer. This is not the main benchmark score.",
+        fontsize=12,
+        color=SUBTEXT,
+        transform=ax.transAxes,
+    )
 
     y = 0.82
     for row in rows:
-        accent = GOOD if row.get("agent_civ_usable") == "usable" else (WARN if row.get("agent_civ_usable") == "usable_with_caveat" else BAD)
+        accent = (
+            GOOD
+            if row.get("agent_civ_usable") == "usable"
+            else (WARN if row.get("agent_civ_usable") == "usable_with_caveat" else BAD)
+        )
         _panel(ax, 0.00, y - 0.10, 0.96, 0.12)
-        ax.text(0.03, y - 0.01, f"{row['display_name']} ({row['thinking_mode']})", fontsize=15, fontweight="bold", color=TEXT, transform=ax.transAxes)
-        ax.text(0.03, y - 0.05, f"gate={row['gate_decision']}  usable={row['agent_civ_usable']}", fontsize=12, color=accent, transform=ax.transAxes)
-        ax.text(0.48, y - 0.05, f"synthetic_rate={row['synthetic_rate']:.3f}", fontsize=12, color=TEXT, transform=ax.transAxes)
-        ax.text(0.70, y - 0.05, f"invalid_loc={row['invalid_location_rate']:.3f}", fontsize=12, color=TEXT, transform=ax.transAxes)
-        ax.text(0.84, y - 0.05, f"shares={row['share_count_5tick']:.0f}", fontsize=12, color=TEXT, transform=ax.transAxes)
+        ax.text(
+            0.03,
+            y - 0.01,
+            f"{row['display_name']} ({row['thinking_mode']})",
+            fontsize=15,
+            fontweight="bold",
+            color=TEXT,
+            transform=ax.transAxes,
+        )
+        ax.text(
+            0.03,
+            y - 0.05,
+            f"gate={row['gate_decision']}  usable={row['agent_civ_usable']}",
+            fontsize=12,
+            color=accent,
+            transform=ax.transAxes,
+        )
+        ax.text(
+            0.48,
+            y - 0.05,
+            f"synthetic_rate={row['synthetic_rate']:.3f}",
+            fontsize=12,
+            color=TEXT,
+            transform=ax.transAxes,
+        )
+        ax.text(
+            0.70,
+            y - 0.05,
+            f"invalid_loc={row['invalid_location_rate']:.3f}",
+            fontsize=12,
+            color=TEXT,
+            transform=ax.transAxes,
+        )
+        ax.text(
+            0.84,
+            y - 0.05,
+            f"shares={row['share_count_5tick']:.0f}",
+            fontsize=12,
+            color=TEXT,
+            transform=ax.transAxes,
+        )
         y -= 0.15
         if y < 0.14:
             break

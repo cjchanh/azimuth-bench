@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Optional external Agent Civilization gate for benchmark-v2."""
+
 from __future__ import annotations
 
 import argparse
@@ -65,7 +66,7 @@ def _parse_json_object(text: str) -> dict[str, Any] | None:
     first_brace = stripped.find("{")
     last_brace = stripped.rfind("}")
     if 0 <= first_brace < last_brace:
-        candidate = stripped[first_brace:last_brace + 1].strip()
+        candidate = stripped[first_brace : last_brace + 1].strip()
         if candidate not in candidates:
             candidates.append(candidate)
     for candidate in candidates:
@@ -241,15 +242,11 @@ def _summarize_db(db_path: Path, *, ticks: int, agent_count: int) -> dict[str, A
         synthetic_failures = conn.execute(
             "SELECT count(*) FROM events WHERE reason IN ('PARSE_FAILURE','MODEL_CALL_FAILURE')"
         ).fetchone()[0]
-        invalid_location = conn.execute(
-            "SELECT count(*) FROM events WHERE reason='INVALID_LOCATION'"
-        ).fetchone()[0]
+        invalid_location = conn.execute("SELECT count(*) FROM events WHERE reason='INVALID_LOCATION'").fetchone()[0]
         share_count = conn.execute(
             "SELECT count(*) FROM events WHERE action_type IN ('share_food','share_tools') AND outcome='executed'"
         ).fetchone()[0]
-        total_agent_events = conn.execute(
-            "SELECT count(*) FROM events WHERE agent_id IS NOT NULL"
-        ).fetchone()[0]
+        total_agent_events = conn.execute("SELECT count(*) FROM events WHERE agent_id IS NOT NULL").fetchone()[0]
         action_counts = {
             row[0]: row[1]
             for row in conn.execute(
@@ -324,9 +321,7 @@ async def main() -> int:
 
     endpoint = f"http://localhost:{args.port}/v1/chat/completions"
     requested_modes = (
-        [PROMPT_MODE_SINGLE_USER, PROMPT_MODE_SYSTEM_USER]
-        if args.prompt_mode == "auto"
-        else [args.prompt_mode]
+        [PROMPT_MODE_SINGLE_USER, PROMPT_MODE_SYSTEM_USER] if args.prompt_mode == "auto" else [args.prompt_mode]
     )
     probes: list[dict[str, Any]] = []
     selected_mode: str | None = None

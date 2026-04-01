@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Roster and naming contract for the benchmark-v2 package."""
+
 from __future__ import annotations
 
 import argparse
@@ -47,9 +48,7 @@ def load_roster(path: Path | str = DEFAULT_ROSTER) -> list[dict[str, Any]]:
             raise ValueError(f"Roster entry {index} missing keys: {sorted(missing)}")
         thinking_mode = entry["thinking_mode"]
         if thinking_mode not in {"default", "on", "off"}:
-            raise ValueError(
-                f"Roster entry {index} has unsupported thinking_mode={thinking_mode!r}"
-            )
+            raise ValueError(f"Roster entry {index} has unsupported thinking_mode={thinking_mode!r}")
         validated.append(entry)
     return validated
 

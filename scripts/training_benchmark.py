@@ -12,7 +12,6 @@ Usage:
 
 import argparse
 import json
-import os
 import resource
 import sqlite3
 import subprocess
@@ -52,11 +51,13 @@ def extract_training_data(runs_dir: Path, output_path: Path) -> int:
             ).fetchall()
             conn.close()
             for action, reason in rows:
-                samples.append({
-                    "text": f"<|im_start|>system\nYou are an agent in a resource-sharing simulation.<|im_end|>\n"
-                            f"<|im_start|>user\nDecide your next action.<|im_end|>\n"
-                            f"<|im_start|>assistant\nAction: {action}\nReason: {reason}<|im_end|>"
-                })
+                samples.append(
+                    {
+                        "text": f"<|im_start|>system\nYou are an agent in a resource-sharing simulation.<|im_end|>\n"
+                        f"<|im_start|>user\nDecide your next action.<|im_end|>\n"
+                        f"<|im_start|>assistant\nAction: {action}\nReason: {reason}<|im_end|>"
+                    }
+                )
                 if len(samples) >= SAMPLE_TARGET:
                     break
         except Exception:
@@ -78,6 +79,7 @@ def ensure_nan_safe_trainer() -> bool:
     """Install nan-safe-trainer in editable mode if not already installed."""
     try:
         import nan_safe_trainer  # noqa: F401
+
         return True
     except ImportError:
         pass
@@ -89,7 +91,9 @@ def ensure_nan_safe_trainer() -> bool:
     print("  Installing nan-safe-trainer in editable mode...")
     result = subprocess.run(
         [sys.executable, "-m", "pip", "install", "-e", str(NAN_SAFE_TRAINER_PATH)],
-        capture_output=True, text=True, timeout=120
+        capture_output=True,
+        text=True,
+        timeout=120,
     )
     if result.returncode != 0:
         print(f"  Install failed: {result.stderr[:200]}")
@@ -97,8 +101,13 @@ def ensure_nan_safe_trainer() -> bool:
     return True
 
 
-def create_lora_config(model: str, data_dir: Path, adapter_dir: Path,
-                       config_path: Path, iters: int = TRAIN_ITERS) -> None:
+def create_lora_config(
+    model: str,
+    data_dir: Path,
+    adapter_dir: Path,
+    config_path: Path,
+    iters: int = TRAIN_ITERS,
+) -> None:
     """Create a minimal MLX LoRA config YAML."""
     try:
         import yaml
@@ -142,8 +151,7 @@ def get_peak_ram_mb() -> float:
     return usage.ru_maxrss / (1024 * 1024)  # macOS reports bytes
 
 
-def benchmark_model(model: str, data_path: Path, work_dir: Path,
-                    iters: int = TRAIN_ITERS) -> dict:
+def benchmark_model(model: str, data_path: Path, work_dir: Path, iters: int = TRAIN_ITERS) -> dict:
     """Run training benchmark for a single model."""
     short_name = MODEL_SHORT.get(model, model.split("/")[-1])
     print(f"\n  Benchmarking {short_name}...")
@@ -156,6 +164,7 @@ def benchmark_model(model: str, data_path: Path, work_dir: Path,
     data_dir = work_dir / "data" / short_name
     data_dir.mkdir(parents=True, exist_ok=True)
     import shutil
+
     shutil.copy2(data_path, data_dir / "train.jsonl")
     shutil.copy2(data_path, data_dir / "valid.jsonl")
 
@@ -175,18 +184,18 @@ def benchmark_model(model: str, data_path: Path, work_dir: Path,
     }
 
     # Try nan-safe-trainer first, fall back to direct mlx_lm.lora
-    receipt_path = work_dir / f"receipt_{short_name}.json"
     start = time.monotonic()
 
     try:
         # Try direct mlx_lm.lora (nan-safe-trainer wraps this anyway)
         cmd = [
-            sys.executable, "-m", "mlx_lm.lora",
-            "--config", str(config_path),
+            sys.executable,
+            "-m",
+            "mlx_lm.lora",
+            "--config",
+            str(config_path),
         ]
-        proc = subprocess.run(
-            cmd, capture_output=True, text=True, timeout=600
-        )
+        proc = subprocess.run(cmd, capture_output=True, text=True, timeout=600)
 
         wall = time.monotonic() - start
         result["wall_time_sec"] = round(wall, 2)
@@ -198,6 +207,7 @@ def benchmark_model(model: str, data_path: Path, work_dir: Path,
         output = stdout + stderr
 
         import re
+
         train_losses = re.findall(r"Iter (\d+): Train loss ([^,]+),", output)
         val_losses = re.findall(r"Iter (\d+): Val loss ([^,]+),", output)
         nan_count = len(re.findall(r"(?:nan|inf)", output, re.IGNORECASE))
@@ -239,19 +249,22 @@ def benchmark_model(model: str, data_path: Path, work_dir: Path,
 
 
 def main():
-    parser = argparse.ArgumentParser(
-        description="Training benchmark wrapping nan-safe-trainer"
+    parser = argparse.ArgumentParser(description="Training benchmark wrapping nan-safe-trainer")
+    parser.add_argument(
+        "--runs-dir",
+        type=str,
+        default="runs/",
+        help="Directory containing experiment run DBs",
     )
-    parser.add_argument("--runs-dir", type=str, default="runs/",
-                        help="Directory containing experiment run DBs")
-    parser.add_argument("--output", type=str, default="benchmarks/training_benchmark.json",
-                        help="Output JSON path")
-    parser.add_argument("--models", nargs="+", default=MODELS,
-                        help="Model IDs to benchmark")
-    parser.add_argument("--iters", type=int, default=TRAIN_ITERS,
-                        help="Training iterations per model")
-    parser.add_argument("--dry-run", action="store_true",
-                        help="Validate setup without running training")
+    parser.add_argument(
+        "--output",
+        type=str,
+        default="benchmarks/training_benchmark.json",
+        help="Output JSON path",
+    )
+    parser.add_argument("--models", nargs="+", default=MODELS, help="Model IDs to benchmark")
+    parser.add_argument("--iters", type=int, default=TRAIN_ITERS, help="Training iterations per model")
+    parser.add_argument("--dry-run", action="store_true", help="Validate setup without running training")
     args = parser.parse_args()
 
     train_iters = args.iters
@@ -273,7 +286,10 @@ def main():
             print("  No training data extracted. Check --runs-dir.")
             if args.dry_run:
                 print("\n  DRY RUN: Would extract from DBs in runs/")
-                print("  DRY RUN: Would benchmark models:", [MODEL_SHORT.get(m, m) for m in args.models])
+                print(
+                    "  DRY RUN: Would benchmark models:",
+                    [MODEL_SHORT.get(m, m) for m in args.models],
+                )
                 print("  DRY RUN: Setup valid. Ready to run without --dry-run.")
                 return 0
             return 1
@@ -281,7 +297,10 @@ def main():
 
         if args.dry_run:
             print(f"\n  DRY RUN: {n_samples} samples extracted")
-            print("  DRY RUN: Models to benchmark:", [MODEL_SHORT.get(m, m) for m in args.models])
+            print(
+                "  DRY RUN: Models to benchmark:",
+                [MODEL_SHORT.get(m, m) for m in args.models],
+            )
             print(f"  DRY RUN: {train_iters} iterations per model")
             print(f"  DRY RUN: Output → {output_path}")
 
@@ -292,6 +311,7 @@ def main():
             # Check mlx_lm availability
             try:
                 import mlx_lm  # noqa: F401
+
                 print("  DRY RUN: mlx_lm available: True")
             except ImportError:
                 print("  DRY RUN: mlx_lm available: False (training will fail)")
@@ -305,6 +325,7 @@ def main():
 
         try:
             import mlx_lm  # noqa: F401
+
             print("  mlx_lm: available")
         except ImportError:
             print("  mlx_lm: NOT available — training will fail gracefully")

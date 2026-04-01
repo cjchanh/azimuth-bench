@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Compile benchmark-v2 token and optional gate summary artifacts."""
+
 from __future__ import annotations
 
 import argparse
@@ -244,9 +245,7 @@ def main() -> int:
     entries = filter_roster(load_roster(args.roster), args.lane)
 
     token_rows = [
-        row
-        for row in (_token_row_for_entry(entry, args.benchmarks_dir) for entry in entries)
-        if row is not None
+        row for row in (_token_row_for_entry(entry, args.benchmarks_dir) for entry in entries) if row is not None
     ]
     outputs = {
         "token": _write_summary(
@@ -260,9 +259,7 @@ def main() -> int:
     gate_rows: list[dict[str, Any]] = []
     if args.write_gate or args.write_combined:
         gate_rows = [
-            row
-            for row in (_gate_row_for_entry(entry, args.benchmarks_dir) for entry in entries)
-            if row is not None
+            row for row in (_gate_row_for_entry(entry, args.benchmarks_dir) for entry in entries) if row is not None
         ]
 
     if args.write_gate:
