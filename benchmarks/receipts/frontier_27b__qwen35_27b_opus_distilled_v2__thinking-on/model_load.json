@@ -1,10 +1,10 @@
 {
-  "started_at_utc": "2026-04-01T02:42:14.853999+00:00",
-  "finished_at_utc": "2026-04-01T02:43:15.099625+00:00",
-  "load_seconds": 60.25,
+  "started_at_utc": "2026-04-01T20:21:05.684811+00:00",
+  "finished_at_utc": "2026-04-01T20:21:11.834519+00:00",
+  "load_seconds": 6.15,
   "served_model": "Jackrong/MLX-Qwen3.5-27B-Claude-4.6-Opus-Reasoning-Distilled-v2-4bit",
   "expected_model": "Jackrong/MLX-Qwen3.5-27B-Claude-4.6-Opus-Reasoning-Distilled-v2-4bit",
-  "pages_free_before": "4445539",
-  "pages_free_after": "2909386",
+  "pages_free_before": "1154648",
+  "pages_free_after": "28841",
   "port": 9700
 }

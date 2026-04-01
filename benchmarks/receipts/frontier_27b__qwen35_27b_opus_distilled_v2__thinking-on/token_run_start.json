@@ -1,5 +1,5 @@
 {
-  "timestamp_utc": "2026-04-01T02:43:15.099941+00:00",
+  "timestamp_utc": "2026-04-01T20:21:11.834846+00:00",
   "artifact_key": "frontier_27b__qwen35_27b_opus_distilled_v2__thinking-on",
   "artifact_path": "/Users/cj/Workspace/active/benchmark-v2/benchmarks/frontier_27b__qwen35_27b_opus_distilled_v2__thinking-on.json",
   "model_id": "Jackrong/MLX-Qwen3.5-27B-Claude-4.6-Opus-Reasoning-Distilled-v2-4bit",
