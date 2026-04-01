@@ -17,7 +17,7 @@ from typing import Any
 import aiohttp
 
 from benchmarking.roster import chat_template_kwargs_for_thinking_mode, slugify
-from benchmarking.utils import DEFAULT_BENCHMARKS_DIR, coerce_message_text
+from benchmarking.utils import DEFAULT_BENCHMARKS_DIR, coerce_message_text, resolve_model_id
 
 PROMPT_SHORT = "Explain what a hash table is in one paragraph."
 
@@ -284,6 +284,7 @@ async def run_benchmark(
     *,
     port: int,
     max_tokens: int,
+    target_model_id: str | None,
     thinking_mode: str,
     display_name: str | None,
     lane: str,
@@ -302,7 +303,7 @@ async def run_benchmark(
         async with session.get(models_url) as resp:
             resp.raise_for_status()
             models = await resp.json(content_type=None)
-            model_id = models["data"][0]["id"]
+            model_id = resolve_model_id(models, target_model_id=target_model_id)
 
         chat_template_kwargs = chat_template_kwargs_for_thinking_mode(thinking_mode)
 
@@ -472,6 +473,7 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Benchmark-v2 MLX throughput suite")
     parser.add_argument("--port", type=int, default=8899)
     parser.add_argument("--max-tokens", type=int, default=256)
+    parser.add_argument("--model-id", type=str, default=None)
     parser.add_argument("--output", type=str, default=None, help="Output JSON path")
     parser.add_argument("--thinking-mode", choices=["default", "on", "off"], default="default")
     parser.add_argument("--display-name", type=str, default=None)
@@ -489,6 +491,7 @@ def main() -> int:
         run_benchmark(
             port=args.port,
             max_tokens=args.max_tokens,
+            target_model_id=args.model_id,
             thinking_mode=args.thinking_mode,
             display_name=args.display_name,
             lane=args.lane,

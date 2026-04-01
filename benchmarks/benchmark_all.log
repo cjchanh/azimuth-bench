@@ -1,143 +1,413 @@
-2026-04-01T02:38:15Z === BENCHMARK-V2 MLX SWEEP ===
-2026-04-01T02:38:15Z Lane: frontier_27b
-2026-04-01T02:38:15Z Bench port: 9700
-2026-04-01T02:38:15Z Gate lane: disabled
-2026-04-01T02:38:15Z Mode: execute
-2026-04-01T02:38:15Z 
-2026-04-01T02:38:15Z Roster entries: 4
-2026-04-01T02:38:15Z 
-2026-04-01T02:38:15Z [frontier_27b__qwen35_27b_base__thinking-on] Qwen3.5 27B Base | lane=frontier_27b | thinking=on
-2026-04-01T02:38:15Z [frontier_27b__qwen35_27b_base__thinking-on] Existing requested artifacts found; skipping
-2026-04-01T02:38:15Z 
-2026-04-01T02:38:15Z [frontier_27b__qwen35_27b_base__thinking-off] Qwen3.5 27B Base | lane=frontier_27b | thinking=off
-2026-04-01T02:39:27Z   Loaded NexVeridian/Qwen3.5-27B-4bit in 35s (pages_free: 4444636 -> 3493363)
-2026-04-01T02:39:27Z [frontier_27b__qwen35_27b_base__thinking-off] Running token benchmark...
-2026-04-01T02:42:14Z Benchmarking: Qwen3.5 27B Base
-2026-04-01T02:42:14Z Lane: frontier_27b
-2026-04-01T02:42:14Z Thinking mode: off
-2026-04-01T02:42:14Z Max tokens: 256
-2026-04-01T02:42:14Z 
-2026-04-01T02:42:14Z Warmup: 1 unmeasured short request...
-2026-04-01T02:42:14Z   Warmup 1: first_answer=424ms, 27.7 tok/s
-2026-04-01T02:42:14Z Test 1: Short prompt (TTFT + generation)...
-2026-04-01T02:42:14Z   Run 1: first_answer=229ms, first_output=229ms, 32.3 tok/s
-2026-04-01T02:42:14Z   Run 2: first_answer=232ms, first_output=232ms, 32.1 tok/s
-2026-04-01T02:42:14Z   Run 3: first_answer=233ms, first_output=233ms, 31.9 tok/s
-2026-04-01T02:42:14Z Test 2: Structured JSON output...
-2026-04-01T02:42:14Z   Run 1: first_answer=456ms, 27.7 tok/s, reasoning_chars=0
-2026-04-01T02:42:14Z   Run 2: first_answer=232ms, 30.8 tok/s, reasoning_chars=0
-2026-04-01T02:42:14Z   Run 3: first_answer=230ms, 30.4 tok/s, reasoning_chars=0
-2026-04-01T02:42:14Z Test 3: Medium prompt (~500 tokens in)...
-2026-04-01T02:42:14Z   Run 1: first_answer=468ms, 32.3 tok/s
-2026-04-01T02:42:14Z   Run 2: first_answer=235ms, 32.8 tok/s
-2026-04-01T02:42:14Z   Run 3: first_answer=237ms, 28.4 tok/s
-2026-04-01T02:42:14Z Test 4: Long prompt (~6K tokens in)...
-2026-04-01T02:42:14Z   Run 1: first_answer=1260ms, 24.5 tok/s
-2026-04-01T02:42:14Z   Run 2: first_answer=235ms, 25.2 tok/s
-2026-04-01T02:42:14Z Test 5: Sustained throughput (10 requests)...
-2026-04-01T02:42:14Z   5/10 done
-2026-04-01T02:42:14Z   10/10 done
-2026-04-01T02:42:14Z   Sustained: 25.4 tok/s
-2026-04-01T02:42:14Z 
-2026-04-01T02:42:14Z === SUMMARY: Qwen3.5 27B Base ===
-2026-04-01T02:42:14Z   Short prompt:    32.1 tok/s
-2026-04-01T02:42:14Z   Structured JSON: 29.6 tok/s
-2026-04-01T02:42:14Z   Sustained:       25.4 tok/s
-2026-04-01T02:42:14Z   First output:    231ms
-2026-04-01T02:42:14Z   First answer:    231ms
-2026-04-01T02:42:14Z   Valid run:       True
-2026-04-01T02:42:14Z   Comparable:      True
-2026-04-01T02:42:14Z 
-2026-04-01T02:42:14Z Results: /Users/cj/Workspace/active/agent-civilization/benchmarks/frontier_27b__qwen35_27b_base__thinking-off.json
-2026-04-01T02:42:14Z 
-2026-04-01T02:42:14Z [frontier_27b__qwen35_27b_opus_distilled_v2__thinking-on] Qwen3.5 27B Opus Distilled v2 | lane=frontier_27b | thinking=on
-2026-04-01T02:43:15Z   Loaded Jackrong/MLX-Qwen3.5-27B-Claude-4.6-Opus-Reasoning-Distilled-v2-4bit in 30s (pages_free: 4445539 -> 2909386)
-2026-04-01T02:43:15Z [frontier_27b__qwen35_27b_opus_distilled_v2__thinking-on] Running token benchmark...
-2026-04-01T02:46:27Z Benchmarking: Qwen3.5 27B Opus Distilled v2
-2026-04-01T02:46:27Z Lane: frontier_27b
-2026-04-01T02:46:27Z Thinking mode: on
-2026-04-01T02:46:27Z Max tokens: 256
-2026-04-01T02:46:27Z 
-2026-04-01T02:46:27Z Warmup: 1 unmeasured short request...
-2026-04-01T02:46:27Z   Warmup 1: first_answer=2257ms, 28.4 tok/s
-2026-04-01T02:46:27Z Test 1: Short prompt (TTFT + generation)...
-2026-04-01T02:46:27Z   Run 1: first_answer=7781ms, first_output=195ms, 32.9 tok/s
-2026-04-01T02:46:27Z   Run 2: first_answer=7766ms, first_output=198ms, 33.0 tok/s
-2026-04-01T02:46:27Z   Run 3: first_answer=7766ms, first_output=204ms, 33.0 tok/s
-2026-04-01T02:46:27Z Test 2: Structured JSON output...
-2026-04-01T02:46:27Z   Run 1: first_answer=7551ms, 32.0 tok/s, reasoning_chars=1133
-2026-04-01T02:46:27Z   Run 2: first_answer=7777ms, 32.9 tok/s, reasoning_chars=1154
-2026-04-01T02:46:27Z   Run 3: first_answer=8787ms, 29.1 tok/s, reasoning_chars=1164
-2026-04-01T02:46:27Z Test 3: Medium prompt (~500 tokens in)...
-2026-04-01T02:46:27Z   Run 1: first_answer=12809ms, 25.9 tok/s
-2026-04-01T02:46:27Z   Run 2: first_answer=12213ms, 25.4 tok/s
-2026-04-01T02:46:27Z   Run 3: first_answer=14209ms, 25.1 tok/s
-2026-04-01T02:46:27Z Test 4: Long prompt (~6K tokens in)...
-2026-04-01T02:46:27Z   Run 1: first_answer=17776ms, 24.3 tok/s
-2026-04-01T02:46:27Z   Run 2: first_answer=12049ms, 28.5 tok/s
-2026-04-01T02:46:27Z Test 5: Sustained throughput (10 requests)...
-2026-04-01T02:46:27Z   5/10 done
-2026-04-01T02:46:27Z   10/10 done
-2026-04-01T02:46:27Z   Sustained: 30.2 tok/s
-2026-04-01T02:46:27Z 
-2026-04-01T02:46:27Z === SUMMARY: Qwen3.5 27B Opus Distilled v2 ===
-2026-04-01T02:46:27Z   Short prompt:    33.0 tok/s
-2026-04-01T02:46:27Z   Structured JSON: 31.3 tok/s
-2026-04-01T02:46:27Z   Sustained:       30.2 tok/s
-2026-04-01T02:46:27Z   First output:    199ms
-2026-04-01T02:46:27Z   First answer:    7771ms
-2026-04-01T02:46:27Z   Valid run:       True
-2026-04-01T02:46:27Z   Comparable:      True
-2026-04-01T02:46:27Z 
-2026-04-01T02:46:27Z Results: /Users/cj/Workspace/active/agent-civilization/benchmarks/frontier_27b__qwen35_27b_opus_distilled_v2__thinking-on.json
-2026-04-01T02:46:27Z 
-2026-04-01T02:46:27Z [frontier_27b__qwen35_27b_opus_distilled_v2__thinking-off] Qwen3.5 27B Opus Distilled v2 | lane=frontier_27b | thinking=off
-2026-04-01T02:49:35Z   Loaded Jackrong/MLX-Qwen3.5-27B-Claude-4.6-Opus-Reasoning-Distilled-v2-4bit in 91s (pages_free: 3864902 -> 2916780)
-2026-04-01T02:49:35Z [frontier_27b__qwen35_27b_opus_distilled_v2__thinking-off] Running token benchmark...
-2026-04-01T02:52:38Z Benchmarking: Qwen3.5 27B Opus Distilled v2
-2026-04-01T02:52:38Z Lane: frontier_27b
-2026-04-01T02:52:38Z Thinking mode: off
-2026-04-01T02:52:38Z Max tokens: 256
-2026-04-01T02:52:38Z 
-2026-04-01T02:52:38Z Warmup: 1 unmeasured short request...
-2026-04-01T02:52:38Z   Warmup 1: first_answer=2258ms, 28.3 tok/s
-2026-04-01T02:52:38Z Test 1: Short prompt (TTFT + generation)...
-2026-04-01T02:52:38Z   Run 1: first_answer=4021ms, first_output=195ms, 32.9 tok/s
-2026-04-01T02:52:38Z   Run 2: first_answer=1389ms, first_output=202ms, 32.6 tok/s
-2026-04-01T02:52:38Z   Run 3: first_answer=7768ms, first_output=198ms, 33.0 tok/s
-2026-04-01T02:52:38Z Test 2: Structured JSON output...
-2026-04-01T02:52:38Z   Run 1: first_answer=8009ms, 32.0 tok/s, reasoning_chars=1179
-2026-04-01T02:52:38Z   Run 2: first_answer=7787ms, 32.9 tok/s, reasoning_chars=1197
-2026-04-01T02:52:38Z   Run 3: first_answer=8273ms, 30.9 tok/s, reasoning_chars=1212
-2026-04-01T02:52:38Z Test 3: Medium prompt (~500 tokens in)...
-2026-04-01T02:52:38Z   Run 1: first_answer=8219ms, 25.7 tok/s
-2026-04-01T02:52:38Z   Run 2: first_answer=11479ms, 25.4 tok/s
-2026-04-01T02:52:38Z   Run 3: first_answer=11817ms, 26.6 tok/s
-2026-04-01T02:52:38Z Test 4: Long prompt (~6K tokens in)...
-2026-04-01T02:52:38Z   Run 1: first_answer=11804ms, 26.6 tok/s
-2026-04-01T02:52:38Z   Run 2: first_answer=11267ms, 31.4 tok/s
-2026-04-01T02:52:38Z Test 5: Sustained throughput (10 requests)...
-2026-04-01T02:52:38Z   5/10 done
-2026-04-01T02:52:38Z   10/10 done
-2026-04-01T02:52:38Z   Sustained: 31.8 tok/s
-2026-04-01T02:52:38Z 
-2026-04-01T02:52:38Z === SUMMARY: Qwen3.5 27B Opus Distilled v2 ===
-2026-04-01T02:52:38Z   Short prompt:    32.8 tok/s
-2026-04-01T02:52:38Z   Structured JSON: 31.9 tok/s
-2026-04-01T02:52:38Z   Sustained:       31.8 tok/s
-2026-04-01T02:52:38Z   First output:    198ms
-2026-04-01T02:52:38Z   First answer:    4393ms
-2026-04-01T02:52:38Z   Valid run:       True
-2026-04-01T02:52:38Z   Comparable:      True
-2026-04-01T02:52:38Z 
-2026-04-01T02:52:38Z Results: /Users/cj/Workspace/active/agent-civilization/benchmarks/frontier_27b__qwen35_27b_opus_distilled_v2__thinking-off.json
-2026-04-01T02:52:38Z 
-2026-04-01T02:52:38Z {
-2026-04-01T02:52:38Z   "token": {
-2026-04-01T02:52:38Z     "json": "/Users/cj/Workspace/active/agent-civilization/benchmarks/benchmark_v2_token_summary.json",
-2026-04-01T02:52:38Z     "csv": "/Users/cj/Workspace/active/agent-civilization/benchmarks/benchmark_v2_token_summary.csv",
-2026-04-01T02:52:38Z     "md": "/Users/cj/Workspace/active/agent-civilization/benchmarks/benchmark_v2_token_summary.md"
-2026-04-01T02:52:38Z   }
-2026-04-01T02:52:38Z }
-2026-04-01T02:52:38Z === BENCHMARK-V2 COMPLETE ===
-2026-04-01T02:52:38Z Token summary: /Users/cj/Workspace/active/agent-civilization/benchmarks/benchmark_v2_token_summary.json
+2026-04-01T20:00:23Z === BENCHMARK-V2 MLX SWEEP ===
+2026-04-01T20:00:23Z Lane: all
+2026-04-01T20:00:23Z Bench port: 9700
+2026-04-01T20:00:23Z Gate lane: disabled
+2026-04-01T20:00:23Z Mode: execute
+2026-04-01T20:00:23Z 
+2026-04-01T20:00:23Z Roster entries: 18
+2026-04-01T20:00:23Z 
+2026-04-01T20:00:23Z [core__qwen25_coder_7b__thinking-default] Qwen2.5 Coder 7B | lane=core | thinking=default
+2026-04-01T20:00:23Z [core__qwen25_coder_7b__thinking-default] Existing requested artifacts found; skipping
+2026-04-01T20:00:23Z 
+2026-04-01T20:00:23Z [core__qwen25_coder_14b__thinking-default] Qwen2.5 Coder 14B | lane=core | thinking=default
+2026-04-01T20:00:23Z [core__qwen25_coder_14b__thinking-default] Existing requested artifacts found; skipping
+2026-04-01T20:00:23Z 
+2026-04-01T20:00:23Z [core__qwen25_instruct_14b__thinking-default] Qwen2.5 Instruct 14B | lane=core | thinking=default
+2026-04-01T20:00:23Z [core__qwen25_instruct_14b__thinking-default] Existing requested artifacts found; skipping
+2026-04-01T20:00:23Z 
+2026-04-01T20:00:23Z [core__qwen25_instruct_7b__thinking-default] Qwen2.5 Instruct 7B | lane=core | thinking=default
+2026-04-01T20:00:23Z [core__qwen25_instruct_7b__thinking-default] Existing requested artifacts found; skipping
+2026-04-01T20:00:23Z 
+2026-04-01T20:00:23Z [core__qwen25_coder_32b__thinking-default] Qwen2.5 Coder 32B | lane=core | thinking=default
+2026-04-01T20:00:23Z [core__qwen25_coder_32b__thinking-default] Existing requested artifacts found; skipping
+2026-04-01T20:00:23Z 
+2026-04-01T20:00:23Z [core__qwen35_9b__thinking-default] Qwen3.5 9B | lane=core | thinking=default
+2026-04-01T20:00:28Z   Loaded mlx-community/Qwen3.5-9B-MLX-4bit in 3s (pages_free: 2004490 -> 1680997)
+2026-04-01T20:00:28Z [core__qwen35_9b__thinking-default] Running token benchmark...
+2026-04-01T20:01:26Z Benchmarking: Qwen3.5 9B
+2026-04-01T20:01:26Z Lane: core
+2026-04-01T20:01:26Z Thinking mode: default
+2026-04-01T20:01:26Z Max tokens: 256
+2026-04-01T20:01:26Z 
+2026-04-01T20:01:26Z Warmup: 1 unmeasured short request...
+2026-04-01T20:01:26Z   Warmup 1: first_answer=820ms, 78.1 tok/s
+2026-04-01T20:01:26Z Test 1: Short prompt (TTFT + generation)...
+2026-04-01T20:01:26Z   Run 1: first_answer=2591ms, first_output=132ms, 98.8 tok/s
+2026-04-01T20:01:26Z   Run 2: first_answer=2592ms, first_output=130ms, 98.8 tok/s
+2026-04-01T20:01:26Z   Run 3: first_answer=1037ms, first_output=135ms, 98.5 tok/s
+2026-04-01T20:01:26Z Test 2: Structured JSON output...
+2026-04-01T20:01:26Z   Run 1: first_answer=2670ms, 95.9 tok/s, reasoning_chars=1248
+2026-04-01T20:01:26Z   Run 2: first_answer=2607ms, 98.2 tok/s, reasoning_chars=1229
+2026-04-01T20:01:26Z   Run 3: first_answer=2614ms, 97.9 tok/s, reasoning_chars=1124
+2026-04-01T20:01:26Z Test 3: Medium prompt (~500 tokens in)...
+2026-04-01T20:01:26Z   Run 1: first_answer=5262ms, 97.3 tok/s
+2026-04-01T20:01:26Z   Run 2: first_answer=5287ms, 96.8 tok/s
+2026-04-01T20:01:26Z   Run 3: first_answer=5246ms, 97.6 tok/s
+2026-04-01T20:01:26Z Test 4: Long prompt (~6K tokens in)...
+2026-04-01T20:01:26Z   Run 1: first_answer=2754ms, 93.8 tok/s
+2026-04-01T20:01:26Z   Run 2: first_answer=2650ms, 99.5 tok/s
+2026-04-01T20:01:26Z Test 5: Sustained throughput (10 requests)...
+2026-04-01T20:01:26Z   5/10 done
+2026-04-01T20:01:26Z   10/10 done
+2026-04-01T20:01:26Z   Sustained: 84.6 tok/s
+2026-04-01T20:01:26Z 
+2026-04-01T20:01:26Z === SUMMARY: Qwen3.5 9B ===
+2026-04-01T20:01:26Z   Short prompt:    98.7 tok/s
+2026-04-01T20:01:26Z   Structured JSON: 97.3 tok/s
+2026-04-01T20:01:26Z   Sustained:       84.6 tok/s
+2026-04-01T20:01:26Z   First output:    132ms
+2026-04-01T20:01:26Z   First answer:    2073ms
+2026-04-01T20:01:26Z   Valid run:       True
+2026-04-01T20:01:26Z   Comparable:      True
+2026-04-01T20:01:26Z 
+2026-04-01T20:01:26Z Results: /Users/cj/Workspace/active/benchmark-v2/benchmarks/core__qwen35_9b__thinking-default.json
+2026-04-01T20:01:26Z 
+2026-04-01T20:01:26Z [core__gemma3_4b__thinking-default] Gemma 3 4B | lane=core | thinking=default
+2026-04-01T20:01:31Z   Loaded mlx-community/gemma-3-4b-it-qat-4bit in 3s (pages_free: 1914856 -> 1561664)
+2026-04-01T20:01:31Z [core__gemma3_4b__thinking-default] Running token benchmark...
+2026-04-01T20:02:06Z Benchmarking: Gemma 3 4B
+2026-04-01T20:02:06Z Lane: core
+2026-04-01T20:02:06Z Thinking mode: default
+2026-04-01T20:02:06Z Max tokens: 256
+2026-04-01T20:02:06Z 
+2026-04-01T20:02:06Z Warmup: 1 unmeasured short request...
+2026-04-01T20:02:06Z   Warmup 1: first_answer=206ms, 111.0 tok/s
+2026-04-01T20:02:06Z Test 1: Short prompt (TTFT + generation)...
+2026-04-01T20:02:06Z   Run 1: first_answer=137ms, first_output=137ms, 146.6 tok/s
+2026-04-01T20:02:06Z   Run 2: first_answer=137ms, first_output=137ms, 148.9 tok/s
+2026-04-01T20:02:06Z   Run 3: first_answer=139ms, first_output=139ms, 150.9 tok/s
+2026-04-01T20:02:06Z Test 2: Structured JSON output...
+2026-04-01T20:02:06Z   Run 1: first_answer=175ms, 130.3 tok/s, reasoning_chars=0
+2026-04-01T20:02:06Z   Run 2: first_answer=132ms, 137.2 tok/s, reasoning_chars=0
+2026-04-01T20:02:06Z   Run 3: first_answer=140ms, 135.8 tok/s, reasoning_chars=0
+2026-04-01T20:02:06Z Test 3: Medium prompt (~500 tokens in)...
+2026-04-01T20:02:06Z   Run 1: first_answer=168ms, 160.4 tok/s
+2026-04-01T20:02:06Z   Run 2: first_answer=145ms, 154.9 tok/s
+2026-04-01T20:02:06Z   Run 3: first_answer=146ms, 137.3 tok/s
+2026-04-01T20:02:06Z Test 4: Long prompt (~6K tokens in)...
+2026-04-01T20:02:06Z   Run 1: first_answer=251ms, 120.7 tok/s
+2026-04-01T20:02:06Z   Run 2: first_answer=149ms, 123.4 tok/s
+2026-04-01T20:02:06Z Test 5: Sustained throughput (10 requests)...
+2026-04-01T20:02:06Z   5/10 done
+2026-04-01T20:02:06Z   10/10 done
+2026-04-01T20:02:06Z   Sustained: 125.9 tok/s
+2026-04-01T20:02:06Z 
+2026-04-01T20:02:06Z === SUMMARY: Gemma 3 4B ===
+2026-04-01T20:02:06Z   Short prompt:    148.8 tok/s
+2026-04-01T20:02:06Z   Structured JSON: 134.4 tok/s
+2026-04-01T20:02:06Z   Sustained:       125.9 tok/s
+2026-04-01T20:02:06Z   First output:    138ms
+2026-04-01T20:02:06Z   First answer:    138ms
+2026-04-01T20:02:06Z   Valid run:       True
+2026-04-01T20:02:06Z   Comparable:      True
+2026-04-01T20:02:06Z 
+2026-04-01T20:02:06Z Results: /Users/cj/Workspace/active/benchmark-v2/benchmarks/core__gemma3_4b__thinking-default.json
+2026-04-01T20:02:06Z 
+2026-04-01T20:02:06Z [core__gemma3_12b__thinking-default] Gemma 3 12B | lane=core | thinking=default
+2026-04-01T20:02:11Z   Loaded mlx-community/gemma-3-12b-it-qat-4bit in 3s (pages_free: 1689771 -> 781753)
+2026-04-01T20:02:11Z [core__gemma3_12b__thinking-default] Running token benchmark...
+2026-04-01T20:03:40Z Benchmarking: Gemma 3 12B
+2026-04-01T20:03:40Z Lane: core
+2026-04-01T20:03:40Z Thinking mode: default
+2026-04-01T20:03:40Z Max tokens: 256
+2026-04-01T20:03:40Z 
+2026-04-01T20:03:40Z Warmup: 1 unmeasured short request...
+2026-04-01T20:03:40Z   Warmup 1: first_answer=256ms, 52.4 tok/s
+2026-04-01T20:03:40Z Test 1: Short prompt (TTFT + generation)...
+2026-04-01T20:03:40Z   Run 1: first_answer=174ms, first_output=174ms, 58.8 tok/s
+2026-04-01T20:03:40Z   Run 2: first_answer=170ms, first_output=170ms, 49.2 tok/s
+2026-04-01T20:03:40Z   Run 3: first_answer=172ms, first_output=172ms, 48.1 tok/s
+2026-04-01T20:03:40Z Test 2: Structured JSON output...
+2026-04-01T20:03:40Z   Run 1: first_answer=258ms, 45.0 tok/s, reasoning_chars=0
+2026-04-01T20:03:40Z   Run 2: first_answer=174ms, 45.6 tok/s, reasoning_chars=0
+2026-04-01T20:03:40Z   Run 3: first_answer=172ms, 46.5 tok/s, reasoning_chars=0
+2026-04-01T20:03:40Z Test 3: Medium prompt (~500 tokens in)...
+2026-04-01T20:03:40Z   Run 1: first_answer=265ms, 47.2 tok/s
+2026-04-01T20:03:40Z   Run 2: first_answer=170ms, 47.4 tok/s
+2026-04-01T20:03:40Z   Run 3: first_answer=170ms, 47.4 tok/s
+2026-04-01T20:03:40Z Test 4: Long prompt (~6K tokens in)...
+2026-04-01T20:03:40Z   Run 1: first_answer=617ms, 50.2 tok/s
+2026-04-01T20:03:40Z   Run 2: first_answer=180ms, 55.5 tok/s
+2026-04-01T20:03:40Z Test 5: Sustained throughput (10 requests)...
+2026-04-01T20:03:40Z   5/10 done
+2026-04-01T20:03:40Z   10/10 done
+2026-04-01T20:03:40Z   Sustained: 55.9 tok/s
+2026-04-01T20:03:40Z 
+2026-04-01T20:03:40Z === SUMMARY: Gemma 3 12B ===
+2026-04-01T20:03:40Z   Short prompt:    52.0 tok/s
+2026-04-01T20:03:40Z   Structured JSON: 45.7 tok/s
+2026-04-01T20:03:40Z   Sustained:       55.9 tok/s
+2026-04-01T20:03:40Z   First output:    172ms
+2026-04-01T20:03:40Z   First answer:    172ms
+2026-04-01T20:03:40Z   Valid run:       True
+2026-04-01T20:03:40Z   Comparable:      True
+2026-04-01T20:03:40Z 
+2026-04-01T20:03:40Z Results: /Users/cj/Workspace/active/benchmark-v2/benchmarks/core__gemma3_12b__thinking-default.json
+2026-04-01T20:03:40Z 
+2026-04-01T20:03:40Z [core__gemma3_27b__thinking-default] Gemma 3 27B | lane=core | thinking=default
+2026-04-01T20:03:46Z   Loaded mlx-community/gemma-3-27b-it-qat-4bit in 4s (pages_free: 1190963 -> 26880)
+2026-04-01T20:03:46Z [core__gemma3_27b__thinking-default] Running token benchmark...
+2026-04-01T20:06:36Z Benchmarking: Gemma 3 27B
+2026-04-01T20:06:36Z Lane: core
+2026-04-01T20:06:36Z Thinking mode: default
+2026-04-01T20:06:36Z Max tokens: 256
+2026-04-01T20:06:36Z 
+2026-04-01T20:06:36Z Warmup: 1 unmeasured short request...
+2026-04-01T20:06:36Z   Warmup 1: first_answer=389ms, 26.5 tok/s
+2026-04-01T20:06:36Z Test 1: Short prompt (TTFT + generation)...
+2026-04-01T20:06:36Z   Run 1: first_answer=205ms, first_output=205ms, 30.2 tok/s
+2026-04-01T20:06:36Z   Run 2: first_answer=202ms, first_output=202ms, 27.1 tok/s
+2026-04-01T20:06:36Z   Run 3: first_answer=211ms, first_output=211ms, 27.2 tok/s
+2026-04-01T20:06:36Z Test 2: Structured JSON output...
+2026-04-01T20:06:36Z   Run 1: first_answer=561ms, 24.3 tok/s, reasoning_chars=0
+2026-04-01T20:06:36Z   Run 2: first_answer=229ms, 26.4 tok/s, reasoning_chars=0
+2026-04-01T20:06:36Z   Run 3: first_answer=234ms, 26.6 tok/s, reasoning_chars=0
+2026-04-01T20:06:36Z Test 3: Medium prompt (~500 tokens in)...
+2026-04-01T20:06:36Z   Run 1: first_answer=582ms, 27.3 tok/s
+2026-04-01T20:06:36Z   Run 2: first_answer=240ms, 27.9 tok/s
+2026-04-01T20:06:36Z   Run 3: first_answer=228ms, 27.9 tok/s
+2026-04-01T20:06:36Z Test 4: Long prompt (~6K tokens in)...
+2026-04-01T20:06:36Z   Run 1: first_answer=1433ms, 25.7 tok/s
+2026-04-01T20:06:36Z   Run 2: first_answer=231ms, 27.3 tok/s
+2026-04-01T20:06:36Z Test 5: Sustained throughput (10 requests)...
+2026-04-01T20:06:36Z   5/10 done
+2026-04-01T20:06:36Z   10/10 done
+2026-04-01T20:06:36Z   Sustained: 27.5 tok/s
+2026-04-01T20:06:36Z 
+2026-04-01T20:06:36Z === SUMMARY: Gemma 3 27B ===
+2026-04-01T20:06:36Z   Short prompt:    28.2 tok/s
+2026-04-01T20:06:36Z   Structured JSON: 25.8 tok/s
+2026-04-01T20:06:36Z   Sustained:       27.5 tok/s
+2026-04-01T20:06:36Z   First output:    206ms
+2026-04-01T20:06:36Z   First answer:    206ms
+2026-04-01T20:06:36Z   Valid run:       True
+2026-04-01T20:06:36Z   Comparable:      True
+2026-04-01T20:06:36Z 
+2026-04-01T20:06:36Z Results: /Users/cj/Workspace/active/benchmark-v2/benchmarks/core__gemma3_27b__thinking-default.json
+2026-04-01T20:06:36Z 
+2026-04-01T20:06:36Z [core__llama31_8b__thinking-default] Llama 3.1 8B | lane=core | thinking=default
+2026-04-01T20:06:41Z   Loaded mlx-community/Meta-Llama-3.1-8B-Instruct-4bit in 3s (pages_free: 1240999 -> 671104)
+2026-04-01T20:06:41Z [core__llama31_8b__thinking-default] Running token benchmark...
+2026-04-01T20:07:25Z Benchmarking: Llama 3.1 8B
+2026-04-01T20:07:25Z Lane: core
+2026-04-01T20:07:25Z Thinking mode: default
+2026-04-01T20:07:25Z Max tokens: 256
+2026-04-01T20:07:25Z 
+2026-04-01T20:07:25Z Warmup: 1 unmeasured short request...
+2026-04-01T20:07:25Z   Warmup 1: first_answer=224ms, 80.0 tok/s
+2026-04-01T20:07:25Z Test 1: Short prompt (TTFT + generation)...
+2026-04-01T20:07:25Z   Run 1: first_answer=70ms, first_output=70ms, 105.8 tok/s
+2026-04-01T20:07:25Z   Run 2: first_answer=70ms, first_output=70ms, 104.0 tok/s
+2026-04-01T20:07:25Z   Run 3: first_answer=72ms, first_output=72ms, 105.0 tok/s
+2026-04-01T20:07:25Z Test 2: Structured JSON output...
+2026-04-01T20:07:25Z   Run 1: first_answer=118ms, 97.4 tok/s, reasoning_chars=0
+2026-04-01T20:07:25Z   Run 2: first_answer=71ms, 101.5 tok/s, reasoning_chars=0
+2026-04-01T20:07:25Z   Run 3: first_answer=71ms, 100.8 tok/s, reasoning_chars=0
+2026-04-01T20:07:25Z Test 3: Medium prompt (~500 tokens in)...
+2026-04-01T20:07:25Z   Run 1: first_answer=134ms, 107.6 tok/s
+2026-04-01T20:07:25Z   Run 2: first_answer=78ms, 109.0 tok/s
+2026-04-01T20:07:25Z   Run 3: first_answer=76ms, 108.1 tok/s
+2026-04-01T20:07:25Z Test 4: Long prompt (~6K tokens in)...
+2026-04-01T20:07:25Z   Run 1: first_answer=364ms, 94.8 tok/s
+2026-04-01T20:07:25Z   Run 2: first_answer=81ms, 100.2 tok/s
+2026-04-01T20:07:25Z Test 5: Sustained throughput (10 requests)...
+2026-04-01T20:07:25Z   5/10 done
+2026-04-01T20:07:25Z   10/10 done
+2026-04-01T20:07:25Z   Sustained: 102.3 tok/s
+2026-04-01T20:07:25Z 
+2026-04-01T20:07:25Z === SUMMARY: Llama 3.1 8B ===
+2026-04-01T20:07:25Z   Short prompt:    104.9 tok/s
+2026-04-01T20:07:25Z   Structured JSON: 99.9 tok/s
+2026-04-01T20:07:25Z   Sustained:       102.3 tok/s
+2026-04-01T20:07:25Z   First output:    71ms
+2026-04-01T20:07:25Z   First answer:    71ms
+2026-04-01T20:07:25Z   Valid run:       True
+2026-04-01T20:07:25Z   Comparable:      True
+2026-04-01T20:07:25Z 
+2026-04-01T20:07:25Z Results: /Users/cj/Workspace/active/benchmark-v2/benchmarks/core__llama31_8b__thinking-default.json
+2026-04-01T20:07:25Z 
+2026-04-01T20:07:25Z [core__ministral3_8b__thinking-default] Ministral 3 8B | lane=core | thinking=default
+2026-04-01T20:07:31Z   Loaded mlx-community/Ministral-3-8B-Instruct-2512-4bit in 3s (pages_free: 963939 -> 354445)
+2026-04-01T20:07:31Z [core__ministral3_8b__thinking-default] Running token benchmark...
+2026-04-01T20:08:21Z Benchmarking: Ministral 3 8B
+2026-04-01T20:08:21Z Lane: core
+2026-04-01T20:08:21Z Thinking mode: default
+2026-04-01T20:08:21Z Max tokens: 256
+2026-04-01T20:08:21Z 
+2026-04-01T20:08:21Z Warmup: 1 unmeasured short request...
+2026-04-01T20:08:21Z   Warmup 1: first_answer=328ms, 67.9 tok/s
+2026-04-01T20:08:21Z Test 1: Short prompt (TTFT + generation)...
+2026-04-01T20:08:21Z   Run 1: first_answer=85ms, first_output=85ms, 96.6 tok/s
+2026-04-01T20:08:21Z   Run 2: first_answer=76ms, first_output=76ms, 97.9 tok/s
+2026-04-01T20:08:21Z   Run 3: first_answer=75ms, first_output=75ms, 98.5 tok/s
+2026-04-01T20:08:21Z Test 2: Structured JSON output...
+2026-04-01T20:08:21Z   Run 1: first_answer=132ms, 91.5 tok/s, reasoning_chars=0
+2026-04-01T20:08:21Z   Run 2: first_answer=81ms, 95.7 tok/s, reasoning_chars=0
+2026-04-01T20:08:21Z   Run 3: first_answer=75ms, 94.7 tok/s, reasoning_chars=0
+2026-04-01T20:08:21Z Test 3: Medium prompt (~500 tokens in)...
+2026-04-01T20:08:21Z   Run 1: first_answer=146ms, 99.1 tok/s
+2026-04-01T20:08:21Z   Run 2: first_answer=78ms, 96.7 tok/s
+2026-04-01T20:08:21Z   Run 3: first_answer=83ms, 96.1 tok/s
+2026-04-01T20:08:21Z Test 4: Long prompt (~6K tokens in)...
+2026-04-01T20:08:21Z   Run 1: first_answer=763ms, 82.3 tok/s
+2026-04-01T20:08:21Z   Run 2: first_answer=92ms, 91.0 tok/s
+2026-04-01T20:08:21Z Test 5: Sustained throughput (10 requests)...
+2026-04-01T20:08:21Z   5/10 done
+2026-04-01T20:08:21Z   10/10 done
+2026-04-01T20:08:21Z   Sustained: 93.8 tok/s
+2026-04-01T20:08:21Z 
+2026-04-01T20:08:21Z === SUMMARY: Ministral 3 8B ===
+2026-04-01T20:08:21Z   Short prompt:    97.7 tok/s
+2026-04-01T20:08:21Z   Structured JSON: 94.0 tok/s
+2026-04-01T20:08:21Z   Sustained:       93.8 tok/s
+2026-04-01T20:08:21Z   First output:    79ms
+2026-04-01T20:08:21Z   First answer:    79ms
+2026-04-01T20:08:21Z   Valid run:       True
+2026-04-01T20:08:21Z   Comparable:      True
+2026-04-01T20:08:21Z 
+2026-04-01T20:08:21Z Results: /Users/cj/Workspace/active/benchmark-v2/benchmarks/core__ministral3_8b__thinking-default.json
+2026-04-01T20:08:21Z 
+2026-04-01T20:08:21Z [core__ministral3_14b__thinking-default] Ministral 3 14B | lane=core | thinking=default
+2026-04-01T20:08:26Z   Loaded mlx-community/Ministral-3-14B-Instruct-2512-4bit in 3s (pages_free: 686231 -> 15729)
+2026-04-01T20:08:26Z [core__ministral3_14b__thinking-default] Running token benchmark...
+2026-04-01T20:09:43Z Benchmarking: Ministral 3 14B
+2026-04-01T20:09:43Z Lane: core
+2026-04-01T20:09:43Z Thinking mode: default
+2026-04-01T20:09:43Z Max tokens: 256
+2026-04-01T20:09:43Z 
+2026-04-01T20:09:43Z Warmup: 1 unmeasured short request...
+2026-04-01T20:09:43Z   Warmup 1: first_answer=451ms, 45.4 tok/s
+2026-04-01T20:09:43Z Test 1: Short prompt (TTFT + generation)...
+2026-04-01T20:09:43Z   Run 1: first_answer=85ms, first_output=85ms, 64.2 tok/s
+2026-04-01T20:09:43Z   Run 2: first_answer=85ms, first_output=85ms, 64.3 tok/s
+2026-04-01T20:09:43Z   Run 3: first_answer=85ms, first_output=85ms, 64.2 tok/s
+2026-04-01T20:09:43Z Test 2: Structured JSON output...
+2026-04-01T20:09:43Z   Run 1: first_answer=160ms, 59.7 tok/s, reasoning_chars=0
+2026-04-01T20:09:43Z   Run 2: first_answer=85ms, 62.3 tok/s, reasoning_chars=0
+2026-04-01T20:09:43Z   Run 3: first_answer=82ms, 62.6 tok/s, reasoning_chars=0
+2026-04-01T20:09:43Z Test 3: Medium prompt (~500 tokens in)...
+2026-04-01T20:09:43Z   Run 1: first_answer=202ms, 63.8 tok/s
+2026-04-01T20:09:43Z   Run 2: first_answer=91ms, 64.7 tok/s
+2026-04-01T20:09:43Z   Run 3: first_answer=90ms, 62.4 tok/s
+2026-04-01T20:09:43Z Test 4: Long prompt (~6K tokens in)...
+2026-04-01T20:09:43Z   Run 1: first_answer=1203ms, 53.9 tok/s
+2026-04-01T20:09:43Z   Run 2: first_answer=100ms, 60.3 tok/s
+2026-04-01T20:09:43Z Test 5: Sustained throughput (10 requests)...
+2026-04-01T20:09:43Z   5/10 done
+2026-04-01T20:09:43Z   10/10 done
+2026-04-01T20:09:43Z   Sustained: 61.8 tok/s
+2026-04-01T20:09:43Z 
+2026-04-01T20:09:43Z === SUMMARY: Ministral 3 14B ===
+2026-04-01T20:09:43Z   Short prompt:    64.2 tok/s
+2026-04-01T20:09:43Z   Structured JSON: 61.5 tok/s
+2026-04-01T20:09:43Z   Sustained:       61.8 tok/s
+2026-04-01T20:09:43Z   First output:    85ms
+2026-04-01T20:09:43Z   First answer:    85ms
+2026-04-01T20:09:43Z   Valid run:       True
+2026-04-01T20:09:43Z   Comparable:      True
+2026-04-01T20:09:43Z 
+2026-04-01T20:09:43Z Results: /Users/cj/Workspace/active/benchmark-v2/benchmarks/core__ministral3_14b__thinking-default.json
+2026-04-01T20:09:43Z 
+2026-04-01T20:09:43Z [core__phi4_mini__thinking-default] Phi 4 Mini | lane=core | thinking=default
+2026-04-01T20:09:48Z   Loaded mlx-community/Phi-4-mini-instruct-4bit in 3s (pages_free: 689035 -> 408891)
+2026-04-01T20:09:48Z [core__phi4_mini__thinking-default] Running token benchmark...
+2026-04-01T20:10:15Z Benchmarking: Phi 4 Mini
+2026-04-01T20:10:15Z Lane: core
+2026-04-01T20:10:15Z Thinking mode: default
+2026-04-01T20:10:15Z Max tokens: 256
+2026-04-01T20:10:15Z 
+2026-04-01T20:10:15Z Warmup: 1 unmeasured short request...
+2026-04-01T20:10:15Z   Warmup 1: first_answer=170ms, 125.5 tok/s
+2026-04-01T20:10:15Z Test 1: Short prompt (TTFT + generation)...
+2026-04-01T20:10:15Z   Run 1: first_answer=99ms, first_output=99ms, 171.8 tok/s
+2026-04-01T20:10:15Z   Run 2: first_answer=92ms, first_output=92ms, 169.3 tok/s
+2026-04-01T20:10:15Z   Run 3: first_answer=95ms, first_output=95ms, 167.2 tok/s
+2026-04-01T20:10:15Z Test 2: Structured JSON output...
+2026-04-01T20:10:15Z   Run 1: first_answer=122ms, 141.5 tok/s, reasoning_chars=0
+2026-04-01T20:10:15Z   Run 2: first_answer=99ms, 149.5 tok/s, reasoning_chars=0
+2026-04-01T20:10:15Z   Run 3: first_answer=92ms, 147.8 tok/s, reasoning_chars=0
+2026-04-01T20:10:15Z Test 3: Medium prompt (~500 tokens in)...
+2026-04-01T20:10:15Z   Run 1: first_answer=129ms, 176.3 tok/s
+2026-04-01T20:10:15Z   Run 2: first_answer=101ms, 176.9 tok/s
+2026-04-01T20:10:15Z   Run 3: first_answer=97ms, 178.2 tok/s
+2026-04-01T20:10:15Z Test 4: Long prompt (~6K tokens in)...
+2026-04-01T20:10:15Z   Run 1: first_answer=205ms, 163.2 tok/s
+2026-04-01T20:10:15Z   Run 2: first_answer=95ms, 168.8 tok/s
+2026-04-01T20:10:15Z Test 5: Sustained throughput (10 requests)...
+2026-04-01T20:10:15Z   5/10 done
+2026-04-01T20:10:15Z   10/10 done
+2026-04-01T20:10:15Z   Sustained: 162.2 tok/s
+2026-04-01T20:10:15Z 
+2026-04-01T20:10:15Z === SUMMARY: Phi 4 Mini ===
+2026-04-01T20:10:15Z   Short prompt:    169.4 tok/s
+2026-04-01T20:10:15Z   Structured JSON: 146.3 tok/s
+2026-04-01T20:10:15Z   Sustained:       162.2 tok/s
+2026-04-01T20:10:15Z   First output:    95ms
+2026-04-01T20:10:15Z   First answer:    95ms
+2026-04-01T20:10:15Z   Valid run:       True
+2026-04-01T20:10:15Z   Comparable:      True
+2026-04-01T20:10:15Z 
+2026-04-01T20:10:15Z Results: /Users/cj/Workspace/active/benchmark-v2/benchmarks/core__phi4_mini__thinking-default.json
+2026-04-01T20:10:15Z 
+2026-04-01T20:10:15Z [core__deepseek_r1_distill_llama_8b__thinking-default] DeepSeek R1 Distill Llama 8B | lane=core | thinking=default
+2026-04-01T20:10:20Z   Loaded mlx-community/DeepSeek-R1-Distill-Llama-8B-4bit in 3s (pages_free: 565194 -> 6423)
+2026-04-01T20:10:20Z [core__deepseek_r1_distill_llama_8b__thinking-default] Running token benchmark...
+2026-04-01T20:11:11Z Benchmarking: DeepSeek R1 Distill Llama 8B
+2026-04-01T20:11:11Z Lane: core
+2026-04-01T20:11:11Z Thinking mode: default
+2026-04-01T20:11:11Z Max tokens: 256
+2026-04-01T20:11:11Z 
+2026-04-01T20:11:11Z Warmup: 1 unmeasured short request...
+2026-04-01T20:11:11Z   Warmup 1: first_answer=689ms, 92.9 tok/s
+2026-04-01T20:11:11Z Test 1: Short prompt (TTFT + generation)...
+2026-04-01T20:11:11Z   Run 1: first_answer=91ms, first_output=76ms, 108.6 tok/s
+2026-04-01T20:11:11Z   Run 2: first_answer=91ms, first_output=75ms, 101.1 tok/s
+2026-04-01T20:11:11Z   Run 3: first_answer=98ms, first_output=83ms, 104.5 tok/s
+2026-04-01T20:11:11Z Test 2: Structured JSON output...
+2026-04-01T20:11:11Z   Run 1: first_answer=2500ms, 102.4 tok/s, reasoning_chars=1227
+2026-04-01T20:11:11Z   Run 2: first_answer=2443ms, 104.8 tok/s, reasoning_chars=1205
+2026-04-01T20:11:11Z   Run 3: first_answer=2452ms, 104.4 tok/s, reasoning_chars=1264
+2026-04-01T20:11:11Z Test 3: Medium prompt (~500 tokens in)...
+2026-04-01T20:11:11Z   Run 1: first_answer=4938ms, 103.7 tok/s
+2026-04-01T20:11:11Z   Run 2: first_answer=4861ms, 105.3 tok/s
+2026-04-01T20:11:11Z   Run 3: first_answer=4854ms, 105.5 tok/s
+2026-04-01T20:11:11Z Test 4: Long prompt (~6K tokens in)...
+2026-04-01T20:11:11Z   Run 1: first_answer=5336ms, 96.0 tok/s
+2026-04-01T20:11:11Z   Run 2: first_answer=5062ms, 101.1 tok/s
+2026-04-01T20:11:11Z Test 5: Sustained throughput (10 requests)...
+2026-04-01T20:11:11Z   5/10 done
+2026-04-01T20:11:11Z   10/10 done
+2026-04-01T20:11:11Z   Sustained: 103.1 tok/s
+2026-04-01T20:11:11Z 
+2026-04-01T20:11:11Z === SUMMARY: DeepSeek R1 Distill Llama 8B ===
+2026-04-01T20:11:11Z   Short prompt:    104.7 tok/s
+2026-04-01T20:11:11Z   Structured JSON: 103.9 tok/s
+2026-04-01T20:11:11Z   Sustained:       103.1 tok/s
+2026-04-01T20:11:11Z   First output:    78ms
+2026-04-01T20:11:11Z   First answer:    93ms
+2026-04-01T20:11:11Z   Valid run:       True
+2026-04-01T20:11:11Z   Comparable:      True
+2026-04-01T20:11:11Z 
+2026-04-01T20:11:11Z Results: /Users/cj/Workspace/active/benchmark-v2/benchmarks/core__deepseek_r1_distill_llama_8b__thinking-default.json
+2026-04-01T20:11:11Z 
+2026-04-01T20:11:11Z [frontier_27b__qwen35_27b_base__thinking-on] Qwen3.5 27B Base | lane=frontier_27b | thinking=on
+2026-04-01T20:11:11Z [frontier_27b__qwen35_27b_base__thinking-on] Existing requested artifacts found; skipping
+2026-04-01T20:11:11Z 
+2026-04-01T20:11:11Z [frontier_27b__qwen35_27b_base__thinking-off] Qwen3.5 27B Base | lane=frontier_27b | thinking=off
+2026-04-01T20:11:11Z [frontier_27b__qwen35_27b_base__thinking-off] Existing requested artifacts found; skipping
+2026-04-01T20:11:11Z 
+2026-04-01T20:11:11Z [frontier_27b__qwen35_27b_opus_distilled_v2__thinking-on] Qwen3.5 27B Opus Distilled v2 | lane=frontier_27b | thinking=on
+2026-04-01T20:11:11Z [frontier_27b__qwen35_27b_opus_distilled_v2__thinking-on] Existing requested artifacts found; skipping
+2026-04-01T20:11:11Z 
+2026-04-01T20:11:11Z [frontier_27b__qwen35_27b_opus_distilled_v2__thinking-off] Qwen3.5 27B Opus Distilled v2 | lane=frontier_27b | thinking=off
+2026-04-01T20:11:11Z [frontier_27b__qwen35_27b_opus_distilled_v2__thinking-off] Existing requested artifacts found; skipping
+2026-04-01T20:11:11Z 
+2026-04-01T20:11:11Z {
+2026-04-01T20:11:11Z   "token": {
+2026-04-01T20:11:11Z     "json": "/Users/cj/Workspace/active/benchmark-v2/benchmarks/benchmark_v2_token_summary.json",
+2026-04-01T20:11:11Z     "csv": "/Users/cj/Workspace/active/benchmark-v2/benchmarks/benchmark_v2_token_summary.csv",
+2026-04-01T20:11:11Z     "md": "/Users/cj/Workspace/active/benchmark-v2/benchmarks/benchmark_v2_token_summary.md"
+2026-04-01T20:11:11Z   }
+2026-04-01T20:11:11Z }
+2026-04-01T20:11:11Z === BENCHMARK-V2 COMPLETE ===
+2026-04-01T20:11:11Z Token summary: /Users/cj/Workspace/active/benchmark-v2/benchmarks/benchmark_v2_token_summary.json

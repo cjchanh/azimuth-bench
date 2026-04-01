@@ -11,6 +11,7 @@ from benchmarking.gate import _parse_probe_message
 from benchmarking.roster import artifact_key, chat_template_kwargs_for_thinking_mode
 from benchmarking.socials import main as generate_benchmark_socials_main
 from benchmarking.summary import main as compile_benchmark_summary_main
+from benchmarking.utils import resolve_model_id
 
 
 def test_chat_template_kwargs_for_thinking_mode():
@@ -58,6 +59,17 @@ def test_canonical_token_prompts_are_domain_neutral():
     ]
     for term in blocked_terms:
         assert term not in payload
+
+
+def test_resolve_model_id_prefers_explicit_target():
+    payload = {"data": [{"id": "model-a"}, {"id": "model-b"}]}
+    assert resolve_model_id(payload, target_model_id="model-b") == "model-b"
+
+
+def test_resolve_model_id_raises_when_target_missing():
+    payload = {"data": [{"id": "model-a"}]}
+    with pytest.raises(ValueError):
+        resolve_model_id(payload, target_model_id="model-b")
 
 
 def _write_sample_roster(tmp_path: Path) -> tuple[Path, Path, dict[str, str]]:

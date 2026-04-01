@@ -1,0 +1,10 @@
+{
+  "started_at_utc": "2026-04-01T20:06:36.310227+00:00",
+  "finished_at_utc": "2026-04-01T20:06:41.465171+00:00",
+  "load_seconds": 5.15,
+  "served_model": "mlx-community/Meta-Llama-3.1-8B-Instruct-4bit",
+  "expected_model": "mlx-community/Meta-Llama-3.1-8B-Instruct-4bit",
+  "pages_free_before": "1240999",
+  "pages_free_after": "671104",
+  "port": 9700
+}

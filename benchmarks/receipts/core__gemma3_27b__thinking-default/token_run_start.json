@@ -1,0 +1,8 @@
+{
+  "timestamp_utc": "2026-04-01T20:03:46.778471+00:00",
+  "artifact_key": "core__gemma3_27b__thinking-default",
+  "artifact_path": "/Users/cj/Workspace/active/benchmark-v2/benchmarks/core__gemma3_27b__thinking-default.json",
+  "model_id": "mlx-community/gemma-3-27b-it-qat-4bit",
+  "thinking_mode": "default",
+  "lane": "core"
+}

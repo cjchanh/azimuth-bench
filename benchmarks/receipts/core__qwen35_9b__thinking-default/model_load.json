@@ -1,0 +1,10 @@
+{
+  "started_at_utc": "2026-04-01T20:00:23.459689+00:00",
+  "finished_at_utc": "2026-04-01T20:00:28.601239+00:00",
+  "load_seconds": 5.14,
+  "served_model": "mlx-community/Qwen3.5-9B-MLX-4bit",
+  "expected_model": "mlx-community/Qwen3.5-9B-MLX-4bit",
+  "pages_free_before": "2004490",
+  "pages_free_after": "1680997",
+  "port": 9700
+}

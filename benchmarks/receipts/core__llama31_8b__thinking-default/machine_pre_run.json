@@ -1,0 +1,21 @@
+{
+  "timestamp_utc": "2026-04-01T20:06:36.291007+00:00",
+  "hostname": "CJs-MacBook-Pro",
+  "platform": "macOS-26.3.1-arm64-arm-64bit-Mach-O",
+  "python": "3.14.3",
+  "bench_port": 9700,
+  "lane": "core",
+  "model_id": "mlx-community/Meta-Llama-3.1-8B-Instruct-4bit",
+  "thinking_mode": "default",
+  "loadavg": [
+    4.97,
+    3.7,
+    2.87
+  ],
+  "vm_pages_free": "135968",
+  "cpu_brand": "Apple M5 Max",
+  "hardware_model": "Mac17,6",
+  "memsize": "137438953472",
+  "battery_or_power": "Now drawing from 'AC Power'\n -InternalBattery-0 (id=22085731)\t80%; AC attached; not charging present: true",
+  "continuous_monitoring": "disabled_by_protocol"
+}

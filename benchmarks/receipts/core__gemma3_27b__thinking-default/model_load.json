@@ -1,0 +1,10 @@
+{
+  "started_at_utc": "2026-04-01T20:03:40.637301+00:00",
+  "finished_at_utc": "2026-04-01T20:03:46.778212+00:00",
+  "load_seconds": 6.14,
+  "served_model": "mlx-community/gemma-3-27b-it-qat-4bit",
+  "expected_model": "mlx-community/gemma-3-27b-it-qat-4bit",
+  "pages_free_before": "1190963",
+  "pages_free_after": "26880",
+  "port": 9700
+}

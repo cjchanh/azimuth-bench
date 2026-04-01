@@ -1,5 +1,19 @@
 | Model ID | Display | Lane | Think | Short tok/s | JSON tok/s | Sustain tok/s | First out ms | First ans ms | Source | Badge |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| mlx-community/Qwen2.5-Coder-7B-Instruct-4bit | Qwen2.5 Coder 7B | core | default | 114.2 | 107.3 | 112.2 | 72.1 | 72.1 | mlx-community | MLX Community |
+| mlx-community/Qwen2.5-Coder-14B-Instruct-4bit | Qwen2.5 Coder 14B | core | default | 57.8 | 55.3 | 45.6 | 93.3 | 93.3 | mlx-community | MLX Community |
+| mlx-community/Qwen2.5-14B-Instruct-4bit | Qwen2.5 Instruct 14B | core | default | 56.9 | 54.9 | 56.6 | 100.5 | 100.5 | mlx-community | MLX Community |
+| mlx-community/Qwen2.5-7B-Instruct-4bit | Qwen2.5 Instruct 7B | core | default | 112.1 | 107.2 | 110.8 | 80 | 80 | mlx-community | MLX Community |
+| mlx-community/Qwen2.5-Coder-32B-Instruct-4bit | Qwen2.5 Coder 32B | core | default | 27.3 | 26.2 | 25.6 | 134.1 | 134.1 | mlx-community | MLX Community |
+| mlx-community/Qwen3.5-9B-MLX-4bit | Qwen3.5 9B | core | default | 98.7 | 97.3 | 84.6 | 132.5 | 2073.4 | mlx-community | MLX Community |
+| mlx-community/gemma-3-4b-it-qat-4bit | Gemma 3 4B | core | default | 148.8 | 134.4 | 125.9 | 137.7 | 137.7 | mlx-community | MLX Community |
+| mlx-community/gemma-3-12b-it-qat-4bit | Gemma 3 12B | core | default | 52 | 45.7 | 55.9 | 171.8 | 171.8 | mlx-community | MLX Community |
+| mlx-community/gemma-3-27b-it-qat-4bit | Gemma 3 27B | core | default | 28.2 | 25.8 | 27.5 | 206.2 | 206.2 | mlx-community | MLX Community |
+| mlx-community/Meta-Llama-3.1-8B-Instruct-4bit | Llama 3.1 8B | core | default | 104.9 | 99.9 | 102.3 | 70.9 | 70.9 | mlx-community | MLX Community |
+| mlx-community/Ministral-3-8B-Instruct-2512-4bit | Ministral 3 8B | core | default | 97.7 | 94 | 93.8 | 78.6 | 78.6 | mlx-community | MLX Community |
+| mlx-community/Ministral-3-14B-Instruct-2512-4bit | Ministral 3 14B | core | default | 64.2 | 61.5 | 61.8 | 84.7 | 84.7 | mlx-community | MLX Community |
+| mlx-community/Phi-4-mini-instruct-4bit | Phi 4 Mini | core | default | 169.4 | 146.3 | 162.2 | 95.1 | 95.1 | mlx-community | MLX Community |
+| mlx-community/DeepSeek-R1-Distill-Llama-8B-4bit | DeepSeek R1 Distill Llama 8B | core | default | 104.7 | 103.9 | 103.1 | 78.3 | 93.4 | mlx-community | MLX Community |
 | NexVeridian/Qwen3.5-27B-4bit | Qwen3.5 27B Base | frontier_27b | on | 32.4 | 27.1 | 31.3 | 205.8 | 7906.1 | NexVeridian / Hugging Face | Hugging Face |
 | NexVeridian/Qwen3.5-27B-4bit | Qwen3.5 27B Base | frontier_27b | off | 32.1 | 29.6 | 25.4 | 231.3 | 231.3 | NexVeridian / Hugging Face | Hugging Face |
 | Jackrong/MLX-Qwen3.5-27B-Claude-4.6-Opus-Reasoning-Distilled-v2-4bit | Qwen3.5 27B Opus Distilled v2 | frontier_27b | on | 33 | 31.3 | 30.2 | 198.8 | 7771 | Jackrong / Hugging Face | Hugging Face |

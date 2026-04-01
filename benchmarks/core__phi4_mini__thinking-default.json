@@ -1,0 +1,553 @@
+{
+  "model_id": "mlx-community/Phi-4-mini-instruct-4bit",
+  "display_name": "Phi 4 Mini",
+  "lane": "core",
+  "thinking_mode": "default",
+  "source_label": "mlx-community",
+  "source_badge": "MLX Community",
+  "artifact_key": "core__phi4_mini__thinking-default",
+  "chat_template_kwargs": null,
+  "smoke": false,
+  "protocol": {
+    "protocol_id": "benchmark_v2_m5max_v1",
+    "machine_class": "Apple Silicon M5 Max local MLX lane",
+    "canonical_identity": "token_only",
+    "gate_lane": "optional_secondary_validation",
+    "stream_required_for_validity": true,
+    "temperature": 0.3,
+    "thinking_mode_policy": "explicit default/on/off via chat_template_kwargs.enable_thinking",
+    "warmup_policy": {
+      "enabled": true,
+      "warmup_requests": 1,
+      "prompt_id": "short",
+      "counted_in_canonical_metrics": false
+    },
+    "repeat_counts": {
+      "short": 3,
+      "structured": 3,
+      "medium": 3,
+      "long": 2,
+      "sustained": 10
+    },
+    "prompt_set_id": "benchmark_v2_m5max_prompt_set_v1",
+    "prompts": [
+      {
+        "prompt_id": "short",
+        "sha256": "278ae054093541adda5a31d210f350559525b868055d02cc2adcfa1acbcaf779",
+        "char_count": 46,
+        "token_cap": 256
+      },
+      {
+        "prompt_id": "structured",
+        "sha256": "b9272a4a797a3abf3e287d86a24936fb476e50bb7c2623c5ae8479ba1bb6896d",
+        "char_count": 563,
+        "token_cap": 256
+      },
+      {
+        "prompt_id": "medium",
+        "sha256": "e27867efce60ca8cf029ce57bc9355255bb9ed374983e95e52d789ab00dce820",
+        "char_count": 766,
+        "token_cap": 512
+      },
+      {
+        "prompt_id": "long",
+        "sha256": "033777958cf7e955aa22845d17f886709c99c3fafb23ae0f7c833d355a56c0d9",
+        "char_count": 5978,
+        "token_cap": 512
+      },
+      {
+        "prompt_id": "sustained",
+        "sha256": "278ae054093541adda5a31d210f350559525b868055d02cc2adcfa1acbcaf779",
+        "char_count": 46,
+        "token_cap": 128
+      }
+    ],
+    "valid_run_requirements": [
+      "all measured requests completed",
+      "all measured requests used streaming path",
+      "measured repeat counts match protocol",
+      "single token count source across measured requests"
+    ]
+  },
+  "benchmark_config": {
+    "max_tokens": 256,
+    "repeat_counts": {
+      "short": 3,
+      "structured": 3,
+      "medium": 3,
+      "long": 2,
+      "sustained": 10
+    }
+  },
+  "warmup": {
+    "count": 1,
+    "runs": [
+      {
+        "first_output_ms": 169.5,
+        "first_answer_ms": 169.5,
+        "ttft_ms": 169.5,
+        "total_ms": 510.1,
+        "tokens_in": 13,
+        "tokens_out": 64,
+        "tok_per_sec": 125.5,
+        "answer_chars": 311,
+        "reasoning_chars": 0,
+        "content_present": true,
+        "reasoning_present": false,
+        "used_stream": true,
+        "token_count_source": "usage"
+      }
+    ],
+    "counted_in_canonical_metrics": false
+  },
+  "short_prompt": [
+    {
+      "first_output_ms": 98.6,
+      "first_answer_ms": 98.6,
+      "ttft_ms": 98.6,
+      "total_ms": 1088.4,
+      "tokens_in": 13,
+      "tokens_out": 187,
+      "tok_per_sec": 171.8,
+      "answer_chars": 986,
+      "reasoning_chars": 0,
+      "content_present": true,
+      "reasoning_present": false,
+      "used_stream": true,
+      "token_count_source": "usage"
+    },
+    {
+      "first_output_ms": 91.7,
+      "first_answer_ms": 91.7,
+      "ttft_ms": 91.7,
+      "total_ms": 862.6,
+      "tokens_in": 13,
+      "tokens_out": 146,
+      "tok_per_sec": 169.3,
+      "answer_chars": 795,
+      "reasoning_chars": 0,
+      "content_present": true,
+      "reasoning_present": false,
+      "used_stream": true,
+      "token_count_source": "usage"
+    },
+    {
+      "first_output_ms": 95.1,
+      "first_answer_ms": 95.1,
+      "ttft_ms": 95.1,
+      "total_ms": 813.4,
+      "tokens_in": 13,
+      "tokens_out": 136,
+      "tok_per_sec": 167.2,
+      "answer_chars": 733,
+      "reasoning_chars": 0,
+      "content_present": true,
+      "reasoning_present": false,
+      "used_stream": true,
+      "token_count_source": "usage"
+    }
+  ],
+  "structured_json": [
+    {
+      "first_output_ms": 122.0,
+      "first_answer_ms": 122.0,
+      "ttft_ms": 122.0,
+      "total_ms": 494.8,
+      "tokens_in": 124,
+      "tokens_out": 70,
+      "tok_per_sec": 141.5,
+      "answer_chars": 313,
+      "reasoning_chars": 0,
+      "content_present": true,
+      "reasoning_present": false,
+      "used_stream": true,
+      "token_count_source": "usage"
+    },
+    {
+      "first_output_ms": 98.8,
+      "first_answer_ms": 98.8,
+      "ttft_ms": 98.8,
+      "total_ms": 481.7,
+      "tokens_in": 124,
+      "tokens_out": 72,
+      "tok_per_sec": 149.5,
+      "answer_chars": 334,
+      "reasoning_chars": 0,
+      "content_present": true,
+      "reasoning_present": false,
+      "used_stream": true,
+      "token_count_source": "usage"
+    },
+    {
+      "first_output_ms": 92.4,
+      "first_answer_ms": 92.4,
+      "ttft_ms": 92.4,
+      "total_ms": 433.1,
+      "tokens_in": 124,
+      "tokens_out": 64,
+      "tok_per_sec": 147.8,
+      "answer_chars": 278,
+      "reasoning_chars": 0,
+      "content_present": true,
+      "reasoning_present": false,
+      "used_stream": true,
+      "token_count_source": "usage"
+    }
+  ],
+  "medium_prompt": [
+    {
+      "first_output_ms": 129.1,
+      "first_answer_ms": 129.1,
+      "ttft_ms": 129.1,
+      "total_ms": 2903.4,
+      "tokens_in": 149,
+      "tokens_out": 512,
+      "tok_per_sec": 176.3,
+      "answer_chars": 2460,
+      "reasoning_chars": 0,
+      "content_present": true,
+      "reasoning_present": false,
+      "used_stream": true,
+      "token_count_source": "usage"
+    },
+    {
+      "first_output_ms": 100.9,
+      "first_answer_ms": 100.9,
+      "ttft_ms": 100.9,
+      "total_ms": 2170.6,
+      "tokens_in": 149,
+      "tokens_out": 384,
+      "tok_per_sec": 176.9,
+      "answer_chars": 1446,
+      "reasoning_chars": 0,
+      "content_present": true,
+      "reasoning_present": false,
+      "used_stream": true,
+      "token_count_source": "usage"
+    },
+    {
+      "first_output_ms": 97.4,
+      "first_answer_ms": 97.4,
+      "ttft_ms": 97.4,
+      "total_ms": 2872.7,
+      "tokens_in": 149,
+      "tokens_out": 512,
+      "tok_per_sec": 178.2,
+      "answer_chars": 2421,
+      "reasoning_chars": 0,
+      "content_present": true,
+      "reasoning_present": false,
+      "used_stream": true,
+      "token_count_source": "usage"
+    }
+  ],
+  "long_prompt": [
+    {
+      "first_output_ms": 205.4,
+      "first_answer_ms": 205.4,
+      "ttft_ms": 205.4,
+      "total_ms": 3137.8,
+      "tokens_in": 829,
+      "tokens_out": 512,
+      "tok_per_sec": 163.2,
+      "answer_chars": 2514,
+      "reasoning_chars": 0,
+      "content_present": true,
+      "reasoning_present": false,
+      "used_stream": true,
+      "token_count_source": "usage"
+    },
+    {
+      "first_output_ms": 94.9,
+      "first_answer_ms": 94.9,
+      "ttft_ms": 94.9,
+      "total_ms": 3033.9,
+      "tokens_in": 829,
+      "tokens_out": 512,
+      "tok_per_sec": 168.8,
+      "answer_chars": 2232,
+      "reasoning_chars": 0,
+      "content_present": true,
+      "reasoning_present": false,
+      "used_stream": true,
+      "token_count_source": "usage"
+    }
+  ],
+  "sustained": {
+    "runs": [
+      {
+        "first_output_ms": 95.2,
+        "first_answer_ms": 95.2,
+        "ttft_ms": 95.2,
+        "total_ms": 770.3,
+        "tokens_in": 13,
+        "tokens_out": 128,
+        "tok_per_sec": 166.2,
+        "answer_chars": 669,
+        "reasoning_chars": 0,
+        "content_present": true,
+        "reasoning_present": false,
+        "used_stream": true,
+        "token_count_source": "usage"
+      },
+      {
+        "first_output_ms": 97.7,
+        "first_answer_ms": 97.7,
+        "ttft_ms": 97.7,
+        "total_ms": 773.3,
+        "tokens_in": 13,
+        "tokens_out": 128,
+        "tok_per_sec": 165.5,
+        "answer_chars": 672,
+        "reasoning_chars": 0,
+        "content_present": true,
+        "reasoning_present": false,
+        "used_stream": true,
+        "token_count_source": "usage"
+      },
+      {
+        "first_output_ms": 95.4,
+        "first_answer_ms": 95.4,
+        "ttft_ms": 95.4,
+        "total_ms": 774.3,
+        "tokens_in": 13,
+        "tokens_out": 128,
+        "tok_per_sec": 165.3,
+        "answer_chars": 637,
+        "reasoning_chars": 0,
+        "content_present": true,
+        "reasoning_present": false,
+        "used_stream": true,
+        "token_count_source": "usage"
+      },
+      {
+        "first_output_ms": 97.5,
+        "first_answer_ms": 97.5,
+        "ttft_ms": 97.5,
+        "total_ms": 782.2,
+        "tokens_in": 13,
+        "tokens_out": 128,
+        "tok_per_sec": 163.7,
+        "answer_chars": 681,
+        "reasoning_chars": 0,
+        "content_present": true,
+        "reasoning_present": false,
+        "used_stream": true,
+        "token_count_source": "usage"
+      },
+      {
+        "first_output_ms": 98.7,
+        "first_answer_ms": 98.7,
+        "ttft_ms": 98.7,
+        "total_ms": 789.6,
+        "tokens_in": 13,
+        "tokens_out": 128,
+        "tok_per_sec": 162.1,
+        "answer_chars": 693,
+        "reasoning_chars": 0,
+        "content_present": true,
+        "reasoning_present": false,
+        "used_stream": true,
+        "token_count_source": "usage"
+      },
+      {
+        "first_output_ms": 96.1,
+        "first_answer_ms": 96.1,
+        "ttft_ms": 96.1,
+        "total_ms": 799.1,
+        "tokens_in": 13,
+        "tokens_out": 128,
+        "tok_per_sec": 160.2,
+        "answer_chars": 680,
+        "reasoning_chars": 0,
+        "content_present": true,
+        "reasoning_present": false,
+        "used_stream": true,
+        "token_count_source": "usage"
+      },
+      {
+        "first_output_ms": 102.9,
+        "first_answer_ms": 102.9,
+        "ttft_ms": 102.9,
+        "total_ms": 802.8,
+        "tokens_in": 13,
+        "tokens_out": 128,
+        "tok_per_sec": 159.4,
+        "answer_chars": 671,
+        "reasoning_chars": 0,
+        "content_present": true,
+        "reasoning_present": false,
+        "used_stream": true,
+        "token_count_source": "usage"
+      },
+      {
+        "first_output_ms": 91.8,
+        "first_answer_ms": 91.8,
+        "ttft_ms": 91.8,
+        "total_ms": 797.4,
+        "tokens_in": 13,
+        "tokens_out": 128,
+        "tok_per_sec": 160.5,
+        "answer_chars": 671,
+        "reasoning_chars": 0,
+        "content_present": true,
+        "reasoning_present": false,
+        "used_stream": true,
+        "token_count_source": "usage"
+      },
+      {
+        "first_output_ms": 93.1,
+        "first_answer_ms": 93.1,
+        "ttft_ms": 93.1,
+        "total_ms": 798.6,
+        "tokens_in": 13,
+        "tokens_out": 128,
+        "tok_per_sec": 160.3,
+        "answer_chars": 693,
+        "reasoning_chars": 0,
+        "content_present": true,
+        "reasoning_present": false,
+        "used_stream": true,
+        "token_count_source": "usage"
+      },
+      {
+        "first_output_ms": 98.7,
+        "first_answer_ms": 98.7,
+        "ttft_ms": 98.7,
+        "total_ms": 804.6,
+        "tokens_in": 13,
+        "tokens_out": 128,
+        "tok_per_sec": 159.1,
+        "answer_chars": 707,
+        "reasoning_chars": 0,
+        "content_present": true,
+        "reasoning_present": false,
+        "used_stream": true,
+        "token_count_source": "usage"
+      }
+    ],
+    "total_seconds": 7.9,
+    "total_tokens": 1280,
+    "sustained_tok_per_sec": 162.2
+  },
+  "vm_pages_free": "Pages free:                              381824.",
+  "summary": {
+    "model_id": "mlx-community/Phi-4-mini-instruct-4bit",
+    "display_name": "Phi 4 Mini",
+    "lane": "core",
+    "thinking_mode": "default",
+    "artifact_key": "core__phi4_mini__thinking-default",
+    "source_label": "mlx-community",
+    "source_badge": "MLX Community",
+    "short_tok_s": 169.4,
+    "structured_json_tok_s": 146.3,
+    "sustained_tok_s": 162.2,
+    "first_output_ms": 95.1,
+    "first_answer_ms": 95.1,
+    "avg_ttft_ms": 95.1,
+    "timestamp_utc": "2026-04-01T20:10:15.530525+00:00",
+    "valid_run": true,
+    "comparable": true
+  },
+  "validity": {
+    "valid_run": true,
+    "issues": [],
+    "expected_counts": {
+      "short": 3,
+      "structured": 3,
+      "medium": 3,
+      "long": 2,
+      "sustained": 10
+    },
+    "observed_counts": {
+      "short": 3,
+      "structured": 3,
+      "medium": 3,
+      "long": 2,
+      "sustained": 10
+    },
+    "token_count_sources": [
+      "usage"
+    ]
+  },
+  "comparability": {
+    "comparable": true,
+    "protocol_id": "benchmark_v2_m5max_v1",
+    "prompt_set_id": "benchmark_v2_m5max_prompt_set_v1",
+    "warm_interpretation": "warm_after_load",
+    "cold_interpretation": "model_load_receipt_only",
+    "token_count_sources": [
+      "usage"
+    ]
+  },
+  "receipts": {
+    "run_start_utc": "2026-04-01T20:09:48.809094+00:00",
+    "run_finish_utc": "2026-04-01T20:10:15.530560+00:00",
+    "machine_pre_run": {
+      "timestamp_utc": "2026-04-01T20:09:43.545201+00:00",
+      "hostname": "CJs-MacBook-Pro",
+      "platform": "macOS-26.3.1-arm64-arm-64bit-Mach-O",
+      "python": "3.14.3",
+      "bench_port": 9700,
+      "lane": "core",
+      "model_id": "mlx-community/Phi-4-mini-instruct-4bit",
+      "thinking_mode": "default",
+      "loadavg": [
+        1.99,
+        2.88,
+        2.69
+      ],
+      "vm_pages_free": "127545",
+      "cpu_brand": "Apple M5 Max",
+      "hardware_model": "Mac17,6",
+      "memsize": "137438953472",
+      "battery_or_power": "Now drawing from 'AC Power'\n -InternalBattery-0 (id=22085731)\t80%; AC attached; not charging present: true",
+      "continuous_monitoring": "disabled_by_protocol"
+    },
+    "model_load": {
+      "started_at_utc": "2026-04-01T20:09:43.560595+00:00",
+      "finished_at_utc": "2026-04-01T20:09:48.723277+00:00",
+      "load_seconds": 5.16,
+      "served_model": "mlx-community/Phi-4-mini-instruct-4bit",
+      "expected_model": "mlx-community/Phi-4-mini-instruct-4bit",
+      "pages_free_before": "689035",
+      "pages_free_after": "408891",
+      "port": 9700
+    },
+    "token_run_start": {
+      "timestamp_utc": "2026-04-01T20:09:48.723545+00:00",
+      "artifact_key": "core__phi4_mini__thinking-default",
+      "artifact_path": "/Users/cj/Workspace/active/benchmark-v2/benchmarks/core__phi4_mini__thinking-default.json",
+      "model_id": "mlx-community/Phi-4-mini-instruct-4bit",
+      "thinking_mode": "default",
+      "lane": "core"
+    },
+    "token_run_finish": {
+      "timestamp_utc": "2026-04-01T20:10:15.548434+00:00",
+      "artifact_path": "/Users/cj/Workspace/active/benchmark-v2/benchmarks/core__phi4_mini__thinking-default.json",
+      "status": "complete"
+    },
+    "artifact_complete": {
+      "timestamp_utc": "2026-04-01T20:10:15.548697+00:00",
+      "artifact_path": "/Users/cj/Workspace/active/benchmark-v2/benchmarks/core__phi4_mini__thinking-default.json",
+      "required_keys": [
+        "protocol",
+        "summary",
+        "validity",
+        "comparability",
+        "receipts"
+      ],
+      "missing_keys": [],
+      "valid_run": true,
+      "comparable": true,
+      "complete": true
+    }
+  },
+  "receipt_paths": {
+    "artifact_complete": "/Users/cj/Workspace/active/benchmark-v2/benchmarks/receipts/core__phi4_mini__thinking-default/artifact_complete.json",
+    "machine_pre_run": "/Users/cj/Workspace/active/benchmark-v2/benchmarks/receipts/core__phi4_mini__thinking-default/machine_pre_run.json",
+    "model_load": "/Users/cj/Workspace/active/benchmark-v2/benchmarks/receipts/core__phi4_mini__thinking-default/model_load.json",
+    "token_run_finish": "/Users/cj/Workspace/active/benchmark-v2/benchmarks/receipts/core__phi4_mini__thinking-default/token_run_finish.json",
+    "token_run_start": "/Users/cj/Workspace/active/benchmark-v2/benchmarks/receipts/core__phi4_mini__thinking-default/token_run_start.json"
+  }
+}

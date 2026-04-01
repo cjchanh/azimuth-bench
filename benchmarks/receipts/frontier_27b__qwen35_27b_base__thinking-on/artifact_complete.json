@@ -1,6 +1,6 @@
 {
   "timestamp_utc": "2026-04-01T01:37:33.778642+00:00",
-  "artifact_path": "/Users/cj/Workspace/active/agent-civilization/benchmarks/frontier_27b__qwen35_27b_base__thinking-on.json",
+  "artifact_path": "/Users/cj/Workspace/active/benchmark-v2/benchmarks/frontier_27b__qwen35_27b_base__thinking-on.json",
   "required_keys": [
     "protocol",
     "summary",

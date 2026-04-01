@@ -1,0 +1,10 @@
+{
+  "started_at_utc": "2026-04-01T19:38:58.872226+00:00",
+  "finished_at_utc": "2026-04-01T19:40:17.425539+00:00",
+  "load_seconds": 78.55,
+  "served_model": "mlx-community/Qwen2.5-Coder-7B-Instruct-4bit",
+  "expected_model": "mlx-community/Qwen2.5-Coder-7B-Instruct-4bit",
+  "pages_free_before": "4889848",
+  "pages_free_after": "4350376",
+  "port": 9700
+}
