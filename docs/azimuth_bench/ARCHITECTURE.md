@@ -52,7 +52,7 @@ Azimuth Report uses a restrained dark surface, system UI font stack (no required
 
 ## Implemented vs designed (this slice)
 
-**Implemented and tested:** MLX, OpenAI-compatible HTTP, and Ollama throughput adapters; canonical bundle fields; integrity (including ambiguity detection); `azbench report build`; static report outputs; site/provider/protocol manifest scaffolding.
+**Implemented and tested:** MLX, OpenAI-compatible HTTP, and Ollama throughput adapters; canonical bundle fields; integrity (including ambiguity detection); `azbench report build`; static report outputs; site/provider/protocol manifest scaffolding; `azimuth_compare_v1` compare projection and deterministic share SVG exports.
 
 **Designed / unverified:** llama.cpp and vLLM adapters, full suite matrix beyond the current throughput protocol, hosted SPA deployment, thermal telemetry, richer share-card/image exports.
 

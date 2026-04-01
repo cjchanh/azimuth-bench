@@ -12,8 +12,10 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
+from azimuth_bench.compare.projection import build_compare_projection
 from azimuth_bench.core.env import provider_id_from_env
 from azimuth_bench.core.runtime import slugify
+from azimuth_bench.export.svg_cards import write_share_compare_svg, write_share_leaderboard_svg
 from azimuth_bench.schema.bundle import build_canonical_data_files
 from azimuth_bench.schema.protocol_manifest import build_protocol_manifest
 from azimuth_bench.site.contract import build_site_manifest
@@ -398,6 +400,8 @@ def _render_index_html(
         <li><span class="mono">report/data/summary.json</span><br/>canonical leaderboard rows</li>
         <li><span class="mono">report/data/runs/&lt;artifact_key&gt;/</span><br/>per-run run/summary/machine/provider/model/cases bundle</li>
         <li><span class="mono">report/data/site_manifest.json</span><br/>hosted site route contract</li>
+        <li><span class="mono">report/exports/share_leaderboard.svg</span><br/>deterministic share snapshot (top rows)</li>
+        <li><span class="mono">report/exports/share_compare.svg</span><br/>deterministic scoped compare card</li>
       </ul>
     </div>
   </section>
@@ -445,7 +449,7 @@ def _render_compare_html(compare_payload: dict[str, Any]) -> str:
 <html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Azimuth Compare</title><style>{_shared_css()}</style></head>
 <body><header><div class="title-block"><h1>Azimuth Compare</h1><div class="subtitle">Azimuth Report · pairwise diffs over the current data</div></div><nav><a href="index.html">Latest</a><a href="leaderboard.html">Leaderboard</a><a href="compare.html">Compare</a></nav></header>
 <section class="split section"><div class="panel"><div class="section-kicker">Chart</div><h2>Frontier 27B comparison</h2><img src="charts/frontier_compare.svg" alt="Frontier comparison"/></div><div class="panel"><div class="section-kicker">Pairs</div><h2>Current comparison set</h2><ul class="list">{body}</ul></div></section>
-<footer>Static compare view. Full interactive selection remains designed/unverified.</footer></body></html>"""
+<footer>Static compare view. JSON uses <span class="mono">compare_schema</span> with explicit blocked comparisons; not a universal ranking. Interactive selection remains designed/unverified.</footer></body></html>"""
 
 
 def _render_run_detail_html(artifact_key: str, bundle: dict[str, Any]) -> str:
@@ -609,37 +613,6 @@ def _render_protocol_html(protocol_payload: dict[str, Any]) -> str:
 <footer>Protocol pages are derived from per-run cases/summary bundle data.</footer></body></html>"""
 
 
-def _compare_payload(summary_rows: list[dict[str, Any]]) -> dict[str, Any]:
-    frontier = [row for row in summary_rows if row.get("lane") == "frontier_27b"]
-    pairs: list[dict[str, Any]] = []
-    index = {(row.get("display_name"), row.get("thinking_mode")): row for row in frontier}
-    wanted = [("on", "thinking_on"), ("off", "thinking_off")]
-    for thinking_mode, label in wanted:
-        base = index.get(("Qwen3.5 27B Base", thinking_mode))
-        distilled = index.get(("Qwen3.5 27B Opus Distilled v2", thinking_mode))
-        if not base or not distilled:
-            continue
-        pairs.append(
-            {
-                "label": label,
-                "structured_json_tok_s_delta": round(
-                    float(distilled.get("structured_json_tok_s") or 0.0)
-                    - float(base.get("structured_json_tok_s") or 0.0),
-                    1,
-                ),
-                "sustained_tok_s_delta": round(
-                    float(distilled.get("sustained_tok_s") or 0.0) - float(base.get("sustained_tok_s") or 0.0),
-                    1,
-                ),
-                "first_answer_ms_delta": round(
-                    float(distilled.get("first_answer_ms") or 0.0) - float(base.get("first_answer_ms") or 0.0),
-                    1,
-                ),
-            }
-        )
-    return {"frontier_pairs": pairs}
-
-
 def build_report(
     run_dir: Path,
     *,
@@ -680,7 +653,7 @@ def build_report(
     summary_rows = (bundle.get("summary.json") or {}).get("rows") or []
     if not isinstance(summary_rows, list):
         summary_rows = []
-    compare_payload = _compare_payload(summary_rows)
+    compare_payload = build_compare_projection(summary_rows)
     run_bundles = bundle.get("run_bundles") or []
     provider_index = _provider_index_payload(run_bundles)
     protocol_index = _protocol_index_payload(run_bundles)
@@ -766,6 +739,11 @@ def build_report(
     )
     _chart_scatter_svg(charts_dir / "latency_tradeoff.svg", summary_rows)
     _chart_frontier_svg(charts_dir / "frontier_compare.svg", summary_rows)
+
+    exports_dir = report_root / "exports"
+    exports_dir.mkdir(parents=True, exist_ok=True)
+    write_share_leaderboard_svg(output_path=exports_dir / "share_leaderboard.svg", summary_rows=summary_rows)
+    write_share_compare_svg(output_path=exports_dir / "share_compare.svg", compare_projection=compare_payload)
 
     site_manifest = build_site_manifest(run_dir, bundle)
     _write_json(data_dir / "site_manifest.json", site_manifest)

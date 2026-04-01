@@ -14,6 +14,18 @@ Azimuth Report is **static** output from `azbench report build <run_dir>`, usual
 | `report/protocols/` | Protocol summary pages + `report/data/protocols/index.json`. |
 | `report/data/*.json` | Canonical machine-readable bundle (leaderboard, summary, site manifest). |
 | `report/data/runs/<artifact_key>/` | Per-run `run.json`, `summary.json`, `provider.json`, `cases.json`, etc. |
+| `report/data/compare.json` | **`azimuth_compare_v1`**: legacy `frontier_pairs` deltas plus `projection.pairs` (stable `comparison_key`), `blocked_comparisons`, and honesty notes — not a universal ranking. |
+| `report/exports/share_leaderboard.svg` | Deterministic SVG snapshot (top structured JSON tok/s rows). |
+| `report/exports/share_compare.svg` | Deterministic SVG for scoped frontier deltas (or a “no pairs” note). |
+
+## Compare JSON (`compare.json`)
+
+- **`compare_schema`**: `azimuth_compare_v1` — machine-readable contract for this file.
+- **`projection.pairs`**: Explicit side-by-side rows with **`comparison_key`**, left/right **`artifact_key`** slices, **`deltas`**, and **`comparability`** (scoped, not global).
+- **`projection.blocked_comparisons`**: Comparisons **not** emitted (e.g. cross-lane) so readers do not assume they exist elsewhere.
+- **`frontier_pairs`**: Legacy compact deltas for the HTML compare page; same underlying frontier scope when those models exist in the summary.
+
+Regenerate share SVGs without rebuilding the full report: `azbench export svg <run_dir>` (reads `report/data/`).
 
 ## Leaderboard
 

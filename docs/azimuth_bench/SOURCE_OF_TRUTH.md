@@ -6,7 +6,7 @@ This document is the **single** place that defines **current** ownership and wha
 
 **How sessions should use the other docs:** **`docs/azimuth_bench/COMPOSER2_UPGRADE_SESSION_V2.md`** is the **recommended execution plan** for a **new Composer window** (copy the inner `text` block). `docs/azimuth_bench/COMPOSER2_AUTOPILOT_MASTER_PROMPT.md` is the **anchor** that points at v2. **This file** plus the **code** are the **truth boundary for current implementation**: do not treat those prompts’ target deliverables as “shipped” unless they appear here and in tests, and **do not override this boundary with the execution plan** until `SOURCE_OF_TRUTH.md` is updated to match and that change is **committed** with the behavior it describes.
 
-**Last verified tests (this checkout):** `python3 -m pytest -q` → **42 passed** (refresh when behavior changes).
+**Last verified tests (this checkout):** `python3 -m pytest -q` → **43 passed** (refresh when behavior changes).
 
 **Public proof docs (methodology + how to read reports + outreach snapshot):** [METHODOLOGY.md](METHODOLOGY.md), [READING_REPORTS.md](READING_REPORTS.md), [PUBLIC_PROOF_PACK.md](PUBLIC_PROOF_PACK.md).
 
@@ -71,12 +71,14 @@ These exist so **existing scripts and `-m` module paths keep working**. They **m
 | Comparability helper + protocol manifest helper | `azimuth_bench.core.comparability`, `azimuth_bench.schema.protocol_manifest`. |
 | Static site manifest + host index payload | `azimuth_bench.site.contract` (`routes`, `host_index`). |
 | Markdown export CLI | `azbench export markdown <run_dir> --output …` (requires built `report/data/`). |
+| Compare projection + share SVGs | `compare.json` uses `azimuth_compare_v1` (`azimuth_bench.compare.projection`); deterministic `report/exports/share_leaderboard.svg` and `share_compare.svg`; `azbench export svg`. |
 
 | Not implemented (by design in this repo) | Notes |
 | --- | --- |
 | llama.cpp / vLLM adapters | See `azimuth_bench.adapters.planned` (stubs only). |
 | Hosted SPA | Static `report/` + `site_manifest.json` only. |
-| Full social / image export suite | Markdown export only in this slice. |
+| Interactive compare picker / arbitrary pairwise UI | Static JSON + scoped pairs + explicit `blocked_comparisons` only. |
+| Portable merge of external run bundles (M5) | See milestone pack; not claimed here until shipped. |
 
 ## Transitional debt (explicit)
 
