@@ -1,5 +1,5 @@
 # Exact commands — m6_release_gate_v1
-# Run from: /Users/cj/Workspace/active/benchmark-v2 (repo root)
+# Run from: repository root (`$(pwd)` after `cd` into your clone)
 # Shell: zsh, Python 3.14 venv (see .venv)
 
 source .venv/bin/activate
@@ -8,7 +8,7 @@ ruff check .
 ruff format --check .
 python3 -m pytest -q
 
-azbench report build benchmarks --repo-root /Users/cj/Workspace/active/benchmark-v2
+azbench report build benchmarks --repo-root "$(pwd)"
 azbench export markdown benchmarks --output /tmp/azimuth_export.md
 azbench export svg benchmarks
 
@@ -17,8 +17,7 @@ python3 -m signalbench --help
 
 python3 -m build --outdir /tmp/azimuth_release_gate_dist --no-isolation
 
-cd /Users/cj/Workspace/active/benchmark-v2
 python3 ~/.codex/scripts/validate_governance.py --root . --strict
 bash ~/.codex/scripts/bootstrap_codex_governance.sh --repo-root . --check-only
 bash ~/.codex/scripts/run_full_verification.sh
-python3 ~/.codex/validators/post_session.py /Users/cj/Workspace/active/benchmark-v2
+python3 ~/.codex/validators/post_session.py "$(pwd)"

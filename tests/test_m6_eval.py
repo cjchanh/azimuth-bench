@@ -48,6 +48,20 @@ def test_m6_release_gate_evidence_bundle_files_exist() -> None:
         assert (bundle / name).is_file(), name
 
 
+def test_m6_release_gate_bundle_is_clone_portable() -> None:
+    """Committed release-gate evidence should not hardcode one local checkout path."""
+    root = _repo_root()
+    bundle = root / "release/evidence/m6_release_gate_v1"
+    commands = (bundle / "commands.txt").read_text(encoding="utf-8")
+    results = (bundle / "results.md").read_text(encoding="utf-8")
+    assert "repository root (`$(pwd)` after `cd` into your clone)" in commands
+    assert '--repo-root "$(pwd)"' in commands
+    assert 'post_session.py "$(pwd)"' in commands
+    assert "/Users/cj/Workspace/active/benchmark-v2" not in commands
+    assert "stale recorded checkout path or commit pin" in results
+    assert "1130597" not in results
+
+
 def test_python_m_build_produces_wheel_and_sdist(tmp_path: Path) -> None:
     """Honest local packaging check (not PyPI publication). Requires optional dev dep `build`."""
     root = _repo_root()

@@ -6,7 +6,7 @@ Recorded on independent re-verification (same session as bundle creation).
 | --- | --- |
 | `ruff check .` | All checks passed |
 | `ruff format --check .` | 92 files already formatted |
-| `python3 -m pytest -q` | 56 passed in ~3s |
+| `python3 -m pytest -q` | 57 passed in ~4s |
 | `azbench report build benchmarks --repo-root <repo>` | Exit 0; `Wrote report: …/benchmarks/report` |
 | `azbench export markdown … --output /tmp/azimuth_export.md` | Exit 0; wrote `/private/tmp/azimuth_export.md` |
 | `azbench export svg benchmarks` | Exit 0; wrote `share_leaderboard.svg`, `share_compare.svg` |
@@ -21,4 +21,4 @@ Recorded on independent re-verification (same session as bundle creation).
 **Notes**
 
 - `python -m build` may print a `NO_COLOR`/`FORCE_COLOR` warning from the environment; output did **not** contain `SetuptoolsDeprecationWarning` (also asserted in `tests/test_m6_eval.py`).
-- Product commands in this file were verified at git baseline **`1130597`**. This evidence directory was added in follow-up commits; use `git log -- release/evidence/m6_release_gate_v1` for the receipt chain.
+- This evidence bundle is clone-portable by design. Re-run `commands.txt` from your repository root after any substantive change rather than relying on a stale recorded checkout path or commit pin.
