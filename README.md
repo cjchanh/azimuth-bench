@@ -10,9 +10,11 @@ Standalone local MLX benchmark harness extracted from [Agent Civilization](https
 - Social card generation (matplotlib)
 - Optional external Agent Civilization gate via `AGENT_CIV_ROOT`
 
-## Install
+## Setup
 
 ```bash
+python3 -m venv .venv
+source .venv/bin/activate
 pip install -e ".[dev]"
 ```
 
@@ -28,6 +30,8 @@ python3 -m pytest -q
 ruff check .
 ruff format --check .
 ```
+
+All three commands require the venv to be active.
 
 ## Optional external gate
 
