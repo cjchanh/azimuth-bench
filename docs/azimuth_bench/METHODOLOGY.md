@@ -10,12 +10,12 @@ This document explains what Azimuth Bench **measures**, how **comparability** is
 - **Report bundle** under `report/data/`: normalized JSON with **no absolute local paths** in public fields; relative artifact paths and sanitized provider metadata.
 - **Integrity gate**: ambiguous or duplicate artifact mapping fails closed (blockers).
 - **Compare projection** (`compare.json`, `azimuth_compare_v1`): scoped pairwise rows with stable `comparison_key`, explicit **`blocked_comparisons`** for pairs that are *not* emitted, and deterministic share SVGs under `report/exports/`.
+- **Multi-run merge** (M5): `azbench report build <primary> --include-run-dir <other> …` combines validated Azimuth-shaped run directories only; emits `merge.json`, copies comparability metadata onto `leaderboard.json`, and records **`comparability_class`** plus **`blockers`** when cross-protocol or non-comparable rows apply.
 
 ## Designed or partial (do not over-claim)
 
 - **llama.cpp / vLLM** adapters: planned only (`azimuth_bench.adapters.planned`).
 - **Hosted SPA**: static HTML + JSON only.
-- **Portable merge of external run bundles** (M5): not claimed until shipped.
 
 ## Protocol identity
 

@@ -13,6 +13,7 @@ Azimuth Report is **static** output from `azbench report build <run_dir>`, usual
 | `report/providers/` | Provider summary pages + `report/data/providers/index.json`. |
 | `report/protocols/` | Protocol summary pages + `report/data/protocols/index.json`. |
 | `report/data/*.json` | Canonical machine-readable bundle (leaderboard, summary, site manifest). |
+| `report/data/merge.json` | Present only when built with `--include-run-dir`: merge metadata (`azimuth_merge_v1`), comparability class, and explicit blockers. |
 | `report/data/runs/<artifact_key>/` | Per-run `run.json`, `summary.json`, `provider.json`, `cases.json`, etc. |
 | `report/data/compare.json` | **`azimuth_compare_v1`**: legacy `frontier_pairs` deltas plus `projection.pairs` (stable `comparison_key`), `blocked_comparisons`, and honesty notes — not a universal ranking. |
 | `report/exports/share_leaderboard.svg` | Deterministic SVG snapshot (top structured JSON tok/s rows). |
@@ -31,6 +32,7 @@ Regenerate share SVGs without rebuilding the full report: `azbench export svg <r
 
 - **Structured JSON tok/s** is the primary leaderboard metric in this tree (see charts and `leaderboard.json`).
 - Rows can include **multiple lanes** (e.g. `core` vs `frontier_27b`); read the **Lane** column before comparing.
+- **Merged reports** duplicate `merge.json` under `leaderboard.json` → **`merge`**. Read **`comparability_class`** (`fully_comparable`, `scoped_comparable`, `not_comparable`) and **`blockers`** before treating the table as a single ranking. Per-row hints: **`merge_row_comparability_class`**, **`merge_source`**, **`merge_bundle_label`**.
 
 ## Comparable flag
 

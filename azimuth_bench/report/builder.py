@@ -16,6 +16,7 @@ from azimuth_bench.compare.projection import build_compare_projection
 from azimuth_bench.core.env import provider_id_from_env
 from azimuth_bench.core.runtime import slugify
 from azimuth_bench.export.svg_cards import write_share_compare_svg, write_share_leaderboard_svg
+from azimuth_bench.merge.bundle import merge_canonical_bundles
 from azimuth_bench.schema.bundle import build_canonical_data_files
 from azimuth_bench.schema.protocol_manifest import build_protocol_manifest
 from azimuth_bench.site.contract import build_site_manifest
@@ -234,11 +235,11 @@ def _render_summary_md(summary_rows: list[dict[str, Any]], *, integrity_ok: bool
         "- Canonical per-run JSON bundle emitted under `report/data/runs/<artifact_key>/`",
         "- Static pages emitted for latest report, leaderboard, compare, run detail, and machine detail",
         "- Compare projection emitted under `report/data/compare.json` with deterministic share SVGs under `report/exports/`",
+        "- Multi-run merge: `azbench report build <run_dir> --include-run-dir <other_run_dir> ...` merges validated Azimuth run trees; see `report/data/merge.json` and `leaderboard.json` field `merge`",
         "",
         "## Designed / unverified",
         "",
         "- llama.cpp and vLLM adapters",
-        "- Portable merge of external run bundles",
         "- Full hosted app beyond static-first site data contract",
         "",
         "## Site manifest",
@@ -622,8 +623,15 @@ def build_report(
     repo_root: Path | None = None,
     provider_id: str | None = None,
     provider_id_source: str | None = None,
+    include_run_dirs: tuple[Path, ...] = (),
 ) -> Path:
-    """Write report under ``run_dir/report/``. Returns report directory path."""
+    """Write report under ``run_dir/report/``. Returns report directory path.
+
+    Args:
+        run_dir: Primary benchmarks run directory (output root).
+        include_run_dirs: Optional additional run directories to merge (each must pass
+            integrity independently). No auto-discovery.
+    """
     run_dir = run_dir.resolve()
     resolved_provider = provider_id
     resolved_source = provider_id_source
@@ -635,12 +643,21 @@ def build_report(
     elif resolved_provider is not None and resolved_source is None:
         resolved_source = "cli"
 
-    bundle = build_canonical_data_files(
-        run_dir,
-        repo_root=repo_root,
-        provider_id=resolved_provider,
-        provider_id_source=resolved_source,
-    )
+    if include_run_dirs:
+        bundle = merge_canonical_bundles(
+            run_dir,
+            [p.resolve() for p in include_run_dirs],
+            repo_root=repo_root,
+            provider_id=resolved_provider,
+            provider_id_source=resolved_source,
+        )
+    else:
+        bundle = build_canonical_data_files(
+            run_dir,
+            repo_root=repo_root,
+            provider_id=resolved_provider,
+            provider_id_source=resolved_source,
+        )
     report_root = run_dir / "report"
     data_dir = report_root / "data"
     charts_dir = report_root / "charts"
@@ -667,10 +684,13 @@ def build_report(
         _write_json(data_dir / name, payload)
 
     run_meta_top = bundle.get("run.json") or {}
-    leaderboard_payload = {
+    leaderboard_payload: dict[str, Any] = {
         "azimuth_bench_schema_version": _schema_version_display(run_meta_top),
         "rows": sorted(summary_rows, key=lambda row: float(row.get("structured_json_tok_s") or 0.0), reverse=True),
     }
+    merge_meta = bundle.get("merge.json")
+    if isinstance(merge_meta, dict) and merge_meta:
+        leaderboard_payload["merge"] = merge_meta
     _write_json(data_dir / "leaderboard.json", leaderboard_payload)
     _write_json(data_dir / "compare.json", compare_payload)
     _write_json(data_dir / "latest.json", {"summary": bundle.get("summary.json"), "run": bundle.get("run.json")})

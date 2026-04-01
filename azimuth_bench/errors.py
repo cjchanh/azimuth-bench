@@ -25,3 +25,15 @@ class AdapterConfigurationError(AzimuthBenchError):
     """Raised when adapter construction or env configuration is invalid."""
 
     pass
+
+
+class MergeCollisionError(AzimuthBenchError):
+    """Raised when merged run sources contain duplicate or ambiguous identity."""
+
+    pass
+
+
+class MergeInputError(AzimuthBenchError):
+    """Raised when a merge source is invalid or merge preconditions fail."""
+
+    pass
