@@ -55,3 +55,9 @@ Azimuth Report uses a restrained dark surface, system UI font stack (no required
 **Implemented and tested:** MLX, OpenAI-compatible HTTP, and Ollama throughput adapters; canonical bundle fields; integrity (including ambiguity detection); `azbench report build`; static report outputs; site/provider/protocol manifest scaffolding.
 
 **Designed / unverified:** llama.cpp and vLLM adapters, full suite matrix beyond the current throughput protocol, hosted SPA deployment, thermal telemetry, richer share-card/image exports.
+
+## Public documentation
+
+- [METHODOLOGY.md](METHODOLOGY.md) — measurement and comparability boundaries.
+- [READING_REPORTS.md](READING_REPORTS.md) — how to interpret static report pages and JSON.
+- [PUBLIC_PROOF_PACK.md](PUBLIC_PROOF_PACK.md) — compact facts for outreach using the reference benchmark snapshot (not SSOT).
