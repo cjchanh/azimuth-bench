@@ -1,0 +1,8 @@
+{
+  "timestamp_utc": "2026-04-01T02:49:35.312900+00:00",
+  "artifact_key": "frontier_27b__qwen35_27b_opus_distilled_v2__thinking-off",
+  "artifact_path": "/Users/cj/Workspace/active/agent-civilization/benchmarks/frontier_27b__qwen35_27b_opus_distilled_v2__thinking-off.json",
+  "model_id": "Jackrong/MLX-Qwen3.5-27B-Claude-4.6-Opus-Reasoning-Distilled-v2-4bit",
+  "thinking_mode": "off",
+  "lane": "frontier_27b"
+}

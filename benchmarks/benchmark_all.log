@@ -1,0 +1,143 @@
+2026-04-01T02:38:15Z === BENCHMARK-V2 MLX SWEEP ===
+2026-04-01T02:38:15Z Lane: frontier_27b
+2026-04-01T02:38:15Z Bench port: 9700
+2026-04-01T02:38:15Z Gate lane: disabled
+2026-04-01T02:38:15Z Mode: execute
+2026-04-01T02:38:15Z 
+2026-04-01T02:38:15Z Roster entries: 4
+2026-04-01T02:38:15Z 
+2026-04-01T02:38:15Z [frontier_27b__qwen35_27b_base__thinking-on] Qwen3.5 27B Base | lane=frontier_27b | thinking=on
+2026-04-01T02:38:15Z [frontier_27b__qwen35_27b_base__thinking-on] Existing requested artifacts found; skipping
+2026-04-01T02:38:15Z 
+2026-04-01T02:38:15Z [frontier_27b__qwen35_27b_base__thinking-off] Qwen3.5 27B Base | lane=frontier_27b | thinking=off
+2026-04-01T02:39:27Z   Loaded NexVeridian/Qwen3.5-27B-4bit in 35s (pages_free: 4444636 -> 3493363)
+2026-04-01T02:39:27Z [frontier_27b__qwen35_27b_base__thinking-off] Running token benchmark...
+2026-04-01T02:42:14Z Benchmarking: Qwen3.5 27B Base
+2026-04-01T02:42:14Z Lane: frontier_27b
+2026-04-01T02:42:14Z Thinking mode: off
+2026-04-01T02:42:14Z Max tokens: 256
+2026-04-01T02:42:14Z 
+2026-04-01T02:42:14Z Warmup: 1 unmeasured short request...
+2026-04-01T02:42:14Z   Warmup 1: first_answer=424ms, 27.7 tok/s
+2026-04-01T02:42:14Z Test 1: Short prompt (TTFT + generation)...
+2026-04-01T02:42:14Z   Run 1: first_answer=229ms, first_output=229ms, 32.3 tok/s
+2026-04-01T02:42:14Z   Run 2: first_answer=232ms, first_output=232ms, 32.1 tok/s
+2026-04-01T02:42:14Z   Run 3: first_answer=233ms, first_output=233ms, 31.9 tok/s
+2026-04-01T02:42:14Z Test 2: Structured JSON output...
+2026-04-01T02:42:14Z   Run 1: first_answer=456ms, 27.7 tok/s, reasoning_chars=0
+2026-04-01T02:42:14Z   Run 2: first_answer=232ms, 30.8 tok/s, reasoning_chars=0
+2026-04-01T02:42:14Z   Run 3: first_answer=230ms, 30.4 tok/s, reasoning_chars=0
+2026-04-01T02:42:14Z Test 3: Medium prompt (~500 tokens in)...
+2026-04-01T02:42:14Z   Run 1: first_answer=468ms, 32.3 tok/s
+2026-04-01T02:42:14Z   Run 2: first_answer=235ms, 32.8 tok/s
+2026-04-01T02:42:14Z   Run 3: first_answer=237ms, 28.4 tok/s
+2026-04-01T02:42:14Z Test 4: Long prompt (~6K tokens in)...
+2026-04-01T02:42:14Z   Run 1: first_answer=1260ms, 24.5 tok/s
+2026-04-01T02:42:14Z   Run 2: first_answer=235ms, 25.2 tok/s
+2026-04-01T02:42:14Z Test 5: Sustained throughput (10 requests)...
+2026-04-01T02:42:14Z   5/10 done
+2026-04-01T02:42:14Z   10/10 done
+2026-04-01T02:42:14Z   Sustained: 25.4 tok/s
+2026-04-01T02:42:14Z 
+2026-04-01T02:42:14Z === SUMMARY: Qwen3.5 27B Base ===
+2026-04-01T02:42:14Z   Short prompt:    32.1 tok/s
+2026-04-01T02:42:14Z   Structured JSON: 29.6 tok/s
+2026-04-01T02:42:14Z   Sustained:       25.4 tok/s
+2026-04-01T02:42:14Z   First output:    231ms
+2026-04-01T02:42:14Z   First answer:    231ms
+2026-04-01T02:42:14Z   Valid run:       True
+2026-04-01T02:42:14Z   Comparable:      True
+2026-04-01T02:42:14Z 
+2026-04-01T02:42:14Z Results: /Users/cj/Workspace/active/agent-civilization/benchmarks/frontier_27b__qwen35_27b_base__thinking-off.json
+2026-04-01T02:42:14Z 
+2026-04-01T02:42:14Z [frontier_27b__qwen35_27b_opus_distilled_v2__thinking-on] Qwen3.5 27B Opus Distilled v2 | lane=frontier_27b | thinking=on
+2026-04-01T02:43:15Z   Loaded Jackrong/MLX-Qwen3.5-27B-Claude-4.6-Opus-Reasoning-Distilled-v2-4bit in 30s (pages_free: 4445539 -> 2909386)
+2026-04-01T02:43:15Z [frontier_27b__qwen35_27b_opus_distilled_v2__thinking-on] Running token benchmark...
+2026-04-01T02:46:27Z Benchmarking: Qwen3.5 27B Opus Distilled v2
+2026-04-01T02:46:27Z Lane: frontier_27b
+2026-04-01T02:46:27Z Thinking mode: on
+2026-04-01T02:46:27Z Max tokens: 256
+2026-04-01T02:46:27Z 
+2026-04-01T02:46:27Z Warmup: 1 unmeasured short request...
+2026-04-01T02:46:27Z   Warmup 1: first_answer=2257ms, 28.4 tok/s
+2026-04-01T02:46:27Z Test 1: Short prompt (TTFT + generation)...
+2026-04-01T02:46:27Z   Run 1: first_answer=7781ms, first_output=195ms, 32.9 tok/s
+2026-04-01T02:46:27Z   Run 2: first_answer=7766ms, first_output=198ms, 33.0 tok/s
+2026-04-01T02:46:27Z   Run 3: first_answer=7766ms, first_output=204ms, 33.0 tok/s
+2026-04-01T02:46:27Z Test 2: Structured JSON output...
+2026-04-01T02:46:27Z   Run 1: first_answer=7551ms, 32.0 tok/s, reasoning_chars=1133
+2026-04-01T02:46:27Z   Run 2: first_answer=7777ms, 32.9 tok/s, reasoning_chars=1154
+2026-04-01T02:46:27Z   Run 3: first_answer=8787ms, 29.1 tok/s, reasoning_chars=1164
+2026-04-01T02:46:27Z Test 3: Medium prompt (~500 tokens in)...
+2026-04-01T02:46:27Z   Run 1: first_answer=12809ms, 25.9 tok/s
+2026-04-01T02:46:27Z   Run 2: first_answer=12213ms, 25.4 tok/s
+2026-04-01T02:46:27Z   Run 3: first_answer=14209ms, 25.1 tok/s
+2026-04-01T02:46:27Z Test 4: Long prompt (~6K tokens in)...
+2026-04-01T02:46:27Z   Run 1: first_answer=17776ms, 24.3 tok/s
+2026-04-01T02:46:27Z   Run 2: first_answer=12049ms, 28.5 tok/s
+2026-04-01T02:46:27Z Test 5: Sustained throughput (10 requests)...
+2026-04-01T02:46:27Z   5/10 done
+2026-04-01T02:46:27Z   10/10 done
+2026-04-01T02:46:27Z   Sustained: 30.2 tok/s
+2026-04-01T02:46:27Z 
+2026-04-01T02:46:27Z === SUMMARY: Qwen3.5 27B Opus Distilled v2 ===
+2026-04-01T02:46:27Z   Short prompt:    33.0 tok/s
+2026-04-01T02:46:27Z   Structured JSON: 31.3 tok/s
+2026-04-01T02:46:27Z   Sustained:       30.2 tok/s
+2026-04-01T02:46:27Z   First output:    199ms
+2026-04-01T02:46:27Z   First answer:    7771ms
+2026-04-01T02:46:27Z   Valid run:       True
+2026-04-01T02:46:27Z   Comparable:      True
+2026-04-01T02:46:27Z 
+2026-04-01T02:46:27Z Results: /Users/cj/Workspace/active/agent-civilization/benchmarks/frontier_27b__qwen35_27b_opus_distilled_v2__thinking-on.json
+2026-04-01T02:46:27Z 
+2026-04-01T02:46:27Z [frontier_27b__qwen35_27b_opus_distilled_v2__thinking-off] Qwen3.5 27B Opus Distilled v2 | lane=frontier_27b | thinking=off
+2026-04-01T02:49:35Z   Loaded Jackrong/MLX-Qwen3.5-27B-Claude-4.6-Opus-Reasoning-Distilled-v2-4bit in 91s (pages_free: 3864902 -> 2916780)
+2026-04-01T02:49:35Z [frontier_27b__qwen35_27b_opus_distilled_v2__thinking-off] Running token benchmark...
+2026-04-01T02:52:38Z Benchmarking: Qwen3.5 27B Opus Distilled v2
+2026-04-01T02:52:38Z Lane: frontier_27b
+2026-04-01T02:52:38Z Thinking mode: off
+2026-04-01T02:52:38Z Max tokens: 256
+2026-04-01T02:52:38Z 
+2026-04-01T02:52:38Z Warmup: 1 unmeasured short request...
+2026-04-01T02:52:38Z   Warmup 1: first_answer=2258ms, 28.3 tok/s
+2026-04-01T02:52:38Z Test 1: Short prompt (TTFT + generation)...
+2026-04-01T02:52:38Z   Run 1: first_answer=4021ms, first_output=195ms, 32.9 tok/s
+2026-04-01T02:52:38Z   Run 2: first_answer=1389ms, first_output=202ms, 32.6 tok/s
+2026-04-01T02:52:38Z   Run 3: first_answer=7768ms, first_output=198ms, 33.0 tok/s
+2026-04-01T02:52:38Z Test 2: Structured JSON output...
+2026-04-01T02:52:38Z   Run 1: first_answer=8009ms, 32.0 tok/s, reasoning_chars=1179
+2026-04-01T02:52:38Z   Run 2: first_answer=7787ms, 32.9 tok/s, reasoning_chars=1197
+2026-04-01T02:52:38Z   Run 3: first_answer=8273ms, 30.9 tok/s, reasoning_chars=1212
+2026-04-01T02:52:38Z Test 3: Medium prompt (~500 tokens in)...
+2026-04-01T02:52:38Z   Run 1: first_answer=8219ms, 25.7 tok/s
+2026-04-01T02:52:38Z   Run 2: first_answer=11479ms, 25.4 tok/s
+2026-04-01T02:52:38Z   Run 3: first_answer=11817ms, 26.6 tok/s
+2026-04-01T02:52:38Z Test 4: Long prompt (~6K tokens in)...
+2026-04-01T02:52:38Z   Run 1: first_answer=11804ms, 26.6 tok/s
+2026-04-01T02:52:38Z   Run 2: first_answer=11267ms, 31.4 tok/s
+2026-04-01T02:52:38Z Test 5: Sustained throughput (10 requests)...
+2026-04-01T02:52:38Z   5/10 done
+2026-04-01T02:52:38Z   10/10 done
+2026-04-01T02:52:38Z   Sustained: 31.8 tok/s
+2026-04-01T02:52:38Z 
+2026-04-01T02:52:38Z === SUMMARY: Qwen3.5 27B Opus Distilled v2 ===
+2026-04-01T02:52:38Z   Short prompt:    32.8 tok/s
+2026-04-01T02:52:38Z   Structured JSON: 31.9 tok/s
+2026-04-01T02:52:38Z   Sustained:       31.8 tok/s
+2026-04-01T02:52:38Z   First output:    198ms
+2026-04-01T02:52:38Z   First answer:    4393ms
+2026-04-01T02:52:38Z   Valid run:       True
+2026-04-01T02:52:38Z   Comparable:      True
+2026-04-01T02:52:38Z 
+2026-04-01T02:52:38Z Results: /Users/cj/Workspace/active/agent-civilization/benchmarks/frontier_27b__qwen35_27b_opus_distilled_v2__thinking-off.json
+2026-04-01T02:52:38Z 
+2026-04-01T02:52:38Z {
+2026-04-01T02:52:38Z   "token": {
+2026-04-01T02:52:38Z     "json": "/Users/cj/Workspace/active/agent-civilization/benchmarks/benchmark_v2_token_summary.json",
+2026-04-01T02:52:38Z     "csv": "/Users/cj/Workspace/active/agent-civilization/benchmarks/benchmark_v2_token_summary.csv",
+2026-04-01T02:52:38Z     "md": "/Users/cj/Workspace/active/agent-civilization/benchmarks/benchmark_v2_token_summary.md"
+2026-04-01T02:52:38Z   }
+2026-04-01T02:52:38Z }
+2026-04-01T02:52:38Z === BENCHMARK-V2 COMPLETE ===
+2026-04-01T02:52:38Z Token summary: /Users/cj/Workspace/active/agent-civilization/benchmarks/benchmark_v2_token_summary.json

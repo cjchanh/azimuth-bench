@@ -1,0 +1,19 @@
+{
+  "generated_at_utc": "2026-04-01T01:19:21.585890+00:00",
+  "lane": "frontier_27b",
+  "row_count": 0,
+  "fields": [
+    "model_id",
+    "display_name",
+    "lane",
+    "thinking_mode",
+    "short_tok_s",
+    "structured_json_tok_s",
+    "sustained_tok_s",
+    "first_output_ms",
+    "first_answer_ms",
+    "source_label",
+    "source_badge"
+  ],
+  "rows": []
+}

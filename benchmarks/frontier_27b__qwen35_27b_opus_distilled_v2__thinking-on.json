@@ -1,0 +1,555 @@
+{
+  "model_id": "Jackrong/MLX-Qwen3.5-27B-Claude-4.6-Opus-Reasoning-Distilled-v2-4bit",
+  "display_name": "Qwen3.5 27B Opus Distilled v2",
+  "lane": "frontier_27b",
+  "thinking_mode": "on",
+  "source_label": "Jackrong / Hugging Face",
+  "source_badge": "Hugging Face",
+  "artifact_key": "frontier_27b__qwen35_27b_opus_distilled_v2__thinking-on",
+  "chat_template_kwargs": {
+    "enable_thinking": true
+  },
+  "smoke": false,
+  "protocol": {
+    "protocol_id": "benchmark_v2_m5max_v1",
+    "machine_class": "Apple Silicon M5 Max local MLX lane",
+    "canonical_identity": "token_only",
+    "gate_lane": "optional_secondary_validation",
+    "stream_required_for_validity": true,
+    "temperature": 0.3,
+    "thinking_mode_policy": "explicit default/on/off via chat_template_kwargs.enable_thinking",
+    "warmup_policy": {
+      "enabled": true,
+      "warmup_requests": 1,
+      "prompt_id": "short",
+      "counted_in_canonical_metrics": false
+    },
+    "repeat_counts": {
+      "short": 3,
+      "structured": 3,
+      "medium": 3,
+      "long": 2,
+      "sustained": 10
+    },
+    "prompt_set_id": "benchmark_v2_m5max_prompt_set_v1",
+    "prompts": [
+      {
+        "prompt_id": "short",
+        "sha256": "278ae054093541adda5a31d210f350559525b868055d02cc2adcfa1acbcaf779",
+        "char_count": 46,
+        "token_cap": 256
+      },
+      {
+        "prompt_id": "structured",
+        "sha256": "b9272a4a797a3abf3e287d86a24936fb476e50bb7c2623c5ae8479ba1bb6896d",
+        "char_count": 563,
+        "token_cap": 256
+      },
+      {
+        "prompt_id": "medium",
+        "sha256": "e27867efce60ca8cf029ce57bc9355255bb9ed374983e95e52d789ab00dce820",
+        "char_count": 766,
+        "token_cap": 512
+      },
+      {
+        "prompt_id": "long",
+        "sha256": "033777958cf7e955aa22845d17f886709c99c3fafb23ae0f7c833d355a56c0d9",
+        "char_count": 5978,
+        "token_cap": 512
+      },
+      {
+        "prompt_id": "sustained",
+        "sha256": "278ae054093541adda5a31d210f350559525b868055d02cc2adcfa1acbcaf779",
+        "char_count": 46,
+        "token_cap": 128
+      }
+    ],
+    "valid_run_requirements": [
+      "all measured requests completed",
+      "all measured requests used streaming path",
+      "measured repeat counts match protocol",
+      "single token count source across measured requests"
+    ]
+  },
+  "benchmark_config": {
+    "max_tokens": 256,
+    "repeat_counts": {
+      "short": 3,
+      "structured": 3,
+      "medium": 3,
+      "long": 2,
+      "sustained": 10
+    }
+  },
+  "warmup": {
+    "count": 1,
+    "runs": [
+      {
+        "first_output_ms": 384.5,
+        "first_answer_ms": 2256.6,
+        "ttft_ms": 2256.6,
+        "total_ms": 2256.6,
+        "tokens_in": 21,
+        "tokens_out": 64,
+        "tok_per_sec": 28.4,
+        "answer_chars": 0,
+        "reasoning_chars": 273,
+        "content_present": false,
+        "reasoning_present": true,
+        "used_stream": true,
+        "token_count_source": "usage"
+      }
+    ],
+    "counted_in_canonical_metrics": false
+  },
+  "short_prompt": [
+    {
+      "first_output_ms": 194.7,
+      "first_answer_ms": 7781.4,
+      "ttft_ms": 7781.4,
+      "total_ms": 7781.4,
+      "tokens_in": 21,
+      "tokens_out": 256,
+      "tok_per_sec": 32.9,
+      "answer_chars": 0,
+      "reasoning_chars": 1210,
+      "content_present": false,
+      "reasoning_present": true,
+      "used_stream": true,
+      "token_count_source": "usage"
+    },
+    {
+      "first_output_ms": 197.9,
+      "first_answer_ms": 7765.7,
+      "ttft_ms": 7765.7,
+      "total_ms": 7765.7,
+      "tokens_in": 21,
+      "tokens_out": 256,
+      "tok_per_sec": 33.0,
+      "answer_chars": 0,
+      "reasoning_chars": 1165,
+      "content_present": false,
+      "reasoning_present": true,
+      "used_stream": true,
+      "token_count_source": "usage"
+    },
+    {
+      "first_output_ms": 203.8,
+      "first_answer_ms": 7766.0,
+      "ttft_ms": 7766.0,
+      "total_ms": 7766.0,
+      "tokens_in": 21,
+      "tokens_out": 256,
+      "tok_per_sec": 33.0,
+      "answer_chars": 0,
+      "reasoning_chars": 1292,
+      "content_present": false,
+      "reasoning_present": true,
+      "used_stream": true,
+      "token_count_source": "usage"
+    }
+  ],
+  "structured_json": [
+    {
+      "first_output_ms": 432.2,
+      "first_answer_ms": 7551.3,
+      "ttft_ms": 7551.3,
+      "total_ms": 8003.9,
+      "tokens_in": 136,
+      "tokens_out": 256,
+      "tok_per_sec": 32.0,
+      "answer_chars": 41,
+      "reasoning_chars": 1133,
+      "content_present": true,
+      "reasoning_present": true,
+      "used_stream": true,
+      "token_count_source": "usage"
+    },
+    {
+      "first_output_ms": 200.4,
+      "first_answer_ms": 7777.3,
+      "ttft_ms": 7777.3,
+      "total_ms": 7777.3,
+      "tokens_in": 136,
+      "tokens_out": 256,
+      "tok_per_sec": 32.9,
+      "answer_chars": 0,
+      "reasoning_chars": 1154,
+      "content_present": false,
+      "reasoning_present": true,
+      "used_stream": true,
+      "token_count_source": "usage"
+    },
+    {
+      "first_output_ms": 201.0,
+      "first_answer_ms": 8787.1,
+      "ttft_ms": 8787.1,
+      "total_ms": 8787.1,
+      "tokens_in": 136,
+      "tokens_out": 256,
+      "tok_per_sec": 29.1,
+      "answer_chars": 0,
+      "reasoning_chars": 1164,
+      "content_present": false,
+      "reasoning_present": true,
+      "used_stream": true,
+      "token_count_source": "usage"
+    }
+  ],
+  "medium_prompt": [
+    {
+      "first_output_ms": 445.2,
+      "first_answer_ms": 12808.8,
+      "ttft_ms": 12808.8,
+      "total_ms": 19755.2,
+      "tokens_in": 160,
+      "tokens_out": 512,
+      "tok_per_sec": 25.9,
+      "answer_chars": 713,
+      "reasoning_chars": 1486,
+      "content_present": true,
+      "reasoning_present": true,
+      "used_stream": true,
+      "token_count_source": "usage"
+    },
+    {
+      "first_output_ms": 199.9,
+      "first_answer_ms": 12212.6,
+      "ttft_ms": 12212.6,
+      "total_ms": 20144.8,
+      "tokens_in": 160,
+      "tokens_out": 512,
+      "tok_per_sec": 25.4,
+      "answer_chars": 904,
+      "reasoning_chars": 1440,
+      "content_present": true,
+      "reasoning_present": true,
+      "used_stream": true,
+      "token_count_source": "usage"
+    },
+    {
+      "first_output_ms": 200.6,
+      "first_answer_ms": 14208.9,
+      "ttft_ms": 14208.9,
+      "total_ms": 20373.5,
+      "tokens_in": 160,
+      "tokens_out": 512,
+      "tok_per_sec": 25.1,
+      "answer_chars": 847,
+      "reasoning_chars": 1599,
+      "content_present": true,
+      "reasoning_present": true,
+      "used_stream": true,
+      "token_count_source": "usage"
+    }
+  ],
+  "long_prompt": [
+    {
+      "first_output_ms": 1192.8,
+      "first_answer_ms": 17776.3,
+      "ttft_ms": 17776.3,
+      "total_ms": 21105.8,
+      "tokens_in": 841,
+      "tokens_out": 512,
+      "tok_per_sec": 24.3,
+      "answer_chars": 260,
+      "reasoning_chars": 1987,
+      "content_present": true,
+      "reasoning_present": true,
+      "used_stream": true,
+      "token_count_source": "usage"
+    },
+    {
+      "first_output_ms": 204.5,
+      "first_answer_ms": 12049.1,
+      "ttft_ms": 12049.1,
+      "total_ms": 17989.4,
+      "tokens_in": 841,
+      "tokens_out": 512,
+      "tok_per_sec": 28.5,
+      "answer_chars": 813,
+      "reasoning_chars": 1611,
+      "content_present": true,
+      "reasoning_present": true,
+      "used_stream": true,
+      "token_count_source": "usage"
+    }
+  ],
+  "sustained": {
+    "runs": [
+      {
+        "first_output_ms": 222.2,
+        "first_answer_ms": 4236.7,
+        "ttft_ms": 4236.7,
+        "total_ms": 4236.7,
+        "tokens_in": 21,
+        "tokens_out": 128,
+        "tok_per_sec": 30.2,
+        "answer_chars": 0,
+        "reasoning_chars": 618,
+        "content_present": false,
+        "reasoning_present": true,
+        "used_stream": true,
+        "token_count_source": "usage"
+      },
+      {
+        "first_output_ms": 223.7,
+        "first_answer_ms": 4241.8,
+        "ttft_ms": 4241.8,
+        "total_ms": 4241.8,
+        "tokens_in": 21,
+        "tokens_out": 128,
+        "tok_per_sec": 30.2,
+        "answer_chars": 0,
+        "reasoning_chars": 583,
+        "content_present": false,
+        "reasoning_present": true,
+        "used_stream": true,
+        "token_count_source": "usage"
+      },
+      {
+        "first_output_ms": 222.8,
+        "first_answer_ms": 4243.9,
+        "ttft_ms": 4243.9,
+        "total_ms": 4243.9,
+        "tokens_in": 21,
+        "tokens_out": 128,
+        "tok_per_sec": 30.2,
+        "answer_chars": 0,
+        "reasoning_chars": 527,
+        "content_present": false,
+        "reasoning_present": true,
+        "used_stream": true,
+        "token_count_source": "usage"
+      },
+      {
+        "first_output_ms": 223.6,
+        "first_answer_ms": 4237.1,
+        "ttft_ms": 4237.1,
+        "total_ms": 4237.1,
+        "tokens_in": 21,
+        "tokens_out": 128,
+        "tok_per_sec": 30.2,
+        "answer_chars": 0,
+        "reasoning_chars": 554,
+        "content_present": false,
+        "reasoning_present": true,
+        "used_stream": true,
+        "token_count_source": "usage"
+      },
+      {
+        "first_output_ms": 226.0,
+        "first_answer_ms": 4247.1,
+        "ttft_ms": 4247.1,
+        "total_ms": 4247.1,
+        "tokens_in": 21,
+        "tokens_out": 128,
+        "tok_per_sec": 30.1,
+        "answer_chars": 0,
+        "reasoning_chars": 537,
+        "content_present": false,
+        "reasoning_present": true,
+        "used_stream": true,
+        "token_count_source": "usage"
+      },
+      {
+        "first_output_ms": 227.0,
+        "first_answer_ms": 4237.5,
+        "ttft_ms": 4237.5,
+        "total_ms": 4237.5,
+        "tokens_in": 21,
+        "tokens_out": 128,
+        "tok_per_sec": 30.2,
+        "answer_chars": 0,
+        "reasoning_chars": 532,
+        "content_present": false,
+        "reasoning_present": true,
+        "used_stream": true,
+        "token_count_source": "usage"
+      },
+      {
+        "first_output_ms": 228.5,
+        "first_answer_ms": 4250.3,
+        "ttft_ms": 4250.3,
+        "total_ms": 4250.3,
+        "tokens_in": 21,
+        "tokens_out": 128,
+        "tok_per_sec": 30.1,
+        "answer_chars": 0,
+        "reasoning_chars": 573,
+        "content_present": false,
+        "reasoning_present": true,
+        "used_stream": true,
+        "token_count_source": "usage"
+      },
+      {
+        "first_output_ms": 227.6,
+        "first_answer_ms": 4241.6,
+        "ttft_ms": 4241.6,
+        "total_ms": 4241.6,
+        "tokens_in": 21,
+        "tokens_out": 128,
+        "tok_per_sec": 30.2,
+        "answer_chars": 0,
+        "reasoning_chars": 530,
+        "content_present": false,
+        "reasoning_present": true,
+        "used_stream": true,
+        "token_count_source": "usage"
+      },
+      {
+        "first_output_ms": 224.6,
+        "first_answer_ms": 4011.4,
+        "ttft_ms": 4011.4,
+        "total_ms": 4242.2,
+        "tokens_in": 21,
+        "tokens_out": 128,
+        "tok_per_sec": 30.2,
+        "answer_chars": 34,
+        "reasoning_chars": 568,
+        "content_present": true,
+        "reasoning_present": true,
+        "used_stream": true,
+        "token_count_source": "usage"
+      },
+      {
+        "first_output_ms": 225.3,
+        "first_answer_ms": 4241.0,
+        "ttft_ms": 4241.0,
+        "total_ms": 4241.0,
+        "tokens_in": 21,
+        "tokens_out": 128,
+        "tok_per_sec": 30.2,
+        "answer_chars": 0,
+        "reasoning_chars": 542,
+        "content_present": false,
+        "reasoning_present": true,
+        "used_stream": true,
+        "token_count_source": "usage"
+      }
+    ],
+    "total_seconds": 42.4,
+    "total_tokens": 1280,
+    "sustained_tok_per_sec": 30.2
+  },
+  "vm_pages_free": "Pages free:                             2761631.",
+  "summary": {
+    "model_id": "Jackrong/MLX-Qwen3.5-27B-Claude-4.6-Opus-Reasoning-Distilled-v2-4bit",
+    "display_name": "Qwen3.5 27B Opus Distilled v2",
+    "lane": "frontier_27b",
+    "thinking_mode": "on",
+    "artifact_key": "frontier_27b__qwen35_27b_opus_distilled_v2__thinking-on",
+    "source_label": "Jackrong / Hugging Face",
+    "source_badge": "Hugging Face",
+    "short_tok_s": 33.0,
+    "structured_json_tok_s": 31.3,
+    "sustained_tok_s": 30.2,
+    "first_output_ms": 198.8,
+    "first_answer_ms": 7771.0,
+    "avg_ttft_ms": 7771.0,
+    "timestamp_utc": "2026-04-01T02:46:27.150221+00:00",
+    "valid_run": true,
+    "comparable": true
+  },
+  "validity": {
+    "valid_run": true,
+    "issues": [],
+    "expected_counts": {
+      "short": 3,
+      "structured": 3,
+      "medium": 3,
+      "long": 2,
+      "sustained": 10
+    },
+    "observed_counts": {
+      "short": 3,
+      "structured": 3,
+      "medium": 3,
+      "long": 2,
+      "sustained": 10
+    },
+    "token_count_sources": [
+      "usage"
+    ]
+  },
+  "comparability": {
+    "comparable": true,
+    "protocol_id": "benchmark_v2_m5max_v1",
+    "prompt_set_id": "benchmark_v2_m5max_prompt_set_v1",
+    "warm_interpretation": "warm_after_load",
+    "cold_interpretation": "model_load_receipt_only",
+    "token_count_sources": [
+      "usage"
+    ]
+  },
+  "receipts": {
+    "run_start_utc": "2026-04-01T02:43:15.194890+00:00",
+    "run_finish_utc": "2026-04-01T02:46:27.150256+00:00",
+    "machine_pre_run": {
+      "timestamp_utc": "2026-04-01T02:42:14.838529+00:00",
+      "hostname": "CJs-MacBook-Pro",
+      "platform": "macOS-26.3.1-arm64-arm-64bit-Mach-O",
+      "python": "3.14.3",
+      "bench_port": 9700,
+      "lane": "frontier_27b",
+      "model_id": "Jackrong/MLX-Qwen3.5-27B-Claude-4.6-Opus-Reasoning-Distilled-v2-4bit",
+      "thinking_mode": "on",
+      "loadavg": [
+        2.68,
+        2.22,
+        2.1
+      ],
+      "vm_pages_free": "3348319",
+      "cpu_brand": "Apple M5 Max",
+      "hardware_model": "Mac17,6",
+      "memsize": "137438953472",
+      "battery_or_power": "Now drawing from 'AC Power'\n -InternalBattery-0 (id=22085731)\t81%; AC attached; not charging present: true",
+      "continuous_monitoring": "disabled_by_protocol"
+    },
+    "model_load": {
+      "started_at_utc": "2026-04-01T02:42:14.853999+00:00",
+      "finished_at_utc": "2026-04-01T02:43:15.099625+00:00",
+      "load_seconds": 60.25,
+      "served_model": "Jackrong/MLX-Qwen3.5-27B-Claude-4.6-Opus-Reasoning-Distilled-v2-4bit",
+      "expected_model": "Jackrong/MLX-Qwen3.5-27B-Claude-4.6-Opus-Reasoning-Distilled-v2-4bit",
+      "pages_free_before": "4445539",
+      "pages_free_after": "2909386",
+      "port": 9700
+    },
+    "token_run_start": {
+      "timestamp_utc": "2026-04-01T02:43:15.099941+00:00",
+      "artifact_key": "frontier_27b__qwen35_27b_opus_distilled_v2__thinking-on",
+      "artifact_path": "/Users/cj/Workspace/active/agent-civilization/benchmarks/frontier_27b__qwen35_27b_opus_distilled_v2__thinking-on.json",
+      "model_id": "Jackrong/MLX-Qwen3.5-27B-Claude-4.6-Opus-Reasoning-Distilled-v2-4bit",
+      "thinking_mode": "on",
+      "lane": "frontier_27b"
+    },
+    "token_run_finish": {
+      "timestamp_utc": "2026-04-01T02:46:27.168184+00:00",
+      "artifact_path": "/Users/cj/Workspace/active/agent-civilization/benchmarks/frontier_27b__qwen35_27b_opus_distilled_v2__thinking-on.json",
+      "status": "complete"
+    },
+    "artifact_complete": {
+      "timestamp_utc": "2026-04-01T02:46:27.168457+00:00",
+      "artifact_path": "/Users/cj/Workspace/active/agent-civilization/benchmarks/frontier_27b__qwen35_27b_opus_distilled_v2__thinking-on.json",
+      "required_keys": [
+        "protocol",
+        "summary",
+        "validity",
+        "comparability",
+        "receipts"
+      ],
+      "missing_keys": [],
+      "valid_run": true,
+      "comparable": true,
+      "complete": true
+    }
+  },
+  "receipt_paths": {
+    "artifact_complete": "/Users/cj/Workspace/active/agent-civilization/benchmarks/receipts/frontier_27b__qwen35_27b_opus_distilled_v2__thinking-on/artifact_complete.json",
+    "machine_pre_run": "/Users/cj/Workspace/active/agent-civilization/benchmarks/receipts/frontier_27b__qwen35_27b_opus_distilled_v2__thinking-on/machine_pre_run.json",
+    "model_load": "/Users/cj/Workspace/active/agent-civilization/benchmarks/receipts/frontier_27b__qwen35_27b_opus_distilled_v2__thinking-on/model_load.json",
+    "token_run_finish": "/Users/cj/Workspace/active/agent-civilization/benchmarks/receipts/frontier_27b__qwen35_27b_opus_distilled_v2__thinking-on/token_run_finish.json",
+    "token_run_start": "/Users/cj/Workspace/active/agent-civilization/benchmarks/receipts/frontier_27b__qwen35_27b_opus_distilled_v2__thinking-on/token_run_start.json"
+  }
+}
