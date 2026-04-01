@@ -99,6 +99,10 @@ def test_build_report_emits_outputs(repo_benchmarks: Path, tmp_path: Path) -> No
     assert (out / "leaderboard.html").exists()
     assert (out / "compare.html").exists()
     assert (out / "summary.md").exists()
+    summary_md = (out / "summary.md").read_text(encoding="utf-8")
+    assert "llama.cpp and vLLM adapters" in summary_md
+    assert "Portable merge of external run bundles" in summary_md
+    assert "Additional adapters beyond MLX" not in summary_md
     assert (out / "data" / "run.json").exists()
     lb = json.loads((out / "data" / "leaderboard.json").read_text(encoding="utf-8"))
     assert lb.get("azimuth_bench_schema_version") == AZIMUTH_BENCH_SCHEMA_VERSION
@@ -114,6 +118,9 @@ def test_build_report_emits_outputs(repo_benchmarks: Path, tmp_path: Path) -> No
     assert (out / "data" / "runs" / "index.json").exists()
     assert (out / "data" / "runs" / "core__phi4_mini__thinking-default" / "run.json").exists()
     assert (out / "runs" / "core__phi4_mini__thinking-default.html").exists()
+    index_html = (out / "index.html").read_text(encoding="utf-8")
+    assert "report/data/compare.json" in index_html
+    assert "../../docs/azimuth_bench/" not in index_html
     assert (out / "charts" / "throughput_structured.svg").exists()
     assert (out / "charts" / "latency_tradeoff.svg").exists()
     provider = json.loads((out / "data" / "provider.json").read_text(encoding="utf-8"))
