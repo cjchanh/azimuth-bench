@@ -72,7 +72,7 @@ These exist so **existing scripts and `-m` module paths keep working**. They **m
 | Static site manifest + host index payload | `azimuth_bench.site.contract` (`routes`, `host_index`). |
 | Markdown export CLI | `azbench export markdown <run_dir> --output …` (requires built `report/data/`). |
 | Compare projection + share SVGs | `compare.json` uses `azimuth_compare_v1` (`azimuth_bench.compare.projection`); deterministic `report/exports/share_leaderboard.svg` and `share_compare.svg`; `azbench export svg`. |
-| Portable merge of validated run bundles (M5) | `azbench report build <primary> --include-run-dir <other> …`; `azimuth_bench.merge.bundle.merge_canonical_bundles`; outputs `report/data/merge.json`, merge section on `leaderboard.json`, comparability classes + blockers; fail-closed on integrity/collision/duplicate identity. Covered by `tests/test_merge.py`. |
+| Portable merge of validated run bundles (M5) | `azbench report build <primary> --include-run-dir <other> …`; `azimuth_bench.merge.bundle.merge_canonical_bundles`; outputs `report/data/merge.json`, merge section on `leaderboard.json`, comparability classes + blockers; fail-closed on integrity/collision/duplicate identity. **Merge row identity** (duplicate blocking): `(model_id, lane, thinking_mode)`; artifact keys are prefixed per source (`s0__`, `s1__`, …). Covered by `tests/test_merge.py`. |
 
 | Not implemented (by design in this repo) | Notes |
 | --- | --- |
