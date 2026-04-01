@@ -1,0 +1,66 @@
+{
+  "azimuth_bench_schema_version": "1.0.0",
+  "routes": [
+    "home",
+    "leaderboard",
+    "run_detail",
+    "compare",
+    "machine_detail",
+    "providers",
+    "protocols"
+  ],
+  "host_index": {
+    "azimuth_bench_schema_version": "1.0.0",
+    "row_count": 18,
+    "provider_count": 1,
+    "protocol_count": 1,
+    "comparability": {
+      "note": "see per-row comparable flags in summary rows"
+    }
+  },
+  "home": {
+    "description": "Latest report index and headline metrics",
+    "artifact": "report/index.html",
+    "data": [
+      "report/data/run.json",
+      "report/data/summary.json"
+    ]
+  },
+  "leaderboard": {
+    "description": "Sortable table over summary rows",
+    "artifact": "report/leaderboard.html",
+    "data": "report/data/leaderboard.json",
+    "primary_metric": "structured_json_tok_s"
+  },
+  "run_detail": {
+    "description": "Per-artifact detail pages emitted under report/runs/",
+    "data_root": "report/data/runs/",
+    "artifact": "report/runs/",
+    "count": 18
+  },
+  "compare": {
+    "description": "Pairwise comparison view for selected rows",
+    "artifact": "report/compare.html",
+    "data": "report/data/compare.json"
+  },
+  "machine_detail": {
+    "description": "Machine snapshot pages emitted under report/machines/",
+    "artifact": "report/machines/",
+    "data": "report/data/machines.json",
+    "count": 1
+  },
+  "providers": {
+    "description": "Provider summary pages emitted under report/providers/",
+    "artifact": "report/providers/",
+    "data": "report/data/providers/index.json",
+    "count": 1
+  },
+  "protocols": {
+    "description": "Protocol summary pages emitted under report/protocols/",
+    "artifact": "report/protocols/",
+    "data": "report/data/protocols/index.json",
+    "count": 1
+  },
+  "row_count": 18,
+  "status": "scaffold_static_first"
+}

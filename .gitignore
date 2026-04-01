@@ -6,3 +6,6 @@ __pycache__/
 build/
 dist/
 .env
+
+# Generated Azimuth Report output (`azbench report build <run_dir>`)
+benchmarks/report/

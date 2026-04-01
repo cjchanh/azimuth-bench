@@ -13,7 +13,7 @@ mlx-community/Ministral-3-8B-Instruct-2512-4bit,Ministral 3 8B,core,default,97.7
 mlx-community/Ministral-3-14B-Instruct-2512-4bit,Ministral 3 14B,core,default,64.2,61.5,61.8,84.7,84.7,mlx-community,MLX Community
 mlx-community/Phi-4-mini-instruct-4bit,Phi 4 Mini,core,default,169.4,146.3,162.2,95.1,95.1,mlx-community,MLX Community
 mlx-community/DeepSeek-R1-Distill-Llama-8B-4bit,DeepSeek R1 Distill Llama 8B,core,default,104.7,103.9,103.1,78.3,93.4,mlx-community,MLX Community
-NexVeridian/Qwen3.5-27B-4bit,Qwen3.5 27B Base,frontier_27b,on,32.4,27.1,31.3,205.8,7906.1,NexVeridian / Hugging Face,Hugging Face
-NexVeridian/Qwen3.5-27B-4bit,Qwen3.5 27B Base,frontier_27b,off,32.1,29.6,25.4,231.3,231.3,NexVeridian / Hugging Face,Hugging Face
-Jackrong/MLX-Qwen3.5-27B-Claude-4.6-Opus-Reasoning-Distilled-v2-4bit,Qwen3.5 27B Opus Distilled v2,frontier_27b,on,33.0,31.3,30.2,198.8,7771.0,Jackrong / Hugging Face,Hugging Face
-Jackrong/MLX-Qwen3.5-27B-Claude-4.6-Opus-Reasoning-Distilled-v2-4bit,Qwen3.5 27B Opus Distilled v2,frontier_27b,off,32.8,31.9,31.8,198.4,4392.8,Jackrong / Hugging Face,Hugging Face
+NexVeridian/Qwen3.5-27B-4bit,Qwen3.5 27B Base,frontier_27b,on,32.3,30.9,31.2,219.2,7938.0,NexVeridian / Hugging Face,Hugging Face
+NexVeridian/Qwen3.5-27B-4bit,Qwen3.5 27B Base,frontier_27b,off,31.6,29.3,30.8,255.1,255.1,NexVeridian / Hugging Face,Hugging Face
+Jackrong/MLX-Qwen3.5-27B-Claude-4.6-Opus-Reasoning-Distilled-v2-4bit,Qwen3.5 27B Opus Distilled v2,frontier_27b,on,31.9,31.9,31.6,223.7,8021.5,Jackrong / Hugging Face,Hugging Face
+Jackrong/MLX-Qwen3.5-27B-Claude-4.6-Opus-Reasoning-Distilled-v2-4bit,Qwen3.5 27B Opus Distilled v2,frontier_27b,off,32.4,32.2,31.7,209.5,4623.0,Jackrong / Hugging Face,Hugging Face

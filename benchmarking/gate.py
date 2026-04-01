@@ -16,7 +16,7 @@ from typing import Any
 
 import aiohttp
 
-from benchmarking.roster import chat_template_kwargs_for_thinking_mode
+from azimuth_bench.core.runtime import chat_template_kwargs_for_thinking_mode
 from benchmarking.utils import ROOT, coerce_message_text
 
 PROMPT_MODE_SINGLE_USER = "single_user"

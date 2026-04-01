@@ -1,0 +1,49 @@
+{
+  "azimuth_bench_schema_version": "1.0.0",
+  "suite_family": "throughput",
+  "protocol_id": "benchmark_v2_m5max_v1",
+  "prompt_set_id": "benchmark_v2_m5max_prompt_set_v1",
+  "thinking_mode_policy": "explicit default/on/off via chat_template_kwargs.enable_thinking",
+  "prompts": [
+    {
+      "prompt_id": "short",
+      "sha256": "278ae054093541adda5a31d210f350559525b868055d02cc2adcfa1acbcaf779",
+      "char_count": 46,
+      "token_cap": 256
+    },
+    {
+      "prompt_id": "structured",
+      "sha256": "b9272a4a797a3abf3e287d86a24936fb476e50bb7c2623c5ae8479ba1bb6896d",
+      "char_count": 563,
+      "token_cap": 256
+    },
+    {
+      "prompt_id": "medium",
+      "sha256": "e27867efce60ca8cf029ce57bc9355255bb9ed374983e95e52d789ab00dce820",
+      "char_count": 766,
+      "token_cap": 512
+    },
+    {
+      "prompt_id": "long",
+      "sha256": "033777958cf7e955aa22845d17f886709c99c3fafb23ae0f7c833d355a56c0d9",
+      "char_count": 5978,
+      "token_cap": 512
+    },
+    {
+      "prompt_id": "sustained",
+      "sha256": "278ae054093541adda5a31d210f350559525b868055d02cc2adcfa1acbcaf779",
+      "char_count": 46,
+      "token_cap": 128
+    }
+  ],
+  "benchmark_config": {
+    "max_tokens": 256,
+    "repeat_counts": {
+      "short": 3,
+      "structured": 3,
+      "medium": 3,
+      "long": 2,
+      "sustained": 10
+    }
+  }
+}

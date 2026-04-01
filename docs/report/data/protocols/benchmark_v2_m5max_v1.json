@@ -1,0 +1,93 @@
+{
+  "protocol_key": "benchmark_v2_m5max_v1",
+  "protocol_id": "benchmark_v2_m5max_v1",
+  "prompt_set_id": "benchmark_v2_m5max_prompt_set_v1",
+  "suite_family": "throughput",
+  "machine_classes": [],
+  "run_count": 18,
+  "models": [
+    {
+      "display_name": "Qwen2.5 Coder 7B",
+      "artifact_key": "core__qwen25_coder_7b__thinking-default"
+    },
+    {
+      "display_name": "Qwen2.5 Coder 14B",
+      "artifact_key": "core__qwen25_coder_14b__thinking-default"
+    },
+    {
+      "display_name": "Qwen2.5 Instruct 14B",
+      "artifact_key": "core__qwen25_instruct_14b__thinking-default"
+    },
+    {
+      "display_name": "Qwen2.5 Instruct 7B",
+      "artifact_key": "core__qwen25_instruct_7b__thinking-default"
+    },
+    {
+      "display_name": "Qwen2.5 Coder 32B",
+      "artifact_key": "core__qwen25_coder_32b__thinking-default"
+    },
+    {
+      "display_name": "Qwen3.5 9B",
+      "artifact_key": "core__qwen35_9b__thinking-default"
+    },
+    {
+      "display_name": "Gemma 3 4B",
+      "artifact_key": "core__gemma3_4b__thinking-default"
+    },
+    {
+      "display_name": "Gemma 3 12B",
+      "artifact_key": "core__gemma3_12b__thinking-default"
+    },
+    {
+      "display_name": "Gemma 3 27B",
+      "artifact_key": "core__gemma3_27b__thinking-default"
+    },
+    {
+      "display_name": "Llama 3.1 8B",
+      "artifact_key": "core__llama31_8b__thinking-default"
+    },
+    {
+      "display_name": "Ministral 3 8B",
+      "artifact_key": "core__ministral3_8b__thinking-default"
+    },
+    {
+      "display_name": "Ministral 3 14B",
+      "artifact_key": "core__ministral3_14b__thinking-default"
+    },
+    {
+      "display_name": "Phi 4 Mini",
+      "artifact_key": "core__phi4_mini__thinking-default"
+    },
+    {
+      "display_name": "DeepSeek R1 Distill Llama 8B",
+      "artifact_key": "core__deepseek_r1_distill_llama_8b__thinking-default"
+    },
+    {
+      "display_name": "Qwen3.5 27B Base",
+      "artifact_key": "frontier_27b__qwen35_27b_base__thinking-on"
+    },
+    {
+      "display_name": "Qwen3.5 27B Base",
+      "artifact_key": "frontier_27b__qwen35_27b_base__thinking-off"
+    },
+    {
+      "display_name": "Qwen3.5 27B Opus Distilled v2",
+      "artifact_key": "frontier_27b__qwen35_27b_opus_distilled_v2__thinking-on"
+    },
+    {
+      "display_name": "Qwen3.5 27B Opus Distilled v2",
+      "artifact_key": "frontier_27b__qwen35_27b_opus_distilled_v2__thinking-off"
+    }
+  ],
+  "manifest": {
+    "azimuth_bench_schema_version": "1.0.0",
+    "suite_family": "throughput",
+    "protocol_id": "benchmark_v2_m5max_v1",
+    "prompt_set_id": "benchmark_v2_m5max_prompt_set_v1",
+    "machine_class": null,
+    "claims": {
+      "protocol_fields": "measured_from_suite_definition",
+      "machine_class": "operator_supplied_or_suite_default"
+    }
+  }
+}

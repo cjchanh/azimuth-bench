@@ -1,0 +1,52 @@
+{
+  "azimuth_bench_schema_version": "1.0.0",
+  "metrics": {
+    "model_id": "mlx-community/Qwen2.5-Coder-14B-Instruct-4bit",
+    "display_name": "Qwen2.5 Coder 14B",
+    "lane": "core",
+    "thinking_mode": "default",
+    "artifact_key": "core__qwen25_coder_14b__thinking-default",
+    "source_label": "mlx-community",
+    "source_badge": "MLX Community",
+    "short_tok_s": 57.8,
+    "structured_json_tok_s": 55.3,
+    "sustained_tok_s": 45.6,
+    "first_output_ms": 93.3,
+    "first_answer_ms": 93.3,
+    "avg_ttft_ms": 93.3,
+    "timestamp_utc": "2026-04-01T19:45:18.477920+00:00",
+    "valid_run": true,
+    "comparable": true
+  },
+  "validity": {
+    "valid_run": true,
+    "issues": [],
+    "expected_counts": {
+      "short": 3,
+      "structured": 3,
+      "medium": 3,
+      "long": 2,
+      "sustained": 10
+    },
+    "observed_counts": {
+      "short": 3,
+      "structured": 3,
+      "medium": 3,
+      "long": 2,
+      "sustained": 10
+    },
+    "token_count_sources": [
+      "usage"
+    ]
+  },
+  "comparability": {
+    "comparable": true,
+    "protocol_id": "benchmark_v2_m5max_v1",
+    "prompt_set_id": "benchmark_v2_m5max_prompt_set_v1",
+    "warm_interpretation": "warm_after_load",
+    "cold_interpretation": "model_load_receipt_only",
+    "token_count_sources": [
+      "usage"
+    ]
+  }
+}

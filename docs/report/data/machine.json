@@ -1,0 +1,22 @@
+{
+  "azimuth_bench_schema_version": "1.0.0",
+  "snapshot": {
+    "timestamp_utc": "2026-04-01T20:10:15.549135+00:00",
+    "platform": "macOS-26.3.1-arm64-arm-64bit-Mach-O",
+    "python": "3.14.3",
+    "lane": "core",
+    "model_id": "mlx-community/DeepSeek-R1-Distill-Llama-8B-4bit",
+    "thinking_mode": "default",
+    "loadavg": [
+      1.99,
+      2.8,
+      2.67
+    ],
+    "vm_pages_free": "385202",
+    "cpu_brand": "Apple M5 Max",
+    "hardware_model": "Mac17,6",
+    "memsize": "137438953472",
+    "continuous_monitoring": "disabled_by_protocol"
+  },
+  "selection": "lexicographic_first_receipt:receipts/core__deepseek_r1_distill_llama_8b__thinking-default/machine_pre_run.json"
+}

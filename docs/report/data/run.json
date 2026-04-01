@@ -1,0 +1,11 @@
+{
+  "azimuth_bench_schema_version": "1.0.0",
+  "run_id": "azimuth_bench_2026-04-01T20-27-11.499560_00-00",
+  "generated_at_utc": "2026-04-01T23:42:19.974957+00:00",
+  "report_build_commit_sha": "c786f739deaf521b63f6a779e0273b0b5714b27d",
+  "benchmark_commit_sha": null,
+  "benchmark_commit_sha_status": "missing_in_source_artifacts",
+  "lane": "all",
+  "summary_source": "benchmark_v2_token_summary.json",
+  "platform": "Azimuth Bench"
+}
