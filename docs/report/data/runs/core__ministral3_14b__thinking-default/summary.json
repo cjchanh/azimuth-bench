@@ -1,0 +1,52 @@
+{
+  "azimuth_bench_schema_version": "1.0.0",
+  "metrics": {
+    "model_id": "mlx-community/Ministral-3-14B-Instruct-2512-4bit",
+    "display_name": "Ministral 3 14B",
+    "lane": "core",
+    "thinking_mode": "default",
+    "artifact_key": "core__ministral3_14b__thinking-default",
+    "source_label": "mlx-community",
+    "source_badge": "MLX Community",
+    "short_tok_s": 64.2,
+    "structured_json_tok_s": 61.5,
+    "sustained_tok_s": 61.8,
+    "first_output_ms": 84.7,
+    "first_answer_ms": 84.7,
+    "avg_ttft_ms": 84.7,
+    "timestamp_utc": "2026-04-01T20:09:43.527320+00:00",
+    "valid_run": true,
+    "comparable": true
+  },
+  "validity": {
+    "valid_run": true,
+    "issues": [],
+    "expected_counts": {
+      "short": 3,
+      "structured": 3,
+      "medium": 3,
+      "long": 2,
+      "sustained": 10
+    },
+    "observed_counts": {
+      "short": 3,
+      "structured": 3,
+      "medium": 3,
+      "long": 2,
+      "sustained": 10
+    },
+    "token_count_sources": [
+      "usage"
+    ]
+  },
+  "comparability": {
+    "comparable": true,
+    "protocol_id": "benchmark_v2_m5max_v1",
+    "prompt_set_id": "benchmark_v2_m5max_prompt_set_v1",
+    "warm_interpretation": "warm_after_load",
+    "cold_interpretation": "model_load_receipt_only",
+    "token_count_sources": [
+      "usage"
+    ]
+  }
+}

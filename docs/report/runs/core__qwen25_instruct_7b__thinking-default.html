@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>core__qwen25_instruct_7b__thinking-default</title><style>
+    :root {
+      --bg: #0b0f14;
+      --panel: #111821;
+      --panel-alt: #0f151d;
+      --border: #273241;
+      --text: #e7edf5;
+      --muted: #93a0b3;
+      --accent: #7aa2d6;
+      --accent-soft: #3f5f87;
+      --good: #95d5b2;
+      --warn: #f4c27a;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: radial-gradient(circle at top left, rgba(122,162,214,0.08), transparent 28%), var(--bg);
+      color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      line-height: 1.5;
+      min-height: 100vh;
+      padding: 32px 28px 64px;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 24px;
+      padding-bottom: 18px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 28px;
+    }
+    .title-block h1 {
+      font-size: 22px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: var(--text);
+    }
+    .subtitle {
+      margin-top: 6px;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+    }
+    nav {
+      display: flex;
+      gap: 14px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .hero-grid, .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+    .metric-card, .panel {
+      background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0)), var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px;
+    }
+    .metric-label, .section-kicker {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+    }
+    .metric-value {
+      margin-top: 6px;
+      font-size: 26px;
+      font-weight: 600;
+      font-variant-numeric: tabular-nums;
+      color: var(--accent);
+    }
+    .metric-sub {
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+    .section {
+      margin-bottom: 24px;
+    }
+    .section h2 {
+      margin-bottom: 12px;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .section p, .evidence-list li {
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .panel img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+    th, td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      text-align: left;
+    }
+    th {
+      color: var(--muted);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 600;
+    }
+    td.metric {
+      font-variant-numeric: tabular-nums;
+      color: var(--text);
+    }
+    .split {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 16px;
+    }
+    .list {
+      list-style: none;
+      display: grid;
+      gap: 10px;
+    }
+    .list li {
+      padding: 12px 14px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: var(--panel-alt);
+    }
+    .mono {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    }
+    footer {
+      margin-top: 32px;
+      padding-top: 14px;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 12px;
+    }
+    @media (max-width: 900px) {
+      header, .split { grid-template-columns: 1fr; display: block; }
+      nav { margin-top: 12px; flex-wrap: wrap; }
+    }
+    </style></head>
+<body><header><div class="title-block"><h1>Qwen2.5 Instruct 7B</h1><div class="subtitle">core__qwen25_instruct_7b__thinking-default</div></div><nav><a href="../index.html">Latest</a><a href="../leaderboard.html">Leaderboard</a><a href="../compare.html">Compare</a></nav></header>
+<section class="hero-grid">
+  <div class='metric-card'><div class='metric-label'>JSON tok/s</div><div class='metric-value'>107.2</div></div>
+  <div class='metric-card'><div class='metric-label'>Sustained tok/s</div><div class='metric-value'>110.8</div></div>
+  <div class='metric-card'><div class='metric-label'>First answer ms</div><div class='metric-value'>80.0</div></div>
+  <div class='metric-card'><div class='metric-label'>Think</div><div class='metric-value'>default</div></div>
+</section>
+<section class="split section">
+  <div class="panel"><div class="section-kicker">Model</div><h2>Model identity</h2><ul class="list"><li>Model ID: <span class="mono">mlx-community/Qwen2.5-7B-Instruct-4bit</span></li><li>Target model: <span class="mono">mlx-community/Qwen2.5-7B-Instruct-4bit</span></li><li>Served models: <span class="mono">[&#x27;mlx-community/Qwen2.5-7B-Instruct-4bit&#x27;]</span></li></ul></div>
+  <div class="panel"><div class="section-kicker">Provenance</div><h2>Integrity surface</h2><ul class="list"><li>Valid run: <span class="mono">True</span></li><li>Comparable: <span class="mono">True</span></li><li>Gaps: <span class="mono">[&#x27;benchmark_commit_sha_missing_from_source_artifact&#x27;, &#x27;exact_invocation_missing_from_source_artifact&#x27;]</span></li></ul></div>
+</section>
+<footer>Per-run canonical bundle: <span class="mono">report/data/runs/core__qwen25_instruct_7b__thinking-default/</span></footer></body></html>

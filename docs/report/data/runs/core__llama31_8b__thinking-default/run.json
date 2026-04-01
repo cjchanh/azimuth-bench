@@ -1,0 +1,31 @@
+{
+  "azimuth_bench_schema_version": "1.0.0",
+  "artifact_key": "core__llama31_8b__thinking-default",
+  "artifact_path": "core__llama31_8b__thinking-default.json",
+  "artifact_path_kind": "run_dir_relative",
+  "benchmark_suite_name": "throughput",
+  "benchmark_commit_sha": null,
+  "timestamps": {
+    "run_start_utc": "2026-04-01T20:06:41.557641+00:00",
+    "run_finish_utc": "2026-04-01T20:07:25.974077+00:00",
+    "model_load_started_at_utc": "2026-04-01T20:06:36.310227+00:00",
+    "model_load_finished_at_utc": "2026-04-01T20:06:41.465171+00:00",
+    "summary_timestamp_utc": "2026-04-01T20:07:25.974035+00:00"
+  },
+  "exact_invocation": null,
+  "artifact_provenance": {
+    "receipt_paths": {
+      "artifact_complete": "receipts/core__llama31_8b__thinking-default/artifact_complete.json",
+      "machine_pre_run": "receipts/core__llama31_8b__thinking-default/machine_pre_run.json",
+      "model_load": "receipts/core__llama31_8b__thinking-default/model_load.json",
+      "token_run_finish": "receipts/core__llama31_8b__thinking-default/token_run_finish.json",
+      "token_run_start": "receipts/core__llama31_8b__thinking-default/token_run_start.json"
+    },
+    "valid_run": true,
+    "comparable": true,
+    "provenance_gaps": [
+      "benchmark_commit_sha_missing_from_source_artifact",
+      "exact_invocation_missing_from_source_artifact"
+    ]
+  }
+}

@@ -1,0 +1,275 @@
+{
+  "azimuth_bench_schema_version": "1.0.0",
+  "models": [
+    {
+      "azimuth_bench_schema_version": "1.0.0",
+      "model_id": "mlx-community/Qwen2.5-Coder-7B-Instruct-4bit",
+      "target_model_id": "mlx-community/Qwen2.5-Coder-7B-Instruct-4bit",
+      "served_model_ids": [
+        "mlx-community/Qwen2.5-Coder-7B-Instruct-4bit"
+      ],
+      "display_name": "Qwen2.5 Coder 7B",
+      "thinking_mode": "default",
+      "prompt_mode": "chat_completions",
+      "source_label": "mlx-community",
+      "source_badge": "MLX Community",
+      "quantization": "4bit",
+      "model_family": "Qwen2.5"
+    },
+    {
+      "azimuth_bench_schema_version": "1.0.0",
+      "model_id": "mlx-community/Qwen2.5-Coder-14B-Instruct-4bit",
+      "target_model_id": "mlx-community/Qwen2.5-Coder-14B-Instruct-4bit",
+      "served_model_ids": [
+        "mlx-community/Qwen2.5-Coder-14B-Instruct-4bit"
+      ],
+      "display_name": "Qwen2.5 Coder 14B",
+      "thinking_mode": "default",
+      "prompt_mode": "chat_completions",
+      "source_label": "mlx-community",
+      "source_badge": "MLX Community",
+      "quantization": "4bit",
+      "model_family": "Qwen2.5"
+    },
+    {
+      "azimuth_bench_schema_version": "1.0.0",
+      "model_id": "mlx-community/Qwen2.5-14B-Instruct-4bit",
+      "target_model_id": "mlx-community/Qwen2.5-14B-Instruct-4bit",
+      "served_model_ids": [
+        "mlx-community/Qwen2.5-14B-Instruct-4bit"
+      ],
+      "display_name": "Qwen2.5 Instruct 14B",
+      "thinking_mode": "default",
+      "prompt_mode": "chat_completions",
+      "source_label": "mlx-community",
+      "source_badge": "MLX Community",
+      "quantization": "4bit",
+      "model_family": "Qwen2.5"
+    },
+    {
+      "azimuth_bench_schema_version": "1.0.0",
+      "model_id": "mlx-community/Qwen2.5-7B-Instruct-4bit",
+      "target_model_id": "mlx-community/Qwen2.5-7B-Instruct-4bit",
+      "served_model_ids": [
+        "mlx-community/Qwen2.5-7B-Instruct-4bit"
+      ],
+      "display_name": "Qwen2.5 Instruct 7B",
+      "thinking_mode": "default",
+      "prompt_mode": "chat_completions",
+      "source_label": "mlx-community",
+      "source_badge": "MLX Community",
+      "quantization": "4bit",
+      "model_family": "Qwen2.5"
+    },
+    {
+      "azimuth_bench_schema_version": "1.0.0",
+      "model_id": "mlx-community/Qwen2.5-Coder-32B-Instruct-4bit",
+      "target_model_id": "mlx-community/Qwen2.5-Coder-32B-Instruct-4bit",
+      "served_model_ids": [
+        "mlx-community/Qwen2.5-Coder-32B-Instruct-4bit"
+      ],
+      "display_name": "Qwen2.5 Coder 32B",
+      "thinking_mode": "default",
+      "prompt_mode": "chat_completions",
+      "source_label": "mlx-community",
+      "source_badge": "MLX Community",
+      "quantization": "4bit",
+      "model_family": "Qwen2.5"
+    },
+    {
+      "azimuth_bench_schema_version": "1.0.0",
+      "model_id": "mlx-community/Qwen3.5-9B-MLX-4bit",
+      "target_model_id": "mlx-community/Qwen3.5-9B-MLX-4bit",
+      "served_model_ids": [
+        "mlx-community/Qwen3.5-9B-MLX-4bit"
+      ],
+      "display_name": "Qwen3.5 9B",
+      "thinking_mode": "default",
+      "prompt_mode": "chat_completions",
+      "source_label": "mlx-community",
+      "source_badge": "MLX Community",
+      "quantization": "4bit",
+      "model_family": "Qwen3.5"
+    },
+    {
+      "azimuth_bench_schema_version": "1.0.0",
+      "model_id": "mlx-community/gemma-3-4b-it-qat-4bit",
+      "target_model_id": "mlx-community/gemma-3-4b-it-qat-4bit",
+      "served_model_ids": [
+        "mlx-community/gemma-3-4b-it-qat-4bit"
+      ],
+      "display_name": "Gemma 3 4B",
+      "thinking_mode": "default",
+      "prompt_mode": "chat_completions",
+      "source_label": "mlx-community",
+      "source_badge": "MLX Community",
+      "quantization": "4bit",
+      "model_family": "Gemma"
+    },
+    {
+      "azimuth_bench_schema_version": "1.0.0",
+      "model_id": "mlx-community/gemma-3-12b-it-qat-4bit",
+      "target_model_id": "mlx-community/gemma-3-12b-it-qat-4bit",
+      "served_model_ids": [
+        "mlx-community/gemma-3-12b-it-qat-4bit"
+      ],
+      "display_name": "Gemma 3 12B",
+      "thinking_mode": "default",
+      "prompt_mode": "chat_completions",
+      "source_label": "mlx-community",
+      "source_badge": "MLX Community",
+      "quantization": "4bit",
+      "model_family": "Gemma"
+    },
+    {
+      "azimuth_bench_schema_version": "1.0.0",
+      "model_id": "mlx-community/gemma-3-27b-it-qat-4bit",
+      "target_model_id": "mlx-community/gemma-3-27b-it-qat-4bit",
+      "served_model_ids": [
+        "mlx-community/gemma-3-27b-it-qat-4bit"
+      ],
+      "display_name": "Gemma 3 27B",
+      "thinking_mode": "default",
+      "prompt_mode": "chat_completions",
+      "source_label": "mlx-community",
+      "source_badge": "MLX Community",
+      "quantization": "4bit",
+      "model_family": "Gemma"
+    },
+    {
+      "azimuth_bench_schema_version": "1.0.0",
+      "model_id": "mlx-community/Meta-Llama-3.1-8B-Instruct-4bit",
+      "target_model_id": "mlx-community/Meta-Llama-3.1-8B-Instruct-4bit",
+      "served_model_ids": [
+        "mlx-community/Meta-Llama-3.1-8B-Instruct-4bit"
+      ],
+      "display_name": "Llama 3.1 8B",
+      "thinking_mode": "default",
+      "prompt_mode": "chat_completions",
+      "source_label": "mlx-community",
+      "source_badge": "MLX Community",
+      "quantization": "4bit",
+      "model_family": "Llama"
+    },
+    {
+      "azimuth_bench_schema_version": "1.0.0",
+      "model_id": "mlx-community/Ministral-3-8B-Instruct-2512-4bit",
+      "target_model_id": "mlx-community/Ministral-3-8B-Instruct-2512-4bit",
+      "served_model_ids": [
+        "mlx-community/Ministral-3-8B-Instruct-2512-4bit"
+      ],
+      "display_name": "Ministral 3 8B",
+      "thinking_mode": "default",
+      "prompt_mode": "chat_completions",
+      "source_label": "mlx-community",
+      "source_badge": "MLX Community",
+      "quantization": "4bit",
+      "model_family": "Ministral"
+    },
+    {
+      "azimuth_bench_schema_version": "1.0.0",
+      "model_id": "mlx-community/Ministral-3-14B-Instruct-2512-4bit",
+      "target_model_id": "mlx-community/Ministral-3-14B-Instruct-2512-4bit",
+      "served_model_ids": [
+        "mlx-community/Ministral-3-14B-Instruct-2512-4bit"
+      ],
+      "display_name": "Ministral 3 14B",
+      "thinking_mode": "default",
+      "prompt_mode": "chat_completions",
+      "source_label": "mlx-community",
+      "source_badge": "MLX Community",
+      "quantization": "4bit",
+      "model_family": "Ministral"
+    },
+    {
+      "azimuth_bench_schema_version": "1.0.0",
+      "model_id": "mlx-community/Phi-4-mini-instruct-4bit",
+      "target_model_id": "mlx-community/Phi-4-mini-instruct-4bit",
+      "served_model_ids": [
+        "mlx-community/Phi-4-mini-instruct-4bit"
+      ],
+      "display_name": "Phi 4 Mini",
+      "thinking_mode": "default",
+      "prompt_mode": "chat_completions",
+      "source_label": "mlx-community",
+      "source_badge": "MLX Community",
+      "quantization": "4bit",
+      "model_family": "Phi"
+    },
+    {
+      "azimuth_bench_schema_version": "1.0.0",
+      "model_id": "mlx-community/DeepSeek-R1-Distill-Llama-8B-4bit",
+      "target_model_id": "mlx-community/DeepSeek-R1-Distill-Llama-8B-4bit",
+      "served_model_ids": [
+        "mlx-community/DeepSeek-R1-Distill-Llama-8B-4bit"
+      ],
+      "display_name": "DeepSeek R1 Distill Llama 8B",
+      "thinking_mode": "default",
+      "prompt_mode": "chat_completions",
+      "source_label": "mlx-community",
+      "source_badge": "MLX Community",
+      "quantization": "4bit",
+      "model_family": "DeepSeek"
+    },
+    {
+      "azimuth_bench_schema_version": "1.0.0",
+      "model_id": "NexVeridian/Qwen3.5-27B-4bit",
+      "target_model_id": "NexVeridian/Qwen3.5-27B-4bit",
+      "served_model_ids": [
+        "NexVeridian/Qwen3.5-27B-4bit"
+      ],
+      "display_name": "Qwen3.5 27B Base",
+      "thinking_mode": "on",
+      "prompt_mode": "chat_completions",
+      "source_label": "NexVeridian / Hugging Face",
+      "source_badge": "Hugging Face",
+      "quantization": "4bit",
+      "model_family": "Qwen3.5"
+    },
+    {
+      "azimuth_bench_schema_version": "1.0.0",
+      "model_id": "NexVeridian/Qwen3.5-27B-4bit",
+      "target_model_id": "NexVeridian/Qwen3.5-27B-4bit",
+      "served_model_ids": [
+        "NexVeridian/Qwen3.5-27B-4bit"
+      ],
+      "display_name": "Qwen3.5 27B Base",
+      "thinking_mode": "off",
+      "prompt_mode": "chat_completions",
+      "source_label": "NexVeridian / Hugging Face",
+      "source_badge": "Hugging Face",
+      "quantization": "4bit",
+      "model_family": "Qwen3.5"
+    },
+    {
+      "azimuth_bench_schema_version": "1.0.0",
+      "model_id": "Jackrong/MLX-Qwen3.5-27B-Claude-4.6-Opus-Reasoning-Distilled-v2-4bit",
+      "target_model_id": "Jackrong/MLX-Qwen3.5-27B-Claude-4.6-Opus-Reasoning-Distilled-v2-4bit",
+      "served_model_ids": [
+        "Jackrong/MLX-Qwen3.5-27B-Claude-4.6-Opus-Reasoning-Distilled-v2-4bit"
+      ],
+      "display_name": "Qwen3.5 27B Opus Distilled v2",
+      "thinking_mode": "on",
+      "prompt_mode": "chat_completions",
+      "source_label": "Jackrong / Hugging Face",
+      "source_badge": "Hugging Face",
+      "quantization": "4bit",
+      "model_family": "Qwen3.5"
+    },
+    {
+      "azimuth_bench_schema_version": "1.0.0",
+      "model_id": "Jackrong/MLX-Qwen3.5-27B-Claude-4.6-Opus-Reasoning-Distilled-v2-4bit",
+      "target_model_id": "Jackrong/MLX-Qwen3.5-27B-Claude-4.6-Opus-Reasoning-Distilled-v2-4bit",
+      "served_model_ids": [
+        "Jackrong/MLX-Qwen3.5-27B-Claude-4.6-Opus-Reasoning-Distilled-v2-4bit"
+      ],
+      "display_name": "Qwen3.5 27B Opus Distilled v2",
+      "thinking_mode": "off",
+      "prompt_mode": "chat_completions",
+      "source_label": "Jackrong / Hugging Face",
+      "source_badge": "Hugging Face",
+      "quantization": "4bit",
+      "model_family": "Qwen3.5"
+    }
+  ]
+}

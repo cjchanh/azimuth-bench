@@ -37,6 +37,12 @@ The repo includes a **reference run directory** (`benchmarks/`) with a token sum
 
 It does **not** prove anything about your hardware or your endpoints until you run throughput yourself.
 
+## Public sample report (no install)
+
+A **static** snapshot of the Azimuth Report (from committed `benchmarks/` artifacts) is hosted on **GitHub Pages** for inspection only — not a live inference service:
+
+- **https://cjchanh.github.io/benchmark-v2/report/index.html**
+
 ## One local proof path (no benchmark rerun)
 
 From a clean clone, after `pip install -e ".[dev]"` (see repo README):

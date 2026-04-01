@@ -1,0 +1,15 @@
+{
+  "azimuth_bench_schema_version": "1.0.0",
+  "model_id": "Jackrong/MLX-Qwen3.5-27B-Claude-4.6-Opus-Reasoning-Distilled-v2-4bit",
+  "target_model_id": "Jackrong/MLX-Qwen3.5-27B-Claude-4.6-Opus-Reasoning-Distilled-v2-4bit",
+  "served_model_ids": [
+    "Jackrong/MLX-Qwen3.5-27B-Claude-4.6-Opus-Reasoning-Distilled-v2-4bit"
+  ],
+  "display_name": "Qwen3.5 27B Opus Distilled v2",
+  "thinking_mode": "on",
+  "prompt_mode": "chat_completions",
+  "source_label": "Jackrong / Hugging Face",
+  "source_badge": "Hugging Face",
+  "quantization": "4bit",
+  "model_family": "Qwen3.5"
+}
