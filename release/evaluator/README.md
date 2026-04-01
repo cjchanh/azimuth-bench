@@ -37,3 +37,5 @@ You should see wheel and sdist artifacts under `/tmp/azimuth_dist` with the proj
 ## Evidence slots (operator use)
 
 For audit workflows that require copying receipts, hashes, or session logs into the repo, use a **dated run id** under `release/evidence/<RUN_ID>/` (create the directory when needed). Nothing in that path is required for core product tests; CI does not depend on it.
+
+**Example (in-repo):** [release/evidence/m6_release_gate_v1/](../evidence/m6_release_gate_v1/README.md) — independent release-gate audit commands, results, and claims ledger.

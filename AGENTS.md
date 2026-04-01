@@ -2,8 +2,8 @@
 
 ## Scope
 
-Portable inference benchmark platform repository at
-`/Users/cj/Workspace/active/benchmark-v2`.
+Portable inference benchmark platform. **Repository root** is the directory
+containing `pyproject.toml` (use `$(pwd)` after `cd` into your clone).
 
 Canonical product surface:
 - Python package: `azimuth_bench`
@@ -15,10 +15,12 @@ Compatibility-only surfaces:
 
 ## Canonical Commands
 
+Run from repository root with the dev virtualenv activated.
+
 - Test: `python3 -m pytest -q`
 - Lint: `ruff check .`
 - Format: `ruff format --check .`
-- Report build: `azbench report build benchmarks --repo-root /Users/cj/Workspace/active/benchmark-v2`
+- Report build: `azbench report build benchmarks --repo-root "$(pwd)"`
 - Export markdown: `azbench export markdown benchmarks --output /tmp/azimuth_export.md`
 - Export SVG: `azbench export svg benchmarks`
 
@@ -38,12 +40,19 @@ Compatibility-only surfaces:
 
 ## Governance Gate
 
+From repository root (paths below assume `~/.codex` tooling is installed):
+
 ```bash
-cd /Users/cj/Workspace/active/benchmark-v2
 python3 ~/.codex/scripts/validate_governance.py --root . --strict
 bash ~/.codex/scripts/bootstrap_codex_governance.sh --repo-root . --check-only
-python3 ~/.codex/validators/pre_session.py /Users/cj/Workspace/active/benchmark-v2
-python3 ~/.codex/validators/post_session.py /Users/cj/Workspace/active/benchmark-v2
+python3 ~/.codex/validators/pre_session.py "$(pwd)"
+python3 ~/.codex/validators/post_session.py "$(pwd)"
+```
+
+Optional full portfolio:
+
+```bash
+bash ~/.codex/scripts/run_full_verification.sh
 ```
 
 ## Session Contract

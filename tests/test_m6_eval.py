@@ -34,6 +34,20 @@ def test_release_evidence_dir_is_addressable() -> None:
     assert (root / "release/evidence").is_dir()
 
 
+def test_m6_release_gate_evidence_bundle_files_exist() -> None:
+    """Release-gate audit bundle is present for independent verification."""
+    root = _repo_root()
+    bundle = root / "release/evidence/m6_release_gate_v1"
+    for name in (
+        "README.md",
+        "commands.txt",
+        "results.md",
+        "artifacts_manifest.txt",
+        "claims_ledger.md",
+    ):
+        assert (bundle / name).is_file(), name
+
+
 def test_python_m_build_produces_wheel_and_sdist(tmp_path: Path) -> None:
     """Honest local packaging check (not PyPI publication). Requires optional dev dep `build`."""
     root = _repo_root()
