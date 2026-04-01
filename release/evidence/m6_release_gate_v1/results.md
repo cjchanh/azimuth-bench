@@ -21,4 +21,4 @@ Recorded on independent re-verification (same session as bundle creation).
 **Notes**
 
 - `python -m build` may print a `NO_COLOR`/`FORCE_COLOR` warning from the environment; output did **not** contain `SetuptoolsDeprecationWarning` (also asserted in `tests/test_m6_eval.py`).
-- Git HEAD at product verification: `1130597dae2ed6d67524d180512e2f45b4e3f84e`. Evidence bundle + `AGENTS.md` portability committed afterward (see repository `git log -1`).
+- Git HEAD after evidence bundle commit: `fefe9ab` (parent `1130597` = last product-only baseline referenced in this audit).
