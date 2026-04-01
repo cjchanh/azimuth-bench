@@ -6,6 +6,8 @@
 
 **First-time evaluator (install → proof path → merge overview):** [docs/azimuth_bench/DESIGN_PARTNER_EVAL.md](docs/azimuth_bench/DESIGN_PARTNER_EVAL.md) · **Repeatable commands + packaging check:** [release/evaluator/README.md](release/evaluator/README.md)
 
+**Public OSS release candidate (v0.1.0):** [CHANGELOG.md](CHANGELOG.md) · [CONTRIBUTING.md](CONTRIBUTING.md) · [SECURITY.md](SECURITY.md) · **Release pack:** [release/public/v0_1_0/README.md](release/public/v0_1_0/README.md)
+
 ## Implemented today (tested)
 
 - Throughput suite, MLX + OpenAI-compatible + Ollama adapters, integrity gate (fail-closed on ambiguity).

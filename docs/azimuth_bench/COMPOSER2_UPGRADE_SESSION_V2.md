@@ -120,7 +120,7 @@ REPO FACTS (BASELINE — DO NOT REGRESS)
 Last verified in this checkout (re-run and refresh numbers):
 - source .venv/bin/activate && ruff check .            -> pass
 - source .venv/bin/activate && ruff format --check .   -> pass
-- source .venv/bin/activate && python3 -m pytest -q    -> see SOURCE_OF_TRUTH.md (57 passed as of independent quality gate)
+- source .venv/bin/activate && python3 -m pytest -q    -> see SOURCE_OF_TRUTH.md (59 passed as of v0.1.0 RC pack)
 
 Also exercise:
 - source .venv/bin/activate && azbench report build benchmarks --repo-root /Users/cj/Workspace/active/benchmark-v2

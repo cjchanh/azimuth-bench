@@ -15,7 +15,7 @@ Why this is the honest mark in the current tree:
 - `implemented+tested`: **validated multi-run merge** via `azbench report build <run_dir> --include-run-dir …`, `report/data/merge.json`, merge-aware `leaderboard.json`, explicit comparability classes + blockers (`tests/test_merge.py`).
 - `implemented+tested`: **design-partner path**: [DESIGN_PARTNER_EVAL.md](DESIGN_PARTNER_EVAL.md), [release/evaluator/README.md](../../release/evaluator/README.md), README quickstart clarifications, `pyproject` OSS metadata; `tests/test_m6_eval.py`.
 - `implemented+tested`: public-proof docs exist: [METHODOLOGY.md](METHODOLOGY.md), [READING_REPORTS.md](READING_REPORTS.md), [PUBLIC_PROOF_PACK.md](PUBLIC_PROOF_PACK.md).
-- `implemented+tested`: baseline verification in this checkout is **57 passing tests** per [SOURCE_OF_TRUTH.md](SOURCE_OF_TRUTH.md) (refresh count when behavior changes).
+- `implemented+tested`: baseline verification in this checkout is **59 passing tests** per [SOURCE_OF_TRUTH.md](SOURCE_OF_TRUTH.md) (refresh count when behavior changes).
 
 What is **not** done yet, and why this is not further along:
 
@@ -64,7 +64,7 @@ CURRENT TRUE STATE TO RESPECT
 - Implemented adapters today: MLX, OpenAI-compatible HTTP, Ollama
 - Implemented today: throughput suite, report build, provider/protocol surfaces, markdown export
 - Public-proof docs already exist and are committed
-- Baseline verification in this checkout: python3 -m pytest -q -> see SOURCE_OF_TRUTH.md (57 passed as of independent quality gate)
+- Baseline verification in this checkout: python3 -m pytest -q -> see SOURCE_OF_TRUTH.md (59 passed as of v0.1.0 RC pack)
 
 PRIMARY OBJECTIVE
 Upgrade Azimuth from a truthful proof surface to a shareable comparison surface without widening into another deep architecture cycle.
