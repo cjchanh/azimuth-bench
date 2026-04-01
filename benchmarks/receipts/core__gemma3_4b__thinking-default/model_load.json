@@ -1,0 +1,9 @@
+{
+  "started_at_utc": "2026-04-01T20:01:26.711903+00:00",
+  "finished_at_utc": "2026-04-01T20:01:31.853451+00:00",
+  "load_seconds": 5.14,
+  "served_model": "mlx-community/gemma-3-4b-it-qat-4bit",
+  "expected_model": "mlx-community/gemma-3-4b-it-qat-4bit",
+  "pages_free_before": "1914856",
+  "pages_free_after": "1561664"
+}

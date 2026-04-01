@@ -1,0 +1,18 @@
+{
+  "timestamp_utc": "2026-04-01T19:40:56.661215+00:00",
+  "platform": "macOS-26.3.1-arm64-arm-64bit-Mach-O",
+  "python": "3.14.3",
+  "lane": "core",
+  "model_id": "mlx-community/Qwen2.5-Coder-14B-Instruct-4bit",
+  "thinking_mode": "default",
+  "loadavg": [
+    2.31,
+    2.11,
+    2.04
+  ],
+  "vm_pages_free": "4312866",
+  "cpu_brand": "Apple M5 Max",
+  "hardware_model": "Mac17,6",
+  "memsize": "137438953472",
+  "continuous_monitoring": "disabled_by_protocol"
+}

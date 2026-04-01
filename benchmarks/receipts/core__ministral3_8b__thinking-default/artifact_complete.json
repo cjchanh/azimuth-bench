@@ -1,0 +1,15 @@
+{
+  "timestamp_utc": "2026-04-01T20:08:21.465349+00:00",
+  "artifact_path": "/Users/cj/Workspace/active/benchmark-v2/benchmarks/core__ministral3_8b__thinking-default.json",
+  "required_keys": [
+    "protocol",
+    "summary",
+    "validity",
+    "comparability",
+    "receipts"
+  ],
+  "missing_keys": [],
+  "valid_run": true,
+  "comparable": true,
+  "complete": true
+}

@@ -515,19 +515,19 @@
     "token_run_start": {
       "timestamp_utc": "2026-03-31T22:11:21.435590+00:00",
       "artifact_key": "frontier_27b__qwen35_27b_base__thinking-on",
-      "artifact_path": "/Users/cj/Workspace/active/agent-civilization/benchmarks/frontier_27b__qwen35_27b_base__thinking-on.json",
+      "artifact_path": "/Users/cj/Workspace/active/benchmark-v2/benchmarks/frontier_27b__qwen35_27b_base__thinking-on.json",
       "model_id": "NexVeridian/Qwen3.5-27B-4bit",
       "thinking_mode": "on",
       "lane": "frontier_27b"
     },
     "token_run_finish": {
       "timestamp_utc": "2026-03-31T22:14:27.685389+00:00",
-      "artifact_path": "/Users/cj/Workspace/active/agent-civilization/benchmarks/frontier_27b__qwen35_27b_base__thinking-on.json",
+      "artifact_path": "/Users/cj/Workspace/active/benchmark-v2/benchmarks/frontier_27b__qwen35_27b_base__thinking-on.json",
       "status": "complete"
     },
     "artifact_complete": {
       "timestamp_utc": "2026-03-31T22:14:27.685691+00:00",
-      "artifact_path": "/Users/cj/Workspace/active/agent-civilization/benchmarks/frontier_27b__qwen35_27b_base__thinking-on.json",
+      "artifact_path": "/Users/cj/Workspace/active/benchmark-v2/benchmarks/frontier_27b__qwen35_27b_base__thinking-on.json",
       "required_keys": [
         "protocol",
         "summary",
@@ -542,10 +542,10 @@
     }
   },
   "receipt_paths": {
-    "artifact_complete": "/Users/cj/Workspace/active/agent-civilization/benchmarks/receipts/frontier_27b__qwen35_27b_base__thinking-on/artifact_complete.json",
-    "machine_pre_run": "/Users/cj/Workspace/active/agent-civilization/benchmarks/receipts/frontier_27b__qwen35_27b_base__thinking-on/machine_pre_run.json",
-    "model_load": "/Users/cj/Workspace/active/agent-civilization/benchmarks/receipts/frontier_27b__qwen35_27b_base__thinking-on/model_load.json",
-    "token_run_finish": "/Users/cj/Workspace/active/agent-civilization/benchmarks/receipts/frontier_27b__qwen35_27b_base__thinking-on/token_run_finish.json",
-    "token_run_start": "/Users/cj/Workspace/active/agent-civilization/benchmarks/receipts/frontier_27b__qwen35_27b_base__thinking-on/token_run_start.json"
+    "artifact_complete": "/Users/cj/Workspace/active/benchmark-v2/benchmarks/receipts/frontier_27b__qwen35_27b_base__thinking-on/artifact_complete.json",
+    "machine_pre_run": "/Users/cj/Workspace/active/benchmark-v2/benchmarks/receipts/frontier_27b__qwen35_27b_base__thinking-on/machine_pre_run.json",
+    "model_load": "/Users/cj/Workspace/active/benchmark-v2/benchmarks/receipts/frontier_27b__qwen35_27b_base__thinking-on/model_load.json",
+    "token_run_finish": "/Users/cj/Workspace/active/benchmark-v2/benchmarks/receipts/frontier_27b__qwen35_27b_base__thinking-on/token_run_finish.json",
+    "token_run_start": "/Users/cj/Workspace/active/benchmark-v2/benchmarks/receipts/frontier_27b__qwen35_27b_base__thinking-on/token_run_start.json"
   }
 }

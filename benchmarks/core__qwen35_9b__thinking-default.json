@@ -1,0 +1,549 @@
+{
+  "model_id": "mlx-community/Qwen3.5-9B-MLX-4bit",
+  "display_name": "Qwen3.5 9B",
+  "lane": "core",
+  "thinking_mode": "default",
+  "source_label": "mlx-community",
+  "source_badge": "MLX Community",
+  "artifact_key": "core__qwen35_9b__thinking-default",
+  "chat_template_kwargs": null,
+  "smoke": false,
+  "protocol": {
+    "protocol_id": "benchmark_v2_m5max_v1",
+    "machine_class": "Apple Silicon M5 Max local MLX lane",
+    "canonical_identity": "token_only",
+    "gate_lane": "optional_secondary_validation",
+    "stream_required_for_validity": true,
+    "temperature": 0.3,
+    "thinking_mode_policy": "explicit default/on/off via chat_template_kwargs.enable_thinking",
+    "warmup_policy": {
+      "enabled": true,
+      "warmup_requests": 1,
+      "prompt_id": "short",
+      "counted_in_canonical_metrics": false
+    },
+    "repeat_counts": {
+      "short": 3,
+      "structured": 3,
+      "medium": 3,
+      "long": 2,
+      "sustained": 10
+    },
+    "prompt_set_id": "benchmark_v2_m5max_prompt_set_v1",
+    "prompts": [
+      {
+        "prompt_id": "short",
+        "sha256": "278ae054093541adda5a31d210f350559525b868055d02cc2adcfa1acbcaf779",
+        "char_count": 46,
+        "token_cap": 256
+      },
+      {
+        "prompt_id": "structured",
+        "sha256": "b9272a4a797a3abf3e287d86a24936fb476e50bb7c2623c5ae8479ba1bb6896d",
+        "char_count": 563,
+        "token_cap": 256
+      },
+      {
+        "prompt_id": "medium",
+        "sha256": "e27867efce60ca8cf029ce57bc9355255bb9ed374983e95e52d789ab00dce820",
+        "char_count": 766,
+        "token_cap": 512
+      },
+      {
+        "prompt_id": "long",
+        "sha256": "033777958cf7e955aa22845d17f886709c99c3fafb23ae0f7c833d355a56c0d9",
+        "char_count": 5978,
+        "token_cap": 512
+      },
+      {
+        "prompt_id": "sustained",
+        "sha256": "278ae054093541adda5a31d210f350559525b868055d02cc2adcfa1acbcaf779",
+        "char_count": 46,
+        "token_cap": 128
+      }
+    ],
+    "valid_run_requirements": [
+      "all measured requests completed",
+      "all measured requests used streaming path",
+      "measured repeat counts match protocol",
+      "single token count source across measured requests"
+    ]
+  },
+  "benchmark_config": {
+    "max_tokens": 256,
+    "repeat_counts": {
+      "short": 3,
+      "structured": 3,
+      "medium": 3,
+      "long": 2,
+      "sustained": 10
+    }
+  },
+  "warmup": {
+    "count": 1,
+    "runs": [
+      {
+        "first_output_ms": 207.9,
+        "first_answer_ms": 819.5,
+        "ttft_ms": 819.5,
+        "total_ms": 819.5,
+        "tokens_in": 21,
+        "tokens_out": 64,
+        "tok_per_sec": 78.1,
+        "answer_chars": 0,
+        "reasoning_chars": 236,
+        "content_present": false,
+        "reasoning_present": true,
+        "used_stream": true,
+        "token_count_source": "usage"
+      }
+    ],
+    "counted_in_canonical_metrics": false
+  },
+  "short_prompt": [
+    {
+      "first_output_ms": 132.2,
+      "first_answer_ms": 2591.2,
+      "ttft_ms": 2591.2,
+      "total_ms": 2591.2,
+      "tokens_in": 21,
+      "tokens_out": 256,
+      "tok_per_sec": 98.8,
+      "answer_chars": 0,
+      "reasoning_chars": 969,
+      "content_present": false,
+      "reasoning_present": true,
+      "used_stream": true,
+      "token_count_source": "usage"
+    },
+    {
+      "first_output_ms": 129.9,
+      "first_answer_ms": 2591.7,
+      "ttft_ms": 2591.7,
+      "total_ms": 2591.7,
+      "tokens_in": 21,
+      "tokens_out": 256,
+      "tok_per_sec": 98.8,
+      "answer_chars": 0,
+      "reasoning_chars": 999,
+      "content_present": false,
+      "reasoning_present": true,
+      "used_stream": true,
+      "token_count_source": "usage"
+    },
+    {
+      "first_output_ms": 135.4,
+      "first_answer_ms": 1037.3,
+      "ttft_ms": 1037.3,
+      "total_ms": 2538.8,
+      "tokens_in": 21,
+      "tokens_out": 250,
+      "tok_per_sec": 98.5,
+      "answer_chars": 841,
+      "reasoning_chars": 385,
+      "content_present": true,
+      "reasoning_present": true,
+      "used_stream": true,
+      "token_count_source": "usage"
+    }
+  ],
+  "structured_json": [
+    {
+      "first_output_ms": 203.9,
+      "first_answer_ms": 2670.0,
+      "ttft_ms": 2670.0,
+      "total_ms": 2670.0,
+      "tokens_in": 136,
+      "tokens_out": 256,
+      "tok_per_sec": 95.9,
+      "answer_chars": 0,
+      "reasoning_chars": 1248,
+      "content_present": false,
+      "reasoning_present": true,
+      "used_stream": true,
+      "token_count_source": "usage"
+    },
+    {
+      "first_output_ms": 133.3,
+      "first_answer_ms": 2607.3,
+      "ttft_ms": 2607.3,
+      "total_ms": 2607.3,
+      "tokens_in": 136,
+      "tokens_out": 256,
+      "tok_per_sec": 98.2,
+      "answer_chars": 0,
+      "reasoning_chars": 1229,
+      "content_present": false,
+      "reasoning_present": true,
+      "used_stream": true,
+      "token_count_source": "usage"
+    },
+    {
+      "first_output_ms": 134.6,
+      "first_answer_ms": 2614.1,
+      "ttft_ms": 2614.1,
+      "total_ms": 2614.1,
+      "tokens_in": 136,
+      "tokens_out": 256,
+      "tok_per_sec": 97.9,
+      "answer_chars": 0,
+      "reasoning_chars": 1124,
+      "content_present": false,
+      "reasoning_present": true,
+      "used_stream": true,
+      "token_count_source": "usage"
+    }
+  ],
+  "medium_prompt": [
+    {
+      "first_output_ms": 203.7,
+      "first_answer_ms": 5261.8,
+      "ttft_ms": 5261.8,
+      "total_ms": 5261.8,
+      "tokens_in": 160,
+      "tokens_out": 512,
+      "tok_per_sec": 97.3,
+      "answer_chars": 0,
+      "reasoning_chars": 2117,
+      "content_present": false,
+      "reasoning_present": true,
+      "used_stream": true,
+      "token_count_source": "usage"
+    },
+    {
+      "first_output_ms": 137.3,
+      "first_answer_ms": 5286.8,
+      "ttft_ms": 5286.8,
+      "total_ms": 5286.8,
+      "tokens_in": 160,
+      "tokens_out": 512,
+      "tok_per_sec": 96.8,
+      "answer_chars": 0,
+      "reasoning_chars": 2126,
+      "content_present": false,
+      "reasoning_present": true,
+      "used_stream": true,
+      "token_count_source": "usage"
+    },
+    {
+      "first_output_ms": 141.2,
+      "first_answer_ms": 5246.5,
+      "ttft_ms": 5246.5,
+      "total_ms": 5246.5,
+      "tokens_in": 160,
+      "tokens_out": 512,
+      "tok_per_sec": 97.6,
+      "answer_chars": 0,
+      "reasoning_chars": 2166,
+      "content_present": false,
+      "reasoning_present": true,
+      "used_stream": true,
+      "token_count_source": "usage"
+    }
+  ],
+  "long_prompt": [
+    {
+      "first_output_ms": 403.2,
+      "first_answer_ms": 2753.5,
+      "ttft_ms": 2753.5,
+      "total_ms": 5459.3,
+      "tokens_in": 840,
+      "tokens_out": 512,
+      "tok_per_sec": 93.8,
+      "answer_chars": 1268,
+      "reasoning_chars": 1215,
+      "content_present": true,
+      "reasoning_present": true,
+      "used_stream": true,
+      "token_count_source": "usage"
+    },
+    {
+      "first_output_ms": 137.1,
+      "first_answer_ms": 2649.9,
+      "ttft_ms": 2649.9,
+      "total_ms": 5147.7,
+      "tokens_in": 840,
+      "tokens_out": 512,
+      "tok_per_sec": 99.5,
+      "answer_chars": 1111,
+      "reasoning_chars": 1280,
+      "content_present": true,
+      "reasoning_present": true,
+      "used_stream": true,
+      "token_count_source": "usage"
+    }
+  ],
+  "sustained": {
+    "runs": [
+      {
+        "first_output_ms": 139.6,
+        "first_answer_ms": 1373.7,
+        "ttft_ms": 1373.7,
+        "total_ms": 1373.7,
+        "tokens_in": 21,
+        "tokens_out": 128,
+        "tok_per_sec": 93.2,
+        "answer_chars": 0,
+        "reasoning_chars": 459,
+        "content_present": false,
+        "reasoning_present": true,
+        "used_stream": true,
+        "token_count_source": "usage"
+      },
+      {
+        "first_output_ms": 135.8,
+        "first_answer_ms": 1373.8,
+        "ttft_ms": 1373.8,
+        "total_ms": 1373.8,
+        "tokens_in": 21,
+        "tokens_out": 128,
+        "tok_per_sec": 93.2,
+        "answer_chars": 0,
+        "reasoning_chars": 478,
+        "content_present": false,
+        "reasoning_present": true,
+        "used_stream": true,
+        "token_count_source": "usage"
+      },
+      {
+        "first_output_ms": 137.4,
+        "first_answer_ms": 1378.5,
+        "ttft_ms": 1378.5,
+        "total_ms": 1378.5,
+        "tokens_in": 21,
+        "tokens_out": 128,
+        "tok_per_sec": 92.9,
+        "answer_chars": 0,
+        "reasoning_chars": 464,
+        "content_present": false,
+        "reasoning_present": true,
+        "used_stream": true,
+        "token_count_source": "usage"
+      },
+      {
+        "first_output_ms": 137.2,
+        "first_answer_ms": 1428.0,
+        "ttft_ms": 1428.0,
+        "total_ms": 1428.0,
+        "tokens_in": 21,
+        "tokens_out": 128,
+        "tok_per_sec": 89.6,
+        "answer_chars": 0,
+        "reasoning_chars": 454,
+        "content_present": false,
+        "reasoning_present": true,
+        "used_stream": true,
+        "token_count_source": "usage"
+      },
+      {
+        "first_output_ms": 135.2,
+        "first_answer_ms": 1488.0,
+        "ttft_ms": 1488.0,
+        "total_ms": 1488.0,
+        "tokens_in": 21,
+        "tokens_out": 128,
+        "tok_per_sec": 86.0,
+        "answer_chars": 0,
+        "reasoning_chars": 464,
+        "content_present": false,
+        "reasoning_present": true,
+        "used_stream": true,
+        "token_count_source": "usage"
+      },
+      {
+        "first_output_ms": 137.0,
+        "first_answer_ms": 1553.1,
+        "ttft_ms": 1553.1,
+        "total_ms": 1553.1,
+        "tokens_in": 21,
+        "tokens_out": 128,
+        "tok_per_sec": 82.4,
+        "answer_chars": 0,
+        "reasoning_chars": 445,
+        "content_present": false,
+        "reasoning_present": true,
+        "used_stream": true,
+        "token_count_source": "usage"
+      },
+      {
+        "first_output_ms": 135.2,
+        "first_answer_ms": 1586.6,
+        "ttft_ms": 1586.6,
+        "total_ms": 1586.6,
+        "tokens_in": 21,
+        "tokens_out": 128,
+        "tok_per_sec": 80.7,
+        "answer_chars": 0,
+        "reasoning_chars": 456,
+        "content_present": false,
+        "reasoning_present": true,
+        "used_stream": true,
+        "token_count_source": "usage"
+      },
+      {
+        "first_output_ms": 139.1,
+        "first_answer_ms": 1613.9,
+        "ttft_ms": 1613.9,
+        "total_ms": 1613.9,
+        "tokens_in": 21,
+        "tokens_out": 128,
+        "tok_per_sec": 79.3,
+        "answer_chars": 0,
+        "reasoning_chars": 490,
+        "content_present": false,
+        "reasoning_present": true,
+        "used_stream": true,
+        "token_count_source": "usage"
+      },
+      {
+        "first_output_ms": 142.6,
+        "first_answer_ms": 1655.3,
+        "ttft_ms": 1655.3,
+        "total_ms": 1655.3,
+        "tokens_in": 21,
+        "tokens_out": 128,
+        "tok_per_sec": 77.3,
+        "answer_chars": 0,
+        "reasoning_chars": 476,
+        "content_present": false,
+        "reasoning_present": true,
+        "used_stream": true,
+        "token_count_source": "usage"
+      },
+      {
+        "first_output_ms": 140.3,
+        "first_answer_ms": 1672.3,
+        "ttft_ms": 1672.3,
+        "total_ms": 1672.3,
+        "tokens_in": 21,
+        "tokens_out": 128,
+        "tok_per_sec": 76.5,
+        "answer_chars": 0,
+        "reasoning_chars": 475,
+        "content_present": false,
+        "reasoning_present": true,
+        "used_stream": true,
+        "token_count_source": "usage"
+      }
+    ],
+    "total_seconds": 15.1,
+    "total_tokens": 1280,
+    "sustained_tok_per_sec": 84.6
+  },
+  "vm_pages_free": "Pages free:                             1534015.",
+  "summary": {
+    "model_id": "mlx-community/Qwen3.5-9B-MLX-4bit",
+    "display_name": "Qwen3.5 9B",
+    "lane": "core",
+    "thinking_mode": "default",
+    "artifact_key": "core__qwen35_9b__thinking-default",
+    "source_label": "mlx-community",
+    "source_badge": "MLX Community",
+    "short_tok_s": 98.7,
+    "structured_json_tok_s": 97.3,
+    "sustained_tok_s": 84.6,
+    "first_output_ms": 132.5,
+    "first_answer_ms": 2073.4,
+    "avg_ttft_ms": 2073.4,
+    "timestamp_utc": "2026-04-01T20:01:26.671572+00:00",
+    "valid_run": true,
+    "comparable": true
+  },
+  "validity": {
+    "valid_run": true,
+    "issues": [],
+    "expected_counts": {
+      "short": 3,
+      "structured": 3,
+      "medium": 3,
+      "long": 2,
+      "sustained": 10
+    },
+    "observed_counts": {
+      "short": 3,
+      "structured": 3,
+      "medium": 3,
+      "long": 2,
+      "sustained": 10
+    },
+    "token_count_sources": [
+      "usage"
+    ]
+  },
+  "comparability": {
+    "comparable": true,
+    "protocol_id": "benchmark_v2_m5max_v1",
+    "prompt_set_id": "benchmark_v2_m5max_prompt_set_v1",
+    "warm_interpretation": "warm_after_load",
+    "cold_interpretation": "model_load_receipt_only",
+    "token_count_sources": [
+      "usage"
+    ]
+  },
+  "receipts": {
+    "run_start_utc": "2026-04-01T20:00:28.685788+00:00",
+    "run_finish_utc": "2026-04-01T20:01:26.671613+00:00",
+    "machine_pre_run": {
+      "timestamp_utc": "2026-04-01T20:00:23.438998+00:00",
+      "platform": "macOS-26.3.1-arm64-arm-64bit-Mach-O",
+      "python": "3.14.3",
+      "lane": "core",
+      "model_id": "mlx-community/Qwen3.5-9B-MLX-4bit",
+      "thinking_mode": "default",
+      "loadavg": [
+        1.74,
+        2.12,
+        2.17
+      ],
+      "vm_pages_free": "1998203",
+      "cpu_brand": "Apple M5 Max",
+      "hardware_model": "Mac17,6",
+      "memsize": "137438953472",
+      "continuous_monitoring": "disabled_by_protocol"
+    },
+    "model_load": {
+      "started_at_utc": "2026-04-01T20:00:23.459689+00:00",
+      "finished_at_utc": "2026-04-01T20:00:28.601239+00:00",
+      "load_seconds": 5.14,
+      "served_model": "mlx-community/Qwen3.5-9B-MLX-4bit",
+      "expected_model": "mlx-community/Qwen3.5-9B-MLX-4bit",
+      "pages_free_before": "2004490",
+      "pages_free_after": "1680997"
+    },
+    "token_run_start": {
+      "timestamp_utc": "2026-04-01T20:00:28.601485+00:00",
+      "artifact_key": "core__qwen35_9b__thinking-default",
+      "artifact_path": "/Users/cj/Workspace/active/benchmark-v2/benchmarks/core__qwen35_9b__thinking-default.json",
+      "model_id": "mlx-community/Qwen3.5-9B-MLX-4bit",
+      "thinking_mode": "default",
+      "lane": "core"
+    },
+    "token_run_finish": {
+      "timestamp_utc": "2026-04-01T20:01:26.692031+00:00",
+      "artifact_path": "/Users/cj/Workspace/active/benchmark-v2/benchmarks/core__qwen35_9b__thinking-default.json",
+      "status": "complete"
+    },
+    "artifact_complete": {
+      "timestamp_utc": "2026-04-01T20:01:26.692373+00:00",
+      "artifact_path": "/Users/cj/Workspace/active/benchmark-v2/benchmarks/core__qwen35_9b__thinking-default.json",
+      "required_keys": [
+        "protocol",
+        "summary",
+        "validity",
+        "comparability",
+        "receipts"
+      ],
+      "missing_keys": [],
+      "valid_run": true,
+      "comparable": true,
+      "complete": true
+    }
+  },
+  "receipt_paths": {
+    "artifact_complete": "/Users/cj/Workspace/active/benchmark-v2/benchmarks/receipts/core__qwen35_9b__thinking-default/artifact_complete.json",
+    "machine_pre_run": "/Users/cj/Workspace/active/benchmark-v2/benchmarks/receipts/core__qwen35_9b__thinking-default/machine_pre_run.json",
+    "model_load": "/Users/cj/Workspace/active/benchmark-v2/benchmarks/receipts/core__qwen35_9b__thinking-default/model_load.json",
+    "token_run_finish": "/Users/cj/Workspace/active/benchmark-v2/benchmarks/receipts/core__qwen35_9b__thinking-default/token_run_finish.json",
+    "token_run_start": "/Users/cj/Workspace/active/benchmark-v2/benchmarks/receipts/core__qwen35_9b__thinking-default/token_run_start.json"
+  }
+}
