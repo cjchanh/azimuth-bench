@@ -5,8 +5,8 @@ Recorded on independent re-verification (same session as bundle creation).
 | Step | Outcome |
 | --- | --- |
 | `ruff check .` | All checks passed |
-| `ruff format --check .` | 92 files already formatted |
-| `python3 -m pytest -q` | 57 passed in ~4s |
+| `ruff format --check .` | 93 files already formatted (final audit) |
+| `python3 -m pytest -q` | 59 passed (matches SSOT at `1630035` lineage; refresh after changes) |
 | `azbench report build benchmarks --repo-root <repo>` | Exit 0; `Wrote report: …/benchmarks/report` |
 | `azbench export markdown … --output /tmp/azimuth_export.md` | Exit 0; wrote `/private/tmp/azimuth_export.md` |
 | `azbench export svg benchmarks` | Exit 0; wrote `share_leaderboard.svg`, `share_compare.svg` |

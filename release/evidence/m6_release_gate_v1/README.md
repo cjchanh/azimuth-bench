@@ -1,7 +1,7 @@
 # M6 release gate — independent audit (`m6_release_gate_v1`)
 
 **Auditor role:** Adversarial verification of shipped claims against `docs/azimuth_bench/SOURCE_OF_TRUTH.md`, tests, and live commands.  
-**Repository state:** Evidence recorded from a clean checkout; re-run commands on your machine to reproduce.
+**Repository state:** Evidence recorded from a clean checkout; re-run commands on your machine to reproduce. **Pytest count** is authoritative in `docs/azimuth_bench/SOURCE_OF_TRUTH.md` (not a frozen number in every file here).
 
 ## Verdict
 
