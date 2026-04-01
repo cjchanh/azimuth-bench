@@ -8,6 +8,7 @@ from pathlib import Path
 from azimuth_bench.cli.throughput import add_throughput_arguments, run_throughput
 from azimuth_bench.core.paths import find_repo_root
 from azimuth_bench.export.markdown import write_markdown_export
+from azimuth_bench.export.svg_cards import write_share_svgs_from_report_data
 from azimuth_bench.report.builder import build_report
 
 
@@ -43,6 +44,19 @@ def main(argv: list[str] | None = None) -> int:
     )
     md_p.add_argument("--output", type=Path, required=True, help="Output .md path")
 
+    svg_p = export_sub.add_parser("svg", help="Write deterministic share SVGs from report/data/")
+    svg_p.add_argument(
+        "run_dir",
+        type=Path,
+        help="Run directory containing report/data/ (e.g. benchmarks/ after report build)",
+    )
+    svg_p.add_argument(
+        "--output-dir",
+        type=Path,
+        default=None,
+        help="Directory for SVG files (default: <run_dir>/report/exports)",
+    )
+
     bench_p = sub.add_parser("bench", help="Benchmark suite commands (canonical execution path)")
     bench_sub = bench_p.add_subparsers(dest="bench_cmd", required=True)
     tp_p = bench_sub.add_parser(
@@ -61,6 +75,16 @@ def main(argv: list[str] | None = None) -> int:
         data_dir = args.run_dir.resolve() / "report" / "data"
         path = write_markdown_export(report_data_dir=data_dir, output_path=args.output.resolve())
         print(f"Wrote export: {path}")
+        return 0
+    if args.command == "export" and args.export_cmd == "svg":
+        run_dir = args.run_dir.resolve()
+        exports_dir = args.output_dir.resolve() if args.output_dir else run_dir / "report" / "exports"
+        lb, sc = write_share_svgs_from_report_data(
+            report_data_dir=run_dir / "report" / "data",
+            exports_dir=exports_dir,
+        )
+        print(f"Wrote exports: {lb}")
+        print(f"Wrote exports: {sc}")
         return 0
     if args.command == "bench" and args.bench_cmd == "throughput":
         return run_throughput(args)

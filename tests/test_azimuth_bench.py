@@ -10,6 +10,7 @@ from azimuth_bench.adapters.factory import build_throughput_adapter, default_mac
 from azimuth_bench.adapters.mlx import MLXLmServerAdapter
 from azimuth_bench.adapters.ollama import OllamaAdapter
 from azimuth_bench.adapters.openai_compatible import OpenAICompatibleAdapter
+from azimuth_bench.compare.projection import build_compare_projection
 from azimuth_bench.core.cases import CaseSpec
 from azimuth_bench.core.comparability import comparability_block
 from azimuth_bench.core.env import (
@@ -101,7 +102,14 @@ def test_build_report_emits_outputs(repo_benchmarks: Path, tmp_path: Path) -> No
     assert (out / "data" / "run.json").exists()
     lb = json.loads((out / "data" / "leaderboard.json").read_text(encoding="utf-8"))
     assert lb.get("azimuth_bench_schema_version") == AZIMUTH_BENCH_SCHEMA_VERSION
-    assert (out / "data" / "compare.json").exists()
+    cmp_data = json.loads((out / "data" / "compare.json").read_text(encoding="utf-8"))
+    assert cmp_data.get("compare_schema") == "azimuth_compare_v1"
+    assert "projection" in cmp_data
+    assert "blocked_comparisons" in (cmp_data.get("projection") or {})
+    assert (out / "exports" / "share_leaderboard.svg").exists()
+    assert (out / "exports" / "share_compare.svg").exists()
+    share_lb = (out / "exports" / "share_leaderboard.svg").read_text(encoding="utf-8")
+    assert str(tmp_path) not in share_lb
     assert (out / "data" / "site_manifest.json").exists()
     assert (out / "data" / "runs" / "index.json").exists()
     assert (out / "data" / "runs" / "core__phi4_mini__thinking-default" / "run.json").exists()
@@ -330,6 +338,15 @@ def test_comparability_block() -> None:
     assert block["comparable_scope"] == "protocol_exact"
     assert block["comparability_blockers"] == []
     assert block["protocol_id"] == "p"
+
+
+def test_compare_projection_has_schema_and_blockers() -> None:
+    """Minimal rows still emit compare_schema and explicit non-compare reasons."""
+    rows = [{"lane": "core", "display_name": "X", "structured_json_tok_s": 1.0, "artifact_key": "k"}]
+    payload = build_compare_projection(rows)
+    assert payload["compare_schema"] == "azimuth_compare_v1"
+    assert isinstance(payload["projection"]["blocked_comparisons"], list)
+    assert len(payload["projection"]["blocked_comparisons"]) >= 1
 
 
 def test_protocol_manifest() -> None:

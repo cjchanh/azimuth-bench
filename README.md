@@ -46,6 +46,12 @@ Output: `benchmarks/report/` (see `.gitignore` if you do not commit generated tr
 azbench export markdown benchmarks --output /tmp/azimuth_summary.md
 ```
 
+**Regenerate deterministic share SVGs** (leaderboard + compare cards under `report/exports/`):
+
+```bash
+azbench export svg benchmarks --output-dir benchmarks/report/exports
+```
+
 **Run throughput** (requires a live backend — see `--adapter` and [docs/azimuth_bench/ENVIRONMENT.md](docs/azimuth_bench/ENVIRONMENT.md)):
 
 ```bash

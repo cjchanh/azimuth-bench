@@ -9,12 +9,13 @@ This document explains what Azimuth Bench **measures**, how **comparability** is
 - **Artifacts** per run: JSON payloads with protocol, timings, token estimates, validity, and comparability blocks.
 - **Report bundle** under `report/data/`: normalized JSON with **no absolute local paths** in public fields; relative artifact paths and sanitized provider metadata.
 - **Integrity gate**: ambiguous or duplicate artifact mapping fails closed (blockers).
+- **Compare projection** (`compare.json`, `azimuth_compare_v1`): scoped pairwise rows with stable `comparison_key`, explicit **`blocked_comparisons`** for pairs that are *not* emitted, and deterministic share SVGs under `report/exports/`.
 
 ## Designed or partial (do not over-claim)
 
 - **llama.cpp / vLLM** adapters: planned only (`azimuth_bench.adapters.planned`).
 - **Hosted SPA**: static HTML + JSON only.
-- **Full export suite** beyond Markdown: not production-complete in SSOT.
+- **Portable merge of external run bundles** (M5): not claimed until shipped.
 
 ## Protocol identity
 
@@ -27,6 +28,11 @@ Each throughput artifact records:
 Comparing two runs requires matching protocol and understanding what changed (model, adapter, thinking mode, software versions).
 
 ## Comparability
+
+### Compare JSON vs leaderboard
+
+- **`leaderboard.json`** orders rows within one summary for exploration; it is not a claim that every row is mutually comparable.
+- **`compare.json`** adds **only** explicit projections (e.g. scoped frontier base-vs-distilled pairs) plus **blocked** entries explaining what was *not* auto-compared (e.g. cross-lane).
 
 The **`comparable`** flag on artifacts and enriched summary rows means: the run satisfied the suite’s **validity** rules for that protocol (streaming, repeat counts, consistent token count source, etc.). It does **not** mean:
 
