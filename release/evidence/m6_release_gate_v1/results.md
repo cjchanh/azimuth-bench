@@ -21,4 +21,4 @@ Recorded on independent re-verification (same session as bundle creation).
 **Notes**
 
 - `python -m build` may print a `NO_COLOR`/`FORCE_COLOR` warning from the environment; output did **not** contain `SetuptoolsDeprecationWarning` (also asserted in `tests/test_m6_eval.py`).
-- Git HEAD (bundle + results pin): `7bb8fb9` (product baseline audited: `1130597`).
+- Git HEAD (this evidence receipt): `0972105` (product behavior verified at baseline `1130597`; subsequent commits add this bundle only).
