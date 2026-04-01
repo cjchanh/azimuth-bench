@@ -1,0 +1,553 @@
+{
+  "model_id": "mlx-community/Qwen2.5-Coder-14B-Instruct-4bit",
+  "display_name": "Qwen2.5 Coder 14B",
+  "lane": "core",
+  "thinking_mode": "default",
+  "source_label": "mlx-community",
+  "source_badge": "MLX Community",
+  "artifact_key": "core__qwen25_coder_14b__thinking-default",
+  "chat_template_kwargs": null,
+  "smoke": false,
+  "protocol": {
+    "protocol_id": "benchmark_v2_m5max_v1",
+    "machine_class": "Apple Silicon M5 Max local MLX lane",
+    "canonical_identity": "token_only",
+    "gate_lane": "optional_secondary_validation",
+    "stream_required_for_validity": true,
+    "temperature": 0.3,
+    "thinking_mode_policy": "explicit default/on/off via chat_template_kwargs.enable_thinking",
+    "warmup_policy": {
+      "enabled": true,
+      "warmup_requests": 1,
+      "prompt_id": "short",
+      "counted_in_canonical_metrics": false
+    },
+    "repeat_counts": {
+      "short": 3,
+      "structured": 3,
+      "medium": 3,
+      "long": 2,
+      "sustained": 10
+    },
+    "prompt_set_id": "benchmark_v2_m5max_prompt_set_v1",
+    "prompts": [
+      {
+        "prompt_id": "short",
+        "sha256": "278ae054093541adda5a31d210f350559525b868055d02cc2adcfa1acbcaf779",
+        "char_count": 46,
+        "token_cap": 256
+      },
+      {
+        "prompt_id": "structured",
+        "sha256": "b9272a4a797a3abf3e287d86a24936fb476e50bb7c2623c5ae8479ba1bb6896d",
+        "char_count": 563,
+        "token_cap": 256
+      },
+      {
+        "prompt_id": "medium",
+        "sha256": "e27867efce60ca8cf029ce57bc9355255bb9ed374983e95e52d789ab00dce820",
+        "char_count": 766,
+        "token_cap": 512
+      },
+      {
+        "prompt_id": "long",
+        "sha256": "033777958cf7e955aa22845d17f886709c99c3fafb23ae0f7c833d355a56c0d9",
+        "char_count": 5978,
+        "token_cap": 512
+      },
+      {
+        "prompt_id": "sustained",
+        "sha256": "278ae054093541adda5a31d210f350559525b868055d02cc2adcfa1acbcaf779",
+        "char_count": 46,
+        "token_cap": 128
+      }
+    ],
+    "valid_run_requirements": [
+      "all measured requests completed",
+      "all measured requests used streaming path",
+      "measured repeat counts match protocol",
+      "single token count source across measured requests"
+    ]
+  },
+  "benchmark_config": {
+    "max_tokens": 256,
+    "repeat_counts": {
+      "short": 3,
+      "structured": 3,
+      "medium": 3,
+      "long": 2,
+      "sustained": 10
+    }
+  },
+  "warmup": {
+    "count": 1,
+    "runs": [
+      {
+        "first_output_ms": 202.9,
+        "first_answer_ms": 202.9,
+        "ttft_ms": 202.9,
+        "total_ms": 1255.5,
+        "tokens_in": 40,
+        "tokens_out": 64,
+        "tok_per_sec": 51.0,
+        "answer_chars": 330,
+        "reasoning_chars": 0,
+        "content_present": true,
+        "reasoning_present": false,
+        "used_stream": true,
+        "token_count_source": "usage"
+      }
+    ],
+    "counted_in_canonical_metrics": false
+  },
+  "short_prompt": [
+    {
+      "first_output_ms": 93.3,
+      "first_answer_ms": 93.3,
+      "ttft_ms": 93.3,
+      "total_ms": 1688.5,
+      "tokens_in": 40,
+      "tokens_out": 97,
+      "tok_per_sec": 57.4,
+      "answer_chars": 473,
+      "reasoning_chars": 0,
+      "content_present": true,
+      "reasoning_present": false,
+      "used_stream": true,
+      "token_count_source": "usage"
+    },
+    {
+      "first_output_ms": 94.6,
+      "first_answer_ms": 94.6,
+      "ttft_ms": 94.6,
+      "total_ms": 1822.9,
+      "tokens_in": 40,
+      "tokens_out": 105,
+      "tok_per_sec": 57.6,
+      "answer_chars": 528,
+      "reasoning_chars": 0,
+      "content_present": true,
+      "reasoning_present": false,
+      "used_stream": true,
+      "token_count_source": "usage"
+    },
+    {
+      "first_output_ms": 92.1,
+      "first_answer_ms": 92.1,
+      "ttft_ms": 92.1,
+      "total_ms": 2583.4,
+      "tokens_in": 40,
+      "tokens_out": 151,
+      "tok_per_sec": 58.4,
+      "answer_chars": 735,
+      "reasoning_chars": 0,
+      "content_present": true,
+      "reasoning_present": false,
+      "used_stream": true,
+      "token_count_source": "usage"
+    }
+  ],
+  "structured_json": [
+    {
+      "first_output_ms": 179.4,
+      "first_answer_ms": 179.4,
+      "ttft_ms": 179.4,
+      "total_ms": 1603.7,
+      "tokens_in": 152,
+      "tokens_out": 86,
+      "tok_per_sec": 53.6,
+      "answer_chars": 360,
+      "reasoning_chars": 0,
+      "content_present": true,
+      "reasoning_present": false,
+      "used_stream": true,
+      "token_count_source": "usage"
+    },
+    {
+      "first_output_ms": 94.7,
+      "first_answer_ms": 94.7,
+      "ttft_ms": 94.7,
+      "total_ms": 1369.9,
+      "tokens_in": 152,
+      "tokens_out": 77,
+      "tok_per_sec": 56.2,
+      "answer_chars": 324,
+      "reasoning_chars": 0,
+      "content_present": true,
+      "reasoning_present": false,
+      "used_stream": true,
+      "token_count_source": "usage"
+    },
+    {
+      "first_output_ms": 100.8,
+      "first_answer_ms": 100.8,
+      "ttft_ms": 100.8,
+      "total_ms": 1357.5,
+      "tokens_in": 152,
+      "tokens_out": 76,
+      "tok_per_sec": 56.0,
+      "answer_chars": 317,
+      "reasoning_chars": 0,
+      "content_present": true,
+      "reasoning_present": false,
+      "used_stream": true,
+      "token_count_source": "usage"
+    }
+  ],
+  "medium_prompt": [
+    {
+      "first_output_ms": 217.0,
+      "first_answer_ms": 217.0,
+      "ttft_ms": 217.0,
+      "total_ms": 8802.7,
+      "tokens_in": 178,
+      "tokens_out": 512,
+      "tok_per_sec": 58.2,
+      "answer_chars": 2599,
+      "reasoning_chars": 0,
+      "content_present": true,
+      "reasoning_present": false,
+      "used_stream": true,
+      "token_count_source": "usage"
+    },
+    {
+      "first_output_ms": 101.3,
+      "first_answer_ms": 101.3,
+      "ttft_ms": 101.3,
+      "total_ms": 8676.2,
+      "tokens_in": 178,
+      "tokens_out": 512,
+      "tok_per_sec": 59.0,
+      "answer_chars": 2556,
+      "reasoning_chars": 0,
+      "content_present": true,
+      "reasoning_present": false,
+      "used_stream": true,
+      "token_count_source": "usage"
+    },
+    {
+      "first_output_ms": 98.5,
+      "first_answer_ms": 98.5,
+      "ttft_ms": 98.5,
+      "total_ms": 8675.7,
+      "tokens_in": 178,
+      "tokens_out": 512,
+      "tok_per_sec": 59.0,
+      "answer_chars": 2603,
+      "reasoning_chars": 0,
+      "content_present": true,
+      "reasoning_present": false,
+      "used_stream": true,
+      "token_count_source": "usage"
+    }
+  ],
+  "long_prompt": [
+    {
+      "first_output_ms": 509.1,
+      "first_answer_ms": 509.1,
+      "ttft_ms": 509.1,
+      "total_ms": 10070.0,
+      "tokens_in": 858,
+      "tokens_out": 512,
+      "tok_per_sec": 50.8,
+      "answer_chars": 2510,
+      "reasoning_chars": 0,
+      "content_present": true,
+      "reasoning_present": false,
+      "used_stream": true,
+      "token_count_source": "usage"
+    },
+    {
+      "first_output_ms": 116.4,
+      "first_answer_ms": 116.4,
+      "ttft_ms": 116.4,
+      "total_ms": 11430.6,
+      "tokens_in": 858,
+      "tokens_out": 512,
+      "tok_per_sec": 44.8,
+      "answer_chars": 2646,
+      "reasoning_chars": 0,
+      "content_present": true,
+      "reasoning_present": false,
+      "used_stream": true,
+      "token_count_source": "usage"
+    }
+  ],
+  "sustained": {
+    "runs": [
+      {
+        "first_output_ms": 107.5,
+        "first_answer_ms": 107.5,
+        "ttft_ms": 107.5,
+        "total_ms": 2874.2,
+        "tokens_in": 40,
+        "tokens_out": 128,
+        "tok_per_sec": 44.5,
+        "answer_chars": 637,
+        "reasoning_chars": 0,
+        "content_present": true,
+        "reasoning_present": false,
+        "used_stream": true,
+        "token_count_source": "usage"
+      },
+      {
+        "first_output_ms": 94.9,
+        "first_answer_ms": 94.9,
+        "ttft_ms": 94.9,
+        "total_ms": 2489.8,
+        "tokens_in": 40,
+        "tokens_out": 113,
+        "tok_per_sec": 45.4,
+        "answer_chars": 571,
+        "reasoning_chars": 0,
+        "content_present": true,
+        "reasoning_present": false,
+        "used_stream": true,
+        "token_count_source": "usage"
+      },
+      {
+        "first_output_ms": 102.3,
+        "first_answer_ms": 102.3,
+        "ttft_ms": 102.3,
+        "total_ms": 2406.2,
+        "tokens_in": 40,
+        "tokens_out": 109,
+        "tok_per_sec": 45.3,
+        "answer_chars": 542,
+        "reasoning_chars": 0,
+        "content_present": true,
+        "reasoning_present": false,
+        "used_stream": true,
+        "token_count_source": "usage"
+      },
+      {
+        "first_output_ms": 97.1,
+        "first_answer_ms": 97.1,
+        "ttft_ms": 97.1,
+        "total_ms": 1896.3,
+        "tokens_in": 40,
+        "tokens_out": 87,
+        "tok_per_sec": 45.9,
+        "answer_chars": 413,
+        "reasoning_chars": 0,
+        "content_present": true,
+        "reasoning_present": false,
+        "used_stream": true,
+        "token_count_source": "usage"
+      },
+      {
+        "first_output_ms": 100.4,
+        "first_answer_ms": 100.4,
+        "ttft_ms": 100.4,
+        "total_ms": 2800.1,
+        "tokens_in": 40,
+        "tokens_out": 128,
+        "tok_per_sec": 45.7,
+        "answer_chars": 639,
+        "reasoning_chars": 0,
+        "content_present": true,
+        "reasoning_present": false,
+        "used_stream": true,
+        "token_count_source": "usage"
+      },
+      {
+        "first_output_ms": 98.5,
+        "first_answer_ms": 98.5,
+        "ttft_ms": 98.5,
+        "total_ms": 1997.5,
+        "tokens_in": 40,
+        "tokens_out": 91,
+        "tok_per_sec": 45.6,
+        "answer_chars": 463,
+        "reasoning_chars": 0,
+        "content_present": true,
+        "reasoning_present": false,
+        "used_stream": true,
+        "token_count_source": "usage"
+      },
+      {
+        "first_output_ms": 102.0,
+        "first_answer_ms": 102.0,
+        "ttft_ms": 102.0,
+        "total_ms": 2287.2,
+        "tokens_in": 40,
+        "tokens_out": 105,
+        "tok_per_sec": 45.9,
+        "answer_chars": 535,
+        "reasoning_chars": 0,
+        "content_present": true,
+        "reasoning_present": false,
+        "used_stream": true,
+        "token_count_source": "usage"
+      },
+      {
+        "first_output_ms": 105.3,
+        "first_answer_ms": 105.3,
+        "ttft_ms": 105.3,
+        "total_ms": 1912.2,
+        "tokens_in": 40,
+        "tokens_out": 88,
+        "tok_per_sec": 46.0,
+        "answer_chars": 406,
+        "reasoning_chars": 0,
+        "content_present": true,
+        "reasoning_present": false,
+        "used_stream": true,
+        "token_count_source": "usage"
+      },
+      {
+        "first_output_ms": 99.2,
+        "first_answer_ms": 99.2,
+        "ttft_ms": 99.2,
+        "total_ms": 2457.0,
+        "tokens_in": 40,
+        "tokens_out": 113,
+        "tok_per_sec": 46.0,
+        "answer_chars": 551,
+        "reasoning_chars": 0,
+        "content_present": true,
+        "reasoning_present": false,
+        "used_stream": true,
+        "token_count_source": "usage"
+      },
+      {
+        "first_output_ms": 117.2,
+        "first_answer_ms": 117.2,
+        "ttft_ms": 117.2,
+        "total_ms": 2786.3,
+        "tokens_in": 40,
+        "tokens_out": 128,
+        "tok_per_sec": 45.9,
+        "answer_chars": 627,
+        "reasoning_chars": 0,
+        "content_present": true,
+        "reasoning_present": false,
+        "used_stream": true,
+        "token_count_source": "usage"
+      }
+    ],
+    "total_seconds": 23.9,
+    "total_tokens": 1090,
+    "sustained_tok_per_sec": 45.6
+  },
+  "vm_pages_free": "Pages free:                             3615982.",
+  "summary": {
+    "model_id": "mlx-community/Qwen2.5-Coder-14B-Instruct-4bit",
+    "display_name": "Qwen2.5 Coder 14B",
+    "lane": "core",
+    "thinking_mode": "default",
+    "artifact_key": "core__qwen25_coder_14b__thinking-default",
+    "source_label": "mlx-community",
+    "source_badge": "MLX Community",
+    "short_tok_s": 57.8,
+    "structured_json_tok_s": 55.3,
+    "sustained_tok_s": 45.6,
+    "first_output_ms": 93.3,
+    "first_answer_ms": 93.3,
+    "avg_ttft_ms": 93.3,
+    "timestamp_utc": "2026-04-01T19:45:18.477920+00:00",
+    "valid_run": true,
+    "comparable": true
+  },
+  "validity": {
+    "valid_run": true,
+    "issues": [],
+    "expected_counts": {
+      "short": 3,
+      "structured": 3,
+      "medium": 3,
+      "long": 2,
+      "sustained": 10
+    },
+    "observed_counts": {
+      "short": 3,
+      "structured": 3,
+      "medium": 3,
+      "long": 2,
+      "sustained": 10
+    },
+    "token_count_sources": [
+      "usage"
+    ]
+  },
+  "comparability": {
+    "comparable": true,
+    "protocol_id": "benchmark_v2_m5max_v1",
+    "prompt_set_id": "benchmark_v2_m5max_prompt_set_v1",
+    "warm_interpretation": "warm_after_load",
+    "cold_interpretation": "model_load_receipt_only",
+    "token_count_sources": [
+      "usage"
+    ]
+  },
+  "receipts": {
+    "run_start_utc": "2026-04-01T19:43:55.206373+00:00",
+    "run_finish_utc": "2026-04-01T19:45:18.477958+00:00",
+    "machine_pre_run": {
+      "timestamp_utc": "2026-04-01T19:40:56.661215+00:00",
+      "hostname": "CJs-MacBook-Pro",
+      "platform": "macOS-26.3.1-arm64-arm-64bit-Mach-O",
+      "python": "3.14.3",
+      "bench_port": 9700,
+      "lane": "core",
+      "model_id": "mlx-community/Qwen2.5-Coder-14B-Instruct-4bit",
+      "thinking_mode": "default",
+      "loadavg": [
+        2.31,
+        2.11,
+        2.04
+      ],
+      "vm_pages_free": "4312866",
+      "cpu_brand": "Apple M5 Max",
+      "hardware_model": "Mac17,6",
+      "memsize": "137438953472",
+      "battery_or_power": "Now drawing from 'AC Power'\n -InternalBattery-0 (id=22085731)\t80%; AC attached; not charging present: true",
+      "continuous_monitoring": "disabled_by_protocol"
+    },
+    "model_load": {
+      "started_at_utc": "2026-04-01T19:40:56.676897+00:00",
+      "finished_at_utc": "2026-04-01T19:43:55.122702+00:00",
+      "load_seconds": 178.44,
+      "served_model": "mlx-community/Qwen2.5-Coder-14B-Instruct-4bit",
+      "expected_model": "mlx-community/Qwen2.5-Coder-14B-Instruct-4bit",
+      "pages_free_before": "4605959",
+      "pages_free_after": "3616553",
+      "port": 9700
+    },
+    "token_run_start": {
+      "timestamp_utc": "2026-04-01T19:43:55.122954+00:00",
+      "artifact_key": "core__qwen25_coder_14b__thinking-default",
+      "artifact_path": "/Users/cj/Workspace/active/benchmark-v2/benchmarks/core__qwen25_coder_14b__thinking-default.json",
+      "model_id": "mlx-community/Qwen2.5-Coder-14B-Instruct-4bit",
+      "thinking_mode": "default",
+      "lane": "core"
+    },
+    "token_run_finish": {
+      "timestamp_utc": "2026-04-01T19:45:18.501195+00:00",
+      "artifact_path": "/Users/cj/Workspace/active/benchmark-v2/benchmarks/core__qwen25_coder_14b__thinking-default.json",
+      "status": "complete"
+    },
+    "artifact_complete": {
+      "timestamp_utc": "2026-04-01T19:45:18.501611+00:00",
+      "artifact_path": "/Users/cj/Workspace/active/benchmark-v2/benchmarks/core__qwen25_coder_14b__thinking-default.json",
+      "required_keys": [
+        "protocol",
+        "summary",
+        "validity",
+        "comparability",
+        "receipts"
+      ],
+      "missing_keys": [],
+      "valid_run": true,
+      "comparable": true,
+      "complete": true
+    }
+  },
+  "receipt_paths": {
+    "artifact_complete": "/Users/cj/Workspace/active/benchmark-v2/benchmarks/receipts/core__qwen25_coder_14b__thinking-default/artifact_complete.json",
+    "machine_pre_run": "/Users/cj/Workspace/active/benchmark-v2/benchmarks/receipts/core__qwen25_coder_14b__thinking-default/machine_pre_run.json",
+    "model_load": "/Users/cj/Workspace/active/benchmark-v2/benchmarks/receipts/core__qwen25_coder_14b__thinking-default/model_load.json",
+    "token_run_finish": "/Users/cj/Workspace/active/benchmark-v2/benchmarks/receipts/core__qwen25_coder_14b__thinking-default/token_run_finish.json",
+    "token_run_start": "/Users/cj/Workspace/active/benchmark-v2/benchmarks/receipts/core__qwen25_coder_14b__thinking-default/token_run_start.json"
+  }
+}

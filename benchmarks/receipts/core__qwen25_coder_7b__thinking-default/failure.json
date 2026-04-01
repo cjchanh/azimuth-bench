@@ -1,0 +1,8 @@
+{
+  "timestamp_utc": "2026-04-01T19:38:26.503056+00:00",
+  "artifact_key": "core__qwen25_coder_7b__thinking-default",
+  "model_id": "mlx-community/Qwen2.5-Coder-7B-Instruct-4bit",
+  "thinking_mode": "default",
+  "lane": "core",
+  "error": "failed to load mlx-community/Qwen2.5-Coder-7B-Instruct-4bit on :9700"
+}
