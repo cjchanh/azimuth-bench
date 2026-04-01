@@ -7,13 +7,12 @@ name = "benchmark-v2"
 version = "0.1.0"
 description = "Azimuth Bench — portable inference benchmark platform (benchmark-v2 tree; package azimuth_bench)."
 readme = "README.md"
-license = {text = "MIT"}
+license = "MIT"
 requires-python = ">=3.10"
 keywords = ["azimuth", "benchmark", "inference", "llm", "mlx", "throughput"]
 classifiers = [
   "Development Status :: 4 - Beta",
   "Intended Audience :: Developers",
-  "License :: OSI Approved :: MIT License",
   "Programming Language :: Python :: 3",
   "Programming Language :: Python :: 3.10",
   "Programming Language :: Python :: 3.11",
