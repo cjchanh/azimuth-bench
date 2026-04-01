@@ -6,11 +6,11 @@ from pathlib import Path
 
 import pytest
 
-from benchmarking.roster import artifact_key, chat_template_kwargs_for_thinking_mode
-from benchmarking.summary import main as compile_benchmark_summary_main
-from benchmarking.socials import main as generate_benchmark_socials_main
-from benchmarking.gate import _parse_probe_message
 from benchmarking import token as benchmark_token
+from benchmarking.gate import _parse_probe_message
+from benchmarking.roster import artifact_key, chat_template_kwargs_for_thinking_mode
+from benchmarking.socials import main as generate_benchmark_socials_main
+from benchmarking.summary import main as compile_benchmark_summary_main
 
 
 def test_chat_template_kwargs_for_thinking_mode():
@@ -96,7 +96,7 @@ def _write_sample_roster(tmp_path: Path) -> tuple[Path, Path, dict[str, str]]:
                     "sustained_tok_s": 40.0,
                     "first_output_ms": 120.0,
                     "first_answer_ms": 150.0,
-                }
+                },
             }
         )
     )
@@ -120,9 +120,7 @@ def _write_sample_roster(tmp_path: Path) -> tuple[Path, Path, dict[str, str]]:
     return roster_path, benchmarks_dir, entry
 
 
-def test_compile_benchmark_summary_writes_token_summary_by_default(
-    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
-):
+def test_compile_benchmark_summary_writes_token_summary_by_default(tmp_path: Path, monkeypatch: pytest.MonkeyPatch):
     roster_path, benchmarks_dir, entry = _write_sample_roster(tmp_path)
 
     monkeypatch.setattr(
@@ -149,9 +147,7 @@ def test_compile_benchmark_summary_writes_token_summary_by_default(
     assert not (benchmarks_dir / "benchmark_v2_gate_summary.json").exists()
 
 
-def test_compile_benchmark_summary_writes_gate_summary_when_requested(
-    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
-):
+def test_compile_benchmark_summary_writes_gate_summary_when_requested(tmp_path: Path, monkeypatch: pytest.MonkeyPatch):
     roster_path, benchmarks_dir, _entry = _write_sample_roster(tmp_path)
 
     monkeypatch.setattr(
@@ -177,9 +173,7 @@ def test_compile_benchmark_summary_writes_gate_summary_when_requested(
     assert row["status"] == "complete"
 
 
-def test_compile_benchmark_summary_skips_invalid_token_rows(
-    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
-):
+def test_compile_benchmark_summary_skips_invalid_token_rows(tmp_path: Path, monkeypatch: pytest.MonkeyPatch):
     roster_path, benchmarks_dir, entry = _write_sample_roster(tmp_path)
     key = artifact_key(entry)
     (benchmarks_dir / f"{key}.json").write_text(

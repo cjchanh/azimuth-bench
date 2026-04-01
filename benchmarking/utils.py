@@ -1,4 +1,5 @@
 """Shared utilities for benchmark-v2 package modules."""
+
 from __future__ import annotations
 
 from pathlib import Path
@@ -29,4 +30,3 @@ def coerce_message_text(value: Any) -> str:
                         break
         return "".join(parts)
     return str(value)
-

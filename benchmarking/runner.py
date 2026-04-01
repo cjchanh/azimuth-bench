@@ -1,13 +1,14 @@
 #!/usr/bin/env python3
 """All-model benchmark-v2 runner with token-first and optional gate planes."""
+
 from __future__ import annotations
 
 import argparse
 import json
 import os
 import platform
-import signal
 import shutil
+import signal
 import subprocess
 import sys
 import time
@@ -17,7 +18,13 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
-from benchmarking.roster import DEFAULT_ROSTER, artifact_key, filter_roster, hf_cache_dir, load_roster
+from benchmarking.roster import (
+    DEFAULT_ROSTER,
+    artifact_key,
+    filter_roster,
+    hf_cache_dir,
+    load_roster,
+)
 from benchmarking.utils import DEFAULT_BENCHMARKS_DIR, ROOT
 
 EXPERIMENT_PORT = 8899
@@ -157,9 +164,7 @@ def _merge_artifact_receipts(
     payload = json.loads(artifact_json.read_text())
     receipts = payload.setdefault("receipts", {})
     receipts.update(receipt_payloads)
-    payload["receipt_paths"] = {
-        name: str(path) for name, path in sorted(receipt_paths.items())
-    }
+    payload["receipt_paths"] = {name: str(path) for name, path in sorted(receipt_paths.items())}
     artifact_json.write_text(json.dumps(payload, indent=2))
 
 
@@ -208,9 +213,7 @@ def _swap_model(target: str, port: int, logger: Logger) -> dict[str, Any]:
         served_model = _served_model(port)
         if served_model == target:
             mem_after = _pages_free()
-            logger.log(
-                f"  Loaded {target} in {attempt}s (pages_free: {mem_before} -> {mem_after})"
-            )
+            logger.log(f"  Loaded {target} in {attempt}s (pages_free: {mem_before} -> {mem_after})")
             return {
                 "started_at_utc": load_started_at,
                 "finished_at_utc": datetime.now(timezone.utc).isoformat(),
@@ -257,7 +260,14 @@ def _experiment_server_active(port: int) -> bool:
     return bool(result.stdout.strip())
 
 
-def _run_subprocess(cmd: list[str], *, cwd: Path, logger: Logger, fail_message: str, stdout_to: Path | None = None) -> None:
+def _run_subprocess(
+    cmd: list[str],
+    *,
+    cwd: Path,
+    logger: Logger,
+    fail_message: str,
+    stdout_to: Path | None = None,
+) -> None:
     if stdout_to is None:
         result = subprocess.run(cmd, cwd=cwd, capture_output=True, text=True, check=False)
         logger.emit_block(result.stdout)
@@ -304,9 +314,7 @@ def _fleet_guard(repo_root: Path, bench_port: int, benchmark_gpu_mb: int, logger
     )
     FLEET_GUARD_PATH.write_text(result.stdout or result.stderr)
     if result.returncode != 0:
-        raise RuntimeError(
-            f"fleet guard denied repo/port/gpu claim; see {FLEET_GUARD_PATH}"
-        )
+        raise RuntimeError(f"fleet guard denied repo/port/gpu claim; see {FLEET_GUARD_PATH}")
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -327,9 +335,7 @@ def main(argv: list[str] | None = None) -> int:
 
     if not args.dry_run:
         if _experiment_server_active(EXPERIMENT_PORT):
-            raise RuntimeError(
-                f"experiment server is active on :{EXPERIMENT_PORT}. Benchmark lane is offline-only."
-            )
+            raise RuntimeError(f"experiment server is active on :{EXPERIMENT_PORT}. Benchmark lane is offline-only.")
         _fleet_guard(ROOT, args.bench_port, args.benchmark_gpu_mb, logger)
 
     entries = filter_roster(load_roster(args.roster), args.lane)
@@ -369,9 +375,7 @@ def main(argv: list[str] | None = None) -> int:
 
             if args.dry_run:
                 if args.with_gate:
-                    logger.log(
-                        f"[{artifact}] DRY RUN cache=present artifact_json={artifact_json} gate_dir={gate_dir}"
-                    )
+                    logger.log(f"[{artifact}] DRY RUN cache=present artifact_json={artifact_json} gate_dir={gate_dir}")
                 else:
                     logger.log(f"[{artifact}] DRY RUN cache=present artifact_json={artifact_json}")
                 logger.log()
@@ -394,15 +398,11 @@ def main(argv: list[str] | None = None) -> int:
                 bench_port=args.bench_port,
             )
             receipt_payloads["machine_pre_run"] = machine_receipt
-            receipt_paths["machine_pre_run"] = _write_receipt(
-                receipt_dir, "machine_pre_run", machine_receipt
-            )
+            receipt_paths["machine_pre_run"] = _write_receipt(receipt_dir, "machine_pre_run", machine_receipt)
 
             model_load_receipt = _swap_model(model_id, args.bench_port, logger)
             receipt_payloads["model_load"] = model_load_receipt
-            receipt_paths["model_load"] = _write_receipt(
-                receipt_dir, "model_load", model_load_receipt
-            )
+            receipt_paths["model_load"] = _write_receipt(receipt_dir, "model_load", model_load_receipt)
 
             if need_benchmark:
                 logger.log(f"[{artifact}] Running token benchmark...")
@@ -415,9 +415,7 @@ def main(argv: list[str] | None = None) -> int:
                     "lane": lane,
                 }
                 receipt_payloads["token_run_start"] = token_run_start
-                receipt_paths["token_run_start"] = _write_receipt(
-                    receipt_dir, "token_run_start", token_run_start
-                )
+                receipt_paths["token_run_start"] = _write_receipt(receipt_dir, "token_run_start", token_run_start)
                 _run_subprocess(
                     [
                         sys.executable,
@@ -450,14 +448,10 @@ def main(argv: list[str] | None = None) -> int:
                     "status": "complete",
                 }
                 receipt_payloads["token_run_finish"] = token_run_finish
-                receipt_paths["token_run_finish"] = _write_receipt(
-                    receipt_dir, "token_run_finish", token_run_finish
-                )
+                receipt_paths["token_run_finish"] = _write_receipt(receipt_dir, "token_run_finish", token_run_finish)
                 completeness = _artifact_completeness_receipt(artifact_json)
                 receipt_payloads["artifact_complete"] = completeness
-                receipt_paths["artifact_complete"] = _write_receipt(
-                    receipt_dir, "artifact_complete", completeness
-                )
+                receipt_paths["artifact_complete"] = _write_receipt(receipt_dir, "artifact_complete", completeness)
                 _merge_artifact_receipts(
                     artifact_json,
                     receipt_payloads=receipt_payloads,
@@ -508,9 +502,7 @@ def main(argv: list[str] | None = None) -> int:
             raise
 
     if args.dry_run:
-        logger.log(
-            "DRY RUN COMPLETE: roster, cache, and artifact paths validated; no repo artifacts were written."
-        )
+        logger.log("DRY RUN COMPLETE: roster, cache, and artifact paths validated; no repo artifacts were written.")
         return 0
 
     summary_cmd = [
