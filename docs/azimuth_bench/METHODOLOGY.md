@@ -11,6 +11,7 @@ This document explains what Azimuth Bench **measures**, how **comparability** is
 - **Integrity gate**: ambiguous or duplicate artifact mapping fails closed (blockers).
 - **Compare projection** (`compare.json`, `azimuth_compare_v1`): scoped pairwise rows with stable `comparison_key`, explicit **`blocked_comparisons`** for pairs that are *not* emitted, and deterministic share SVGs under `report/exports/`.
 - **Multi-run merge** (M5): `azbench report build <primary> --include-run-dir <other> …` combines validated Azimuth-shaped run directories only; emits `merge.json`, copies comparability metadata onto `leaderboard.json`, and records **`comparability_class`** plus **`blockers`** when cross-protocol or non-comparable rows apply.
+- **Design-partner evaluation** (M6): [DESIGN_PARTNER_EVAL.md](DESIGN_PARTNER_EVAL.md) and [release/evaluator/README.md](../../release/evaluator/README.md) document a single offline proof path; `pyproject.toml` distinguishes distribution name from import package.
 
 ## Designed or partial (do not over-claim)
 

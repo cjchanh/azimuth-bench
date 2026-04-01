@@ -6,7 +6,7 @@ This document is the **single** place that defines **current** ownership and wha
 
 **How sessions should use the other docs:** **`docs/azimuth_bench/COMPOSER2_UPGRADE_SESSION_V2.md`** is the **recommended execution plan** for a **new Composer window** (copy the inner `text` block). `docs/azimuth_bench/COMPOSER2_AUTOPILOT_MASTER_PROMPT.md` is the **anchor** that points at v2. **This file** plus the **code** are the **truth boundary for current implementation**: do not treat those prompts’ target deliverables as “shipped” unless they appear here and in tests, and **do not override this boundary with the execution plan** until `SOURCE_OF_TRUTH.md` is updated to match and that change is **committed** with the behavior it describes.
 
-**Last verified tests (this checkout):** `python3 -m pytest -q` → **51 passed** (refresh when behavior changes).
+**Last verified tests (this checkout):** `python3 -m pytest -q` → **55 passed** (refresh when behavior changes).
 
 **Public proof docs (methodology + how to read reports + outreach snapshot):** [METHODOLOGY.md](METHODOLOGY.md), [READING_REPORTS.md](READING_REPORTS.md), [PUBLIC_PROOF_PACK.md](PUBLIC_PROOF_PACK.md).
 
@@ -73,6 +73,7 @@ These exist so **existing scripts and `-m` module paths keep working**. They **m
 | Markdown export CLI | `azbench export markdown <run_dir> --output …` (requires built `report/data/`). |
 | Compare projection + share SVGs | `compare.json` uses `azimuth_compare_v1` (`azimuth_bench.compare.projection`); deterministic `report/exports/share_leaderboard.svg` and `share_compare.svg`; `azbench export svg`. |
 | Portable merge of validated run bundles (M5) | `azbench report build <primary> --include-run-dir <other> …`; `azimuth_bench.merge.bundle.merge_canonical_bundles`; outputs `report/data/merge.json`, merge section on `leaderboard.json`, comparability classes + blockers; fail-closed on integrity/collision/duplicate identity. **Merge row identity** (duplicate blocking): `(model_id, lane, thinking_mode)`; artifact keys are prefixed per source (`s0__`, `s1__`, …). Covered by `tests/test_merge.py`. |
+| Design-partner evaluation surface (M6) | Single evaluator narrative: [DESIGN_PARTNER_EVAL.md](DESIGN_PARTNER_EVAL.md). Repeatable offline proof + optional wheel/sdist instructions: [release/evaluator/README.md](../../release/evaluator/README.md). `pyproject.toml` metadata (keywords/classifiers) documents distribution vs import name. Covered by `tests/test_m6_eval.py` (includes `python -m build` smoke). |
 
 | Not implemented (by design in this repo) | Notes |
 | --- | --- |
@@ -80,6 +81,7 @@ These exist so **existing scripts and `-m` module paths keep working**. They **m
 | Hosted SPA | Static `report/` + `site_manifest.json` only. |
 | Interactive compare picker / arbitrary pairwise UI | Static JSON + scoped pairs + explicit `blocked_comparisons` only. |
 | Arbitrary third-party JSON trees as merge inputs | Only Azimuth-shaped run directories (token summary + artifacts) are supported; no silent directory sweeps. |
+| PyPI publication / verified release automation | Local `python -m build` is documented and tested; publishing is out of scope unless explicitly added. |
 
 ## Transitional debt (explicit)
 
