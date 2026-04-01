@@ -21,4 +21,4 @@ Recorded on independent re-verification (same session as bundle creation).
 **Notes**
 
 - `python -m build` may print a `NO_COLOR`/`FORCE_COLOR` warning from the environment; output did **not** contain `SetuptoolsDeprecationWarning` (also asserted in `tests/test_m6_eval.py`).
-- Git HEAD (this evidence receipt): `0972105` (product behavior verified at baseline `1130597`; subsequent commits add this bundle only).
+- Product commands in this file were verified at git baseline **`1130597`**. This evidence directory was added in follow-up commits; use `git log -- release/evidence/m6_release_gate_v1` for the receipt chain.
