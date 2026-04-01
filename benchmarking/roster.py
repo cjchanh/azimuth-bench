@@ -5,11 +5,10 @@ from __future__ import annotations
 
 import argparse
 import json
-import re
 from pathlib import Path
 from typing import Any, Iterable
 
-from benchmarking.utils import DEFAULT_ROSTER
+from azimuth_bench.core.runtime import DEFAULT_ROSTER, slugify
 
 REQUIRED_ENTRY_KEYS = {
     "model_id",
@@ -21,12 +20,6 @@ REQUIRED_ENTRY_KEYS = {
     "source_badge",
     "required_cache",
 }
-
-
-def slugify(value: str) -> str:
-    """Create a deterministic ASCII slug for artifact names."""
-    collapsed = re.sub(r"[^a-z0-9]+", "_", value.lower()).strip("_")
-    return collapsed or "unknown"
 
 
 def load_roster(path: Path | str = DEFAULT_ROSTER) -> list[dict[str, Any]]:
@@ -74,19 +67,6 @@ def artifact_key(entry: dict[str, Any]) -> str:
 def hf_cache_dir(model_id: str) -> Path:
     """Resolve the local Hugging Face cache directory for a model."""
     return Path.home() / ".cache" / "huggingface" / "hub" / f"models--{model_id.replace('/', '--')}"
-
-
-def chat_template_kwargs_for_thinking_mode(
-    thinking_mode: str,
-) -> dict[str, Any] | None:
-    """Translate benchmark thinking mode into MLX chat-template kwargs."""
-    if thinking_mode == "default":
-        return None
-    if thinking_mode == "on":
-        return {"enable_thinking": True}
-    if thinking_mode == "off":
-        return {"enable_thinking": False}
-    raise ValueError(f"Unsupported thinking_mode={thinking_mode!r}")
 
 
 def emit_tsv(entries: Iterable[dict[str, Any]]) -> str:

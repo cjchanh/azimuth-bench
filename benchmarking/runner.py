@@ -8,16 +8,14 @@ import json
 import os
 import platform
 import shutil
-import signal
 import subprocess
 import sys
-import time
-import urllib.error
-import urllib.request
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
+from azimuth_bench.adapters.mlx import MLXLmServerAdapter
+from azimuth_bench.core.env import default_fleet_guard_path, default_mlx_server_log_path
 from benchmarking.roster import (
     DEFAULT_ROSTER,
     artifact_key,
@@ -25,11 +23,11 @@ from benchmarking.roster import (
     hf_cache_dir,
     load_roster,
 )
-from benchmarking.utils import DEFAULT_BENCHMARKS_DIR, ROOT, model_ids_from_payload
+from benchmarking.utils import DEFAULT_BENCHMARKS_DIR, ROOT
 
 EXPERIMENT_PORT = 8899
-SERVER_LOG_PATH = Path("/tmp/mlx_bench_server.log")
-FLEET_GUARD_PATH = Path("/tmp/benchmark_fleet_guard.json")
+SERVER_LOG_PATH = default_mlx_server_log_path()
+FLEET_GUARD_PATH = default_fleet_guard_path()
 
 
 class Logger:
@@ -85,38 +83,6 @@ def _pages_free() -> str:
         if "Pages free" in line:
             return line.split(":", 1)[1].replace(".", "").strip()
     return "unknown"
-
-
-def _port_pids(port: int) -> list[int]:
-    result = subprocess.run(
-        ["lsof", "-i", f":{port}", "-t"],
-        capture_output=True,
-        text=True,
-        check=False,
-    )
-    pids: list[int] = []
-    for line in result.stdout.splitlines():
-        line = line.strip()
-        if line.isdigit():
-            pids.append(int(line))
-    return pids
-
-
-def _kill_port_holders(port: int) -> None:
-    for pid in _port_pids(port):
-        try:
-            os.kill(pid, signal.SIGTERM)
-        except OSError:
-            continue
-
-
-def _served_model_ids(port: int) -> list[str]:
-    try:
-        with urllib.request.urlopen(f"http://localhost:{port}/v1/models", timeout=2) as resp:
-            payload = json.load(resp)
-    except (urllib.error.URLError, TimeoutError, json.JSONDecodeError):
-        return []
-    return model_ids_from_payload(payload)
 
 
 def _command_text(cmd: list[str]) -> str | None:
@@ -178,52 +144,6 @@ def _artifact_completeness_receipt(artifact_json: Path) -> dict[str, Any]:
         "comparable": bool(payload.get("comparability", {}).get("comparable")),
         "complete": not missing_keys,
     }
-
-
-def _swap_model(target: str, port: int, logger: Logger) -> dict[str, Any]:
-    load_started_at = datetime.now(timezone.utc).isoformat()
-    wall_start = time.perf_counter()
-    _kill_port_holders(port)
-    time.sleep(3)
-
-    mem_before = _pages_free()
-    with SERVER_LOG_PATH.open("w", encoding="utf-8") as handle:
-        subprocess.Popen(
-            [
-                sys.executable,
-                "-m",
-                "mlx_lm",
-                "server",
-                "--model",
-                target,
-                "--port",
-                str(port),
-                "--max-tokens",
-                "512",
-            ],
-            stdout=handle,
-            stderr=subprocess.STDOUT,
-            cwd=ROOT,
-        )
-
-    for attempt in range(1, 121):
-        served_model_ids = _served_model_ids(port)
-        if target in served_model_ids:
-            mem_after = _pages_free()
-            logger.log(f"  Loaded {target} in {attempt}s (pages_free: {mem_before} -> {mem_after})")
-            return {
-                "started_at_utc": load_started_at,
-                "finished_at_utc": datetime.now(timezone.utc).isoformat(),
-                "load_seconds": round(time.perf_counter() - wall_start, 2),
-                "served_model": target,
-                "expected_model": target,
-                "pages_free_before": mem_before,
-                "pages_free_after": mem_after,
-                "port": port,
-            }
-        time.sleep(1)
-
-    raise RuntimeError(f"failed to load {target} on :{port}")
 
 
 def _experiment_server_active(port: int) -> bool:
@@ -321,163 +241,187 @@ def main(argv: list[str] | None = None) -> int:
     logger.log(f"Roster entries: {len(entries)}")
     logger.log()
 
-    for entry in entries:
-        model_id = str(entry["model_id"])
-        display_name = str(entry["display_name"])
-        lane = str(entry["lane"])
-        thinking_mode = str(entry["thinking_mode"])
-        source_label = str(entry["source_label"])
-        source_badge = str(entry["source_badge"])
-        artifact = artifact_key(entry)
-        artifact_json = args.benchmarks_dir / f"{artifact}.json"
-        gate_dir = args.benchmarks_dir / f"gate_{artifact}"
-        gate_result = gate_dir / "gate_result.json"
-        receipt_dir = args.benchmarks_dir / "receipts" / artifact
-        need_benchmark = True
-        need_gate = args.with_gate
+    mlx_adapter = MLXLmServerAdapter(
+        repo_root=ROOT,
+        bench_port=args.bench_port,
+        server_log_path=SERVER_LOG_PATH,
+        max_tokens_default=512,
+    )
 
-        logger.log(f"[{artifact}] {display_name} | lane={lane} | thinking={thinking_mode}")
-        receipt_payloads: dict[str, dict[str, Any]] = {}
-        receipt_paths: dict[str, Path] = {}
+    try:
+        for entry in entries:
+            model_id = str(entry["model_id"])
+            display_name = str(entry["display_name"])
+            lane = str(entry["lane"])
+            thinking_mode = str(entry["thinking_mode"])
+            source_label = str(entry["source_label"])
+            source_badge = str(entry["source_badge"])
+            artifact = artifact_key(entry)
+            artifact_json = args.benchmarks_dir / f"{artifact}.json"
+            gate_dir = args.benchmarks_dir / f"gate_{artifact}"
+            gate_result = gate_dir / "gate_result.json"
+            receipt_dir = args.benchmarks_dir / "receipts" / artifact
+            need_benchmark = True
+            need_gate = args.with_gate
 
-        try:
-            cache_dir = hf_cache_dir(model_id)
-            if not cache_dir.exists():
-                if entry.get("required_cache"):
-                    raise RuntimeError(f"required cache missing for {model_id} ({cache_dir})")
-                logger.log(f"[{artifact}] Cache missing; optional entry skipped")
-                logger.log()
-                continue
+            logger.log(f"[{artifact}] {display_name} | lane={lane} | thinking={thinking_mode}")
+            receipt_payloads: dict[str, dict[str, Any]] = {}
+            receipt_paths: dict[str, Path] = {}
 
-            if args.dry_run:
-                if args.with_gate:
-                    logger.log(f"[{artifact}] DRY RUN cache=present artifact_json={artifact_json} gate_dir={gate_dir}")
-                else:
-                    logger.log(f"[{artifact}] DRY RUN cache=present artifact_json={artifact_json}")
-                logger.log()
-                continue
-
-            if not args.force:
-                if artifact_json.exists():
-                    need_benchmark = False
-                if args.with_gate and gate_result.exists():
-                    need_gate = False
-                if not need_benchmark and not need_gate:
-                    logger.log(f"[{artifact}] Existing requested artifacts found; skipping")
+            try:
+                cache_dir = hf_cache_dir(model_id)
+                if not cache_dir.exists():
+                    if entry.get("required_cache"):
+                        raise RuntimeError(f"required cache missing for {model_id} ({cache_dir})")
+                    logger.log(f"[{artifact}] Cache missing; optional entry skipped")
                     logger.log()
                     continue
 
-            machine_receipt = _machine_receipt(
-                model_id=model_id,
-                lane=lane,
-                thinking_mode=thinking_mode,
-                bench_port=args.bench_port,
-            )
-            receipt_payloads["machine_pre_run"] = machine_receipt
-            receipt_paths["machine_pre_run"] = _write_receipt(receipt_dir, "machine_pre_run", machine_receipt)
+                if args.dry_run:
+                    if args.with_gate:
+                        logger.log(
+                            f"[{artifact}] DRY RUN cache=present artifact_json={artifact_json} gate_dir={gate_dir}"
+                        )
+                    else:
+                        logger.log(f"[{artifact}] DRY RUN cache=present artifact_json={artifact_json}")
+                    logger.log()
+                    continue
 
-            model_load_receipt = _swap_model(model_id, args.bench_port, logger)
-            receipt_payloads["model_load"] = model_load_receipt
-            receipt_paths["model_load"] = _write_receipt(receipt_dir, "model_load", model_load_receipt)
+                if not args.force:
+                    if artifact_json.exists():
+                        need_benchmark = False
+                    if args.with_gate and gate_result.exists():
+                        need_gate = False
+                    if not need_benchmark and not need_gate:
+                        logger.log(f"[{artifact}] Existing requested artifacts found; skipping")
+                        logger.log()
+                        continue
 
-            if need_benchmark:
-                logger.log(f"[{artifact}] Running token benchmark...")
-                token_run_start = {
-                    "timestamp_utc": datetime.now(timezone.utc).isoformat(),
-                    "artifact_key": artifact,
-                    "artifact_path": str(artifact_json),
-                    "model_id": model_id,
-                    "thinking_mode": thinking_mode,
-                    "lane": lane,
-                }
-                receipt_payloads["token_run_start"] = token_run_start
-                receipt_paths["token_run_start"] = _write_receipt(receipt_dir, "token_run_start", token_run_start)
-                _run_subprocess(
-                    [
-                        sys.executable,
-                        "-m",
-                        "benchmarking.token",
-                        "--port",
-                        str(args.bench_port),
-                        "--model-id",
-                        model_id,
-                        "--output",
-                        str(artifact_json),
-                        "--display-name",
-                        display_name,
-                        "--lane",
-                        lane,
-                        "--thinking-mode",
-                        thinking_mode,
-                        "--source-label",
-                        source_label,
-                        "--source-badge",
-                        source_badge,
-                        "--artifact-key",
-                        artifact,
-                    ],
-                    cwd=ROOT,
-                    logger=logger,
-                    fail_message=f"token benchmark failed for {artifact}",
+                machine_receipt = _machine_receipt(
+                    model_id=model_id,
+                    lane=lane,
+                    thinking_mode=thinking_mode,
+                    bench_port=args.bench_port,
                 )
-                token_run_finish = {
-                    "timestamp_utc": datetime.now(timezone.utc).isoformat(),
-                    "artifact_path": str(artifact_json),
-                    "status": "complete",
-                }
-                receipt_payloads["token_run_finish"] = token_run_finish
-                receipt_paths["token_run_finish"] = _write_receipt(receipt_dir, "token_run_finish", token_run_finish)
-                completeness = _artifact_completeness_receipt(artifact_json)
-                receipt_payloads["artifact_complete"] = completeness
-                receipt_paths["artifact_complete"] = _write_receipt(receipt_dir, "artifact_complete", completeness)
-                _merge_artifact_receipts(
-                    artifact_json,
-                    receipt_payloads=receipt_payloads,
-                    receipt_paths=receipt_paths,
-                )
-            else:
-                logger.log(f"[{artifact}] Token benchmark artifact already present; skipping")
+                receipt_payloads["machine_pre_run"] = machine_receipt
+                receipt_paths["machine_pre_run"] = _write_receipt(receipt_dir, "machine_pre_run", machine_receipt)
 
-            if need_gate:
-                logger.log(f"[{artifact}] Running optional 5-tick Agent Civilization gate...")
-                if gate_dir.exists():
-                    shutil.rmtree(gate_dir)
-                _run_subprocess(
-                    [
-                        sys.executable,
-                        "-m",
-                        "benchmarking.gate",
-                        "--port",
-                        str(args.bench_port),
-                        "--model",
-                        model_id,
-                        "--output-dir",
-                        str(gate_dir),
-                        "--thinking-mode",
-                        thinking_mode,
-                    ],
-                    cwd=ROOT,
-                    logger=logger,
-                    fail_message=f"gate failed for {artifact}",
-                    stdout_to=gate_dir / "gate.log",
-                )
-                gate_payload = json.loads(gate_result.read_text())
+                model_load_receipt = mlx_adapter.prepare_target(model_id)
+                mem_before = model_load_receipt.get("pages_free_before", "")
+                mem_after = model_load_receipt.get("pages_free_after", "")
                 logger.log(
-                    f"[{artifact}] Gate: decision={gate_payload['decision']} usable={gate_payload['agent_civ_usable']}"
+                    f"  Loaded {model_id} in {model_load_receipt.get('load_seconds', '?')}s "
+                    f"(pages_free: {mem_before} -> {mem_after})"
                 )
-            logger.log()
-        except Exception as exc:
-            if not args.dry_run:
-                failure_receipt = {
-                    "timestamp_utc": datetime.now(timezone.utc).isoformat(),
-                    "artifact_key": artifact,
-                    "model_id": model_id,
-                    "thinking_mode": thinking_mode,
-                    "lane": lane,
-                    "error": str(exc),
-                }
-                _write_receipt(receipt_dir, "failure", failure_receipt)
-            raise
+                receipt_payloads["model_load"] = model_load_receipt
+                receipt_paths["model_load"] = _write_receipt(receipt_dir, "model_load", model_load_receipt)
+
+                if need_benchmark:
+                    logger.log(f"[{artifact}] Running token benchmark...")
+                    token_run_start = {
+                        "timestamp_utc": datetime.now(timezone.utc).isoformat(),
+                        "artifact_key": artifact,
+                        "artifact_path": str(artifact_json),
+                        "model_id": model_id,
+                        "thinking_mode": thinking_mode,
+                        "lane": lane,
+                    }
+                    receipt_payloads["token_run_start"] = token_run_start
+                    receipt_paths["token_run_start"] = _write_receipt(receipt_dir, "token_run_start", token_run_start)
+                    _run_subprocess(
+                        [
+                            sys.executable,
+                            "-m",
+                            "benchmarking.token",
+                            "--port",
+                            str(args.bench_port),
+                            "--model-id",
+                            model_id,
+                            "--output",
+                            str(artifact_json),
+                            "--display-name",
+                            display_name,
+                            "--lane",
+                            lane,
+                            "--thinking-mode",
+                            thinking_mode,
+                            "--source-label",
+                            source_label,
+                            "--source-badge",
+                            source_badge,
+                            "--artifact-key",
+                            artifact,
+                        ],
+                        cwd=ROOT,
+                        logger=logger,
+                        fail_message=f"token benchmark failed for {artifact}",
+                    )
+                    token_run_finish = {
+                        "timestamp_utc": datetime.now(timezone.utc).isoformat(),
+                        "artifact_path": str(artifact_json),
+                        "status": "complete",
+                    }
+                    receipt_payloads["token_run_finish"] = token_run_finish
+                    receipt_paths["token_run_finish"] = _write_receipt(
+                        receipt_dir,
+                        "token_run_finish",
+                        token_run_finish,
+                    )
+                    completeness = _artifact_completeness_receipt(artifact_json)
+                    receipt_payloads["artifact_complete"] = completeness
+                    receipt_paths["artifact_complete"] = _write_receipt(receipt_dir, "artifact_complete", completeness)
+                    _merge_artifact_receipts(
+                        artifact_json,
+                        receipt_payloads=receipt_payloads,
+                        receipt_paths=receipt_paths,
+                    )
+                else:
+                    logger.log(f"[{artifact}] Token benchmark artifact already present; skipping")
+
+                if need_gate:
+                    logger.log(f"[{artifact}] Running optional 5-tick Agent Civilization gate...")
+                    if gate_dir.exists():
+                        shutil.rmtree(gate_dir)
+                    _run_subprocess(
+                        [
+                            sys.executable,
+                            "-m",
+                            "benchmarking.gate",
+                            "--port",
+                            str(args.bench_port),
+                            "--model",
+                            model_id,
+                            "--output-dir",
+                            str(gate_dir),
+                            "--thinking-mode",
+                            thinking_mode,
+                        ],
+                        cwd=ROOT,
+                        logger=logger,
+                        fail_message=f"gate failed for {artifact}",
+                        stdout_to=gate_dir / "gate.log",
+                    )
+                    gate_payload = json.loads(gate_result.read_text())
+                    logger.log(
+                        f"[{artifact}] Gate: decision={gate_payload['decision']} "
+                        f"usable={gate_payload['agent_civ_usable']}"
+                    )
+                logger.log()
+            except Exception as exc:
+                if not args.dry_run:
+                    failure_receipt = {
+                        "timestamp_utc": datetime.now(timezone.utc).isoformat(),
+                        "artifact_key": artifact,
+                        "model_id": model_id,
+                        "thinking_mode": thinking_mode,
+                        "lane": lane,
+                        "error": str(exc),
+                    }
+                    _write_receipt(receipt_dir, "failure", failure_receipt)
+                raise
+    finally:
+        if not args.dry_run:
+            mlx_adapter.shutdown()
 
     if args.dry_run:
         logger.log("DRY RUN COMPLETE: roster, cache, and artifact paths validated; no repo artifacts were written.")
