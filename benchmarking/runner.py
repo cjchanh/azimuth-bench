@@ -25,7 +25,7 @@ from benchmarking.roster import (
     hf_cache_dir,
     load_roster,
 )
-from benchmarking.utils import DEFAULT_BENCHMARKS_DIR, ROOT
+from benchmarking.utils import DEFAULT_BENCHMARKS_DIR, ROOT, model_ids_from_payload
 
 EXPERIMENT_PORT = 8899
 SERVER_LOG_PATH = Path("/tmp/mlx_bench_server.log")
@@ -110,16 +110,13 @@ def _kill_port_holders(port: int) -> None:
             continue
 
 
-def _served_model(port: int) -> str:
+def _served_model_ids(port: int) -> list[str]:
     try:
         with urllib.request.urlopen(f"http://localhost:{port}/v1/models", timeout=2) as resp:
             payload = json.load(resp)
     except (urllib.error.URLError, TimeoutError, json.JSONDecodeError):
-        return ""
-    try:
-        return str(payload["data"][0]["id"])
-    except (KeyError, IndexError, TypeError):
-        return ""
+        return []
+    return model_ids_from_payload(payload)
 
 
 def _command_text(cmd: list[str]) -> str | None:
@@ -210,41 +207,20 @@ def _swap_model(target: str, port: int, logger: Logger) -> dict[str, Any]:
         )
 
     for attempt in range(1, 121):
-        served_model = _served_model(port)
-        if served_model == target:
+        served_model_ids = _served_model_ids(port)
+        if target in served_model_ids:
             mem_after = _pages_free()
             logger.log(f"  Loaded {target} in {attempt}s (pages_free: {mem_before} -> {mem_after})")
             return {
                 "started_at_utc": load_started_at,
                 "finished_at_utc": datetime.now(timezone.utc).isoformat(),
                 "load_seconds": round(time.perf_counter() - wall_start, 2),
-                "served_model": served_model,
+                "served_model": target,
                 "expected_model": target,
                 "pages_free_before": mem_before,
                 "pages_free_after": mem_after,
                 "port": port,
             }
-        if served_model and served_model != target:
-            _kill_port_holders(port)
-            time.sleep(2)
-            with SERVER_LOG_PATH.open("w", encoding="utf-8") as handle:
-                subprocess.Popen(
-                    [
-                        sys.executable,
-                        "-m",
-                        "mlx_lm",
-                        "server",
-                        "--model",
-                        target,
-                        "--port",
-                        str(port),
-                        "--max-tokens",
-                        "512",
-                    ],
-                    stdout=handle,
-                    stderr=subprocess.STDOUT,
-                    cwd=ROOT,
-                )
         time.sleep(1)
 
     raise RuntimeError(f"failed to load {target} on :{port}")
@@ -423,6 +399,8 @@ def main(argv: list[str] | None = None) -> int:
                         "benchmarking.token",
                         "--port",
                         str(args.bench_port),
+                        "--model-id",
+                        model_id,
                         "--output",
                         str(artifact_json),
                         "--display-name",
