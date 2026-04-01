@@ -1,7 +1,7 @@
 {
   "timestamp_utc": "2026-04-01T01:34:29.900493+00:00",
   "artifact_key": "frontier_27b__qwen35_27b_base__thinking-on",
-  "artifact_path": "/Users/cj/Workspace/active/agent-civilization/benchmarks/frontier_27b__qwen35_27b_base__thinking-on.json",
+  "artifact_path": "/Users/cj/Workspace/active/benchmark-v2/benchmarks/frontier_27b__qwen35_27b_base__thinking-on.json",
   "model_id": "NexVeridian/Qwen3.5-27B-4bit",
   "thinking_mode": "on",
   "lane": "frontier_27b"

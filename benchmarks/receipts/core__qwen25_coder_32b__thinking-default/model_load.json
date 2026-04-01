@@ -1,0 +1,9 @@
+{
+  "started_at_utc": "2026-04-01T19:48:28.283971+00:00",
+  "finished_at_utc": "2026-04-01T19:49:53.133910+00:00",
+  "load_seconds": 84.85,
+  "served_model": "mlx-community/Qwen2.5-Coder-32B-Instruct-4bit",
+  "expected_model": "mlx-community/Qwen2.5-Coder-32B-Instruct-4bit",
+  "pages_free_before": "3429917",
+  "pages_free_after": "1170157"
+}

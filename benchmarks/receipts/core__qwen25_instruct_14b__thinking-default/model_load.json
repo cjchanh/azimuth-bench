@@ -1,0 +1,9 @@
+{
+  "started_at_utc": "2026-04-01T19:45:18.522637+00:00",
+  "finished_at_utc": "2026-04-01T19:45:40.262363+00:00",
+  "load_seconds": 21.74,
+  "served_model": "mlx-community/Qwen2.5-14B-Instruct-4bit",
+  "expected_model": "mlx-community/Qwen2.5-14B-Instruct-4bit",
+  "pages_free_before": "4173911",
+  "pages_free_after": "3160604"
+}

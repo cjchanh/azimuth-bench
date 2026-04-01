@@ -1,0 +1,9 @@
+{
+  "started_at_utc": "2026-04-01T20:07:26.010999+00:00",
+  "finished_at_utc": "2026-04-01T20:07:31.171272+00:00",
+  "load_seconds": 5.16,
+  "served_model": "mlx-community/Ministral-3-8B-Instruct-2512-4bit",
+  "expected_model": "mlx-community/Ministral-3-8B-Instruct-2512-4bit",
+  "pages_free_before": "963939",
+  "pages_free_after": "354445"
+}

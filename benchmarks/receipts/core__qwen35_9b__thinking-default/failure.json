@@ -1,0 +1,8 @@
+{
+  "timestamp_utc": "2026-04-01T19:57:02.572059+00:00",
+  "artifact_key": "core__qwen35_9b__thinking-default",
+  "model_id": "mlx-community/Qwen3.5-9B-MLX-4bit",
+  "thinking_mode": "default",
+  "lane": "core",
+  "error": "failed to load mlx-community/Qwen3.5-9B-MLX-4bit on :9700"
+}

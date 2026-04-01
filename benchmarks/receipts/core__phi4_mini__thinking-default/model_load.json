@@ -1,0 +1,9 @@
+{
+  "started_at_utc": "2026-04-01T20:09:43.560595+00:00",
+  "finished_at_utc": "2026-04-01T20:09:48.723277+00:00",
+  "load_seconds": 5.16,
+  "served_model": "mlx-community/Phi-4-mini-instruct-4bit",
+  "expected_model": "mlx-community/Phi-4-mini-instruct-4bit",
+  "pages_free_before": "689035",
+  "pages_free_after": "408891"
+}

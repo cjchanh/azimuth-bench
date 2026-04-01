@@ -30,3 +30,32 @@ def coerce_message_text(value: Any) -> str:
                         break
         return "".join(parts)
     return str(value)
+
+
+def model_ids_from_payload(payload: Any) -> list[str]:
+    """Extract model ids from an OpenAI-compatible /v1/models payload."""
+    if not isinstance(payload, dict):
+        return []
+    data = payload.get("data")
+    if not isinstance(data, list):
+        return []
+    model_ids: list[str] = []
+    for item in data:
+        if not isinstance(item, dict):
+            continue
+        model_id = item.get("id")
+        if isinstance(model_id, str) and model_id:
+            model_ids.append(model_id)
+    return model_ids
+
+
+def resolve_model_id(payload: Any, *, target_model_id: str | None = None) -> str:
+    """Resolve the intended model id from a /v1/models payload."""
+    model_ids = model_ids_from_payload(payload)
+    if not model_ids:
+        raise ValueError("models payload did not contain any model ids")
+    if target_model_id is None:
+        return model_ids[0]
+    if target_model_id not in model_ids:
+        raise ValueError(f"target model {target_model_id!r} not present in models payload")
+    return target_model_id

@@ -1,0 +1,9 @@
+{
+  "started_at_utc": "2026-04-01T20:10:15.564935+00:00",
+  "finished_at_utc": "2026-04-01T20:10:20.723728+00:00",
+  "load_seconds": 5.16,
+  "served_model": "mlx-community/DeepSeek-R1-Distill-Llama-8B-4bit",
+  "expected_model": "mlx-community/DeepSeek-R1-Distill-Llama-8B-4bit",
+  "pages_free_before": "565194",
+  "pages_free_after": "6423"
+}
