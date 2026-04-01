@@ -1,0 +1,6 @@
+| Model ID | Display | Lane | Think | Short tok/s | JSON tok/s | Sustain tok/s | First out ms | First ans ms | Source | Badge |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| NexVeridian/Qwen3.5-27B-4bit | Qwen3.5 27B Base | frontier_27b | on | 19.6 | 20.8 | 15.2 | 200.9 | 8025.4 | NexVeridian / Hugging Face | Hugging Face |
+| NexVeridian/Qwen3.5-27B-4bit | Qwen3.5 27B Base | frontier_27b | off | 26.4 | 18.9 | 26.2 | 238.9 | 238.9 | NexVeridian / Hugging Face | Hugging Face |
+| Jackrong/MLX-Qwen3.5-27B-Claude-4.6-Opus-Reasoning-Distilled-v2-4bit | Qwen3.5 27B Opus Distilled v2 | frontier_27b | on | 25.8 | 20.6 | 23.5 | 210.4 | 4114.4 | Jackrong / Hugging Face | Hugging Face |
+| Jackrong/MLX-Qwen3.5-27B-Claude-4.6-Opus-Reasoning-Distilled-v2-4bit | Qwen3.5 27B Opus Distilled v2 | frontier_27b | off | 25.9 | 23.1 | 23.2 | 212.6 | 7979.1 | Jackrong / Hugging Face | Hugging Face |

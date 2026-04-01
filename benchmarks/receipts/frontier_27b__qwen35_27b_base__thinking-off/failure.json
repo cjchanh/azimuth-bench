@@ -1,0 +1,8 @@
+{
+  "timestamp_utc": "2026-04-01T01:41:42.419747+00:00",
+  "artifact_key": "frontier_27b__qwen35_27b_base__thinking-off",
+  "model_id": "NexVeridian/Qwen3.5-27B-4bit",
+  "thinking_mode": "off",
+  "lane": "frontier_27b",
+  "error": "failed to load NexVeridian/Qwen3.5-27B-4bit on :9700"
+}

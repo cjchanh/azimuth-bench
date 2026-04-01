@@ -1,0 +1,18 @@
+{
+  "timestamp_utc": "2026-04-01T02:38:15.794314+00:00",
+  "platform": "macOS-26.3.1-arm64-arm-64bit-Mach-O",
+  "python": "3.14.3",
+  "lane": "frontier_27b",
+  "model_id": "NexVeridian/Qwen3.5-27B-4bit",
+  "thinking_mode": "off",
+  "loadavg": [
+    2.1,
+    1.88,
+    1.98
+  ],
+  "vm_pages_free": "4445238",
+  "cpu_brand": "Apple M5 Max",
+  "hardware_model": "Mac17,6",
+  "memsize": "137438953472",
+  "continuous_monitoring": "disabled_by_protocol"
+}

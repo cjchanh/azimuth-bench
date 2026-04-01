@@ -1,0 +1,72 @@
+{
+  "generated_at_utc": "2026-04-01T02:52:38.666744+00:00",
+  "lane": "frontier_27b",
+  "row_count": 4,
+  "fields": [
+    "model_id",
+    "display_name",
+    "lane",
+    "thinking_mode",
+    "short_tok_s",
+    "structured_json_tok_s",
+    "sustained_tok_s",
+    "first_output_ms",
+    "first_answer_ms",
+    "source_label",
+    "source_badge"
+  ],
+  "rows": [
+    {
+      "model_id": "NexVeridian/Qwen3.5-27B-4bit",
+      "display_name": "Qwen3.5 27B Base",
+      "lane": "frontier_27b",
+      "thinking_mode": "on",
+      "short_tok_s": 32.4,
+      "structured_json_tok_s": 27.1,
+      "sustained_tok_s": 31.3,
+      "first_output_ms": 205.8,
+      "first_answer_ms": 7906.1,
+      "source_label": "NexVeridian / Hugging Face",
+      "source_badge": "Hugging Face"
+    },
+    {
+      "model_id": "NexVeridian/Qwen3.5-27B-4bit",
+      "display_name": "Qwen3.5 27B Base",
+      "lane": "frontier_27b",
+      "thinking_mode": "off",
+      "short_tok_s": 32.1,
+      "structured_json_tok_s": 29.6,
+      "sustained_tok_s": 25.4,
+      "first_output_ms": 231.3,
+      "first_answer_ms": 231.3,
+      "source_label": "NexVeridian / Hugging Face",
+      "source_badge": "Hugging Face"
+    },
+    {
+      "model_id": "Jackrong/MLX-Qwen3.5-27B-Claude-4.6-Opus-Reasoning-Distilled-v2-4bit",
+      "display_name": "Qwen3.5 27B Opus Distilled v2",
+      "lane": "frontier_27b",
+      "thinking_mode": "on",
+      "short_tok_s": 33.0,
+      "structured_json_tok_s": 31.3,
+      "sustained_tok_s": 30.2,
+      "first_output_ms": 198.8,
+      "first_answer_ms": 7771.0,
+      "source_label": "Jackrong / Hugging Face",
+      "source_badge": "Hugging Face"
+    },
+    {
+      "model_id": "Jackrong/MLX-Qwen3.5-27B-Claude-4.6-Opus-Reasoning-Distilled-v2-4bit",
+      "display_name": "Qwen3.5 27B Opus Distilled v2",
+      "lane": "frontier_27b",
+      "thinking_mode": "off",
+      "short_tok_s": 32.8,
+      "structured_json_tok_s": 31.9,
+      "sustained_tok_s": 31.8,
+      "first_output_ms": 198.4,
+      "first_answer_ms": 4392.8,
+      "source_label": "Jackrong / Hugging Face",
+      "source_badge": "Hugging Face"
+    }
+  ]
+}

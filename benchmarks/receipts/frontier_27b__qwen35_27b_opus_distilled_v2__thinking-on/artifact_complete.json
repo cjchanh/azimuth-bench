@@ -1,0 +1,15 @@
+{
+  "timestamp_utc": "2026-04-01T02:46:27.168457+00:00",
+  "artifact_path": "/Users/cj/Workspace/active/agent-civilization/benchmarks/frontier_27b__qwen35_27b_opus_distilled_v2__thinking-on.json",
+  "required_keys": [
+    "protocol",
+    "summary",
+    "validity",
+    "comparability",
+    "receipts"
+  ],
+  "missing_keys": [],
+  "valid_run": true,
+  "comparable": true,
+  "complete": true
+}

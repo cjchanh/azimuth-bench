@@ -1,0 +1,9 @@
+{
+  "started_at_utc": "2026-04-01T02:38:15.815418+00:00",
+  "finished_at_utc": "2026-04-01T02:39:27.377841+00:00",
+  "load_seconds": 71.56,
+  "served_model": "NexVeridian/Qwen3.5-27B-4bit",
+  "expected_model": "NexVeridian/Qwen3.5-27B-4bit",
+  "pages_free_before": "4444636",
+  "pages_free_after": "3493363"
+}

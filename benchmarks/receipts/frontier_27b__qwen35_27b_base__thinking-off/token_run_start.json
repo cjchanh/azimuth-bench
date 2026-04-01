@@ -1,0 +1,8 @@
+{
+  "timestamp_utc": "2026-04-01T02:39:27.378128+00:00",
+  "artifact_key": "frontier_27b__qwen35_27b_base__thinking-off",
+  "artifact_path": "/Users/cj/Workspace/active/agent-civilization/benchmarks/frontier_27b__qwen35_27b_base__thinking-off.json",
+  "model_id": "NexVeridian/Qwen3.5-27B-4bit",
+  "thinking_mode": "off",
+  "lane": "frontier_27b"
+}
