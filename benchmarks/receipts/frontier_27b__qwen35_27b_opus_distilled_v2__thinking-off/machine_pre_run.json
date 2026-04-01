@@ -1,16 +1,16 @@
 {
-  "timestamp_utc": "2026-04-01T02:46:27.168886+00:00",
+  "timestamp_utc": "2026-04-01T20:24:05.677334+00:00",
   "platform": "macOS-26.3.1-arm64-arm-64bit-Mach-O",
   "python": "3.14.3",
   "lane": "frontier_27b",
   "model_id": "Jackrong/MLX-Qwen3.5-27B-Claude-4.6-Opus-Reasoning-Distilled-v2-4bit",
   "thinking_mode": "off",
   "loadavg": [
-    1.8,
-    1.94,
-    1.99
+    2.82,
+    2.89,
+    2.71
   ],
-  "vm_pages_free": "2763939",
+  "vm_pages_free": "93106",
   "cpu_brand": "Apple M5 Max",
   "hardware_model": "Mac17,6",
   "memsize": "137438953472",
