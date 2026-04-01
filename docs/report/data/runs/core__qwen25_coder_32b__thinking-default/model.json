@@ -1,0 +1,15 @@
+{
+  "azimuth_bench_schema_version": "1.0.0",
+  "model_id": "mlx-community/Qwen2.5-Coder-32B-Instruct-4bit",
+  "target_model_id": "mlx-community/Qwen2.5-Coder-32B-Instruct-4bit",
+  "served_model_ids": [
+    "mlx-community/Qwen2.5-Coder-32B-Instruct-4bit"
+  ],
+  "display_name": "Qwen2.5 Coder 32B",
+  "thinking_mode": "default",
+  "prompt_mode": "chat_completions",
+  "source_label": "mlx-community",
+  "source_badge": "MLX Community",
+  "quantization": "4bit",
+  "model_family": "Qwen2.5"
+}

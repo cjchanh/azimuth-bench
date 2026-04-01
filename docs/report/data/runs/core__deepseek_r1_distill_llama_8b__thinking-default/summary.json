@@ -1,0 +1,52 @@
+{
+  "azimuth_bench_schema_version": "1.0.0",
+  "metrics": {
+    "model_id": "mlx-community/DeepSeek-R1-Distill-Llama-8B-4bit",
+    "display_name": "DeepSeek R1 Distill Llama 8B",
+    "lane": "core",
+    "thinking_mode": "default",
+    "artifact_key": "core__deepseek_r1_distill_llama_8b__thinking-default",
+    "source_label": "mlx-community",
+    "source_badge": "MLX Community",
+    "short_tok_s": 104.7,
+    "structured_json_tok_s": 103.9,
+    "sustained_tok_s": 103.1,
+    "first_output_ms": 78.3,
+    "first_answer_ms": 93.4,
+    "avg_ttft_ms": 93.4,
+    "timestamp_utc": "2026-04-01T20:11:11.833589+00:00",
+    "valid_run": true,
+    "comparable": true
+  },
+  "validity": {
+    "valid_run": true,
+    "issues": [],
+    "expected_counts": {
+      "short": 3,
+      "structured": 3,
+      "medium": 3,
+      "long": 2,
+      "sustained": 10
+    },
+    "observed_counts": {
+      "short": 3,
+      "structured": 3,
+      "medium": 3,
+      "long": 2,
+      "sustained": 10
+    },
+    "token_count_sources": [
+      "usage"
+    ]
+  },
+  "comparability": {
+    "comparable": true,
+    "protocol_id": "benchmark_v2_m5max_v1",
+    "prompt_set_id": "benchmark_v2_m5max_prompt_set_v1",
+    "warm_interpretation": "warm_after_load",
+    "cold_interpretation": "model_load_receipt_only",
+    "token_count_sources": [
+      "usage"
+    ]
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "azimuth_bench_schema_version": "1.0.0",
+  "provider_id": "mlx_lm",
+  "provider_kind": "mlx_lm",
+  "adapter_name": null,
+  "provider_id_source": "default",
+  "capabilities": null,
+  "verified": {
+    "historical_artifact": true
+  },
+  "note": "historical artifact missing backend_identity; provider envelope is report metadata",
+  "backend": "mlx_lm_server",
+  "api_surface": "openai_compatible_http",
+  "providers": [
+    {
+      "azimuth_bench_schema_version": "1.0.0",
+      "provider_id": "mlx_lm",
+      "provider_kind": "mlx_lm",
+      "adapter_name": null,
+      "provider_id_source": "default",
+      "capabilities": null,
+      "verified": {
+        "historical_artifact": true
+      },
+      "note": "historical artifact missing backend_identity; provider envelope is report metadata",
+      "backend": "mlx_lm_server",
+      "api_surface": "openai_compatible_http"
+    }
+  ]
+}

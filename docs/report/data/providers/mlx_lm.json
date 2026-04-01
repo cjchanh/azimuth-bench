@@ -1,0 +1,83 @@
+{
+  "provider_key": "mlx_lm",
+  "provider_id": "mlx_lm",
+  "provider_kind": "mlx_lm",
+  "adapter_name": null,
+  "capabilities": null,
+  "run_count": 18,
+  "comparable_run_count": 18,
+  "models": [
+    {
+      "display_name": "Qwen2.5 Coder 7B",
+      "artifact_key": "core__qwen25_coder_7b__thinking-default"
+    },
+    {
+      "display_name": "Qwen2.5 Coder 14B",
+      "artifact_key": "core__qwen25_coder_14b__thinking-default"
+    },
+    {
+      "display_name": "Qwen2.5 Instruct 14B",
+      "artifact_key": "core__qwen25_instruct_14b__thinking-default"
+    },
+    {
+      "display_name": "Qwen2.5 Instruct 7B",
+      "artifact_key": "core__qwen25_instruct_7b__thinking-default"
+    },
+    {
+      "display_name": "Qwen2.5 Coder 32B",
+      "artifact_key": "core__qwen25_coder_32b__thinking-default"
+    },
+    {
+      "display_name": "Qwen3.5 9B",
+      "artifact_key": "core__qwen35_9b__thinking-default"
+    },
+    {
+      "display_name": "Gemma 3 4B",
+      "artifact_key": "core__gemma3_4b__thinking-default"
+    },
+    {
+      "display_name": "Gemma 3 12B",
+      "artifact_key": "core__gemma3_12b__thinking-default"
+    },
+    {
+      "display_name": "Gemma 3 27B",
+      "artifact_key": "core__gemma3_27b__thinking-default"
+    },
+    {
+      "display_name": "Llama 3.1 8B",
+      "artifact_key": "core__llama31_8b__thinking-default"
+    },
+    {
+      "display_name": "Ministral 3 8B",
+      "artifact_key": "core__ministral3_8b__thinking-default"
+    },
+    {
+      "display_name": "Ministral 3 14B",
+      "artifact_key": "core__ministral3_14b__thinking-default"
+    },
+    {
+      "display_name": "Phi 4 Mini",
+      "artifact_key": "core__phi4_mini__thinking-default"
+    },
+    {
+      "display_name": "DeepSeek R1 Distill Llama 8B",
+      "artifact_key": "core__deepseek_r1_distill_llama_8b__thinking-default"
+    },
+    {
+      "display_name": "Qwen3.5 27B Base",
+      "artifact_key": "frontier_27b__qwen35_27b_base__thinking-on"
+    },
+    {
+      "display_name": "Qwen3.5 27B Base",
+      "artifact_key": "frontier_27b__qwen35_27b_base__thinking-off"
+    },
+    {
+      "display_name": "Qwen3.5 27B Opus Distilled v2",
+      "artifact_key": "frontier_27b__qwen35_27b_opus_distilled_v2__thinking-on"
+    },
+    {
+      "display_name": "Qwen3.5 27B Opus Distilled v2",
+      "artifact_key": "frontier_27b__qwen35_27b_opus_distilled_v2__thinking-off"
+    }
+  ]
+}
