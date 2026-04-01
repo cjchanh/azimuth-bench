@@ -8,6 +8,8 @@ This document is the **single** place that defines **current** ownership and wha
 
 **Last verified tests (this checkout):** `python3 -m pytest -q` → **42 passed** (refresh when behavior changes).
 
+**Public proof docs (methodology + how to read reports + outreach snapshot):** [METHODOLOGY.md](METHODOLOGY.md), [READING_REPORTS.md](READING_REPORTS.md), [PUBLIC_PROOF_PACK.md](PUBLIC_PROOF_PACK.md).
+
 **Not SSOT (by design):** The Composer prompts are **instruction sets** for planned platform work (multi-backend, host surfaces, exports, comparability). They state **target outcomes** and verification expectations; they do **not** assert that every listed deliverable is shipped. If something conflicts with this file (`SOURCE_OF_TRUTH`) and the code, **this file wins** for “what is true now.”
 
 ## Canonical product surface

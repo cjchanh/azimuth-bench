@@ -401,7 +401,8 @@ def _render_index_html(
       </ul>
     </div>
   </section>
-  <footer>Generated from real benchmark artifacts. Historical runs may lack exact benchmark commit SHA or invocation command; those gaps are surfaced in the bundle.</footer>
+  <footer class="doc-footer">Generated from real benchmark artifacts. Historical runs may lack exact benchmark commit SHA or invocation command; those gaps are surfaced in the bundle.<br/>
+  <span class="muted">Docs (repo root): <a href="../../docs/azimuth_bench/METHODOLOGY.md">methodology</a> · <a href="../../docs/azimuth_bench/READING_REPORTS.md">reading reports</a> · <a href="../../docs/azimuth_bench/SOURCE_OF_TRUTH.md">source of truth</a></span></footer>
 </body>
 </html>"""
 
