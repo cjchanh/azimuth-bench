@@ -4,8 +4,8 @@ This file is the **operator pack** for Cursor / Composer execution. It is **not 
 
 ## Current exact milestone
 
-**Current exact milestone:** **M5 complete — Portable Run Bundle / Merge Layer**  
-**Overall build-path progress:** **80%**
+**Current exact milestone:** **M6 complete — Design-Partner Release Surface**  
+**Overall build-path progress:** **90%**
 
 Why this is the honest mark in the current tree:
 
@@ -13,12 +13,12 @@ Why this is the honest mark in the current tree:
 - `implemented+tested`: real throughput adapters exist for **MLX**, **OpenAI-compatible HTTP**, and **Ollama**.
 - `implemented+tested`: static report build, provider/protocol surfaces, comparability-enriched summary rows, Markdown export, **`azimuth_compare_v1` compare projection** (`report/data/compare.json`), and deterministic **`report/exports/share_*.svg`** + `azbench export svg`.
 - `implemented+tested`: **validated multi-run merge** via `azbench report build <run_dir> --include-run-dir …`, `report/data/merge.json`, merge-aware `leaderboard.json`, explicit comparability classes + blockers (`tests/test_merge.py`).
+- `implemented+tested`: **design-partner path**: [DESIGN_PARTNER_EVAL.md](DESIGN_PARTNER_EVAL.md), [release/evaluator/README.md](../../release/evaluator/README.md), README quickstart clarifications, `pyproject` OSS metadata; `tests/test_m6_eval.py`.
 - `implemented+tested`: public-proof docs exist: [METHODOLOGY.md](METHODOLOGY.md), [READING_REPORTS.md](READING_REPORTS.md), [PUBLIC_PROOF_PACK.md](PUBLIC_PROOF_PACK.md).
-- `implemented+tested`: baseline verification in this checkout is **51 passing tests** per [SOURCE_OF_TRUTH.md](SOURCE_OF_TRUTH.md).
+- `implemented+tested`: baseline verification in this checkout is **55 passing tests** per [SOURCE_OF_TRUTH.md](SOURCE_OF_TRUTH.md) (refresh count when behavior changes).
 
 What is **not** done yet, and why this is not further along:
 
-- `designed/unverified`: design-partner release packaging (M6).
 - `designed/unverified`: `llama.cpp` / `vLLM` production adapters.
 - `designed/unverified`: hosted product surface beyond static report artifacts.
 - `designed/unverified`: company-value layer driven by real usage, design partners, and public benchmark adoption.
@@ -32,7 +32,7 @@ What is **not** done yet, and why this is not further along:
 | **M3 — Public-Proof OSS Foundation** | complete | 60% | README + methodology + report-reading + proof pack, sanitized public outputs, clean OSS-facing surface. |
 | **M4 — Shareable Compare Surface** | **complete** | **70%** | `azimuth_compare_v1` compare.json + blocked comparisons + deterministic share SVGs + `azbench export svg`. |
 | **M5 — Portable Run Bundle / Merge Layer** | **complete** | **80%** | Validated Azimuth run dirs only; `azbench report build … --include-run-dir …`; `merge.json` + comparability classes + collision blocking. |
-| **M6 — Design-Partner Release Surface** | next | 90% | One-command release bundle, partner-facing docs, stronger install/run path, public packaging discipline. |
+| **M6 — Design-Partner Release Surface** | **complete** | **90%** | [DESIGN_PARTNER_EVAL.md](DESIGN_PARTNER_EVAL.md), [release/evaluator/README.md](../../release/evaluator/README.md), README + `pyproject` metadata; offline proof path; optional `python -m build`. |
 
 The last **10%** is **not** another repo refactor. It is design partners, repeated usage, trusted public claims, and adoption.
 
@@ -64,7 +64,7 @@ CURRENT TRUE STATE TO RESPECT
 - Implemented adapters today: MLX, OpenAI-compatible HTTP, Ollama
 - Implemented today: throughput suite, report build, provider/protocol surfaces, markdown export
 - Public-proof docs already exist and are committed
-- Baseline verification in this checkout: python3 -m pytest -q -> 42 passed
+- Baseline verification in this checkout: python3 -m pytest -q -> see SOURCE_OF_TRUTH.md (55 passed as of M6)
 
 PRIMARY OBJECTIVE
 Upgrade Azimuth from a truthful proof surface to a shareable comparison surface without widening into another deep architecture cycle.

@@ -101,7 +101,8 @@ Implemented today (high level):
 
 Explicitly NOT implemented as production CLI yet (see azimuth_bench.adapters.planned):
 - llama.cpp and vLLM production adapters / execution paths
-- portable merge of external run bundles (M5)
+
+Portable merge of validated Azimuth run bundles (M5) and design-partner eval surface (M6) are documented in `SOURCE_OF_TRUTH.md` when shipped.
 
 Do not claim multi-provider production parity until adapters + CLI + SSOT say so.
 
@@ -119,7 +120,7 @@ REPO FACTS (BASELINE — DO NOT REGRESS)
 Last verified in this checkout (re-run and refresh numbers):
 - source .venv/bin/activate && ruff check .            -> pass
 - source .venv/bin/activate && ruff format --check .   -> pass
-- source .venv/bin/activate && python3 -m pytest -q    -> 43 passed
+- source .venv/bin/activate && python3 -m pytest -q    -> see SOURCE_OF_TRUTH.md (55 passed as of M6 handoff)
 
 Also exercise:
 - source .venv/bin/activate && azbench report build benchmarks --repo-root /Users/cj/Workspace/active/benchmark-v2
@@ -279,6 +280,6 @@ a prettier name.”
 ## Repo-grounded upgrades in v2
 
 - **SSOT-first gate** at the top of the paste block: execution plan vs `SOURCE_OF_TRUTH.md` + code.
-- **Implemented vs roadmap** aligned with `SOURCE_OF_TRUTH` (MLX / OpenAI-compatible / Ollama throughput, report, compare, SVG exports today; llama.cpp / vLLM + M5 merge remain roadmap).
+- **Implemented vs roadmap** aligned with `SOURCE_OF_TRUTH` (MLX / OpenAI-compatible / Ollama throughput, report, compare, SVG exports, M5 merge, M6 evaluator path today; llama.cpp / vLLM remain roadmap).
 - **Commit coupling**: SSOT updates when “implemented” scope changes.
-- **Refresh** pytest count on handoff if it diverges from 43.
+- **Refresh** pytest count on handoff against `SOURCE_OF_TRUTH.md`.

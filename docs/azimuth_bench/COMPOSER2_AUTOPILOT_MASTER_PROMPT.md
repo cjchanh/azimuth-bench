@@ -7,6 +7,6 @@
 ## Repo-grounded upgrades already baked into v2
 
 - **SSOT-first** block at the top of the session prompt (execution plan vs `SOURCE_OF_TRUTH.md` + tests + code).
-- **Implemented vs not** aligned with `SOURCE_OF_TRUTH` (MLX / OpenAI-compatible / Ollama throughput, report, compare, and SVG export today; llama.cpp / vLLM + merged external bundles remain roadmap).
+- **Implemented vs not** aligned with `SOURCE_OF_TRUTH` (MLX / OpenAI-compatible / Ollama throughput, report, compare, SVG export, M5 merge, M6 evaluator docs today; llama.cpp / vLLM remain roadmap).
 - **Same** identity freeze, canonical vs compatibility lists, verification commands, A–E deliverables, and handoff format as the classic prompt, tightened so Composer does not confuse targets with shipped behavior.
-- Last verified: `43 passed` (re-run `pytest` on handoff and refresh if changed).
+- Last verified: see `SOURCE_OF_TRUTH.md` for pytest count (re-run on handoff).

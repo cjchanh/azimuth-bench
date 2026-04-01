@@ -4,6 +4,8 @@
 
 **Canonical code:** `azimuth_bench` · **CLI:** `azbench` · **Truth boundary:** [docs/azimuth_bench/SOURCE_OF_TRUTH.md](docs/azimuth_bench/SOURCE_OF_TRUTH.md)
 
+**First-time evaluator (install → proof path → merge overview):** [docs/azimuth_bench/DESIGN_PARTNER_EVAL.md](docs/azimuth_bench/DESIGN_PARTNER_EVAL.md) · **Repeatable commands + packaging check:** [release/evaluator/README.md](release/evaluator/README.md)
+
 ## Implemented today (tested)
 
 - Throughput suite, MLX + OpenAI-compatible + Ollama adapters, integrity gate (fail-closed on ambiguity).
@@ -27,9 +29,12 @@ python3 -m venv .venv && source .venv/bin/activate
 pip install -e ".[dev]"
 ```
 
+The **distribution name** in `pyproject.toml` is `benchmark-v2`; **import** `azimuth_bench` in Python. Console scripts: `azbench` (canonical), `signalbench` (alias).
+
 **Read the truth boundary:**
 
 - [docs/azimuth_bench/SOURCE_OF_TRUTH.md](docs/azimuth_bench/SOURCE_OF_TRUTH.md)
+- [docs/azimuth_bench/DESIGN_PARTNER_EVAL.md](docs/azimuth_bench/DESIGN_PARTNER_EVAL.md) — external evaluator path
 - [docs/azimuth_bench/METHODOLOGY.md](docs/azimuth_bench/METHODOLOGY.md)
 - [docs/azimuth_bench/READING_REPORTS.md](docs/azimuth_bench/READING_REPORTS.md)
 
@@ -77,6 +82,15 @@ azbench bench throughput --help
 ruff check . && ruff format --check .
 python3 -m pytest -q
 ```
+
+**Optional — confirm wheel/sdist build locally** (does not publish to PyPI):
+
+```bash
+pip install build
+python -m build --outdir /tmp/azimuth_dist
+```
+
+See [release/evaluator/README.md](release/evaluator/README.md).
 
 ## Optional: Agent Civilization gate
 
