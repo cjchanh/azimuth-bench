@@ -1,0 +1,31 @@
+{
+  "azimuth_bench_schema_version": "1.0.0",
+  "artifact_key": "frontier_27b__qwen35_27b_base__thinking-off",
+  "artifact_path": "frontier_27b__qwen35_27b_base__thinking-off.json",
+  "artifact_path_kind": "run_dir_relative",
+  "benchmark_suite_name": "throughput",
+  "benchmark_commit_sha": null,
+  "timestamps": {
+    "run_start_utc": "2026-04-01T20:18:36.690483+00:00",
+    "run_finish_utc": "2026-04-01T20:21:05.642259+00:00",
+    "model_load_started_at_utc": "2026-04-01T20:18:31.478539+00:00",
+    "model_load_finished_at_utc": "2026-04-01T20:18:36.604326+00:00",
+    "summary_timestamp_utc": "2026-04-01T20:21:05.642207+00:00"
+  },
+  "exact_invocation": null,
+  "artifact_provenance": {
+    "receipt_paths": {
+      "artifact_complete": "receipts/frontier_27b__qwen35_27b_base__thinking-off/artifact_complete.json",
+      "machine_pre_run": "receipts/frontier_27b__qwen35_27b_base__thinking-off/machine_pre_run.json",
+      "model_load": "receipts/frontier_27b__qwen35_27b_base__thinking-off/model_load.json",
+      "token_run_finish": "receipts/frontier_27b__qwen35_27b_base__thinking-off/token_run_finish.json",
+      "token_run_start": "receipts/frontier_27b__qwen35_27b_base__thinking-off/token_run_start.json"
+    },
+    "valid_run": true,
+    "comparable": true,
+    "provenance_gaps": [
+      "benchmark_commit_sha_missing_from_source_artifact",
+      "exact_invocation_missing_from_source_artifact"
+    ]
+  }
+}

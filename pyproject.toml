@@ -5,10 +5,20 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "benchmark-v2"
 version = "0.1.0"
-description = "Standalone MLX benchmark-v2 harness and artifact tooling."
+description = "Azimuth Bench — portable inference benchmark platform (benchmark-v2 tree; package azimuth_bench)."
 readme = "README.md"
-license = {text = "MIT"}
+license = "MIT"
 requires-python = ">=3.10"
+keywords = ["azimuth", "benchmark", "inference", "llm", "mlx", "throughput"]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Intended Audience :: Developers",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
 dependencies = [
   "aiohttp>=3.9",
   "matplotlib>=3.8",
@@ -16,10 +26,14 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-dev = ["pytest>=7.0", "ruff>=0.4"]
+dev = ["pytest>=7.0", "ruff>=0.4", "build>=1.0", "setuptools>=68"]
+
+[project.scripts]
+azbench = "azimuth_bench.cli.entrypoint:main"
+signalbench = "azimuth_bench.cli.entrypoint:main"
 
 [tool.setuptools.packages.find]
-include = ["benchmarking*"]
+include = ["benchmarking*", "azimuth_bench*", "signalbench*"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
@@ -33,3 +47,6 @@ select = ["E", "F", "W", "I"]
 
 [tool.ruff.lint.per-file-ignores]
 "benchmarking/token.py" = ["E501"]
+"azimuth_bench/suites/throughput.py" = ["E501"]
+"azimuth_bench/report/builder.py" = ["E501"]
+"tests/test_ssot.py" = ["E501"]

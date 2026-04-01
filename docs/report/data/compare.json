@@ -1,0 +1,130 @@
+{
+  "azimuth_bench_schema_version": "1.0.0",
+  "compare_schema": "azimuth_compare_v1",
+  "frontier_pairs": [
+    {
+      "label": "thinking_on",
+      "structured_json_tok_s_delta": 1.0,
+      "sustained_tok_s_delta": 0.4,
+      "first_answer_ms_delta": 83.5
+    },
+    {
+      "label": "thinking_off",
+      "structured_json_tok_s_delta": 2.9,
+      "sustained_tok_s_delta": 0.9,
+      "first_answer_ms_delta": 4367.9
+    }
+  ],
+  "projection": {
+    "protocol_summary": {
+      "protocol_id": "benchmark_v2_m5max_v1",
+      "status": "single_protocol"
+    },
+    "pairs": [
+      {
+        "comparison_key": "frontier_27b|on|qwen35_27b_base_vs_opus_distilled_v2",
+        "comparison_key_slug": "frontier_27b_on_qwen35_27b_base_vs_opus_distilled_v2",
+        "scope": {
+          "lane": "frontier_27b",
+          "thinking_mode": "on"
+        },
+        "left": {
+          "role": "reference",
+          "display_name": "Qwen3.5 27B Base",
+          "artifact_key": "nexveridian_qwen3_5_27b_4bit",
+          "metrics": {
+            "structured_json_tok_s": 30.9,
+            "sustained_tok_s": 31.2,
+            "short_tok_s": 32.3,
+            "first_answer_ms": 7938.0,
+            "first_output_ms": 219.2
+          },
+          "comparable": true
+        },
+        "right": {
+          "role": "candidate",
+          "display_name": "Qwen3.5 27B Opus Distilled v2",
+          "artifact_key": "jackrong_mlx_qwen3_5_27b_claude_4_6_opus_reasoning_distilled_v2_4bit",
+          "metrics": {
+            "structured_json_tok_s": 31.9,
+            "sustained_tok_s": 31.6,
+            "short_tok_s": 31.9,
+            "first_answer_ms": 8021.5,
+            "first_output_ms": 223.7
+          },
+          "comparable": true
+        },
+        "deltas": {
+          "structured_json_tok_s": 1.0,
+          "sustained_tok_s": 0.4,
+          "first_answer_ms": 83.5
+        },
+        "comparability": {
+          "status": "comparable_within_scope",
+          "blockers": [],
+          "note": "Scoped to frontier_27b lane and matching thinking_mode; not a universal model ranking."
+        }
+      },
+      {
+        "comparison_key": "frontier_27b|off|qwen35_27b_base_vs_opus_distilled_v2",
+        "comparison_key_slug": "frontier_27b_off_qwen35_27b_base_vs_opus_distilled_v2",
+        "scope": {
+          "lane": "frontier_27b",
+          "thinking_mode": "off"
+        },
+        "left": {
+          "role": "reference",
+          "display_name": "Qwen3.5 27B Base",
+          "artifact_key": "nexveridian_qwen3_5_27b_4bit",
+          "metrics": {
+            "structured_json_tok_s": 29.3,
+            "sustained_tok_s": 30.8,
+            "short_tok_s": 31.6,
+            "first_answer_ms": 255.1,
+            "first_output_ms": 255.1
+          },
+          "comparable": true
+        },
+        "right": {
+          "role": "candidate",
+          "display_name": "Qwen3.5 27B Opus Distilled v2",
+          "artifact_key": "jackrong_mlx_qwen3_5_27b_claude_4_6_opus_reasoning_distilled_v2_4bit",
+          "metrics": {
+            "structured_json_tok_s": 32.2,
+            "sustained_tok_s": 31.7,
+            "short_tok_s": 32.4,
+            "first_answer_ms": 4623.0,
+            "first_output_ms": 209.5
+          },
+          "comparable": true
+        },
+        "deltas": {
+          "structured_json_tok_s": 2.9,
+          "sustained_tok_s": 0.9,
+          "first_answer_ms": 4367.9
+        },
+        "comparability": {
+          "status": "comparable_within_scope",
+          "blockers": [],
+          "note": "Scoped to frontier_27b lane and matching thinking_mode; not a universal model ranking."
+        }
+      }
+    ],
+    "blocked_comparisons": [
+      {
+        "comparison_key": "cross_lane_core_vs_frontier",
+        "reason": "not_emitted",
+        "detail": "No automatic base-vs-frontier numeric pairing; lanes encode different run contexts."
+      },
+      {
+        "comparison_key": "cross_protocol_merge",
+        "reason": "not_emitted",
+        "detail": "Rows with differing protocol_id values are not merged into one delta in this projection."
+      }
+    ],
+    "honesty_notes": [
+      "This projection only emits explicit pairwise rows; it does not establish a total order across all models.",
+      "Use leaderboard.json for within-summary ordering; interpret lane and protocol fields before comparing numbers."
+    ]
+  }
+}

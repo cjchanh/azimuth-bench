@@ -6,9 +6,10 @@ from pathlib import Path
 
 import pytest
 
+from azimuth_bench.core.runtime import chat_template_kwargs_for_thinking_mode
 from benchmarking import token as benchmark_token
 from benchmarking.gate import _parse_probe_message
-from benchmarking.roster import artifact_key, chat_template_kwargs_for_thinking_mode
+from benchmarking.roster import artifact_key
 from benchmarking.socials import main as generate_benchmark_socials_main
 from benchmarking.summary import main as compile_benchmark_summary_main
 from benchmarking.utils import resolve_model_id
