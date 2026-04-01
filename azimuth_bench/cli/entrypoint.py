@@ -33,6 +33,15 @@ def main(argv: list[str] | None = None) -> int:
         default=None,
         help="Git repository root for report build metadata (default: auto-detect)",
     )
+    build_p.add_argument(
+        "--include-run-dir",
+        action="append",
+        default=[],
+        type=Path,
+        metavar="DIR",
+        help="Additional benchmark run directory to merge (repeatable; no auto-discovery). "
+        "Each DIR must contain a valid token summary + artifacts like the primary run_dir.",
+    )
 
     export_p = sub.add_parser("export", help="Offline exports from built report data")
     export_sub = export_p.add_subparsers(dest="export_cmd", required=True)
@@ -68,7 +77,8 @@ def main(argv: list[str] | None = None) -> int:
     args = parser.parse_args(argv)
     if args.command == "report" and args.report_cmd == "build":
         root = args.repo_root or find_repo_root(Path(__file__))
-        out = build_report(args.run_dir.resolve(), repo_root=root)
+        extra = tuple(args.include_run_dir) if args.include_run_dir else ()
+        out = build_report(args.run_dir.resolve(), repo_root=root, include_run_dirs=extra)
         print(f"Wrote report: {out}")
         return 0
     if args.command == "export" and args.export_cmd == "markdown":

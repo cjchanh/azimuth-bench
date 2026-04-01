@@ -8,6 +8,7 @@
 
 - Throughput suite, MLX + OpenAI-compatible + Ollama adapters, integrity gate (fail-closed on ambiguity).
 - `azbench report build` → static HTML + `report/data/*.json` (paths sanitized for public sharing).
+- **Multi-run merge:** `azbench report build <run_dir> --include-run-dir <other_run_dir> ...` merges additional validated Azimuth benchmark trees into the primary `run_dir` report (see `report/data/merge.json`, `leaderboard.json` field `merge`).
 - Provider / protocol host surfaces + enriched summary rows (`comparable`, protocol, provider fields).
 - `azbench export markdown` from built report data.
 
@@ -36,6 +37,12 @@ pip install -e ".[dev]"
 
 ```bash
 azbench report build benchmarks --repo-root "$(pwd)"
+```
+
+**Merge two portable run trees** (each must look like a normal `benchmarks/` directory with token summary + artifacts; no directory scanning):
+
+```bash
+azbench report build /path/to/primary_bench --repo-root "$(pwd)" --include-run-dir /path/to/other_bench
 ```
 
 Output: `benchmarks/report/` (see `.gitignore` if you do not commit generated trees).

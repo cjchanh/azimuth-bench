@@ -101,7 +101,8 @@ def test_build_report_emits_outputs(repo_benchmarks: Path, tmp_path: Path) -> No
     assert (out / "summary.md").exists()
     summary_md = (out / "summary.md").read_text(encoding="utf-8")
     assert "llama.cpp and vLLM adapters" in summary_md
-    assert "Portable merge of external run bundles" in summary_md
+    assert "Multi-run merge" in summary_md
+    assert "Portable merge of external run bundles" not in summary_md
     assert "Additional adapters beyond MLX" not in summary_md
     assert (out / "data" / "run.json").exists()
     lb = json.loads((out / "data" / "leaderboard.json").read_text(encoding="utf-8"))

@@ -4,21 +4,21 @@ This file is the **operator pack** for Cursor / Composer execution. It is **not 
 
 ## Current exact milestone
 
-**Current exact milestone:** **M4 complete — Shareable Compare Surface**  
-**Overall build-path progress:** **70%**
+**Current exact milestone:** **M5 complete — Portable Run Bundle / Merge Layer**  
+**Overall build-path progress:** **80%**
 
 Why this is the honest mark in the current tree:
 
 - `implemented+tested`: canonical package = `azimuth_bench`, canonical CLI = `azbench`.
 - `implemented+tested`: real throughput adapters exist for **MLX**, **OpenAI-compatible HTTP**, and **Ollama**.
 - `implemented+tested`: static report build, provider/protocol surfaces, comparability-enriched summary rows, Markdown export, **`azimuth_compare_v1` compare projection** (`report/data/compare.json`), and deterministic **`report/exports/share_*.svg`** + `azbench export svg`.
+- `implemented+tested`: **validated multi-run merge** via `azbench report build <run_dir> --include-run-dir …`, `report/data/merge.json`, merge-aware `leaderboard.json`, explicit comparability classes + blockers (`tests/test_merge.py`).
 - `implemented+tested`: public-proof docs exist: [METHODOLOGY.md](METHODOLOGY.md), [READING_REPORTS.md](READING_REPORTS.md), [PUBLIC_PROOF_PACK.md](PUBLIC_PROOF_PACK.md).
-- `implemented+tested`: baseline verification in this checkout is **43 passing tests** per [SOURCE_OF_TRUTH.md](SOURCE_OF_TRUTH.md).
+- `implemented+tested`: baseline verification in this checkout is **51 passing tests** per [SOURCE_OF_TRUTH.md](SOURCE_OF_TRUTH.md).
 
 What is **not** done yet, and why this is not further along:
 
-- `designed/unverified`: portable merge of external run bundles (M5) and design-partner release packaging (M6).
-- `designed/unverified`: merged external run bundles / imported leaderboard workflow.
+- `designed/unverified`: design-partner release packaging (M6).
 - `designed/unverified`: `llama.cpp` / `vLLM` production adapters.
 - `designed/unverified`: hosted product surface beyond static report artifacts.
 - `designed/unverified`: company-value layer driven by real usage, design partners, and public benchmark adoption.
@@ -31,8 +31,8 @@ What is **not** done yet, and why this is not further along:
 | **M2 — Azimuth platform boundary** | complete | 45% | `azimuth_bench` canonical, `signalbench` shim, `benchmarking/*` compatibility-only, adapters/report/schema/CLI split. |
 | **M3 — Public-Proof OSS Foundation** | complete | 60% | README + methodology + report-reading + proof pack, sanitized public outputs, clean OSS-facing surface. |
 | **M4 — Shareable Compare Surface** | **complete** | **70%** | `azimuth_compare_v1` compare.json + blocked comparisons + deterministic share SVGs + `azbench export svg`. |
-| **M5 — Portable Run Bundle / Merge Layer** | next | 80% | Import / merge external run bundles with fail-closed comparability rules. |
-| **M6 — Design-Partner Release Surface** | after M5 | 90% | One-command release bundle, partner-facing docs, stronger install/run path, public packaging discipline. |
+| **M5 — Portable Run Bundle / Merge Layer** | **complete** | **80%** | Validated Azimuth run dirs only; `azbench report build … --include-run-dir …`; `merge.json` + comparability classes + collision blocking. |
+| **M6 — Design-Partner Release Surface** | next | 90% | One-command release bundle, partner-facing docs, stronger install/run path, public packaging discipline. |
 
 The last **10%** is **not** another repo refactor. It is design partners, repeated usage, trusted public claims, and adoption.
 
