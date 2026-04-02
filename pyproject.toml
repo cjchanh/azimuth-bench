@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "benchmark-v2"
 version = "0.1.0"
-description = "Azimuth Bench — portable inference benchmark platform (benchmark-v2 tree; package azimuth_bench)."
+description = "Azimuth Bench — portable inference benchmark platform (package azimuth_bench)."
 readme = "README.md"
 license = "MIT"
 requires-python = ">=3.10"

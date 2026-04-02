@@ -1,6 +1,6 @@
 {
   "timestamp_utc": "2026-04-01T20:18:31.462161+00:00",
-  "artifact_path": "/Users/cj/Workspace/active/benchmark-v2/benchmarks/frontier_27b__qwen35_27b_base__thinking-on.json",
+  "artifact_path": "benchmarks/frontier_27b__qwen35_27b_base__thinking-on.json",
   "required_keys": [
     "protocol",
     "summary",

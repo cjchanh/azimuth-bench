@@ -51,7 +51,7 @@ Copy only the plain text inside the fenced block.
 SESSION: repo | strike | azimuth-share-compare-surface | 2026-04-01
 
 REPO
-- Target repo: /Users/cj/Workspace/active/benchmark-v2
+- Target repo: $(pwd)
 - Read docs/azimuth_bench/SOURCE_OF_TRUTH.md first.
 - Treat SOURCE_OF_TRUTH.md + code + tests as the truth boundary.
 - Do not reopen naming or canonical-boundary debates.
@@ -105,7 +105,7 @@ VERIFICATION REQUIRED
 - source .venv/bin/activate && ruff check .
 - source .venv/bin/activate && ruff format --check .
 - source .venv/bin/activate && python3 -m pytest -q
-- source .venv/bin/activate && azbench report build benchmarks --repo-root /Users/cj/Workspace/active/benchmark-v2
+- source .venv/bin/activate && azbench report build benchmarks --repo-root $(pwd)
 - source .venv/bin/activate && azbench export markdown benchmarks --output /tmp/azimuth_export.md
 - source .venv/bin/activate && azbench --help
 - source .venv/bin/activate && azbench export --help
@@ -133,7 +133,7 @@ Copy only the plain text inside the fenced block.
 SESSION: repo | strike | azimuth-run-bundle-merge-layer | 2026-04-01
 
 REPO
-- Target repo: /Users/cj/Workspace/active/benchmark-v2
+- Target repo: $(pwd)
 - Read docs/azimuth_bench/SOURCE_OF_TRUTH.md first.
 - Assume M4 share/compare work is already landed and committed before starting.
 
@@ -180,7 +180,7 @@ VERIFICATION REQUIRED
 - source .venv/bin/activate && ruff check .
 - source .venv/bin/activate && ruff format --check .
 - source .venv/bin/activate && python3 -m pytest -q
-- source .venv/bin/activate && azbench report build benchmarks --repo-root /Users/cj/Workspace/active/benchmark-v2
+- source .venv/bin/activate && azbench report build benchmarks --repo-root $(pwd)
 - source .venv/bin/activate && azbench export markdown benchmarks --output /tmp/azimuth_export.md
 - source .venv/bin/activate && azbench --help
 
@@ -206,7 +206,7 @@ Copy only the plain text inside the fenced block.
 SESSION: repo | strike | azimuth-design-partner-release-surface | 2026-04-01
 
 REPO
-- Target repo: /Users/cj/Workspace/active/benchmark-v2
+- Target repo: $(pwd)
 - Read docs/azimuth_bench/SOURCE_OF_TRUTH.md first.
 - Assume M5 bundle/merge work is already landed and committed before starting.
 
@@ -248,7 +248,7 @@ VERIFICATION REQUIRED
 - source .venv/bin/activate && ruff check .
 - source .venv/bin/activate && ruff format --check .
 - source .venv/bin/activate && python3 -m pytest -q
-- source .venv/bin/activate && azbench report build benchmarks --repo-root /Users/cj/Workspace/active/benchmark-v2
+- source .venv/bin/activate && azbench report build benchmarks --repo-root $(pwd)
 - source .venv/bin/activate && azbench export markdown benchmarks --output /tmp/azimuth_export.md
 - source .venv/bin/activate && python3 -m azimuth_bench --help
 - source .venv/bin/activate && python3 -m signalbench --help
@@ -274,7 +274,7 @@ Copy only the plain text inside the fenced block.
 SESSION: repo | audit | azimuth-independent-release-audit | 2026-04-01
 
 REPO
-- Target repo: /Users/cj/Workspace/active/benchmark-v2
+- Target repo: $(pwd)
 - This is an independent verification pass after the latest Azimuth milestone lands.
 - Read docs/azimuth_bench/SOURCE_OF_TRUTH.md first.
 
@@ -306,9 +306,9 @@ VERIFICATION REQUIRED
 - source .venv/bin/activate && ruff check .
 - source .venv/bin/activate && ruff format --check .
 - source .venv/bin/activate && python3 -m pytest -q
-- source .venv/bin/activate && azbench report build benchmarks --repo-root /Users/cj/Workspace/active/benchmark-v2
+- source .venv/bin/activate && azbench report build benchmarks --repo-root $(pwd)
 - source .venv/bin/activate && azbench export markdown benchmarks --output /tmp/azimuth_export.md
-- python3 ~/.codex/validators/post_session.py /Users/cj/Workspace/active/benchmark-v2
+- python3 ~/.codex/validators/post_session.py $(pwd)
 
 SUCCESS CRITERIA
 - no public claim survives without a code/test/artifact anchor

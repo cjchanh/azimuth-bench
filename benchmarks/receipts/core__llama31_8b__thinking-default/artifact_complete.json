@@ -1,6 +1,6 @@
 {
   "timestamp_utc": "2026-04-01T20:07:25.993398+00:00",
-  "artifact_path": "/Users/cj/Workspace/active/benchmark-v2/benchmarks/core__llama31_8b__thinking-default.json",
+  "artifact_path": "benchmarks/core__llama31_8b__thinking-default.json",
   "required_keys": [
     "protocol",
     "summary",

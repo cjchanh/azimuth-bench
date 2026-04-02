@@ -521,19 +521,19 @@
     "token_run_start": {
       "timestamp_utc": "2026-04-01T01:07:08.091750+00:00",
       "artifact_key": "frontier_27b__qwen35_27b_opus_distilled_v2__thinking-on",
-      "artifact_path": "/Users/cj/Workspace/active/benchmark-v2/benchmarks/frontier_27b__qwen35_27b_opus_distilled_v2__thinking-on.json",
+      "artifact_path": "benchmarks/frontier_27b__qwen35_27b_opus_distilled_v2__thinking-on.json",
       "model_id": "Jackrong/MLX-Qwen3.5-27B-Claude-4.6-Opus-Reasoning-Distilled-v2-4bit",
       "thinking_mode": "on",
       "lane": "frontier_27b"
     },
     "token_run_finish": {
       "timestamp_utc": "2026-04-01T01:12:48.300265+00:00",
-      "artifact_path": "/Users/cj/Workspace/active/benchmark-v2/benchmarks/frontier_27b__qwen35_27b_opus_distilled_v2__thinking-on.json",
+      "artifact_path": "benchmarks/frontier_27b__qwen35_27b_opus_distilled_v2__thinking-on.json",
       "status": "complete"
     },
     "artifact_complete": {
       "timestamp_utc": "2026-04-01T01:12:48.300785+00:00",
-      "artifact_path": "/Users/cj/Workspace/active/benchmark-v2/benchmarks/frontier_27b__qwen35_27b_opus_distilled_v2__thinking-on.json",
+      "artifact_path": "benchmarks/frontier_27b__qwen35_27b_opus_distilled_v2__thinking-on.json",
       "required_keys": [
         "protocol",
         "summary",
@@ -548,10 +548,10 @@
     }
   },
   "receipt_paths": {
-    "artifact_complete": "/Users/cj/Workspace/active/benchmark-v2/benchmarks/receipts/frontier_27b__qwen35_27b_opus_distilled_v2__thinking-on/artifact_complete.json",
-    "machine_pre_run": "/Users/cj/Workspace/active/benchmark-v2/benchmarks/receipts/frontier_27b__qwen35_27b_opus_distilled_v2__thinking-on/machine_pre_run.json",
-    "model_load": "/Users/cj/Workspace/active/benchmark-v2/benchmarks/receipts/frontier_27b__qwen35_27b_opus_distilled_v2__thinking-on/model_load.json",
-    "token_run_finish": "/Users/cj/Workspace/active/benchmark-v2/benchmarks/receipts/frontier_27b__qwen35_27b_opus_distilled_v2__thinking-on/token_run_finish.json",
-    "token_run_start": "/Users/cj/Workspace/active/benchmark-v2/benchmarks/receipts/frontier_27b__qwen35_27b_opus_distilled_v2__thinking-on/token_run_start.json"
+    "artifact_complete": "benchmarks/receipts/frontier_27b__qwen35_27b_opus_distilled_v2__thinking-on/artifact_complete.json",
+    "machine_pre_run": "benchmarks/receipts/frontier_27b__qwen35_27b_opus_distilled_v2__thinking-on/machine_pre_run.json",
+    "model_load": "benchmarks/receipts/frontier_27b__qwen35_27b_opus_distilled_v2__thinking-on/model_load.json",
+    "token_run_finish": "benchmarks/receipts/frontier_27b__qwen35_27b_opus_distilled_v2__thinking-on/token_run_finish.json",
+    "token_run_start": "benchmarks/receipts/frontier_27b__qwen35_27b_opus_distilled_v2__thinking-on/token_run_start.json"
   }
 }

@@ -45,7 +45,7 @@
 2026-04-01T20:18:31Z   Valid run:       True
 2026-04-01T20:18:31Z   Comparable:      True
 2026-04-01T20:18:31Z 
-2026-04-01T20:18:31Z Results: /Users/cj/Workspace/active/benchmark-v2/benchmarks/frontier_27b__qwen35_27b_base__thinking-on.json
+2026-04-01T20:18:31Z Results: benchmarks/frontier_27b__qwen35_27b_base__thinking-on.json
 2026-04-01T20:18:31Z 
 2026-04-01T20:18:31Z [frontier_27b__qwen35_27b_base__thinking-off] Qwen3.5 27B Base | lane=frontier_27b | thinking=off
 2026-04-01T20:18:36Z   Loaded NexVeridian/Qwen3.5-27B-4bit in 3s (pages_free: 1160463 -> 231660)
@@ -86,7 +86,7 @@
 2026-04-01T20:21:05Z   Valid run:       True
 2026-04-01T20:21:05Z   Comparable:      True
 2026-04-01T20:21:05Z 
-2026-04-01T20:21:05Z Results: /Users/cj/Workspace/active/benchmark-v2/benchmarks/frontier_27b__qwen35_27b_base__thinking-off.json
+2026-04-01T20:21:05Z Results: benchmarks/frontier_27b__qwen35_27b_base__thinking-off.json
 2026-04-01T20:21:05Z 
 2026-04-01T20:21:05Z [frontier_27b__qwen35_27b_opus_distilled_v2__thinking-on] Qwen3.5 27B Opus Distilled v2 | lane=frontier_27b | thinking=on
 2026-04-01T20:21:11Z   Loaded Jackrong/MLX-Qwen3.5-27B-Claude-4.6-Opus-Reasoning-Distilled-v2-4bit in 4s (pages_free: 1154648 -> 28841)
@@ -127,7 +127,7 @@
 2026-04-01T20:24:05Z   Valid run:       True
 2026-04-01T20:24:05Z   Comparable:      True
 2026-04-01T20:24:05Z 
-2026-04-01T20:24:05Z Results: /Users/cj/Workspace/active/benchmark-v2/benchmarks/frontier_27b__qwen35_27b_opus_distilled_v2__thinking-on.json
+2026-04-01T20:24:05Z Results: benchmarks/frontier_27b__qwen35_27b_opus_distilled_v2__thinking-on.json
 2026-04-01T20:24:05Z 
 2026-04-01T20:24:05Z [frontier_27b__qwen35_27b_opus_distilled_v2__thinking-off] Qwen3.5 27B Opus Distilled v2 | lane=frontier_27b | thinking=off
 2026-04-01T20:24:10Z   Loaded Jackrong/MLX-Qwen3.5-27B-Claude-4.6-Opus-Reasoning-Distilled-v2-4bit in 3s (pages_free: 1181102 -> 223885)
@@ -168,14 +168,14 @@
 2026-04-01T20:26:58Z   Valid run:       True
 2026-04-01T20:26:58Z   Comparable:      True
 2026-04-01T20:26:58Z 
-2026-04-01T20:26:58Z Results: /Users/cj/Workspace/active/benchmark-v2/benchmarks/frontier_27b__qwen35_27b_opus_distilled_v2__thinking-off.json
+2026-04-01T20:26:58Z Results: benchmarks/frontier_27b__qwen35_27b_opus_distilled_v2__thinking-off.json
 2026-04-01T20:26:58Z 
 2026-04-01T20:26:58Z {
 2026-04-01T20:26:58Z   "token": {
-2026-04-01T20:26:58Z     "json": "/Users/cj/Workspace/active/benchmark-v2/benchmarks/benchmark_v2_token_summary.json",
-2026-04-01T20:26:58Z     "csv": "/Users/cj/Workspace/active/benchmark-v2/benchmarks/benchmark_v2_token_summary.csv",
-2026-04-01T20:26:58Z     "md": "/Users/cj/Workspace/active/benchmark-v2/benchmarks/benchmark_v2_token_summary.md"
+2026-04-01T20:26:58Z     "json": "benchmarks/benchmark_v2_token_summary.json",
+2026-04-01T20:26:58Z     "csv": "benchmarks/benchmark_v2_token_summary.csv",
+2026-04-01T20:26:58Z     "md": "benchmarks/benchmark_v2_token_summary.md"
 2026-04-01T20:26:58Z   }
 2026-04-01T20:26:58Z }
 2026-04-01T20:26:58Z === BENCHMARK-V2 COMPLETE ===
-2026-04-01T20:26:58Z Token summary: /Users/cj/Workspace/active/benchmark-v2/benchmarks/benchmark_v2_token_summary.json
+2026-04-01T20:26:58Z Token summary: benchmarks/benchmark_v2_token_summary.json

@@ -6,7 +6,7 @@ This document is the **single** place that defines **current** ownership and wha
 
 **How sessions should use the other docs:** **`docs/azimuth_bench/COMPOSER2_UPGRADE_SESSION_V2.md`** is the **recommended execution plan** for a **new Composer window** (copy the inner `text` block). `docs/azimuth_bench/COMPOSER2_AUTOPILOT_MASTER_PROMPT.md` is the **anchor** that points at v2. **This file** plus the **code** are the **truth boundary for current implementation**: do not treat those prompts’ target deliverables as “shipped” unless they appear here and in tests, and **do not override this boundary with the execution plan** until `SOURCE_OF_TRUTH.md` is updated to match and that change is **committed** with the behavior it describes.
 
-**Last verified tests (this checkout):** `python3 -m pytest -q` → **60 passed** (refresh when behavior changes). **GitHub Pages** for this repo is served at `https://cjchanh.github.io/azimuth-bench/` (repository name); clone URL may still use `benchmark-v2`.
+**Last verified tests (this checkout):** `python3 -m pytest -q` → **60 passed** (refresh when behavior changes). **GitHub Pages** for this repo is served at `https://cjchanh.github.io/azimuth-bench/` (repository name). **Canonical GitHub repo URL:** `https://github.com/cjchanh/azimuth-bench`. The Python distribution name remains `benchmark-v2`.
 
 **Public proof docs (methodology + how to read reports + outreach snapshot):** [METHODOLOGY.md](METHODOLOGY.md), [READING_REPORTS.md](READING_REPORTS.md), [PUBLIC_PROOF_PACK.md](PUBLIC_PROOF_PACK.md).
 

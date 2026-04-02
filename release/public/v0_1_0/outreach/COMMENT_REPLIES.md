@@ -6,31 +6,33 @@ Use these as templates; adjust tone to the subreddit / thread.
 
 **“Why not PyPI?”**
 
-v0.1.0 ships as a repo + `pip install -e .`; PyPI automation isn’t in scope yet (see SOURCE_OF_TRUTH). Local `python -m build` is documented.
+v0.1.0 ships as a repo + `pip install -e .`; PyPI automation isn't in scope yet. Local `python -m build` is documented and works, but I didn't want to pretend the publish pipeline was done when it wasn't.
 
 ---
 
 **“Where’s llama.cpp / vLLM?”**
 
-Not in v0.1.0—stubs/planned only. MLX, OpenAI-compatible HTTP, and Ollama are what’s implemented + tested today.
+Not in v0.1.0. They're still planned. I kept this release to what is actually implemented and tested today: MLX, OpenAI-compatible HTTP, and Ollama.
 
 ---
 
 **“Is this a leaderboard for the best model?”**
 
-No universal claim. Rows carry lane, protocol, and comparability flags; compare.json uses explicit projections and blocked pairs. Read the report notes and `compare.json`.
+No. That's exactly what I was trying to avoid. Rows carry lane, protocol, and comparability metadata, and the compare output is scoped on purpose.
+
+For the launch batch specifically, I also kept the provenance explicit: the core lane and the 27B thinking lane did not come from the exact same serving path, so I’m not pretending that chart is some universal ranking.
 
 ---
 
 **“Is the hosted report running inference?”**
 
-No. The public URL is **static files** on GitHub Pages, generated from **committed** benchmark artifacts in the repo—no live backend.
+No. It's just static files on GitHub Pages, generated from benchmark artifacts in the repo. No live backend behind it.
 
 ---
 
 **“Can I merge arbitrary JSON?”**
 
-No—only Azimuth-shaped run directories (token summary + per-row artifacts), with merge metadata and blockers when protocols differ.
+No. Only Azimuth-shaped run directories. I didn't want a silent "import anything" path that made the results less trustworthy.
 
 ---
 

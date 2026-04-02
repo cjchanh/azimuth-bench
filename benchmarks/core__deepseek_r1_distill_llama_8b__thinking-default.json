@@ -517,19 +517,19 @@
     "token_run_start": {
       "timestamp_utc": "2026-04-01T20:10:20.724015+00:00",
       "artifact_key": "core__deepseek_r1_distill_llama_8b__thinking-default",
-      "artifact_path": "/Users/cj/Workspace/active/benchmark-v2/benchmarks/core__deepseek_r1_distill_llama_8b__thinking-default.json",
+      "artifact_path": "benchmarks/core__deepseek_r1_distill_llama_8b__thinking-default.json",
       "model_id": "mlx-community/DeepSeek-R1-Distill-Llama-8B-4bit",
       "thinking_mode": "default",
       "lane": "core"
     },
     "token_run_finish": {
       "timestamp_utc": "2026-04-01T20:11:11.851009+00:00",
-      "artifact_path": "/Users/cj/Workspace/active/benchmark-v2/benchmarks/core__deepseek_r1_distill_llama_8b__thinking-default.json",
+      "artifact_path": "benchmarks/core__deepseek_r1_distill_llama_8b__thinking-default.json",
       "status": "complete"
     },
     "artifact_complete": {
       "timestamp_utc": "2026-04-01T20:11:11.851281+00:00",
-      "artifact_path": "/Users/cj/Workspace/active/benchmark-v2/benchmarks/core__deepseek_r1_distill_llama_8b__thinking-default.json",
+      "artifact_path": "benchmarks/core__deepseek_r1_distill_llama_8b__thinking-default.json",
       "required_keys": [
         "protocol",
         "summary",
@@ -544,10 +544,10 @@
     }
   },
   "receipt_paths": {
-    "artifact_complete": "/Users/cj/Workspace/active/benchmark-v2/benchmarks/receipts/core__deepseek_r1_distill_llama_8b__thinking-default/artifact_complete.json",
-    "machine_pre_run": "/Users/cj/Workspace/active/benchmark-v2/benchmarks/receipts/core__deepseek_r1_distill_llama_8b__thinking-default/machine_pre_run.json",
-    "model_load": "/Users/cj/Workspace/active/benchmark-v2/benchmarks/receipts/core__deepseek_r1_distill_llama_8b__thinking-default/model_load.json",
-    "token_run_finish": "/Users/cj/Workspace/active/benchmark-v2/benchmarks/receipts/core__deepseek_r1_distill_llama_8b__thinking-default/token_run_finish.json",
-    "token_run_start": "/Users/cj/Workspace/active/benchmark-v2/benchmarks/receipts/core__deepseek_r1_distill_llama_8b__thinking-default/token_run_start.json"
+    "artifact_complete": "benchmarks/receipts/core__deepseek_r1_distill_llama_8b__thinking-default/artifact_complete.json",
+    "machine_pre_run": "benchmarks/receipts/core__deepseek_r1_distill_llama_8b__thinking-default/machine_pre_run.json",
+    "model_load": "benchmarks/receipts/core__deepseek_r1_distill_llama_8b__thinking-default/model_load.json",
+    "token_run_finish": "benchmarks/receipts/core__deepseek_r1_distill_llama_8b__thinking-default/token_run_finish.json",
+    "token_run_start": "benchmarks/receipts/core__deepseek_r1_distill_llama_8b__thinking-default/token_run_start.json"
   }
 }
