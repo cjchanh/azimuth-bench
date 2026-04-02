@@ -14,7 +14,7 @@ https://github.com/cjchanh/benchmark-v2/releases/tag/v0.1.0
 It’s an OSS inference benchmarking toolchain built around a fixed throughput suite, artifact-backed outputs, and static reports you can inspect without a hosted service.
 
 **Live sample report (static, from committed artifacts):**  
-https://cjchanh.github.io/benchmark-v2/report/index.html  
+https://cjchanh.github.io/azimuth-bench/report/index.html  
 
 **What it does today:**
 
