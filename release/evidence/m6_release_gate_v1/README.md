@@ -6,7 +6,7 @@
 ## Verdict
 
 **`implemented+tested` — release-gate clean** for the scope defined in SSOT (throughput + report + exports + merge + M6 evaluator/packaging docs).  
-**`designed/unverified` (explicit):** llama.cpp / vLLM production adapters, hosted SPA, PyPI publish automation, arbitrary third-party JSON as merge input — per SSOT “Not implemented” table.
+**`designed/unverified` (explicit):** llama.cpp / vLLM production adapters, hosted SPA, PyPI publish automation, arbitrary third-party JSON as merge input — per SSOT "Not implemented" table.
 
 This bundle does **not** assert PyPI publication, ecosystem adoption, or external benchmark universality.
 
@@ -17,7 +17,6 @@ This bundle does **not** assert PyPI publication, ecosystem adoption, or externa
 - Report build, Markdown export, SVG export from committed `benchmarks/`
 - Merge semantics — covered by `tests/test_merge.py` (not re-run benchmarks here)
 - M6 docs (`DESIGN_PARTNER_EVAL.md`, `release/evaluator/README.md`) and `python -m build` smoke
-- Governance: `validate_governance.py --strict`, bootstrap check-only, `run_full_verification.sh`, `post_session.py`
 - Public JSON path hygiene — `benchmarks/report/data/*.json` scanned for `/Users/` in this audit (none found in generated bundle)
 
 ## Files in this bundle
