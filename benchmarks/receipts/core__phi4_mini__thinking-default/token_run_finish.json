@@ -1,5 +1,5 @@
 {
   "timestamp_utc": "2026-04-01T20:10:15.548434+00:00",
-  "artifact_path": "/Users/cj/Workspace/active/benchmark-v2/benchmarks/core__phi4_mini__thinking-default.json",
+  "artifact_path": "benchmarks/core__phi4_mini__thinking-default.json",
   "status": "complete"
 }

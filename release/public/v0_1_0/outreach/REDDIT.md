@@ -1,4 +1,4 @@
-# Reddit — r/LocalLLaMA or adjacent (copy-ready)
+# Reddit — r/LocalLLaMA or adjacent
 
 **Title**
 
@@ -6,15 +6,17 @@ I open-sourced Azimuth Bench v0.1.0 — static benchmarking/reporting for MLX, O
 
 **Body**
 
-I just released Azimuth Bench v0.1.0:
+I just released Azimuth Bench v0.1.0.
 
-https://github.com/cjchanh/benchmark-v2  
-https://github.com/cjchanh/benchmark-v2/releases/tag/v0.1.0  
-
-It’s an OSS inference benchmarking toolchain built around a fixed throughput suite, artifact-backed outputs, and static reports you can inspect without a hosted service.
+Repo: https://github.com/cjchanh/azimuth-bench  
+Release: https://github.com/cjchanh/azimuth-bench/releases/tag/v0.1.0  
 
 **Live sample report (static, from committed artifacts):**  
 https://cjchanh.github.io/azimuth-bench/report/index.html  
+
+I also ran a fresh local batch for launch and attached one of the charts from that run.
+
+It’s an OSS inference benchmarking toolchain built around a fixed throughput suite, artifact-backed outputs, and static reports you can inspect without a hosted service.
 
 **What it does today:**
 
@@ -31,7 +33,7 @@ https://cjchanh.github.io/azimuth-bench/report/index.html
 - no “universal best model” ranking  
 - no PyPI automation  
 
-One thing I cared about was honesty: the report surface carries comparability limits instead of flattening everything into a single magic leaderboard.
+The part I cared most about was honesty. The report surface carries comparability limits instead of pretending every row belongs in one magic leaderboard.
 
 If you try it, the feedback I care about most is:
 

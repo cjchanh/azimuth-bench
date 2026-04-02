@@ -1,4 +1,4 @@
-# benchmark-v2 · **Azimuth Bench**
+# Azimuth Bench
 
 **Azimuth** is a portable inference **benchmark platform**: run throughput suites against MLX / OpenAI-compatible / Ollama backends, emit honest artifacts, and build static **Azimuth Report** pages plus JSON bundles for comparison.
 
@@ -29,7 +29,7 @@ https://cjchanh.github.io/azimuth-bench/report/index.html
 ## 5-minute quickstart
 
 ```bash
-git clone <this-repo> && cd benchmark-v2
+git clone https://github.com/cjchanh/azimuth-bench.git && cd azimuth-bench
 python3 -m venv .venv && source .venv/bin/activate
 pip install -e ".[dev]"
 ```

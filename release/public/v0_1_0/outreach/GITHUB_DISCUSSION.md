@@ -1,4 +1,6 @@
-# GitHub Discussion — opener (copy-ready)
+# GitHub announcement
+
+GitHub Discussions is currently off, so use this as a pinned issue, repo announcement, or release follow-up comment.
 
 **Title**
 
@@ -8,9 +10,10 @@ Azimuth Bench v0.1.0 — static reports, honest comparability
 
 We tagged **v0.1.0** with a focus on **artifact-backed, static** reporting—not a hosted benchmark product.
 
-- **Repository:** https://github.com/cjchanh/benchmark-v2  
-- **Release notes:** https://github.com/cjchanh/benchmark-v2/releases/tag/v0.1.0  
+- **Repository:** https://github.com/cjchanh/azimuth-bench  
+- **Release notes:** https://github.com/cjchanh/azimuth-bench/releases/tag/v0.1.0  
 - **Sample report (GitHub Pages, built from committed `benchmarks/`):** https://cjchanh.github.io/azimuth-bench/report/index.html  
+- **Fresh local batch note:** [release/public/v0_1_0/FRESH_BATCH_2026-04-01.md](../FRESH_BATCH_2026-04-01.md)  
 
 Use this thread for:
 
