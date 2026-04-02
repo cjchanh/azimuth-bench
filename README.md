@@ -97,10 +97,6 @@ python -m build --outdir /tmp/azimuth_dist
 
 See [release/evaluator/README.md](release/evaluator/README.md).
 
-## Optional: Agent Civilization gate
-
-`benchmarking.gate` can run an external simulation if `AGENT_CIV_ROOT` is set — optional, not required for core benchmarking.
-
 ## License
 
 MIT — see [LICENSE](LICENSE).
