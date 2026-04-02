@@ -1,6 +1,6 @@
 2026-04-01T20:15:19Z === BENCHMARK-V2 MLX SWEEP ===
 2026-04-01T20:15:19Z Lane: frontier_27b
-2026-04-01T20:15:19Z Bench port: 9700
+# redacted: local bench port line removed
 2026-04-01T20:15:19Z Gate lane: disabled
 2026-04-01T20:15:19Z Mode: execute
 2026-04-01T20:15:19Z 
