@@ -10,11 +10,11 @@ I just released Azimuth Bench v0.1.0.
 
 Repo: https://github.com/cjchanh/azimuth-bench  
 Release: https://github.com/cjchanh/azimuth-bench/releases/tag/v0.1.0  
-Live report: https://cjchanh.github.io/azimuth-bench/report/index.html  
+Live report: https://cjchanh.github.io/azimuth-bench/report/index.html
 
-I also ran a small fresh local batch for launch and used that to generate the chart I’m posting alongside it.
+The basic idea is fixed throughput benchmarking, artifact-backed JSON, and static reports that stay explicit about comparability limits instead of flattening everything into one fake global ranking.
 
-The angle is pretty simple: fixed throughput benchmarking, artifact-backed JSON, and static reports that are explicit about comparability limits instead of flattening everything into one fake global ranking.
+I also ran a small fresh local batch for launch and used that for the chart I'm posting with it. Important caveat: that launch batch is mixed provenance, not one pure apples-to-apples ladder. The core rows came from an existing OpenAI-compatible local serving path, and the 27B thinking rows came from a dedicated MLX lane.
 
 Implemented today:
 

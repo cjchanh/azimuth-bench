@@ -2,28 +2,20 @@
 
 This is the one file to use for launch. It has the order of operations, the actual post copy, and the short replies for the obvious questions.
 
-## First: the only real blocker
+## Status: repo is public
 
-Do **not** post this publicly until the repo is public.
-
-Configured links:
+The repo was made public on 2026-04-01. All three links are live and return 200:
 
 - Repo: `https://github.com/cjchanh/azimuth-bench`
 - Release: `https://github.com/cjchanh/azimuth-bench/releases/tag/v0.1.0`
 - Live report: `https://cjchanh.github.io/azimuth-bench/report/index.html`
 
-Current blocker:
+Fresh-batch release assets (attached to v0.1.0):
 
-- The repo is still private, so the repo URL and release URL both 404 for the public right now.
-- The Pages report is live, but that is not enough on its own. If you post before the repo is public, people will hit a dead end.
-
-One-line fix:
-
-```bash
-gh repo edit cjchanh/azimuth-bench --visibility public --accept-visibility-change-consequences
-```
-
-If you do only one thing before posting, do that.
+1. `fresh_batch_2026-04-01_27b_matchup_hero.png`
+2. `fresh_batch_2026-04-01_speed_vs_latency_tradeoff.png`
+3. `fresh_batch_2026-04-01_27b_thinking_delta.png` (optional)
+4. `fresh_batch_2026-04-01_summary.md`
 
 ## What to lead with now
 
@@ -131,7 +123,7 @@ Optional X / Discord:
 
 **Title**
 
-I open-sourced Azimuth Bench v0.1.0 — static benchmarking/reporting for MLX, Ollama, and OpenAI-compatible backends
+I open-sourced Azimuth Bench v0.1.0 — local LLM benchmarking with static reports
 
 **Body**
 
@@ -142,6 +134,8 @@ Release: https://github.com/cjchanh/azimuth-bench/releases/tag/v0.1.0
 Live report: https://cjchanh.github.io/azimuth-bench/report/index.html
 
 It's an open-source inference benchmarking toolchain built around a fixed throughput suite, artifact-backed outputs, and static reports you can inspect without a hosted service.
+
+I also ran a small fresh local batch for launch and attached one of the charts from that run.
 
 What it does today:
 
@@ -159,6 +153,8 @@ What it does **not** claim:
 - no PyPI automation
 
 The part I cared most about was honesty. The report surface carries comparability limits instead of pretending every row belongs in one magic leaderboard.
+
+One important caveat on the fresh chart: it's a mixed local batch. The core rows came from an existing OpenAI-compatible local serving path, and the 27B thinking rows came from a dedicated MLX benchmark lane. Useful, real, but not one fake universal apples-to-apples ranking.
 
 If you try it, the feedback I care about most is:
 
@@ -191,11 +187,9 @@ It's an open-source inference benchmarking toolchain built around a fixed throug
 
 It supports MLX, Ollama, and OpenAI-compatible HTTP backends today. Not claiming a hosted product, universal rankings, or production `llama.cpp` / `vLLM` support yet.
 
-### Version if repo is still private
+### Version for a private DM or warm intro
 
-Don't post publicly. Use this only for a private DM or warm intro:
-
-I just finished Azimuth Bench v0.1.0, an inference benchmarking toolchain built around artifact-backed outputs and static reports with explicit comparability limits. The public repo isn't open yet, but if you're open to an early look I can share access plus a live report snapshot.
+I just released Azimuth Bench v0.1.0, an inference benchmarking toolchain built around artifact-backed outputs and static reports with explicit comparability limits. If you're interested, here's the repo: https://github.com/cjchanh/azimuth-bench
 
 ## Hacker News
 
@@ -211,7 +205,9 @@ Repo: https://github.com/cjchanh/azimuth-bench
 Release: https://github.com/cjchanh/azimuth-bench/releases/tag/v0.1.0  
 Live report: https://cjchanh.github.io/azimuth-bench/report/index.html
 
-The angle is pretty simple: fixed throughput benchmarking, artifact-backed JSON, and static reports that are explicit about comparability limits instead of flattening everything into one fake global ranking.
+The basic idea is fixed throughput benchmarking, artifact-backed JSON, and static reports that stay explicit about comparability limits instead of flattening everything into one fake global ranking.
+
+I also ran a small fresh local batch for launch and used that for the chart I'm posting with it. Important caveat: that launch batch is mixed provenance, not one pure apples-to-apples ladder. The core rows came from an existing OpenAI-compatible local serving path, and the 27B thinking rows came from a dedicated MLX lane.
 
 Implemented today:
 
@@ -326,22 +322,19 @@ No. MLX, Ollama, and OpenAI-compatible HTTP are implemented today. It's not MLX-
 
 ## Minimal checklist before posting
 
-1. Make the repo public.
+1. ~~Make the repo public.~~ Done (2026-04-01).
 2. Open these three links yourself:
    - `https://github.com/cjchanh/azimuth-bench`
    - `https://github.com/cjchanh/azimuth-bench/releases/tag/v0.1.0`
    - `https://cjchanh.github.io/azimuth-bench/report/index.html`
-3. Confirm the report URL returns `200`.
-4. Post the Reddit version.
+3. Confirm all three return `200`.
+4. Post the Reddit version with `27b_matchup_hero.png` attached.
 5. Watch replies for half an hour.
 6. If there is no broken-link or obvious confusion problem, post HN.
 
 ## Exact first move
 
-If you want the lowest-effort path:
-
-1. Run the visibility change.
-2. Post the Reddit primary version from this file.
-3. Reuse the HN version a bit later the same morning.
+1. Post the Reddit primary version from this file with the hero image.
+2. Reuse the HN version a bit later the same morning.
 
 If you do that, you have a clean enough public launch without needing to think through the messaging again.
