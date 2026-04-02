@@ -10,7 +10,7 @@ Azimuth Bench v0.1.0 is a small OSS toolchain for a fixed throughput suite, JSON
 
 - Repo: https://github.com/cjchanh/benchmark-v2  
 - Release: https://github.com/cjchanh/benchmark-v2/releases/tag/v0.1.0  
-- **Sample static report:** https://cjchanh.github.io/benchmark-v2/report/index.html  
+- **Sample static report:** https://cjchanh.github.io/azimuth-bench/report/index.html  
 
 It explicitly surfaces comparability limits (protocol, lane, merge blockers) instead of pretending every row is interchangeable.
 

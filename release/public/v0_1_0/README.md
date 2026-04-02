@@ -3,8 +3,10 @@
 This directory groups **human-facing** artifacts for the first public OSS **release candidate**. It does **not** add code; it documents what the repository already ships.
 
 **Canonical public sample report (static HTML + JSON on GitHub Pages):**  
-https://cjchanh.github.io/benchmark-v2/report/index.html  
-(Site root: https://cjchanh.github.io/benchmark-v2/ — built from `docs/report/` in the repo.)
+https://cjchanh.github.io/azimuth-bench/report/index.html  
+(Site root: https://cjchanh.github.io/azimuth-bench/ — built from `docs/report/` in the repo.)
+
+GitHub Pages uses the repository name (`azimuth-bench`); the repo may also be cloned from `github.com/cjchanh/benchmark-v2`.
 
 | File | Purpose |
 | --- | --- |
