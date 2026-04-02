@@ -4,5 +4,5 @@
   "model_id": "mlx-community/Qwen2.5-Coder-7B-Instruct-4bit",
   "thinking_mode": "default",
   "lane": "core",
-  "error": "failed to load mlx-community/Qwen2.5-Coder-7B-Instruct-4bit on :9700"
+  "error": "failed to load mlx-community/Qwen2.5-Coder-7B-Instruct-4bit"
 }
