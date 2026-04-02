@@ -379,7 +379,7 @@ def main(argv: list[str] | None = None) -> int:
                     logger.log(f"[{artifact}] Token benchmark artifact already present; skipping")
 
                 if need_gate:
-                    logger.log(f"[{artifact}] Running optional 5-tick Agent Civilization gate...")
+                    logger.log(f"[{artifact}] Running optional 5-tick external gate...")
                     if gate_dir.exists():
                         shutil.rmtree(gate_dir)
                     _run_subprocess(
@@ -404,7 +404,7 @@ def main(argv: list[str] | None = None) -> int:
                     gate_payload = json.loads(gate_result.read_text())
                     logger.log(
                         f"[{artifact}] Gate: decision={gate_payload['decision']} "
-                        f"usable={gate_payload['agent_civ_usable']}"
+                        f"usable={gate_payload['external_gate_usable']}"
                     )
                 logger.log()
             except Exception as exc:

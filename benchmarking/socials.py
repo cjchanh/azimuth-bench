@@ -441,7 +441,7 @@ def _generate_gate_appendix(rows: list[dict[str, Any]], output_dir: Path) -> Non
     ax.text(
         0.00,
         0.97,
-        "Appendix: Agent Civilization Gate",
+        "Appendix: External Gate",
         fontsize=26,
         fontweight="bold",
         color=TEXT,
@@ -460,8 +460,8 @@ def _generate_gate_appendix(rows: list[dict[str, Any]], output_dir: Path) -> Non
     for row in rows:
         accent = (
             GOOD
-            if row.get("agent_civ_usable") == "usable"
-            else (WARN if row.get("agent_civ_usable") == "usable_with_caveat" else BAD)
+            if row.get("external_gate_usable") == "usable"
+            else (WARN if row.get("external_gate_usable") == "usable_with_caveat" else BAD)
         )
         _panel(ax, 0.00, y - 0.10, 0.96, 0.12)
         ax.text(
@@ -476,7 +476,7 @@ def _generate_gate_appendix(rows: list[dict[str, Any]], output_dir: Path) -> Non
         ax.text(
             0.03,
             y - 0.05,
-            f"gate={row['gate_decision']}  usable={row['agent_civ_usable']}",
+            f"gate={row['gate_decision']}  usable={row['external_gate_usable']}",
             fontsize=12,
             color=accent,
             transform=ax.transAxes,
