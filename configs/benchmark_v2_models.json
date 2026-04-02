@@ -1,6 +1,6 @@
 {
   "version": "benchmark-v2",
-  "description": "Agent Civilization MLX benchmark roster with a matched 27B reasoning-distill lane.",
+  "description": "MLX benchmark roster with a matched 27B reasoning-distill lane.",
   "entries": [
     {
       "model_id": "mlx-community/Qwen2.5-Coder-7B-Instruct-4bit",

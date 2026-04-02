@@ -38,23 +38,6 @@ Run from repository root with the dev virtualenv activated.
   corrections belong in the generated report/data layer unless a source artifact
   is demonstrably invalid.
 
-## Governance Gate
-
-From repository root (paths below assume `~/.codex` tooling is installed):
-
-```bash
-python3 ~/.codex/scripts/validate_governance.py --root . --strict
-bash ~/.codex/scripts/bootstrap_codex_governance.sh --repo-root . --check-only
-python3 ~/.codex/validators/pre_session.py "$(pwd)"
-python3 ~/.codex/validators/post_session.py "$(pwd)"
-```
-
-Optional full portfolio:
-
-```bash
-bash ~/.codex/scripts/run_full_verification.sh
-```
-
 ## Session Contract
 
 - No `implemented+tested` claim without passing the canonical test command.

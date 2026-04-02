@@ -4,5 +4,5 @@
   "model_id": "mlx-community/Qwen3.5-9B-MLX-4bit",
   "thinking_mode": "default",
   "lane": "core",
-  "error": "failed to load mlx-community/Qwen3.5-9B-MLX-4bit on :9700"
+  "error": "failed to load mlx-community/Qwen3.5-9B-MLX-4bit"
 }
