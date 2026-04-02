@@ -16,7 +16,6 @@
 | Merge fail-closed on duplicate identity | `tests/test_merge.py::test_merge_blocks_duplicate_row_identity` |
 | M6 evaluator docs exist | `docs/azimuth_bench/DESIGN_PARTNER_EVAL.md`, `release/evaluator/README.md`; `tests/test_m6_eval.py` |
 | Packaging builds without setuptools deprecation in test | `tests/test_m6_eval.py::test_python_m_build_produces_wheel_and_sdist`; live build in `results.md` |
-| PyPI **not** claimed as automated | SSOT “Not implemented: PyPI publication…” |
+| PyPI **not** claimed as automated | SSOT "Not implemented: PyPI publication…" |
 | llama.cpp / vLLM **not** shipped | SSOT; `azimuth_bench/adapters/planned.py` |
 | Tests pass | `python3 -m pytest -q` → count in [SOURCE_OF_TRUTH.md](../../../docs/azimuth_bench/SOURCE_OF_TRUTH.md) (60 in current tree; re-run to confirm) |
-| Governance clean | `validate_governance.py --strict`, bootstrap, full verification, post_session — all exit 0 in `results.md` |

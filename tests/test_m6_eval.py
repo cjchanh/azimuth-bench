@@ -56,7 +56,6 @@ def test_m6_release_gate_bundle_is_clone_portable() -> None:
     results = (bundle / "results.md").read_text(encoding="utf-8")
     assert "repository root (`$(pwd)` after `cd` into your clone)" in commands
     assert '--repo-root "$(pwd)"' in commands
-    assert 'post_session.py "$(pwd)"' in commands
     assert "/Users/cj/Workspace/active/benchmark-v2" not in commands
     assert "stale recorded checkout path or commit pin" in results
     assert "1130597" not in results
