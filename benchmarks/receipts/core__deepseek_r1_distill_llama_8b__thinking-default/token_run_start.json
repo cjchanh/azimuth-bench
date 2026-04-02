@@ -1,7 +1,7 @@
 {
   "timestamp_utc": "2026-04-01T20:10:20.724015+00:00",
   "artifact_key": "core__deepseek_r1_distill_llama_8b__thinking-default",
-  "artifact_path": "/Users/cj/Workspace/active/benchmark-v2/benchmarks/core__deepseek_r1_distill_llama_8b__thinking-default.json",
+  "artifact_path": "benchmarks/core__deepseek_r1_distill_llama_8b__thinking-default.json",
   "model_id": "mlx-community/DeepSeek-R1-Distill-Llama-8B-4bit",
   "thinking_mode": "default",
   "lane": "core"

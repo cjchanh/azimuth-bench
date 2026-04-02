@@ -26,7 +26,7 @@ TRUTH BOUNDARY (READ FIRST — GOVERNS ALL “SHIPPED / DONE” CLAIMS)
 ================================================================================
 REPO
 ================================================================================
-- Target repo: /Users/cj/Workspace/active/benchmark-v2
+- Target repo: $(pwd)
 - Treat the current working tree as in-flight; prefer explicit repo-root flags over
   hardcoded paths in new code.
 - Do not restart the naming debate.
@@ -123,7 +123,7 @@ Last verified in this checkout (re-run and refresh numbers):
 - source .venv/bin/activate && python3 -m pytest -q    -> see SOURCE_OF_TRUTH.md (60 passed as of v0.1.0 RC pack)
 
 Also exercise:
-- source .venv/bin/activate && azbench report build benchmarks --repo-root /Users/cj/Workspace/active/benchmark-v2
+- source .venv/bin/activate && azbench report build benchmarks --repo-root $(pwd)
 - source .venv/bin/activate && azbench bench throughput --help
 - source .venv/bin/activate && python3 -m azimuth_bench --help
 - source .venv/bin/activate && python3 -m signalbench --help

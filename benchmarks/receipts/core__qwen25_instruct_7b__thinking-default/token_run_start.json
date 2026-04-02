@@ -1,7 +1,7 @@
 {
   "timestamp_utc": "2026-04-01T19:47:49.637604+00:00",
   "artifact_key": "core__qwen25_instruct_7b__thinking-default",
-  "artifact_path": "/Users/cj/Workspace/active/benchmark-v2/benchmarks/core__qwen25_instruct_7b__thinking-default.json",
+  "artifact_path": "benchmarks/core__qwen25_instruct_7b__thinking-default.json",
   "model_id": "mlx-community/Qwen2.5-7B-Instruct-4bit",
   "thinking_mode": "default",
   "lane": "core"

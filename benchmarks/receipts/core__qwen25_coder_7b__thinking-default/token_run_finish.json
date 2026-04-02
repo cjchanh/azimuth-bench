@@ -1,5 +1,5 @@
 {
   "timestamp_utc": "2026-04-01T19:40:56.660487+00:00",
-  "artifact_path": "/Users/cj/Workspace/active/benchmark-v2/benchmarks/core__qwen25_coder_7b__thinking-default.json",
+  "artifact_path": "benchmarks/core__qwen25_coder_7b__thinking-default.json",
   "status": "complete"
 }
