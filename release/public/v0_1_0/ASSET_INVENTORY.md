@@ -6,8 +6,8 @@ All paths are **relative to the repository root**. Generated files assume you ha
 
 The same report surface is published as static files (no backend):
 
-- **Site:** https://cjchanh.github.io/benchmark-v2/
-- **Sample report:** https://cjchanh.github.io/benchmark-v2/report/index.html  
+- **Site:** https://cjchanh.github.io/azimuth-bench/
+- **Sample report:** https://cjchanh.github.io/azimuth-bench/report/index.html  
 
 Source in-repo: `docs/report/` (and `docs/index.html` landing), deployed from the `docs/` folder on `main` via GitHub Pages.
 

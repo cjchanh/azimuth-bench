@@ -41,7 +41,7 @@ It does **not** prove anything about your hardware or your endpoints until you r
 
 A **static** snapshot of the Azimuth Report (from committed `benchmarks/` artifacts) is hosted on **GitHub Pages** for inspection only — not a live inference service:
 
-- **https://cjchanh.github.io/benchmark-v2/report/index.html**
+- **https://cjchanh.github.io/azimuth-bench/report/index.html**
 
 ## One local proof path (no benchmark rerun)
 

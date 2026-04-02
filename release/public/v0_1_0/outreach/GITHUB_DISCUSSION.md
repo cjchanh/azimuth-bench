@@ -10,7 +10,7 @@ We tagged **v0.1.0** with a focus on **artifact-backed, static** reporting—not
 
 - **Repository:** https://github.com/cjchanh/benchmark-v2  
 - **Release notes:** https://github.com/cjchanh/benchmark-v2/releases/tag/v0.1.0  
-- **Sample report (GitHub Pages, built from committed `benchmarks/`):** https://cjchanh.github.io/benchmark-v2/report/index.html  
+- **Sample report (GitHub Pages, built from committed `benchmarks/`):** https://cjchanh.github.io/azimuth-bench/report/index.html  
 
 Use this thread for:
 
