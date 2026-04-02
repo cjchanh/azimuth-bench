@@ -9,7 +9,7 @@
 **Public OSS release candidate (v0.1.0):** [CHANGELOG.md](CHANGELOG.md) · [CONTRIBUTING.md](CONTRIBUTING.md) · [SECURITY.md](SECURITY.md) · **Release pack:** [release/public/v0_1_0/README.md](release/public/v0_1_0/README.md)
 
 **Public sample report (static, GitHub Pages — from committed `benchmarks/` artifacts, no live backend):**  
-https://cjchanh.github.io/benchmark-v2/report/index.html
+https://cjchanh.github.io/azimuth-bench/report/index.html
 
 ## Implemented today (tested)
 
