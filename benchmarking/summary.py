@@ -25,7 +25,7 @@ GATE_FIELDS = [
     "synthetic_rate",
     "invalid_location_rate",
     "share_count_5tick",
-    "agent_civ_usable",
+    "external_gate_usable",
 ]
 
 COMBINED_FIELDS = TOKEN_FIELDS + [
@@ -35,7 +35,7 @@ COMBINED_FIELDS = TOKEN_FIELDS + [
     "synthetic_rate",
     "invalid_location_rate",
     "share_count_5tick",
-    "agent_civ_usable",
+    "external_gate_usable",
 ]
 
 
@@ -102,7 +102,7 @@ def _render_markdown(fields: list[str], rows: list[dict[str, Any]]) -> str:
         "synthetic_rate": "Synthetic rate",
         "invalid_location_rate": "Invalid loc rate",
         "share_count_5tick": "5-tick shares",
-        "agent_civ_usable": "Usable",
+        "external_gate_usable": "Usable",
     }
 
     headers = [pretty[field] for field in fields]
@@ -153,7 +153,7 @@ def _gate_row_for_entry(entry: dict[str, Any], benchmarks_dir: Path) -> dict[str
         "synthetic_rate": stage2.get("synthetic_rate", 0.0),
         "invalid_location_rate": stage2.get("invalid_location_rate", 0.0),
         "share_count_5tick": stage2.get("share_count_5tick", 0),
-        "agent_civ_usable": gate_payload.get("agent_civ_usable", "missing"),
+        "external_gate_usable": gate_payload.get("external_gate_usable", "missing"),
     }
     return {field: _round_numeric(row[field]) for field in GATE_FIELDS}
 
@@ -195,7 +195,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--write-gate",
         action="store_true",
-        help="Write the optional Agent Civilization gate summary artifacts.",
+        help="Write the optional external gate summary artifacts.",
     )
     parser.add_argument(
         "--write-combined",

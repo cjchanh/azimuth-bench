@@ -25,7 +25,7 @@ echo "  Output: $OUTPUT"
 echo "  Temp dir: $DEMO_DIR"
 
 asciinema rec "$OUTPUT" \
-  --title "Agent Civilization — Cooperation Gate Check" \
+  --title "External Gate — Cooperation Gate Check" \
   --command "python3 $SCRIPT_DIR/gate_mlx_model.py --port 8899 --model mlx-community/Qwen2.5-Coder-14B-Instruct-4bit --output-dir $DEMO_DIR"
 
 echo ""

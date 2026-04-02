@@ -272,7 +272,7 @@ def main():
     runs_dir = Path(args.runs_dir)
     output_path = Path(args.output)
 
-    print("Training Benchmark — Agent Civilization × nan-safe-trainer")
+    print("Training Benchmark — external gate × nan-safe-trainer")
     print("=" * 60)
 
     # Step 1: Extract training data
