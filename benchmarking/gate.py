@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Optional external Agent Civilization gate for benchmark-v2."""
+"""Optional external simulation gate for benchmark-v2."""
 
 from __future__ import annotations
 
@@ -17,7 +17,7 @@ from typing import Any
 import aiohttp
 
 from azimuth_bench.core.runtime import chat_template_kwargs_for_thinking_mode
-from benchmarking.utils import ROOT, coerce_message_text
+from benchmarking.utils import coerce_message_text
 
 PROMPT_MODE_SINGLE_USER = "single_user"
 PROMPT_MODE_SYSTEM_USER = "system_user"
@@ -159,17 +159,17 @@ def _served_model(port: int) -> str:
     return result.stdout.strip()
 
 
-def _agent_civ_root() -> Path:
-    candidates = []
-    env_root = os.environ.get("AGENT_CIV_ROOT")
-    if env_root:
-        candidates.append(Path(env_root).expanduser().resolve())
-    candidates.append((ROOT.parent / "agent-civilization").resolve())
-    for candidate in candidates:
-        if (candidate / "scripts" / "run_experiment.py").is_file():
-            return candidate
+def _external_gate_root() -> Path:
+    env_root = os.environ.get("EXTERNAL_GATE_ROOT")
+    if not env_root:
+        raise RuntimeError(
+            "External gate repo not found. Set EXTERNAL_GATE_ROOT to a checkout with scripts/run_experiment.py."
+        )
+    candidate = Path(env_root).expanduser().resolve()
+    if (candidate / "scripts" / "run_experiment.py").is_file():
+        return candidate
     raise RuntimeError(
-        "Agent Civilization repo not found. Set AGENT_CIV_ROOT to a checkout with scripts/run_experiment.py."
+        "External gate repo not found. Set EXTERNAL_GATE_ROOT to a checkout with scripts/run_experiment.py."
     )
 
 
@@ -199,11 +199,11 @@ def _run_gate_experiment(
         sort_keys=True,
     )
 
-    agent_civ_root = _agent_civ_root()
+    gate_root = _external_gate_root()
     proc = subprocess.run(
         [
             sys.executable,
-            str(agent_civ_root / "scripts" / "run_experiment.py"),
+            str(gate_root / "scripts" / "run_experiment.py"),
             "--condition-label",
             "baseline-U",
             "--seed",
@@ -217,7 +217,7 @@ def _run_gate_experiment(
             "--memory-mode",
             "off",
         ],
-        cwd=agent_civ_root,
+        cwd=gate_root,
         env=env,
         capture_output=True,
         text=True,
@@ -279,30 +279,30 @@ def _decision(summary: dict[str, Any]) -> dict[str, str]:
         return {
             "decision": "skip",
             "reason": f"run status={summary['status']}",
-            "agent_civ_usable": "skip",
+            "external_gate_usable": "skip",
         }
     if synthetic_rate > 0.10:
         return {
             "decision": "skip",
             "reason": f"synthetic_rate={synthetic_rate:.3f} > 0.10",
-            "agent_civ_usable": "skip",
+            "external_gate_usable": "skip",
         }
     if invalid_location_rate > 0.50:
         return {
             "decision": "run_with_caveat",
             "reason": f"invalid_location_rate={invalid_location_rate:.3f} > 0.50",
-            "agent_civ_usable": "usable_with_caveat",
+            "external_gate_usable": "usable_with_caveat",
         }
     if synthetic_rate > 0.02:
         return {
             "decision": "run_with_caveat",
             "reason": f"synthetic_rate={synthetic_rate:.3f} > 0.02",
-            "agent_civ_usable": "usable_with_caveat",
+            "external_gate_usable": "usable_with_caveat",
         }
     return {
         "decision": "run",
         "reason": "gate passed",
-        "agent_civ_usable": "usable",
+        "external_gate_usable": "usable",
     }
 
 
@@ -344,7 +344,7 @@ async def main() -> int:
             "stage2": None,
             "decision": "skip",
             "reason": "stage1_json_probe_failed",
-            "agent_civ_usable": "skip",
+            "external_gate_usable": "skip",
         }
         (output_dir / "gate_result.json").write_text(json.dumps(result, indent=2))
         print(json.dumps(result, indent=2))

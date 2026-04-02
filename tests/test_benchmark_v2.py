@@ -119,7 +119,7 @@ def _write_sample_roster(tmp_path: Path) -> tuple[Path, Path, dict[str, str]]:
         json.dumps(
             {
                 "decision": "run",
-                "agent_civ_usable": "usable",
+                "external_gate_usable": "usable",
                 "stage2": {
                     "status": "complete",
                     "synthetic_failures": 0,
@@ -181,7 +181,7 @@ def test_compile_benchmark_summary_writes_gate_summary_when_requested(tmp_path: 
     row = summary["rows"][0]
     assert row["display_name"] == "Qwen3.5 27B Base"
     assert row["gate_decision"] == "run"
-    assert row["agent_civ_usable"] == "usable"
+    assert row["external_gate_usable"] == "usable"
     assert row["share_count_5tick"] == 7
     assert row["status"] == "complete"
 
@@ -300,7 +300,7 @@ def test_generate_benchmark_socials_creates_expected_cards(tmp_path: Path, monke
                         "synthetic_rate": 0.0,
                         "invalid_location_rate": 0.05,
                         "share_count_5tick": 6,
-                        "agent_civ_usable": "usable",
+                        "external_gate_usable": "usable",
                     }
                 ]
             }
