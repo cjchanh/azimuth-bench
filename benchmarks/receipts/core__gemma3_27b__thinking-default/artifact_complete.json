@@ -1,6 +1,6 @@
 {
   "timestamp_utc": "2026-04-01T20:06:36.290491+00:00",
-  "artifact_path": "/Users/cj/Workspace/active/benchmark-v2/benchmarks/core__gemma3_27b__thinking-default.json",
+  "artifact_path": "benchmarks/core__gemma3_27b__thinking-default.json",
   "required_keys": [
     "protocol",
     "summary",
