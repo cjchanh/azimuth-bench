@@ -16,8 +16,3 @@ python3 -m azimuth_bench --help
 python3 -m signalbench --help
 
 python3 -m build --outdir /tmp/azimuth_release_gate_dist --no-isolation
-
-python3 ~/.codex/scripts/validate_governance.py --root . --strict
-bash ~/.codex/scripts/bootstrap_codex_governance.sh --repo-root . --check-only
-bash ~/.codex/scripts/run_full_verification.sh
-python3 ~/.codex/validators/post_session.py "$(pwd)"
