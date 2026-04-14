@@ -1,3 +1,6 @@
+[![CI](https://github.com/cjchanh/azimuth-bench/actions/workflows/ci.yml/badge.svg)](https://github.com/cjchanh/azimuth-bench/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+
 # Azimuth Bench
 
 <p align="center"><strong>Artifact-backed local LLM benchmarking with static reports and explicit comparability limits.</strong></p>
