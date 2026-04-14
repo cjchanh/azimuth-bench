@@ -22,7 +22,7 @@
 
 **Canonical package:** `azimuth_bench`  
 **Canonical CLI:** `azbench`  
-**Distribution name in `pyproject.toml`:** `benchmark-v2`
+**Distribution name in `pyproject.toml`:** `azimuth-bench`
 
 ## Why this is useful
 

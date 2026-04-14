@@ -8,7 +8,7 @@
 | `signalbench` is compatibility shim | `signalbench/__init__.py` re-exports; `tests/test_ssot.py::test_signalbench_shim_main_matches_azimuth_bench`; same `--help` |
 | `benchmarking/*` delegates | `tests/test_ssot.py`, token/main delegation tests; SSOT table |
 | Report build produces static JSON + HTML | `azbench report build` exit 0; `benchmarks/report/data/*.json` |
-| No `/Users/` in generated public report JSON | `rg '/Users/' benchmarks/report/data/*.json` → no matches (this audit) |
+| No absolute home-directory prefixes in generated public report JSON | `python3 -c "from pathlib import Path; print(Path.home())"` value not present in `benchmarks/report/data/*.json` (this audit) |
 | Markdown export works | `azbench export markdown` exit 0; reads `report/data/summary.json` |
 | SVG export deterministic | `tests/test_azimuth_bench.py`; export exit 0 |
 | `compare.json` is `azimuth_compare_v1` | `tests/test_azimuth_bench.py`; SSOT |
