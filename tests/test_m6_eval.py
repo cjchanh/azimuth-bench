@@ -19,7 +19,7 @@ def test_design_partner_eval_and_release_evaluator_docs_exist() -> None:
 
 def test_pyproject_names_distribution_and_console_scripts() -> None:
     text = (_repo_root() / "pyproject.toml").read_text(encoding="utf-8")
-    assert 'name = "benchmark-v2"' in text
+    assert 'name = "azimuth-bench"' in text
     assert 'license = "MIT"' in text
     assert 'license = {text = "MIT"}' not in text
     assert 'azbench = "azimuth_bench.cli.entrypoint:main"' in text
@@ -54,9 +54,10 @@ def test_m6_release_gate_bundle_is_clone_portable() -> None:
     bundle = root / "release/evidence/m6_release_gate_v1"
     commands = (bundle / "commands.txt").read_text(encoding="utf-8")
     results = (bundle / "results.md").read_text(encoding="utf-8")
+    home_prefix = Path.home().as_posix()
     assert "repository root (`$(pwd)` after `cd` into your clone)" in commands
     assert '--repo-root "$(pwd)"' in commands
-    assert "/Users/cj/Workspace/active/benchmark-v2" not in commands
+    assert home_prefix not in commands
     assert "stale recorded checkout path or commit pin" in results
     assert "1130597" not in results
 
@@ -79,4 +80,4 @@ def test_python_m_build_produces_wheel_and_sdist(tmp_path: Path) -> None:
     sdist = list(out.glob("*.tar.gz"))
     assert wheels, "expected at least one wheel"
     assert sdist, "expected sdist tarball"
-    assert any("benchmark" in w.name.lower() for w in wheels)
+    assert any("azimuth" in w.name.lower() for w in wheels)

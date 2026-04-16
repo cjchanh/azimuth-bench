@@ -3,12 +3,13 @@ requires = ["setuptools>=68"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "benchmark-v2"
+name = "azimuth-bench"
 version = "0.1.0"
 description = "Azimuth Bench — portable inference benchmark platform (package azimuth_bench)."
 readme = "README.md"
 license = "MIT"
 requires-python = ">=3.10"
+authors = [{name = "Christopher Chanhnourack"}]
 keywords = ["azimuth", "benchmark", "inference", "llm", "mlx", "throughput"]
 classifiers = [
   "Development Status :: 4 - Beta",
@@ -31,6 +32,10 @@ dev = ["pytest>=7.0", "ruff>=0.4", "build>=1.0", "setuptools>=68"]
 [project.scripts]
 azbench = "azimuth_bench.cli.entrypoint:main"
 signalbench = "azimuth_bench.cli.entrypoint:main"
+
+[project.urls]
+Homepage = "https://cjchanh.github.io/azimuth-bench/"
+Repository = "https://github.com/cjchanh/azimuth-bench"
 
 [tool.setuptools.packages.find]
 include = ["benchmarking*", "azimuth_bench*", "signalbench*"]

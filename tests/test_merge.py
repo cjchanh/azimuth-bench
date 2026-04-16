@@ -141,8 +141,9 @@ def test_merge_two_bundles_fully_comparable(repo_root: Path, repo_benchmarks: Pa
     assert len(runs_index["runs"]) == 2
     keys = {r["artifact_key"] for r in runs_index["runs"]}
     assert all(k.startswith("s0__") or k.startswith("s1__") for k in keys)
+    home_prefix = Path.home().as_posix()
     for blob in _collect_json_texts(data):
-        assert "/Users/" not in blob
+        assert home_prefix not in blob
         assert str(tmp_path) not in blob
 
 
@@ -205,7 +206,8 @@ def test_merge_export_markdown_and_stable_paths(repo_root: Path, repo_benchmarks
     md_path = tmp_path / "export.md"
     write_markdown_export(report_data_dir=a / "report" / "data", output_path=md_path)
     text = md_path.read_text(encoding="utf-8")
+    home_prefix = Path.home().as_posix()
     assert "Azimuth Bench export" in text
     assert "Rows: 2" in text
-    assert "/Users/" not in text
+    assert home_prefix not in text
     assert str(tmp_path) not in text
