@@ -6,6 +6,8 @@ import subprocess
 import sys
 from pathlib import Path
 
+import pytest
+
 
 def _repo_root() -> Path:
     return Path(__file__).resolve().parent.parent
@@ -64,6 +66,16 @@ def test_m6_release_gate_bundle_is_clone_portable() -> None:
 def test_python_m_build_produces_wheel_and_sdist(tmp_path: Path) -> None:
     """Honest local packaging check (not PyPI publication). Requires optional dev dep `build`."""
     root = _repo_root()
+    pre = subprocess.run(
+        [sys.executable, "-m", "build", "--help"],
+        cwd=root,
+        capture_output=True,
+        text=True,
+        timeout=30,
+    )
+    if pre.returncode != 0:
+        pytest.skip("PEP 517 build frontend (`python -m build`) not runnable in this interpreter")
+
     out = tmp_path / "dist"
     proc = subprocess.run(
         [sys.executable, "-m", "build", "--outdir", str(out), "--no-isolation"],

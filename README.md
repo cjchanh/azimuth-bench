@@ -56,7 +56,7 @@ Important caveat: that fresh batch is intentionally labeled as mixed provenance.
 
 ## Implemented today
 
-- Throughput suite with MLX, OpenAI-compatible, and Ollama adapters.
+- Throughput suite with MLX, OpenAI-compatible, Ollama, and **llama.cpp / llama-server** (`llama_cpp`) adapters.
 - `azbench report build` -> static HTML + `report/data/*.json` with sanitized public paths.
 - `azbench export markdown` -> report-derived Markdown summaries.
 - `azbench export svg` -> deterministic leaderboard and compare share cards.
@@ -67,7 +67,8 @@ Important caveat: that fresh batch is intentionally labeled as mixed provenance.
 
 ## Not implemented
 
-- Production `llama.cpp` / `vLLM` adapters.
+- `llama_server` lifecycle management inside Azimuth (you start the binary; Azimuth calls HTTP).
+- `vLLM` adapter.
 - Hosted SPA or live benchmark service.
 - PyPI automation.
 
@@ -116,6 +117,15 @@ Requires a live backend. Adapter and environment notes live in [docs/azimuth_ben
 ```bash
 azbench bench throughput --help
 ```
+
+Semantic fixture summaries and promotion gates (optional eval layers):
+
+```bash
+azbench bench semantic-summary --help
+azbench bench promotion-gate --help
+```
+
+Public sample fixture packs live under `fixture_packs/` (distinct from private `evals/` trees).
 
 Legacy entrypoints still resolve to the same CLI: `signalbench`, `python -m signalbench`, `python -m azimuth_bench`, `python -m benchmarking.token`.
 

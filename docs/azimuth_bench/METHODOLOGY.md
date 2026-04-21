@@ -5,7 +5,7 @@ This document explains what Azimuth Bench **measures**, how **comparability** is
 ## Implemented and tested (today)
 
 - **Throughput suite** with fixed prompts, repeat counts, and validity rules (`azimuth_bench.suites.throughput`).
-- **Adapters** (MLX LM local server, OpenAI-compatible HTTP, Ollama HTTP) implementing the same `BenchmarkAdapter` contract; tests cover delegation, integrity, and report build.
+- **Adapters** (MLX LM local server, OpenAI-compatible HTTP, Ollama HTTP, **llama.cpp / llama-server** via `llama_cpp`) implementing the same `BenchmarkAdapter` contract; tests cover delegation, integrity, and report build.
 - **Artifacts** per run: JSON payloads with protocol, timings, token estimates, validity, and comparability blocks.
 - **Report bundle** under `report/data/`: normalized JSON with **no absolute local paths** in public fields; relative artifact paths and sanitized provider metadata.
 - **Integrity gate**: ambiguous or duplicate artifact mapping fails closed (blockers).
@@ -15,8 +15,15 @@ This document explains what Azimuth Bench **measures**, how **comparability** is
 
 ## Designed or partial (do not over-claim)
 
-- **llama.cpp / vLLM** adapters: planned only (`azimuth_bench.adapters.planned`).
+- **vLLM** adapter: planned only (`azimuth_bench.adapters.planned`).
+- **Cold-load seconds**: throughput artifacts record `telemetry.cold_load_status` (`unavailable` unless the adapter exposes load timing).
+- **Semantic automation**: `azbench bench semantic-summary` joins fixtures + outputs + optional human scores; models never self-score unless explicitly marked trusted.
+- **Promotion gates**: `azbench bench promotion-gate` emits classifications from structured evidence — **never** promotes to **default** on throughput alone.
 - **Hosted SPA**: static HTML + JSON only.
+
+## Fixture packs vs private eval sets
+
+Public **fixture packs** live under `fixture_packs/` with minimal JSONL samples. Private, repo-anchored bakeoffs remain under `evals/` and are **not** imported automatically into Azimuth throughput artifacts.
 
 ## Protocol identity
 
@@ -26,7 +33,9 @@ Each throughput artifact records:
 - **`prompt_set_id`** — e.g. `benchmark_v2_m5max_prompt_set_v1`.
 - **`machine_class`** — a **label** in the protocol (often describing the intended lane, e.g. Apple Silicon MLX). It is **not** independently verified hardware telemetry unless receipts supply it.
 
-Comparing two runs requires matching protocol and understanding what changed (model, adapter, thinking mode, software versions).
+Comparing two runs requires matching protocol and understanding what changed (**model**, **adapter**, **thinking mode**, optional **route_label**, sampling policy, software versions). **Model name alone is not a sufficient comparison key** when adapters differ.
+
+Throughput artifacts include **`route_identity`** (adapter name, lane, protocol hashes, optional route label). Merge collision detection keys include **`adapter_name`** and **`route_label`** when present on enriched summary rows so identical `model_id` rows from different routes do not silently collide.
 
 ## Comparability
 

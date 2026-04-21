@@ -150,6 +150,17 @@ def _enrich_summary_row(
     enriched["provider_kind"] = provider_identity.get("provider_kind")
     if provider_identity.get("adapter_name") is not None:
         enriched["adapter_name"] = provider_identity.get("adapter_name")
+    route_identity = artifact_payload.get("route_identity")
+    if isinstance(route_identity, dict):
+        rl = route_identity.get("route_label")
+        if isinstance(rl, str) and rl.strip():
+            enriched["route_label"] = rl.strip()
+        sp = route_identity.get("sampling_policy")
+        if isinstance(sp, str) and sp.strip():
+            enriched["sampling_policy"] = sp.strip()
+        pch = route_identity.get("protocol_content_sha256")
+        if isinstance(pch, str) and pch.strip():
+            enriched["protocol_content_sha256"] = pch.strip()
     return enriched
 
 

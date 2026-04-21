@@ -5,6 +5,12 @@ from __future__ import annotations
 import argparse
 from pathlib import Path
 
+from azimuth_bench.cli.bench_aux import (
+    add_promotion_gate_arguments,
+    add_semantic_summary_arguments,
+    run_promotion_gate_cli,
+    run_semantic_summary_cli,
+)
 from azimuth_bench.cli.throughput import add_throughput_arguments, run_throughput
 from azimuth_bench.core.paths import find_repo_root
 from azimuth_bench.export.markdown import write_markdown_export
@@ -74,6 +80,18 @@ def main(argv: list[str] | None = None) -> int:
     )
     add_throughput_arguments(tp_p)
 
+    sem_p = bench_sub.add_parser(
+        "semantic-summary",
+        help="Join semantic fixtures + outputs (+ optional human scores) into an artifact.",
+    )
+    add_semantic_summary_arguments(sem_p)
+
+    promo_p = bench_sub.add_parser(
+        "promotion-gate",
+        help="Emit a promotion gate classification JSON from structured evidence.",
+    )
+    add_promotion_gate_arguments(promo_p)
+
     args = parser.parse_args(argv)
     if args.command == "report" and args.report_cmd == "build":
         root = args.repo_root or find_repo_root(Path(__file__))
@@ -98,6 +116,10 @@ def main(argv: list[str] | None = None) -> int:
         return 0
     if args.command == "bench" and args.bench_cmd == "throughput":
         return run_throughput(args)
+    if args.command == "bench" and args.bench_cmd == "semantic-summary":
+        return run_semantic_summary_cli(args)
+    if args.command == "bench" and args.bench_cmd == "promotion-gate":
+        return run_promotion_gate_cli(args)
 
     return 1
 

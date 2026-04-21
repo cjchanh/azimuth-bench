@@ -9,7 +9,7 @@ All variables are **optional** and **non-secret**. They exist so operators can n
 | `AZIMUTH_BENCH_PROVIDER_ID` | Public label written to `report/data/provider.json` when building reports (e.g. `mlx_lm`). Not verified against artifacts. |
 | `AZIMUTH_BENCH_MLX_SERVER_LOG` | Path for MLX LM server stdout/stderr when using the roster runner (default: under system temp). |
 | `AZIMUTH_BENCH_FLEET_GUARD_PATH` | Path for fleet guard JSON output when that tool is used (default: under system temp). |
-| `AZIMUTH_BENCH_OPENAI_BASE_URL` | Base URL for `--adapter openai_compatible` when `--base-url` is omitted (no default endpoint). Raw endpoint URLs are operator config and are not serialized into public report JSON. |
+| `AZIMUTH_BENCH_OPENAI_BASE_URL` | Base URL for `--adapter openai_compatible` **or** `--adapter llama_cpp` when `--base-url` is omitted (no default endpoint). Raw endpoint URLs are operator config and are not serialized into public report JSON. |
 | `AZIMUTH_BENCH_OLLAMA_BASE_URL` | Ollama base URL when `--adapter ollama` and `--base-url` are omitted. Raw endpoint URLs are not serialized into public report JSON. |
 | `OLLAMA_HOST` | Host or URL for Ollama (e.g. `127.0.0.1:11434`); used when `AZIMUTH_BENCH_OLLAMA_BASE_URL` is unset. |
 | `AZIMUTH_BENCH_API_KEY` | Optional bearer token for OpenAI-compatible HTTP adapters (**secret** — never logged or embedded in JSON artifacts). |

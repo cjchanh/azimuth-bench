@@ -20,7 +20,7 @@ def add_throughput_arguments(parser: argparse.ArgumentParser) -> None:
     """Register throughput suite CLI flags (shared by ``azbench bench throughput`` and legacy wrappers)."""
     parser.add_argument(
         "--adapter",
-        choices=("mlx", "openai_compatible", "ollama"),
+        choices=("mlx", "openai_compatible", "ollama", "llama_cpp"),
         default="mlx",
         help="Backend adapter (default: mlx local MLX LM server).",
     )
@@ -59,6 +59,18 @@ def add_throughput_arguments(parser: argparse.ArgumentParser) -> None:
         default=None,
         help="Operator provider label for artifacts (overrides AZIMUTH_BENCH_PROVIDER_ID).",
     )
+    parser.add_argument(
+        "--route-label",
+        type=str,
+        default="",
+        help="Optional route label recorded in artifact route_identity for merge/compare (not secret).",
+    )
+    parser.add_argument(
+        "--sampling-policy",
+        type=str,
+        default="deterministic_throughput_v1",
+        help="Label recorded as sampling_policy on throughput artifacts.",
+    )
 
 
 def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
@@ -91,6 +103,8 @@ def run_throughput(args: argparse.Namespace) -> int:
             artifact_key=args.artifact_key,
             operator_provider_id=op_pid,
             provider_id_source=pid_src,
+            route_label=args.route_label.strip() or None,
+            sampling_policy=args.sampling_policy.strip() or None,
         ),
         max_tokens=args.max_tokens,
         smoke=args.smoke,

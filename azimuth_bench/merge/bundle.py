@@ -12,8 +12,14 @@ from azimuth_bench.schema.bundle import build_canonical_data_files
 from azimuth_bench.schema.version import AZIMUTH_BENCH_SCHEMA_VERSION
 
 
-def _identity(row: dict[str, Any]) -> tuple[str, str, str]:
-    return (str(row.get("model_id")), str(row.get("lane")), str(row.get("thinking_mode")))
+def _identity(row: dict[str, Any]) -> tuple[str, str, str, str, str]:
+    return (
+        str(row.get("model_id")),
+        str(row.get("lane")),
+        str(row.get("thinking_mode")),
+        str(row.get("adapter_name") or ""),
+        str(row.get("route_label") or ""),
+    )
 
 
 def _apply_merge_prefix(run_bundle: dict[str, Any], merge_id: str) -> None:
@@ -43,8 +49,8 @@ def merge_canonical_bundles(
     """Merge ``build_canonical_data_files`` outputs from primary + extras.
 
     Each directory must pass integrity independently. Duplicate
-    ``(model_id, lane, thinking_mode)`` across sources raises
-    ``MergeCollisionError``.
+    ``(model_id, lane, thinking_mode, adapter_name, route_label)``
+    across sources raises ``MergeCollisionError``.
 
     Args:
         primary: Primary run directory (report is written under ``primary/report/``).
@@ -111,7 +117,7 @@ def merge_canonical_bundles(
             if ident in identities:
                 raise MergeCollisionError(
                     f"duplicate summary row identity across merge sources: model_id={ident[0]!r} "
-                    f"lane={ident[1]!r} thinking_mode={ident[2]!r}",
+                    f"lane={ident[1]!r} thinking_mode={ident[2]!r} adapter_name={ident[3]!r} route_label={ident[4]!r}",
                 )
             identities.add(ident)
 
