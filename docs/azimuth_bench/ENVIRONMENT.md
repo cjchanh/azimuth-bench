@@ -28,4 +28,16 @@ All variables are **optional** and **non-secret**. They exist so operators can n
 | --- | --- |
 | `TMPDIR`, `TEMP`, `TMP` | Standard temp directory selection (POSIX / Python `tempfile`). |
 
+## `llama_cpp` adapter smoke check (operators)
+
+Use this to confirm the **OpenAI-compatible route and thinking control surface** before you point Azimuth at the same base URL. It is **not** a benchmark: it does not produce throughput, semantic, or promotion artifacts, and it does not expand eval scope.
+
+1. **Start from an already-running** llama-server (or equivalent) on a known host and port. **Azimuth does not start, supervise, or own** that process; lifecycle is always **bring-your-own-server**.
+2. **Verify** `GET {base_url}/v1/models` returns a normal models payload (e.g. with `curl` or any HTTP client; exact flags are your environment’s choice).
+3. **Run one** `POST {base_url}/v1/chat/completions` request with a **thinking-off** control, e.g. `chat_template_kwargs` including `enable_thinking: false` (or the field your build uses for the same effect). This checks the same class of control the `llama_cpp` adapter may send under non-default thinking modes.
+4. **Confirm** the server either **honors** the control in the response shape you expect or **fails visibly** (e.g. clear HTTP 4xx) so you are not assuming a silent no-op.
+5. **Scope:** this is a **route / control-surface** smoke only. **Full** throughput runs, semantic summaries, and promotion decisions still require the corresponding **Azimuth** commands and **artifact outputs** (JSON under your run tree as produced by the suite/CLI), not this checklist alone.
+
+**Command shape (placeholder, not a launch recipe):** `curl -sS "http://<host>:<port>/v1/models"` and a second `curl` (or script) `POST`ing JSON to `.../v1/chat/completions` with your model id, messages, and `chat_template_kwargs` as required by your server build. Adjust host, port, auth, and body to match your deployment; Azimuth does not prescribe the server binary or its flags.
+
 Commit SHA in `run.json` requires a `.git` directory discoverable from the run directory or an explicit `--repo-root` pointing at the Git work tree.
