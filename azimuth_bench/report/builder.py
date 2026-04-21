@@ -239,7 +239,7 @@ def _render_summary_md(summary_rows: list[dict[str, Any]], *, integrity_ok: bool
         "",
         "## Designed / unverified",
         "",
-        "- llama.cpp and vLLM adapters",
+        "- vLLM adapter + llama.cpp server lifecycle automation",
         "- Full hosted app beyond static-first site data contract",
         "",
         "## Site manifest",

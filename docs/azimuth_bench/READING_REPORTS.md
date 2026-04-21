@@ -32,7 +32,7 @@ Regenerate share SVGs without rebuilding the full report: `azbench export svg <r
 
 - **Structured JSON tok/s** is the primary leaderboard metric in this tree (see charts and `leaderboard.json`).
 - Rows can include **multiple lanes** (e.g. `core` vs `frontier_27b`); read the **Lane** column before comparing.
-- **Merged reports** duplicate `merge.json` under `leaderboard.json` → **`merge`**. Read **`comparability_class`** (`fully_comparable`, `scoped_comparable`, `not_comparable`) and **`blockers`** before treating the table as a single ranking. Per-row hints: **`merge_row_comparability_class`**, **`merge_source`**, **`merge_bundle_label`**.
+- **Merged reports** duplicate `merge.json` under `leaderboard.json` → **`merge`**. Read **`comparability_class`** (`fully_comparable`, `scoped_comparable`, `not_comparable`) and **`blockers`** before treating the table as a single ranking. Per-row hints: **`merge_row_comparability_class`**, **`merge_source`**, **`merge_bundle_label`**. Merge collision keys include **`adapter_name`** and **`route_label`** when those fields exist on enriched rows — **model_id alone is not assumed unique** across adapters or routes.
 
 ## Comparable flag
 

@@ -7,6 +7,7 @@ from pathlib import Path
 
 from azimuth_bench.adapters.base import BenchmarkAdapter
 from azimuth_bench.adapters.identity import ProviderIdSource
+from azimuth_bench.adapters.llama_cpp import LlamaCppServerAdapter
 from azimuth_bench.adapters.mlx import MLXLmServerAdapter
 from azimuth_bench.adapters.ollama import OllamaAdapter
 from azimuth_bench.adapters.openai_compatible import OpenAICompatibleAdapter
@@ -35,7 +36,7 @@ def build_throughput_adapter(
     base_url: str | None,
     max_tokens_default: int,
 ) -> BenchmarkAdapter:
-    """Build a throughput-suite adapter by name (``mlx`` | ``openai_compatible`` | ``ollama``)."""
+    """Build a throughput-suite adapter by name (``mlx`` | ``openai_compatible`` | ``ollama`` | ``llama_cpp``)."""
     key = adapter_name.strip().lower()
     if key == "mlx":
         return MLXLmServerAdapter(
@@ -56,6 +57,14 @@ def build_throughput_adapter(
         )
     if key == "ollama":
         return OllamaAdapter(base_url=resolve_ollama_base_url(base_url))
+    if key == "llama_cpp":
+        resolved = openai_compatible_base_url(base_url)
+        if not resolved:
+            raise AdapterConfigurationError(
+                "llama_cpp adapter requires --base-url or AZIMUTH_BENCH_OPENAI_BASE_URL / OPENAI_BASE_URL "
+                "(llama-server OpenAI-compatible surface)",
+            )
+        return LlamaCppServerAdapter(base_url=resolved, api_key=openai_compatible_api_key())
     raise AdapterConfigurationError(f"unknown adapter {adapter_name!r}")
 
 
@@ -79,4 +88,6 @@ def default_machine_class_for_adapter(adapter_name: str) -> str:
     key = adapter_name.strip().lower()
     if key == "mlx":
         return "Apple Silicon M5 Max local MLX lane"
+    if key == "llama_cpp":
+        return "Apple Silicon local llama.cpp server (OpenAI-compatible)"
     return "unspecified_host"

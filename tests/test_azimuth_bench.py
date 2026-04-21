@@ -100,7 +100,7 @@ def test_build_report_emits_outputs(repo_benchmarks: Path, tmp_path: Path) -> No
     assert (out / "compare.html").exists()
     assert (out / "summary.md").exists()
     summary_md = (out / "summary.md").read_text(encoding="utf-8")
-    assert "llama.cpp and vLLM adapters" in summary_md
+    assert "vLLM adapter" in summary_md
     assert "Multi-run merge" in summary_md
     assert "Portable merge of external run bundles" not in summary_md
     assert "Additional adapters beyond MLX" not in summary_md
@@ -333,9 +333,21 @@ def test_factory_requires_openai_base_url() -> None:
         )
 
 
+def test_factory_requires_llama_cpp_base_url(tmp_path: Path) -> None:
+    with pytest.raises(AdapterConfigurationError, match="llama_cpp"):
+        build_throughput_adapter(
+            adapter_name="llama_cpp",
+            repo_root=tmp_path,
+            bench_port=8000,
+            base_url=None,
+            max_tokens_default=512,
+        )
+
+
 def test_default_machine_class_mlx_vs_http() -> None:
     assert "MLX" in default_machine_class_for_adapter("mlx")
     assert default_machine_class_for_adapter("ollama") == "unspecified_host"
+    assert "llama.cpp" in default_machine_class_for_adapter("llama_cpp").lower()
 
 
 def test_comparability_block() -> None:

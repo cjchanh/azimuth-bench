@@ -1,0 +1,1 @@
+{"fixture_id":"public_json_001","lane":"tool_lane","title":"Emit verification object","source_anchors":[],"prompt":"Return ONLY a JSON object with keys ok (boolean), mode (string), and notes (string). No markdown fences.","grading":{"max_score":5,"criteria":[{"points":5,"description":"Parses as JSON with required keys."}]},"baseline":{"status":"not_scored"}}

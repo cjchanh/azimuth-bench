@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import hashlib
+import json
 import subprocess
 from dataclasses import dataclass
 from datetime import datetime, timezone
@@ -75,6 +76,8 @@ class BenchmarkIdentity:
     artifact_key: str | None = None
     operator_provider_id: str | None = None
     provider_id_source: ProviderIdSource = "default"
+    route_label: str | None = None
+    sampling_policy: str | None = None
 
 
 def _avg_metric(rows: list[dict[str, Any]], key: str) -> float:
@@ -183,7 +186,10 @@ def _build_validity(
 
 
 def _vm_pages_free() -> str | None:
-    result = subprocess.run(["vm_stat"], capture_output=True, text=True, check=False)
+    try:
+        result = subprocess.run(["vm_stat"], capture_output=True, text=True, check=False)
+    except OSError:
+        return None
     for line in result.stdout.splitlines():
         if "Pages free" in line:
             return line.strip()
@@ -200,6 +206,29 @@ def _spec(prompt_id: str, prompt: str, *, token_cap: int, target_model_id: str) 
     )
 
 
+def _telemetry_block(
+    *,
+    adapter: BenchmarkAdapter,
+    memory_before: str | None,
+    memory_after: str | None,
+) -> dict[str, Any]:
+    cold_load: Any = None
+    cold_note = "external_or_uninstrumented_server_process"
+    caps = adapter.capabilities()
+    if caps.adapter_name == "MLXLmServerAdapter":
+        cold_note = "mlx_adapter_may_emit_load_seconds_in_model_load_receipts"
+    return {
+        "memory_vm_pages_free_before": memory_before,
+        "memory_vm_pages_free_after": memory_after,
+        "cold_load_seconds": cold_load,
+        "cold_load_status": "unavailable",
+        "cold_load_reason": cold_note,
+        "context_length": None,
+        "context_length_status": "unavailable",
+        "context_length_reason": "not exposed by throughput adapter contract",
+    }
+
+
 def run_benchmark(
     *,
     adapter: BenchmarkAdapter,
@@ -212,6 +241,7 @@ def run_benchmark(
     if not adapter.healthcheck():
         raise RuntimeError("benchmark provider did not pass healthcheck")
 
+    memory_before = _vm_pages_free()
     caps = adapter.capabilities()
     if identity.thinking_mode != "default" and not caps.thinking_toggle:
         raise UnsupportedAdapterFeatureError(
@@ -229,6 +259,20 @@ def run_benchmark(
     print()
 
     repeats = dict(protocol["repeat_counts"])
+    sampling_policy = identity.sampling_policy or "deterministic_throughput_v1"
+    protocol_sha256 = hashlib.sha256(json.dumps(protocol, sort_keys=True).encode("utf-8")).hexdigest()
+    route_identity = {
+        "adapter_name": caps.adapter_name,
+        "model_id": model_id,
+        "thinking_mode": identity.thinking_mode,
+        "lane": identity.lane,
+        "route_label": (identity.route_label or "").strip(),
+        "sampling_policy": sampling_policy,
+        "max_tokens": max_tokens,
+        "protocol_id": protocol["protocol_id"],
+        "prompt_set_id": protocol["prompt_set_id"],
+        "protocol_content_sha256": protocol_sha256,
+    }
     results: dict[str, Any] = {
         "model_id": model_id,
         "display_name": identity.display_name or model_id,
@@ -244,6 +288,8 @@ def run_benchmark(
             "max_tokens": max_tokens,
             "repeat_counts": repeats,
         },
+        "sampling_policy": sampling_policy,
+        "route_identity": route_identity,
         "backend_identity": adapter.build_backend_identity(
             operator_provider_id=identity.operator_provider_id,
             provider_id_source=identity.provider_id_source,
@@ -341,7 +387,9 @@ def run_benchmark(
     }
     print(f"  Sustained: {results['sustained']['sustained_tok_per_sec']:.1f} tok/s")
 
-    results["vm_pages_free"] = _vm_pages_free()
+    memory_after = _vm_pages_free()
+    results["vm_pages_free"] = memory_after
+    results["telemetry"] = _telemetry_block(adapter=adapter, memory_before=memory_before, memory_after=memory_after)
 
     summary = {
         "model_id": model_id,
